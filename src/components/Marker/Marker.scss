@@ -1,0 +1,100 @@
+.qui.qui-marker {
+  .qui-marker-text {
+    position: absolute;
+    width: fit-content;
+    height: auto;
+    cursor: pointer;
+    transform: translate(1.5em, -2.75em);
+    z-index: 1;
+    font-weight: bolder;
+  }
+
+  .qui-incomplete-marker {
+    pointer-events: none;
+  }
+
+  .qui-marker-style {
+    position: absolute;
+    top: 50%;
+    left: 45%;
+    z-index: 1;
+
+    .qui-marker-img {
+      position: relative;
+      width: 3.5em;
+      height: 3.5em;
+      cursor: pointer;
+    }
+  }
+}
+
+.css-1n2r62y-MuiPaper-root-MuiMenu-paper-MuiPaper-root-MuiPopover-paper {
+  .css-6hp17o-MuiList-root-MuiMenu-list {
+    max-height: 15em;
+  }
+
+  .MuiMenuItem-root {
+    display: flex;
+    flex-direction: column;
+
+    .qui-marker-wellstyle {
+      padding: 1em;
+      width: 13em;
+      background-color: #121212;
+      color: #ffffff;
+
+      h5 {
+        margin: 0;
+      }
+
+      .qui-marker-desc {
+        padding-top: 1em;
+        white-space: pre-wrap;
+        font-size: 0.7em;
+        -webkit-box-orient: vertical;
+        display: block;
+        display: -webkit-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 2;
+        line-height: 1;
+      }
+    }
+
+    .qui-itemcontent {
+      width: 79%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: inline-block;
+    }
+
+    .qui-indicator {
+      font-size: 1em;
+      margin-right: 0.5em;
+    }
+
+    .qui-iconwrapper {
+      float: right;
+      color: #121212;
+      font-size: 0.85em;
+    }
+
+    .qui-marker-imagestyle {
+      width: 100%;
+    }
+
+    .qui-icons-name {
+      display: block;
+      align-items: center;
+      width: 13em;
+      padding-top: 0.5em;
+      height: 2em;
+      overflow: hidden;
+
+      .fa-chevron-right {
+        margin-left: 0.5em;
+      }
+    }
+  }
+}

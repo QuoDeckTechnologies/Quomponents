@@ -1,12 +1,14 @@
 .qui-square-wrapper-carousel {
   overflow: inherit;
+  text-align: center;
   margin-bottom: 1em;
 }
 .qui-square-wrapper-carousel .qui-square-wrapper-slide {
   position: relative;
 }
-.qui-square-wrapper-carousel-container .qui-square-wrapper-slide-container .qui-slider-card-box {
-  background-color: #454545;
+.qui-square-wrapper-carousel-container
+  .qui-square-wrapper-slide-container
+  .qui-slider-card-box {
   opacity: 1;
 }
 .qui-square-wrapper-slide-container .qui-slider-card-box-header {
@@ -46,7 +48,9 @@
   color: #666666;
 }
 @media only screen and (min-width: 320px) {
-  .qui-square-wrapper-slide-container .qui-square-wrapper-slide .qui-banner-card {
+  .qui-square-wrapper-slide-container
+    .qui-square-wrapper-slide
+    .qui-banner-card {
     display: inline-block;
     font-size: 0.75em;
     width: 100%;
@@ -71,7 +75,9 @@
     border-top-right-radius: 1em;
     border-bottom-right-radius: 0em;
   }
-  .qui-square-wrapper-slide-container .qui-banner-card .qui-slider-card-box-header {
+  .qui-square-wrapper-slide-container
+    .qui-banner-card
+    .qui-slider-card-box-header {
     text-align: center;
     font-size: 1.1em;
     font-weight: bold;
@@ -83,7 +89,6 @@
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    color: white;
   }
   .qui-square-wrapper-carousel .slick-dots li button:before {
     font-size: 9px;
@@ -106,14 +111,13 @@
   .qui-square-wrapper-carousel .qui-mid-circle {
     width: 4em;
     height: 2em; /* as the half of the width */
-    background-color: #666666;
     border-top-left-radius: 100px; /* 100px of height + 10px of border */
     border-top-right-radius: 100px; /* 100px of height + 10px of border */
     border-bottom: 0;
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 2.15em;
+    bottom: 2.3em;
     margin: auto;
     z-index: 1;
   }
@@ -138,7 +142,9 @@
   }
 }
 @media only screen and (min-width: 481px) {
-  .qui-square-wrapper-slide-container .qui-square-wrapper-slide .qui-banner-card {
+  .qui-square-wrapper-slide-container
+    .qui-square-wrapper-slide
+    .qui-banner-card {
     display: inline-block;
     font-size: 0.75em;
     width: 100%;
@@ -153,7 +159,9 @@
     max-width: 70%;
     height: 2.1em;
   }
-  .qui-square-wrapper-slide-container .qui-banner-card .qui-slider-card-box-header {
+  .qui-square-wrapper-slide-container
+    .qui-banner-card
+    .qui-slider-card-box-header {
     text-align: center;
     font-size: 1.1em;
     font-weight: bold;
@@ -180,7 +188,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 2.58em;
+    bottom: 1.85em;
     margin: auto;
     z-index: 1;
   }
@@ -216,7 +224,9 @@
   }
 }
 @media only screen and (min-width: 769px) {
-  .qui-square-wrapper-slide-container .qui-square-wrapper-slide .qui-banner-card {
+  .qui-square-wrapper-slide-container
+    .qui-square-wrapper-slide
+    .qui-banner-card {
     display: inline-block;
     font-size: 0.75em;
     width: 100%;
@@ -231,7 +241,9 @@
     max-width: 70%;
     height: 2.5em;
   }
-  .qui-square-wrapper-slide-container .qui-banner-card .qui-slider-card-box-header {
+  .qui-square-wrapper-slide-container
+    .qui-banner-card
+    .qui-slider-card-box-header {
     text-align: center;
     font-size: 1.1em;
     font-weight: bold;
@@ -258,7 +270,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 2.88em;
+    bottom: 2.1em;
     margin: auto;
     z-index: 1;
   }
@@ -293,11 +305,5 @@
   }
   .qui-square-wrapper-carousel .slick-dots {
     bottom: -35px;
-  }
-}
-
-@media only screen and (min-width: 1024px) {
-  .qui-square-wrapper-carousel .qui-mid-circle {
-    bottom: 2.88em;
   }
 }

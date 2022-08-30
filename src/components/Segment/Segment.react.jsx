@@ -13,33 +13,33 @@ Segment.propTypes = {
   // Component Specific props
   //=======================================
   /**
-    Segment can recieve children as props, wrap child component with Segment component to use.
-    */
+  Segment can recieve children as props, wrap child component with Segment component to use.
+  */
   children: PropTypes.element,
   /**
-    Use for rounded corners
-    */
+  Use for rounded corners
+  */
   isCircular: PropTypes.bool,
   //=======================================
   // Quommon props
   //=======================================
   /**
-    Use to define component padding in increasing order
-    */
+  Use to define component padding in increasing order
+  */
   asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
   /**
-    Use to float the component in parent container
-    */
+  Use to float the component in parent container
+  */
   asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
   /**
-    Use to override component colors and behavior
-    */
+  Use to override component colors and behavior
+  */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
   }),
   /**
-    Use to define the entry animation of the component
-    */
+  Use to define the entry animation of the component
+  */
   withAnimation: PropTypes.shape({
     animation: PropTypes.oneOf([
       "zoom",
@@ -55,8 +55,8 @@ Segment.propTypes = {
     delay: PropTypes.number,
   }),
   /**
-    Use to show/hide the component
-    */
+  Use to show/hide the component
+  */
   isHidden: PropTypes.bool,
 };
 

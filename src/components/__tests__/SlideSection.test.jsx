@@ -17,7 +17,6 @@ describe("SlideSection", () => {
   // -------------------------------------
   // Run common tests
   // -------------------------------------
-
   const args = {
     target: SlideSection,
     required: {
@@ -62,7 +61,6 @@ describe("SlideSection", () => {
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------
-
   let component, actions, deck;
   actions = {
     addSlide: jest.fn(),

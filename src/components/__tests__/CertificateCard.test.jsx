@@ -1,23 +1,17 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount, render } from 'enzyme';
-
+import { shallow } from 'enzyme';
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------
 import { hasValid } from "./common";
-//--------------------------------------
-// Import from Config
-// -------------------------------------
-
 //--------------------------------------
 // Import Components
 // -------------------------------------
 import CertificateCard from '../CertificateCard/CertificateCard.react'
 
 describe('CertificateCard', () => {
-
     // -------------------------------------
     // Run common tests
     // -------------------------------------

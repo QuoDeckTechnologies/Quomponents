@@ -1,43 +1,46 @@
+.qui.qui-feedback-form {
+  text-align: left;
+}
 .qui-feedback-input-field-container {
-    display: flex;
+  display: flex;
 }
 .qui-feedback-fieldset {
-    border-radius: 1em;
-    border-style: solid;
-    border-width: 0.05em;
-    &.qui-feedback-de-active {
-        border-width: 0px;
-    }
-    .qui-Toggle-Button-title {
-        margin-right: 1em;
-    }
-    .qui-filled{
-        margin-bottom:0.5em;
-    }
+  border-radius: 1em;
+  border-style: solid;
+  border-width: 0.05em;
+  &.qui-feedback-de-active {
+    border-width: 0px;
+  }
+  .qui-Toggle-Button-title {
+    margin-right: 1em;
+  }
+  .qui-filled {
+    margin-bottom: 0.5em;
+  }
 }
 @media only screen and (min-width: 320px) {
-    .qui .qui-feedback-input-field-container {
-        flex-direction: column;
-    }
+  .qui .qui-feedback-input-field-container {
+    flex-direction: column;
+  }
 }
 @media only screen and (min-width: 481px) {
-    .qui .qui-feedback-input-field-container {
-        flex-direction: row;
-    }
-    .qui .qui-feedback-input-field-container .qui-input-field {
-        margin: 0 0.3em 0.1em 0.3em;
-    }
+  .qui .qui-feedback-input-field-container {
+    flex-direction: row;
+  }
+  .qui .qui-feedback-input-field-container .qui-input-field {
+    margin: 0 0.3em 0.1em 0.3em;
+  }
 }
 @media only screen and (min-width: 769px) {
-    .qui .qui-input-field-container {
-        flex-direction: row;
-    }
-    .qui .qui-feedback-input-field-container .qui-input-field {
-        margin: 0 0.3em 0.1em 0.3em;
-    }
+  .qui .qui-input-field-container {
+    flex-direction: row;
+  }
+  .qui .qui-feedback-input-field-container .qui-input-field {
+    margin: 0 0.3em 0.1em 0.3em;
+  }
 }
 @media only screen and (min-width: 1024px) {
-    .qui .qui-feedback-input-field-container {
-        flex-direction: row;
-    }
+  .qui .qui-feedback-input-field-container {
+    flex-direction: row;
+  }
 }

@@ -64,22 +64,11 @@ export default {
       },
     },
   },
-  decorators: [
-    (story) => (
-      <div
-        style={{
-          textAlign: "center",
-        }}
-      >
-        {story()}
-      </div>
-    ),
-  ],
+  decorators: [(story) => <div>{story()}</div>],
   parameters: {
-    componentSubtitle:
-      "Default InlineEdit for general purpose use",
+    componentSubtitle: "Default InlineEdit for general purpose use",
     a11y: { disable: true },
-    docs: { iframeHeight: 150 },
+    docs: { iframeHeight: 100 },
   },
 };
 // -------------------------------------------------------------
@@ -106,7 +95,21 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<InlineEdit {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<InlineEdit
+      value="Please input your text here"
+      name="testing_id"
+      asEmphasis="singleLine"
+      withColor={{
+        accentColor: "#FFAB00",
+        backgroundColor: "#ffab000d",
+      }}
+      withAnimation={{
+        animation: "collapse",
+        duration: 0.5,
+        delay: 0,
+      }}
+      isHidden={false}
+      isDisabled={false}/>`,
     },
   },
 };
@@ -121,15 +124,24 @@ MultiLineEdit.args = {
 MultiLineEdit.parameters = {
   docs: {
     description: {
-      story:
-        "Use to show the multiLine editing state for the InlineEdit.",
+      story: "Use to show the multiLine editing state for the InlineEdit.",
     },
     source: {
-      code: `<MultiLineEdit {...${JSON.stringify(
-        MultiLineEdit.args,
-        null,
-        2
-      )}}/>`,
+      code: `<InlineEdit
+      value="Please input your text here"
+      name="testing_id"
+      asEmphasis="multiLine"
+      withColor={{
+        accentColor: "#FFAB00",
+        backgroundColor: "#ffab000d",
+      }}
+      withAnimation={{
+        animation: "collapse",
+        duration: 0.5,
+        delay: 0,
+      }}
+      isHidden={false}
+      isDisabled={false}/>`,
     },
   },
 };
@@ -152,11 +164,21 @@ AnimatedInlineEdit.parameters = {
         "Use to animate the entry of the InlineEdit with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
     },
     source: {
-      code: `<AnimatedInlineEdit {...${JSON.stringify(
-        AnimatedInlineEdit.args,
-        null,
-        2
-      )}}/>`,
+      code: `<InlineEdit
+      value="Please input your text here"
+      name="testing_id"
+      asEmphasis="singleLine"
+      withColor={{
+        accentColor: "#FFAB00",
+        backgroundColor: "#ffab000d",
+      }}
+      withAnimation={{
+        animation: "slideRight",
+        duration: 0.5,
+        delay: 0,
+      }}
+      isHidden={false}
+      isDisabled={false}/>`,
     },
   },
 };
@@ -165,8 +187,7 @@ AnimatedInlineEdit.parameters = {
 // -------------------------------------------------------------
 const AllVariantsTemplate = (args) => {
   const baseObj = {
-    ...Object.assign({}, Default.args, args, {
-    }),
+    ...Object.assign({}, Default.args, args, {}),
   };
   return (
     <div>
@@ -175,7 +196,7 @@ const AllVariantsTemplate = (args) => {
           withColor: {
             accentColor: "#ffbf00",
             backgroundColor: "#666666",
-          }
+          },
         })}
       />{" "}
       <br />
@@ -185,7 +206,7 @@ const AllVariantsTemplate = (args) => {
           withColor: {
             accentColor: "#589C48",
             backgroundColor: "#733381",
-          }
+          },
         })}
       />{" "}
     </div>
@@ -198,7 +219,12 @@ AllVariants.parameters = {
       story: "variants are supported. Use as per purpose noted here.",
     },
     source: {
-      code: `<InlineEdit asEmphasis: "multiLine", withColor: { accentColor: "#589C48", backgroundColor: "#733381"}/>`,
+      code: `<InlineEdit
+      asEmphasis="multiLine"
+      withColor={{
+        accentColor: "#589C48",
+        backgroundColor: "#733381",
+      }}/>`,
     },
   },
 };

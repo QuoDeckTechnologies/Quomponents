@@ -14,10 +14,9 @@ import SlideBackground from "../RibbonMenu/designMenu/sections/SlideBackground.r
 import ImageUploadModal from "../ImageUploadModal/ImageUploadModal.react";
 
 describe("SlideBackground", () => {
-	 // -------------------------------------
+	// -------------------------------------
     // Run common tests
     // -------------------------------------
-    
     const args = {
         target: SlideBackground,
         translations: {
@@ -53,7 +52,6 @@ describe("SlideBackground", () => {
     // -------------------------------------
     // Run component specific tests
     // -------------------------------------
-
 	let component, actions;
 	actions = {
 		updateDeck: jest.fn()

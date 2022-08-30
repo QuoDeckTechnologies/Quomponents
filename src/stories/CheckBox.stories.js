@@ -13,12 +13,11 @@ export default {
   title: "Design System/CheckBox",
   component: CheckBox,
   argTypes: {
-    name: "",
     label: "",
     checked: false,
     asSize: {
       control: "select",
-      options: ["tiny", "normal", "huge"],
+      options: ["tiny", "small", "normal", "big", "huge", "massive"],
       table: {
         category: "as-Flags",
       },
@@ -110,7 +109,6 @@ export default {
 const Template = (args) => <CheckBox {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-  name: "checkbox",
   label: "Default Checkbox",
   checked: false,
   asSize: "normal",
@@ -138,7 +136,38 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<CheckBox {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<CheckBox
+          label="Default Checkbox"
+          checked={false}
+          asSize="normal"
+          asFloated="left"
+          asPadded="normal"
+          asAligned="left"
+          withColor={{
+            accentColor: "",
+            textColor: "",
+          }}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          withTranslation={{
+            lang: "en",
+            tgt: "checkBox",
+            dictionary: ${JSON.stringify({
+              hi: {
+                checkBox: {
+                  label: "डिफ़ॉल्ट चेकबॉक्स",
+                },
+              },
+            })},
+          }}
+          isDisabled={false}
+          isHidden={false}
+          isFluid={false}
+          onClick={()=>{}}
+        />`,
     },
   },
 };
@@ -148,11 +177,11 @@ Default.parameters = {
 export const ReadOnlyCheckBox = Template.bind({});
 ReadOnlyCheckBox.args = {
   ...Default.args,
-  name: "checkbox",
   label: "Read Only Checkbox",
   checked: true,
   isDisabled: true,
   isHidden: false,
+  asSize: "massive",
 };
 ReadOnlyCheckBox.parameters = {
   docs: {
@@ -161,11 +190,27 @@ ReadOnlyCheckBox.parameters = {
         "Read Only checkbox can be created by making `isDisabled` prop set to `true` and `checked` state can be as required",
     },
     source: {
-      code: `<CheckBox {...${JSON.stringify(
-        ReadOnlyCheckBox.args,
-        null,
-        2
-      )}}/>`,
+      code: `<CheckBox
+          label="Read Only Checkbox"
+          checked={true}
+          isDisabled={true}
+          isHidden={false}
+          asSize="normal"
+          asFloated="left"
+          asPadded="normal"
+          asAligned="left"
+          withColor={{
+            accentColor: "",
+            textColor: "",
+          }}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          isFluid={false}
+          onClick={()=>{}}
+        />`,
     },
   },
 };
@@ -175,7 +220,6 @@ ReadOnlyCheckBox.parameters = {
 export const DisabledCheckBox = Template.bind({});
 DisabledCheckBox.args = {
   ...Default.args,
-  name: "checkbox",
   label: "Disabled Checkbox",
   checked: false,
   isDisabled: true,
@@ -188,11 +232,27 @@ DisabledCheckBox.parameters = {
         "Disabled checkbox can be created with `isDisabled` prop set to `true`",
     },
     source: {
-      code: `<CheckBox {...${JSON.stringify(
-        DisabledCheckBox.args,
-        null,
-        2
-      )}}/>`,
+      code: `<CheckBox
+          label="Disabled Checkbox"
+          checked={false}
+          isDisabled={true}
+          isHidden={false}
+          asSize="normal"
+          asFloated="left"
+          asPadded="normal"
+          asAligned="left"
+          withColor={{
+            accentColor: "",
+            textColor: "",
+          }}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          isFluid={false}
+          onClick={()=>{}}
+        />`,
     },
   },
 };
@@ -204,14 +264,12 @@ const MultipleTemplate = (args) => {
     <div>
       <CheckBox
         {...args}
-        name="checkbox A"
         label={args.label[0]}
         checked={true}
         asFloated="none"
       />
       <CheckBox
         {...args}
-        name="checkbox B"
         label={args.label[1]}
         checked={false}
         asFloated="none"
@@ -231,30 +289,66 @@ MultipleCheckBox.parameters = {
         "Multiple checkboxes can be used which outputs their status and label text to `onClick` prop",
     },
     source: {
-      code: `<CheckBox {...${JSON.stringify(
-        MultipleCheckBox.args,
-        null,
-        2
-      )}}/>`,
+      code: `<div>
+          <CheckBox
+            label="Option One"
+            checked={true}
+            asFloated="none"
+            asSize="normal"
+            asPadded="normal"
+            asAligned="left"
+            withColor={{
+              accentColor: "",
+              textColor: "",
+            }}
+            withAnimation={{
+              animation: "zoom",
+              duration: 0.5,
+              delay: 0,
+            }}
+            isDisabled={false}
+            isHidden={false}
+            isFluid={false}
+          />
+          <CheckBox
+            label="Option Two"
+            checked={false}
+            asFloated="none"
+            asSize="normal"
+            asPadded="normal"
+            asAligned="left"
+            withColor={{
+              accentColor: "",
+              textColor: "",
+            }}
+            withAnimation={{
+              animation: "zoom",
+              duration: 0.5,
+              delay: 0,
+            }}
+            isDisabled={false}
+            isHidden={false}
+            isFluid={false}
+            onClick={()=>{}}
+          />
+        </div>`,
     },
   },
 };
 // -------------------------------------------------------------
-// Multiple CheckBox
+// Multiple CheckBox Inline
 // -------------------------------------------------------------
 const MultipleTemplateInline = (args) => {
   return (
     <div>
       <CheckBox
         {...args}
-        name="checkbox A"
         label={args.label[0]}
         checked={true}
         asFloated="inline"
       />
       <CheckBox
         {...args}
-        name="checkbox B"
         label={args.label[1]}
         checked={false}
         asFloated="inline"
@@ -273,11 +367,49 @@ InlineMultipleCheckBox.parameters = {
       story: "Multiple inline checkboxes can be created when needed",
     },
     source: {
-      code: `<CheckBox {...${JSON.stringify(
-        InlineMultipleCheckBox.args,
-        null,
-        2
-      )}}/>`,
+      code: `<div>
+          <CheckBox
+            label="Option One"
+            checked={true}
+            asFloated="inline"
+            asSize="normal"
+            asPadded="normal"
+            asAligned="left"
+            withColor={{
+              accentColor: "",
+              textColor: "",
+            }}
+            withAnimation={{
+              animation: "zoom",
+              duration: 0.5,
+              delay: 0,
+            }}
+            isDisabled={false}
+            isHidden={false}
+            isFluid={false}
+          />
+          <CheckBox
+            label="Option Two"
+            checked={false}
+            asFloated="inline"
+            asSize="normal"
+            asPadded="normal"
+            asAligned="left"
+            withColor={{
+              accentColor: "",
+              textColor: "",
+            }}
+            withAnimation={{
+              animation: "zoom",
+              duration: 0.5,
+              delay: 0,
+            }}
+            isDisabled={false}
+            isHidden={false}
+            isFluid={false}
+            onClick={()=>{}}
+          />
+        </div>`,
     },
   },
 };
@@ -287,7 +419,6 @@ InlineMultipleCheckBox.parameters = {
 export const ColoredCheckBox = Template.bind({});
 ColoredCheckBox.args = {
   ...Default.args,
-  name: "checkbox",
   label: "Colored Checkbox",
   checked: false,
   withColor: {
@@ -301,7 +432,27 @@ ColoredCheckBox.parameters = {
       story: "Colored checkbox can be created by using withColor props",
     },
     source: {
-      code: `<CheckBox {...${JSON.stringify(ColoredCheckBox.args, null, 2)}}/>`,
+      code: `<CheckBox
+          label="Colored Checkbox"
+          checked={false}
+          asSize="normal"
+          asFloated="left"
+          asPadded="normal"
+          asAligned="left"
+          withColor={{
+            accentColor: "#14213d",
+            textColor: "#14213d",
+          }}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          isDisabled={false}
+          isHidden={false}
+          isFluid={false}
+          onClick={()=>{}}
+        />`,
     },
   },
 };
@@ -311,7 +462,6 @@ ColoredCheckBox.parameters = {
 export const TranslatedCheckBox = Template.bind({});
 TranslatedCheckBox.args = {
   ...Default.args,
-  name: "checkbox",
   label: "Translated Checkbox",
   checked: false,
   withTranslation: {
@@ -327,11 +477,38 @@ TranslatedCheckBox.parameters = {
         "Translated checkbox can be created by using withTranslation props",
     },
     source: {
-      code: `<CheckBox {...${JSON.stringify(
-        TranslatedCheckBox.args,
-        null,
-        2
-      )}}/>`,
+      code: `<CheckBox
+          label="Translated Checkbox"
+          checked={false}
+          asSize="normal"
+          asFloated="left"
+          asPadded="normal"
+          asAligned="left"
+          withColor={{
+            accentColor: "",
+            textColor: "",
+          }}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          withTranslation={{
+            lang: "hi",
+            tgt: "checkBox",
+            dictionary: ${JSON.stringify({
+              hi: {
+                checkBox: {
+                  label: "डिफ़ॉल्ट चेकबॉक्स",
+                },
+              },
+            })},
+          }}
+          isDisabled={false}
+          isHidden={false}
+          isFluid={false}
+          onClick={()=>{}}
+        />`,
     },
   },
 };

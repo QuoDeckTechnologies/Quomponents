@@ -2,7 +2,7 @@ import React from 'react';
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount, render } from 'enzyme';
+import { shallow } from 'enzyme';
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------
@@ -16,37 +16,36 @@ describe("SlideHeader", () => {
     // -------------------------------------
     // Run common tests
     // -------------------------------------
-
     const args = {
         target: SlideHeader,
     };
 
     hasValid("defaults", args);
 
+    hasValid("variants", args);
     hasValid("positions", args);
     hasValid("padding", args);
     hasValid("alignment", args);
 
     hasValid("colors", args);
-    hasValid("animations", args);
 
     hasValid("hidden", args);
     // -------------------------------------
     // Run component specific tests
     // -------------------------------------
-
     let component;
 
     beforeEach(() => {
         jest.resetAllMocks();
         component = shallow(
             <SlideHeader
-                content={null}
+                title="Neque porro quisquam est qui dolorem"
+                subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem"
+                asVariant="primary"
                 asPadded="normal"
                 asFloated="none"
                 asAligned="center"
                 withColor={null}
-                withAnimation={null}
                 isHidden={false}
             />
         );

@@ -2,7 +2,7 @@ import React from "react";
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount, render } from "enzyme";
+import { shallow } from "enzyme";
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------
@@ -29,7 +29,7 @@ describe("BulletList", () => {
           "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor.",
         ],
       },
-      onClick: () => console.log("Button Testing"),
+      onClick: () => {},
     },
   };
 

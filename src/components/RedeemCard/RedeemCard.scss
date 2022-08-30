@@ -1,159 +1,160 @@
 .qui-redeem-card {
-    padding: 1em;
-    color: #fff;
-    .qui .qui-point-container {
-        flex-direction: row-reverse;
-        align-items: flex-start;
-        font-size: 0.9em;
-        font-weight: bold;
-        align-self: flex-start;
-        width: auto;
-    }
-    .qui .qui-point-container .qui-point {
-        font-style: normal;
-        padding-top: 0.1em;
-        color: #fff;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 11ch;
-        font-weight: 400;
-        letter-spacing: -0.02em;
-    }
-    .qui .qui-btn {
-        font-weight: 700;
-        padding: 0.5em 1.2em;
-        letter-spacing: -0.02em;
-        border-radius: 10px;
-    }
-}
-.qui-redeem-card-container {
-    display: flex;
-    width: 15.625em;
-    min-height: 19.125em;
-    background-color: #222a35;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 0.6em;
-    mix-blend-mode: normal;
-    padding: 0.5em 1.5em;
-}
-.qui-redeem-card-name {
-    font-size: 1.2em;
+  padding: 1em;
+  color: #fff;
+  .qui .qui-point-container {
+    flex-direction: row-reverse;
+    align-items: flex-start;
+    font-size: 0.9em;
+    font-weight: bold;
     align-self: flex-start;
-    max-width: 22ch;
-    word-break: break-word;
+    width: auto;
+  }
+  .qui .qui-point-container .qui-point {
+    font-style: normal;
+    padding-top: 0.1em;
+    color: #fff;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-weight: bold;
+    max-width: 11ch;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+  .qui .qui-btn {
+    font-weight: 700;
+    padding: 0.5em 1.2em;
+    letter-spacing: -0.02em;
+    border-radius: 10px;
+  }
+}
+.qui-redeem-card-container {
+  display: flex;
+  width: 15.625em;
+  min-height: 19.125em;
+  background-color: #222a35;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 0.6em;
+  mix-blend-mode: normal;
+  padding: 0.5em 1.5em;
+}
+.qui-redeem-card-name {
+  align-self: flex-start;
+  max-width: 20ch;
+  word-break: break-word;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 0;
 }
 .qui-redeem-card-image {
-    height: 6.17125em;
-    width: 100%;
-    background-position: center;
-    background-size: cover;
+  height: 6.17125em;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
 }
 .qui-redeem-card-cost-stock-container {
-    display: flex;
-    align-items: flex-start;
-    width: 100%;
-    justify-content: space-between;
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  justify-content: space-between;
 }
 .qui-redeem-card-cost-stock-container-row {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    margin-top: 0.3em;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 0.3em;
 }
 .qui-redeem-card-cost-stock-container-column {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: center;
-    padding-top: 0.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  padding-top: 0.5em;
 }
 .qui-redeem-card-cost {
-    flex: 1;
+  flex: 1;
 }
 .qui-redeem-card-accent-line {
-    margin-top: 0.5em;
-    width: 82px;
-    align-self: flex-start;
-    .qui .qui-accentline {
-        border-bottom: 0.7em solid;
-    }
+  width: 82px;
+  align-self: flex-start;
+  .qui .qui-accentline-container {
+    width: 4.5em;
+    padding: 0;
+  }
+  .qui .qui-accentline {
+    border-bottom: 0.7em solid;
+  }
 }
 .qui-redeem-card-description-container {
-    display: flex;
-    margin-top: 0.4em;
-    align-self: flex-start;
+  display: flex;
+  margin-top: 0.4em;
+  align-self: flex-start;
 }
 .qui-redeem-card-description-show-more-non-active {
-    text-align: left;
-    align-self: flex-start;
-    font-size: 0.85em;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    display: -webkit-box !important;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    white-space: normal;
-    letter-spacing: -0.02em;
+  text-align: left;
+  align-self: flex-start;
+  font-size: 0.85em;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+  letter-spacing: -0.02em;
 }
 .qui-redeem-card-description-show-more-active {
-    text-align: left;
-    align-self: flex-start;
-    font-size: 0.85em;
-    margin: 0 0 0.5em 0;
-    letter-spacing: -0.02em;
+  text-align: left;
+  align-self: flex-start;
+  font-size: 0.85em;
+  margin: 0 0 0.5em 0;
+  letter-spacing: -0.02em;
 }
 .qui-redeem-card-status {
-    text-align: right;
-    align-self: flex-end;
-    line-height: 1.3em;
+  text-align: right;
+  align-self: flex-end;
+  line-height: 1.3em;
 }
 .qui-redeem-card-redeem-inprogress,
 .qui-redeem-card-redeem-completed {
-    font-size: 0.8em;
-    width: 65%;
+  font-size: 0.8em;
+  width: 65%;
 }
 .qui-redeem-card-redeem-inprogress {
-    color: #ffbf00;
+  color: #ffbf00;
 }
 .qui-redeem-card-redeem-completed {
-    color: rgb(193, 220, 158);
+  color: rgb(193, 220, 158);
 }
 .qui-redeem-card-stock {
-    margin-top: 0.2em;
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    text-align: right;
-    font-weight: bold;
-    word-break: break-all;
-    overflow: hidden;
-    font-size: 1.15em;
+  margin-top: 0.2em;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  text-align: right;
+  word-break: break-all;
+  overflow: hidden;
+  margin-bottom: 0;
 }
 .qui-redeem-card-show-more {
-    background: transparent;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    color: #fff;
-    align-self: flex-start;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #fff;
+  align-self: flex-start;
 }
 
 @media only screen and (min-width: 320px) {
-    .qui-redeem-card {
-        font-size: 0.8rem;
-    }
+  .qui-redeem-card {
+    font-size: 0.8rem;
+  }
 }
 
 @media only screen and (min-width: 375px) {
-    .qui-redeem-card {
-        font-size: 1rem;
-    }
+  .qui-redeem-card {
+    font-size: 1rem;
+  }
 }

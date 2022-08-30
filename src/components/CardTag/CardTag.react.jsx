@@ -1,7 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import { getAnimation, getQuommons, getTranslation } from "../../common/javascripts/helpers";
+import {
+  getAnimation,
+  getQuommons,
+  getTranslation,
+} from "../../common/javascripts/helpers";
 import "../../common/stylesheets/common.css";
 import "./CardTag.scss";
 import "../../common/stylesheets/overrule.scss";
@@ -58,15 +62,14 @@ CardTag.propTypes = {
   Use to align content within the component container
   */
   asAligned: PropTypes.oneOf(["left", "right", "center"]),
-
   /**
   Use to define component backgroundColor and textColor Color 
   */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
     textColor: PropTypes.string,
-    activeBackroundColor: PropTypes.string,
-    activeTextColor: PropTypes.string,
+    hoverBackgroundColor: PropTypes.string,
+    hoverTextColor: PropTypes.string,
   }),
   /**
   Use to add an icon to the component
@@ -157,8 +160,8 @@ export default function CardTag(props) {
   // 2. Use to set Color in CardTag Component
   //-------------------------------------------------------------------
   let activeColor = {
-    backgroundColor: props.withColor?.activeBackgroundColor,
-    color: props.withColor?.activeTextColor,
+    backgroundColor: props.withColor?.hoverBackgroundColor,
+    color: props.withColor?.hoverTextColor,
   };
   let deactivatedColor = {
     backgroundColor: props.withColor?.backgroundColor,
@@ -184,12 +187,9 @@ export default function CardTag(props) {
   //-------------------------------------------------------------------
   // Set the card text
   //-------------------------------------------------------------------
-  let cardTagText = props.content
-    ? props.content
-    : "";
+  let cardTagText = props.content ? props.content : "";
   let iconOnly = cardTagText === "";
   let loadingText = "Please Wait...";
-
   //-------------------------------------------------------------------
   //  Translate the text objects in case their is a dictionary provided
   //-------------------------------------------------------------------
@@ -201,15 +201,13 @@ export default function CardTag(props) {
     let tObj = getTranslation(props.withTranslation);
     if (tObj && props.content && props.content !== "") {
       cardTagText = tObj.content;
-      loadingText = tObj.loading
+      loadingText = tObj.loading;
     }
   }
-
   //-------------------------------------------------------------------
   // 6. Provide loading text if loading is clicked
   //-------------------------------------------------------------------
   cardTagText = props.isLoading ? loadingText : cardTagText;
-
 
   // ========================= Render Function =================================
 
@@ -220,17 +218,22 @@ export default function CardTag(props) {
       className={`qui ${quommonClasses.parentClasses}`}
     >
       <div
-        className={`qui-btn ${props.isActive
-          ? "qui-card-tag-block"
-          : "qui-card-tag-block qui-card-tag-decativated"
-          } ${quommonClasses.childClasses} ${props.isLeft ? "qui-card-tag-left-orientation" : ""
-          }`}
+        className={`qui-btn ${
+          props.isActive
+            ? "qui-card-tag-block"
+            : "qui-card-tag-block qui-card-tag-decativated"
+        } ${quommonClasses.childClasses} ${
+          props.isLeft ? "qui-card-tag-left-orientation" : ""
+        }`}
         style={props.isActive ? activeColor : deactivatedColor}
         onClick={props.onClick}
       >
         <div className="qui-card-tag-label">
-          {props.isLoading ? <i className="icon-loader fa fa-spinner fa-spin"></i>
-            : getIcon(props.withIcon, "left", iconOnly)}
+          {props.isLoading ? (
+            <i className="icon-loader fa fa-spinner fa-spin"></i>
+          ) : (
+            getIcon(props.withIcon, "left", iconOnly)
+          )}
           <span className="qui-card-tag-content">{cardTagText}</span>
         </div>
       </div>

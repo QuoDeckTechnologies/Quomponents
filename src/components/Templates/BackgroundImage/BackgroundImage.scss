@@ -2,78 +2,78 @@
 /* BackgroundImage Definitions */
 /* ================================================= */
 .qui.qui-background-image {
-    min-height: 30em;
-    border-radius: 1em;
+  min-height: 30em;
+  border-radius: 1em;
 }
 /* ================================================= */
 /* BackgroundImage Text Position styling */
 /* ================================================= */
 .qui .qui-background-image-textblock {
-    padding: 10% 0;
-    min-height: 30em;
-    display: flex;
-    .qui .qui-text-block-area {
-        min-width: 15em;
-        min-height: 8.5em;
-        font-size: 1em;
-        margin: 0;
-        font-weight: lighter;
-    }
-    &.qui-position-top-left {
-        justify-content: flex-start;
-        align-items: flex-start;
-    }
-    &.qui-position-top-right {
-        justify-content: flex-end;
-        align-items: flex-start;
-    }
-    &.qui-position-top-center {
-        justify-content: center;
-        align-items: flex-start;
-    }
-    &.qui-position-center-left {
-        justify-content: flex-start;
-        align-items: center;
-    }
-    &.qui-position-center-right {
-        justify-content: flex-end;
-        align-items: center;
-    }
-    &.qui-position-center-center {
-        justify-content: center;
-        align-items: center;
-    }
-    &.qui-position-bottom-left {
-        justify-content: flex-start;
-        align-items: flex-end;
-    }
-    &.qui-position-bottom-right {
-        justify-content: flex-end;
-        align-items: flex-end;
-    }
-    &.qui-position-bottom-center {
-        justify-content: center;
-        align-items: flex-end;
-    }
+  padding: 10% 0;
+  min-height: 30em;
+  display: flex;
+  .qui .qui-text-block-area {
+    min-width: 15em;
+    min-height: 8.5em;
+    font-size: 1em;
+    margin: 0;
+    font-weight: lighter;
+  }
+  &.qui-position-top-left {
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  &.qui-position-top-right {
+    justify-content: flex-end;
+    align-items: flex-start;
+  }
+  &.qui-position-top-center {
+    justify-content: center;
+    align-items: flex-start;
+  }
+  &.qui-position-center-left {
+    justify-content: flex-start;
+    align-items: center;
+  }
+  &.qui-position-center-right {
+    justify-content: flex-end;
+    align-items: center;
+  }
+  &.qui-position-center-center {
+    justify-content: center;
+    align-items: center;
+  }
+  &.qui-position-bottom-left {
+    justify-content: flex-start;
+    align-items: flex-end;
+  }
+  &.qui-position-bottom-right {
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+  &.qui-position-bottom-center {
+    justify-content: center;
+    align-items: flex-end;
+  }
 }
 
 /* ================================================= */
 /* BackgroundImage Sizing Definitions */
 /* ================================================= */
 @media only screen and (min-width: 320px) {
-    .qui.qui-background-image {
-        width: auto;
-    }
+  .qui.qui-background-image {
+    width: auto;
+  }
 }
 
 @media only screen and (min-width: 481px) {
-    .qui.qui-background-image {
-        width: 20em;
-    }
+  .qui.qui-background-image {
+    width: 20em;
+  }
 
-    .qui .qui-background-image-textblock {
-        .qui .qui-text-block-area {
-            max-width: 8em;
-        }
+  .qui .qui-background-image-textblock {
+    .qui .qui-text-block-area {
+      max-width: 8em;
     }
+  }
 }

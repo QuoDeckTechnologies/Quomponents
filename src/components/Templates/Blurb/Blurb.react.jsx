@@ -111,25 +111,26 @@ export default function Blurb(props) {
   let slideHeaderColors = {
     textColor: withColor?.slideHeaderTextColor,
     accentColor: withColor?.slideHeaderAccentColor,
-    backgroundColor: withColor?.slideHeaderBackgroundColor
-  }
+    backgroundColor: withColor?.slideHeaderBackgroundColor,
+  };
   let textBlockColors = {
     textColor: withColor?.textBlockTextColor,
-    backgroundColor: withColor?.textBlockBackgroundColor
-  }
+    backgroundColor: withColor?.textBlockBackgroundColor,
+  };
   //-------------------------------------------------------------------
   // 4. Function to return a view for blurb
   //-------------------------------------------------------------------
   const getView = (data) => {
     if (!data?.image && (data?.title || data?.subtitle)) {
       return (
-        <SlideHeader {...props}
-          content={{ title: data?.title, subTitle: data?.subtitle }}
+        <SlideHeader
+          {...props}
+          title={data?.title}
+          subtitle={data?.subtitle}
           withColor={slideHeaderColors}
         />
       );
-    }
-    else {
+    } else {
       return (
         <img
           className="qui-blurb-image"

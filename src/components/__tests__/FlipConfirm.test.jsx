@@ -1,16 +1,8 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount } from 'enzyme';
-import renderer from 'react-test-renderer';
-import { render, screen, fireEvent } from "@testing-library/react";
-
-
-
-//--------------------------------------
-// Import from Config
-// -------------------------------------
-
+import { shallow } from 'enzyme';
+import { render, fireEvent } from "@testing-library/react";
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -47,7 +39,6 @@ describe("FlipConfirm", () => {
     },
   });
 
-
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(<FlipConfirm
@@ -68,7 +59,7 @@ describe("FlipConfirm", () => {
       isDisabled={false}
       isFluid={false}
       isLoading={false}
-      onClick={() => console.log("")}
+      onClick={() => { }}
     />);
   })
 
@@ -121,7 +112,7 @@ describe("FlipConfirm", () => {
     });
 
   it("Click testing", () => {
-    let wrapper = shallow(<FlipConfirm onClick={() => console.log("")}
+    let wrapper = shallow(<FlipConfirm onClick={() => { }}
     />);
     wrapper.find("Button").at(0).simulate('click', { clientX: 100, clientY: 100 });
     wrapper.find("Button").at(1).simulate('click', { clientX: 100, clientY: 100 });

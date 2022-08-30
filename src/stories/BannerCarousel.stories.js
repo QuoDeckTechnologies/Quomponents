@@ -57,20 +57,6 @@ export default {
 
 let dataprops = {
   asVariant: "warning",
-  withColor: {
-    backgroundColor: "",
-    accentColor: "",
-    textColor: "",
-    hoverBackgroundColor: "",
-    hoverTextColor: "",
-  },
-  withAnimation: {
-    animation: "zoom",
-    duration: 0.5,
-    delay: 0,
-  },
-  isDisabled: false,
-  isHidden: false,
 };
 
 // -------------------------------------------------------------

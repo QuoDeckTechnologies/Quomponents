@@ -14,13 +14,27 @@ export default {
   title: "Design System/OptionItem/OptionItemEight",
   component: OptionItemEight,
   argTypes: {
-    content: {},
+    targetName: "",
+    value: "",
+    placeholder: "",
+    maxLength: 300,
+    buttonText: "",
+    asVariant: {
+      control: "select",
+      options: ["primary", "secondary", "success", "warning", "error"],
+      table: {
+        category: "as-Flags",
+      },
+    },
     withColor: {
       table: {
         category: "with-Params",
         defaultValue: {
           backgroundColor: "",
+          textColor: "",
           accentColor: "",
+          hoverBackgroundColor: "",
+          hoverTextColor: "",
         },
       },
     },
@@ -92,34 +106,47 @@ const Template = (args) => {
 };
 export const Default = Template.bind({});
 Default.args = {
-  content: {
-    targetName: "Target Name",
-    value: "",
-    placeholder: "This is Option A",
-    maxLength: 300,
-    buttonText: "outlined button",
-  },
+  targetName: "Target Name",
+  value: "",
+  placeholder: "This is Option A",
+  maxLength: 300,
+  buttonText: "outlined button",
+  asVariant: "warning",
   withColor: {
     backgroundColor: "#ffab000d",
-    accentColor: "",
-  },
-  withAnimation: {
-    animation: "zoom",
-    duration: 0.5,
-    delay: 0,
+    textColor: "",
+    accentColor: "#FFBF00",
+    hoverBackgroundColor: "#FFBF00",
+    hoverTextColor: "#000",
   },
   withTranslation: {
     lang: "en",
     tgt: "optionItemEight",
     dictionary: dictionary,
   },
-  isDisabled: false,
-  isHidden: false,
 };
 Default.parameters = {
   docs: {
     source: {
-      code: `<OptionItemEight {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<OptionItemEight 
+      targetName= "Target Name"
+      value= ""
+      placeholder= "This is Option A"
+      maxLength= {300}
+      buttonText= "outlined button"
+      asVariant= "warning"
+      withColor= {{
+        backgroundColor: "#ffab000d",
+        textColor: "",
+        accentColor: "#FFBF00",
+        hoverBackgroundColor: "#FFBF00",
+        hoverTextColor: "#000",
+      }}
+      withTranslation= {{
+        lang: "en",
+        tgt: "optionItemEight",
+        dictionary: dictionary,
+      }}/>`,
     },
   },
 };
@@ -132,39 +159,33 @@ ColoredOptionItemEight.args = {
   withColor: {
     backgroundColor: "#8c9ea3",
     accentColor: "#597387",
+    textColor: "",
+    hoverBackgroundColor: "",
+    hoverTextColor: "",
   },
 };
 ColoredOptionItemEight.parameters = {
   docs: {
     source: {
-      code: `<OptionItemEight {...${JSON.stringify(
-        ColoredOptionItemEight.args,
-        null,
-        2
-      )}}/>`,
-    },
-  },
-};
-// -------------------------------------------------------------
-// Animated OptionItem Eight
-// -------------------------------------------------------------
-export const AnimatedOptionItemEight = Template.bind({});
-AnimatedOptionItemEight.args = {
-  ...Default.args,
-  withAnimation: {
-    animation: "fade",
-    duration: 0.5,
-    delay: 0,
-  },
-};
-AnimatedOptionItemEight.parameters = {
-  docs: {
-    source: {
-      code: `<OptionItemEight {...${JSON.stringify(
-        AnimatedOptionItemEight.args,
-        null,
-        2
-      )}}/>`,
+      code: `<OptionItemEight 
+      targetName= "Target Name"
+      value= ""
+      placeholder= "This is Option A"
+      maxLength= {300}
+      buttonText= "outlined button"
+      asVariant= "warning"
+      withColor= {{
+        backgroundColor: "#8c9ea3",
+        accentColor: "#597387",
+        textColor: "",
+        hoverBackgroundColor: "",
+        hoverTextColor: "",
+      }}
+      withTranslation= {{
+        lang: "en",
+        tgt: "optionItemEight",
+        dictionary: dictionary,
+      }}/>`,
     },
   },
 };
@@ -183,11 +204,25 @@ TranslatedOptionItemEight.args = {
 TranslatedOptionItemEight.parameters = {
   docs: {
     source: {
-      code: `<OptionItemEight {...${JSON.stringify(
-        TranslatedOptionItemEight.args,
-        null,
-        2
-      )}}/>`,
+      code: `<OptionItemEight 
+      targetName= "Target Name"
+      value= ""
+      placeholder= "This is Option A"
+      maxLength= {300}
+      buttonText= "outlined button"
+      asVariant= "warning"
+      withColor= {{
+        backgroundColor: "#ffab000d",
+        textColor: "",
+        accentColor: "#FFBF00",
+        hoverBackgroundColor: "#FFBF00",
+        hoverTextColor: "#000",
+      }}
+      withTranslation= {{
+        lang: "hi",
+        tgt: "optionItemEight",
+        dictionary: dictionary,
+      }}/>`,
     },
   },
 };
@@ -266,7 +301,11 @@ const MultipleTemplate = (args) => {
           <div style={{ marginBottom: "1em" }} key={index}>
             <OptionItemEight
               {...args}
-              content={{ ...content }}
+              targetName={content.targetName}
+              value={content.value}
+              placeholder={content.placeholder}
+              maxLength={content.maxLength}
+              buttonText={content.buttonText}
               onInput={(targetName, value) => handleInput(targetName, value)}
               onClick={handleRemove}
             />
@@ -283,11 +322,90 @@ MultipleOptionItemEight.args = {
 MultipleOptionItemEight.parameters = {
   docs: {
     source: {
-      code: `<OptionItemEight {...${JSON.stringify(
-        MultipleOptionItemEight.args,
-        null,
-        2
-      )}}/>`,
+      code: `const [contentArr, setContentArr] = useState([
+        {
+          targetName: "TargetNameOne",
+          value: "",
+          placeholder: "Placeholder Eight",
+          buttonText: "Button One",
+        },
+        {
+          targetName: "TargetNameTwo",
+          value: "",
+          placeholder: "Placeholder Two",
+          buttonText: "Button Two",
+        },
+        {
+          targetName: "TargetNameThree",
+          value: "Default Value",
+          placeholder: "Placeholder Three",
+          buttonText: "Button Three",
+        },
+      ]);
+      // -------------------------------------------------------------
+      // Hook to return modified content object
+      // -------------------------------------------------------------
+      useEffect(() => {
+        args.onInput(contentArr);
+      });
+      // -------------------------------------------------------------
+      // Temporary variables for operations
+      // -------------------------------------------------------------
+      let tmp_state = contentArr;
+      let tmp_arr = [];
+      let tmp_obj = {};
+      // -------------------------------------------------------------
+      // Function to remove an object from the array
+      // -------------------------------------------------------------
+      const handleRemove = (dataID) => {
+        tmp_state = contentArr;
+        tmp_arr = [];
+        tmp_state.forEach((dataObj) => {
+          tmp_arr.push({ ...dataObj });
+        });
+        tmp_arr = tmp_state.filter((dataObj) => dataObj.targetName !== dataID);
+        setContentArr([...tmp_arr]);
+      };
+      // -------------------------------------------------------------
+      // Function to put value in the array of objects
+      // -------------------------------------------------------------
+      const handleInput = (targetName, value) => {
+        tmp_state = contentArr;
+        tmp_arr = [];
+        tmp_obj = {};
+    
+        tmp_state.forEach((dataObj) => {
+          if (dataObj.targetName === targetName) {
+            tmp_obj = { ...dataObj };
+            tmp_obj.value = value;
+            tmp_arr.push(tmp_obj);
+          } else {
+            tmp_obj = { ...dataObj };
+            tmp_arr.push(tmp_obj);
+          }
+        });
+        setContentArr([...tmp_arr]);
+      };
+      return (
+        <div>
+          {contentArr.map((content, index) => {
+            return (
+              <div style={{ marginBottom: "1em" }} key={index}>
+                <OptionItemEight
+                  {...args}
+                  targetName={content.targetName}
+                  value={content.value}
+                  placeholder={content.placeholder}
+                  maxLength={content.maxLength}
+                  buttonText={content.buttonText}
+                  onInput={(targetName, value) => handleInput(targetName, value)}
+                  onClick={handleRemove}
+                />
+              </div>
+            );
+          })}
+        </div>
+      );`,
     },
   },
 };

@@ -1,9 +1,7 @@
 // Import npm packages
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { motion } from "framer-motion";
 import {
-  getAnimation,
   getQuommons,
   getTranslation,
 } from "../../../common/javascripts/helpers";
@@ -19,15 +17,25 @@ OptionItemFive.propTypes = {
   // Component Specific props
   //=======================================
   /**
-  OptionItemFive targetName, value, placeholder should be passed in content object
+  Use to define OptionItemFive targetName.
   */
-  content: PropTypes.shape({
-    targetName: PropTypes.string,
-    value: PropTypes.string,
-    placeholder: PropTypes.string,
-    image: PropTypes.object,
-    maxLength: PropTypes.number,
-  }),
+  targetName: PropTypes.string,
+  /**
+  Use to define OptionItemFive value.
+  */
+  value: PropTypes.string,
+  /**
+  Use to define OptionItemFive placeholder.
+  */
+  placeholder: PropTypes.string,
+  /**
+  Use to define OptionItemFive image props
+  */
+  image: PropTypes.object,
+  /**
+  Use to define OptionItemFive max length
+  */
+  maxLength: PropTypes.number,
   //=======================================
   // Quommon props
   //=======================================
@@ -36,25 +44,10 @@ OptionItemFive.propTypes = {
   */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
-    accentColor: PropTypes.string,
     textColor: PropTypes.string,
-  }),
-  /**
-  Use to define the entry animation of the component
-  */
-  withAnimation: PropTypes.shape({
-    animation: PropTypes.oneOf([
-      "zoom",
-      "collapse",
-      "fade",
-      "slideDown",
-      "slideUp",
-      "slideLeft",
-      "slideRight",
-      "",
-    ]),
-    duration: PropTypes.number,
-    delay: PropTypes.number,
+    accentColor: PropTypes.string,
+    hoverBackgroundColor: PropTypes.string,
+    hoverTextColor: PropTypes.string,
   }),
   /**
   Use to show a translated version of the component text. Dictionary must be valid JSON. 
@@ -64,14 +57,6 @@ OptionItemFive.propTypes = {
     tgt: PropTypes.string,
     dictionary: PropTypes.string,
   }),
-  /**
-  Use to enable/disable the component
-  */
-  isDisabled: PropTypes.bool,
-  /**
-  Use to show/hide the component
-  */
-  isHidden: PropTypes.bool,
   /**
   OptionItemFive component must have the onUpload function passed as props
   */
@@ -90,15 +75,16 @@ OptionItemFive.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
-  content: {},
+  targetName: "",
+  value: "",
+  placeholder: "",
+  image: null,
+  maxLength: 300,
   //=======================================
   // Quommon props
   //=======================================
   withColor: null,
-  withAnimation: null,
   withTranslation: null,
-  isDisabled: false,
-  isHidden: false,
 };
 /**
 ## Notes
@@ -109,22 +95,18 @@ OptionItemFive.defaultProps = {
 **/
 export default function OptionItemFive(props) {
   //-------------------------------------------------------------------
-  // 1. Destructuring content prop
+  // 1. Destructuring props
   //-------------------------------------------------------------------
-  const { content } = props;
+  const { targetName, value, placeholder, image, maxLength } = props;
   //-------------------------------------------------------------------
   // 2. Defining states
   //-------------------------------------------------------------------
-  const [image, setImage] = useState(content?.image);
-  const [value, setValue] = useState(content?.value);
+  const [uploadImage, setUploadImage] = useState(image);
+  const [inputValue, setInputValue] = useState(value);
   //-------------------------------------------------------------------
   // 3. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "option-item-five");
-  //-------------------------------------------------------------------
-  // 4. Get animation of the component
-  //-------------------------------------------------------------------
-  const animate = getAnimation(props);
   //-------------------------------------------------------------------
   // 5. Translate the text objects in case their is a dictionary provided
   //-------------------------------------------------------------------
@@ -133,53 +115,49 @@ export default function OptionItemFive(props) {
   // 6. Function to upload image to content array
   //-------------------------------------------------------------------
   const handleImageUpload = (image) => {
-    setImage(image);
-    props.onUpload(content?.targetName, image, value);
+    setUploadImage(image);
+    props.onUpload(targetName, image, inputValue);
   };
   //-------------------------------------------------------------------
   // 7. Function to return input value of the component
   //-------------------------------------------------------------------
   const handleValue = (name, value) => {
-    setValue(value);
-    props.onInput(name, image, value);
+    setInputValue(value);
+    props.onInput(name, uploadImage, value);
   };
 
   // ========================= Render Function =================================
 
   return (
-    <motion.div
-      initial={animate.from}
-      animate={animate.to}
-      className={`qui ${quommonClasses.parentClasses}`}
-    >
+    <div className={`qui ${quommonClasses.parentClasses}`}>
       <div className="qui-option-item-five-container">
         <div className="qui-option-item-five-upload-button">
           <OptionalImageField
-            content={{
-              title: tObj?.uploadButton || content?.uploadButton,
-              icon: "fas fa-upload",
-            }}
-            onClick={(image) => handleImageUpload(image)}
+            title={tObj?.uploadButton || "Upload"}
+            icon="fas fa-upload"
+            actionButton={false}
+            onUpload={(image) => handleImageUpload(image)}
             withColor={{ ...props.withColor }}
           />
         </div>
         <InputField
-          name={content?.targetName || "default-target-name"}
-          value={content?.value}
-          placeholder={tObj?.placeholder || content?.placeholder}
-          maxLength={content?.maxLength}
+          name={targetName || "default-target-name"}
+          value={value}
+          placeholder={tObj?.placeholder || placeholder}
+          maxLength={maxLength}
           asEmphasis="listInput"
           withColor={props.withColor}
           onSubmit={handleValue}
+          onBlur={handleValue}
         />
         <div className="qui-option-item-five-close-icon">
           <i
             className="qui-option-item-five-icon fas fa-times"
-            data-id={content?.targetName}
+            data-id={targetName}
             onClick={(e) => props.onClick(e.target.dataset.id)}
           ></i>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

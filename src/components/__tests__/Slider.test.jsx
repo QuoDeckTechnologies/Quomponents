@@ -15,7 +15,6 @@ describe("Slider", () => {
   // -------------------------------------
   // Run common tests
   // -------------------------------------
-
   const args = {
     target: Slider,
     required: {
@@ -24,15 +23,13 @@ describe("Slider", () => {
   };
 
   hasValid("defaults", args);
-  hasValid("variants", args);
+  hasValid("colors", args);
   hasValid("animations", args);
   hasValid("disabled", args);
   hasValid("hidden", args);
-  hasValid("fluid", args);
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------
-
   let component;
 
   beforeEach(() => {

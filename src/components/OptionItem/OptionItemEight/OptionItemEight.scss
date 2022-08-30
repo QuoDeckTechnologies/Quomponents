@@ -46,6 +46,7 @@
     display: none;
   }
   .qui.qui-option-item-eight .qui-option-item-button {
+    font-size: 0.6em;
     .css-tqxl64-MuiButtonBase-root-MuiButton-root {
       font-size: 0.6em;
       padding: 0.1em 1em;
@@ -59,11 +60,18 @@
     display: block;
   }
   .qui.qui-option-item-eight .qui-option-item-button {
+    font-size: 0.8em;
     .css-tqxl64-MuiButtonBase-root-MuiButton-root {
       font-size: 1em;
       padding: 0.25em 1em;
       width: auto;
       white-space: nowrap;
     }
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .qui.qui-option-item-eight .qui-option-item-button {
+    font-size: 1em;
   }
 }

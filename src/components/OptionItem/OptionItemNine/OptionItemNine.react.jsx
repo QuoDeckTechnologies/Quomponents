@@ -18,23 +18,27 @@ OptionItemNine.propTypes = {
   // Component Specific props
   //=======================================
   /**
-  OptionItemNine targetName, value, placeholder should be passed in content object
+  Use to define OptionItemNine targetName, value, placeholder for first short field.
   */
-  content: PropTypes.shape({
-    shortFieldOne: PropTypes.shape({
-      targetName: PropTypes.string,
-      value: PropTypes.string,
-    }),
-    shortFieldTwo: PropTypes.shape({
-      targetName: PropTypes.string,
-      value: PropTypes.string,
-    }),
-    message: PropTypes.shape({
-      targetName: PropTypes.string,
-      value: PropTypes.string,
-      placeholder: PropTypes.string,
-      maxLength: PropTypes.number,
-    }),
+  shortFieldOne: PropTypes.shape({
+    targetName: PropTypes.string,
+    value: PropTypes.string,
+  }),
+  /**
+  Use to define OptionItemNine targetName, value, placeholder for second short field.
+  */
+  shortFieldTwo: PropTypes.shape({
+    targetName: PropTypes.string,
+    value: PropTypes.string,
+  }),
+  /**
+  Use to define OptionItemNine targetName, value, placeholder message.
+  */
+  message: PropTypes.shape({
+    targetName: PropTypes.string,
+    value: PropTypes.string,
+    placeholder: PropTypes.string,
+    maxLength: PropTypes.number,
   }),
   //=======================================
   // Quommon props
@@ -44,24 +48,10 @@ OptionItemNine.propTypes = {
   */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
+    textColor: PropTypes.string,
     accentColor: PropTypes.string,
-  }),
-  /**
-  Use to define the entry animation of the component
-  */
-  withAnimation: PropTypes.shape({
-    animation: PropTypes.oneOf([
-      "zoom",
-      "collapse",
-      "fade",
-      "slideDown",
-      "slideUp",
-      "slideLeft",
-      "slideRight",
-      "",
-    ]),
-    duration: PropTypes.number,
-    delay: PropTypes.number,
+    hoverBackgroundColor: PropTypes.string,
+    hoverTextColor: PropTypes.string,
   }),
   /**
   Use to show a translated version of the component text. Dictionary must be valid JSON. 
@@ -71,14 +61,6 @@ OptionItemNine.propTypes = {
     tgt: PropTypes.string,
     dictionary: PropTypes.string,
   }),
-  /**
-  Use to enable/disable the component
-  */
-  isDisabled: PropTypes.bool,
-  /**
-  Use to show/hide the component
-  */
-  isHidden: PropTypes.bool,
   /**
   OptionItemNine component must have the onInput function passed as props
   */
@@ -101,15 +83,15 @@ OptionItemNine.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
-  content: {},
+  shortFieldOne: {},
+  shortFieldTwo: {},
+  message: {},
   //=======================================
   // Quommon props
   //=======================================
   withColor: null,
   withAnimation: null,
   withTranslation: null,
-  isDisabled: false,
-  isHidden: false,
 };
 /**
 ## Notes
@@ -122,7 +104,7 @@ export default function OptionItemNine(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring content prop
   //-------------------------------------------------------------------
-  const { content } = props;
+  const { shortFieldOne, shortFieldTwo, message } = props;
   //-------------------------------------------------------------------
   // 2. Set the classes
   //-------------------------------------------------------------------
@@ -149,24 +131,36 @@ export default function OptionItemNine(props) {
           <div className="qui-short-field-inner-container">
             <div className="qui-short-field-one">
               <InputField
-                name={content?.shortFieldOne?.targetName || "default-short-field-one-target-name"}
-                value={content?.shortFieldOne?.value}
+                name={
+                  shortFieldOne?.targetName ||
+                  "default-short-field-one-target-name"
+                }
+                value={shortFieldOne?.value}
                 asEmphasis="shortField"
                 asFloated="left"
                 withColor={props.withColor}
                 onSubmit={(name, value) =>
                   props.onShortFieldOneInput(name, value)
                 }
+                onBlur={(name, value) =>
+                  props.onShortFieldOneInput(name, value)
+                }
               />
             </div>
             <div className="qui-short-field-two">
               <InputField
-                name={content?.shortFieldTwo?.targetName || "default-short-field-two-target-name"}
-                value={content?.shortFieldTwo?.value}
+                name={
+                  shortFieldTwo?.targetName ||
+                  "default-short-field-two-target-name"
+                }
+                value={shortFieldTwo?.value}
                 asEmphasis="shortField"
                 asFloated="left"
                 withColor={props.withColor}
                 onSubmit={(name, value) =>
+                  props.onShortFieldTwoInput(name, value)
+                }
+                onBlur={(name, value) =>
                   props.onShortFieldTwoInput(name, value)
                 }
               />
@@ -175,13 +169,14 @@ export default function OptionItemNine(props) {
           <div className="qui-option-item-nine-input-field">
             <div className="qui-list-input-three">
               <InputField
-                name={content?.message?.targetName || "default-message-target-name"}
-                value={content?.message?.value}
-                placeholder={tObj?.placeholder || content?.message?.placeholder}
-                maxLength={content?.message?.maxLength}
+                name={message?.targetName || "default-message-target-name"}
+                value={message?.value}
+                placeholder={tObj?.placeholder || message?.placeholder}
+                maxLength={message?.maxLength}
                 asEmphasis="listInput"
                 withColor={props.withColor}
                 onSubmit={(name, value) => props.onInput(name, value)}
+                onBlur={(name, value) => props.onInput(name, value)}
               />
             </div>
           </div>
@@ -189,7 +184,7 @@ export default function OptionItemNine(props) {
         <div className="qui-option-item-nine-with-remove-button-close-icon">
           <i
             className="qui-option-item-nine-with-remove-button-icon fas fa-times"
-            data-id={content?.message?.targetName}
+            data-id={message?.targetName}
             onClick={(e) => props.onClick(e.target.dataset.id)}
           ></i>
         </div>

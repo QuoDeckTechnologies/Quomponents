@@ -1,0 +1,58 @@
+.qui.qui-quo-carousel-container.qui-quo-carousel {
+  .qui-quo-carousel-skip {
+    text-align: center;
+  }
+
+  .slick-slider {
+    .slick-slide {
+      padding-bottom: 2em;
+    }
+  }
+
+  .qui-quo-carousel-slide {
+    padding: 0.2em;
+  }
+}
+
+@media only screen and (min-width: 320px) {
+  .qui-quo-carousel .qui-carousel-slick-arrows {
+    position: relative;
+    bottom: 0.8em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5em;
+  }
+
+  .qui-quo-carousel .qui-carousel-slick-prev,
+  .qui-carousel-slick-next {
+    cursor: pointer;
+    color: #666666;
+  }
+
+  .qui-disabled-arrow {
+    color: #efefef;
+  }
+
+  .qui-quo-carousel .slick-dots li button:before {
+    font-size: 9px;
+  }
+
+  .qui-quo-carousel .slick-dots li.slick-active button:before {
+    font-size: 12px;
+    color: #a6a6a6;
+  }
+
+  .qui-quo-carousel .slick-dots li {
+    margin: 0 -4px;
+  }
+
+  .qui-quo-carousel .slick-dots {
+    bottom: -6px;
+    left: 0%;
+    right: 0%;
+    z-index: 1;
+    margin: auto;
+    width: fit-content;
+  }
+}

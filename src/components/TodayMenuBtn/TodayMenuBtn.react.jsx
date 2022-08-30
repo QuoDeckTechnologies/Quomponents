@@ -1,11 +1,7 @@
 // Import npm packages
 import React from "react";
 import PropTypes from "prop-types";
-import { motion } from "framer-motion";
-import {
-    getQuommons,
-    getAnimation
-} from "../../common/javascripts/helpers.js";
+import { getQuommons } from "../../common/javascripts/helpers.js";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
@@ -13,62 +9,79 @@ import "./TodayMenuBtn.scss";
 import "../../common/stylesheets/overrule.scss";
 
 TodayMenuBtn.propTypes = {
-    //=======================================
-    // Component Specific props
-    //=======================================
-    /**
+  //=======================================
+  // Component Specific props
+  //=======================================
+  /**
     Content use to display the label of TodayMenuBtn
-    */
-    content: PropTypes.string,
-
-    // Quommon props
-    //=======================================
-    /**
-    Use to override component colors and behavior
-    */
-    withColor: PropTypes.shape({
-        backgroundColor: PropTypes.string,
-        textColor: PropTypes.string,
-        iconColor: PropTypes.string
-    }),
-    /**
-    Use to add an icon to the component
-    */
-    withIcon: PropTypes.shape({
-        name: PropTypes.string,
-        size: PropTypes.string,
-        position: PropTypes.string
-    }),
-    /**
+  */
+  content: PropTypes.string,
+  //=======================================
+  // Quommon props
+  //=======================================
+  /**
+    Use to define standard component type
+  */
+  asVariant: PropTypes.oneOf([
+    "primary",
+    "secondary",
+    "success",
+    "warning",
+    "error",
+  ]),
+  /** 
+    Use to define component padding in increasing order
+  */
+  asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
+  /**
     Use to float the component in parent container
-    */
-    asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
-    /**
+  */
+  asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
+  /**
+    Use to override component colors and behavior
+  */
+  withColor: PropTypes.shape({
+    backgroundColor: PropTypes.string,
+    textColor: PropTypes.string,
+    accentColor: PropTypes.string,
+  }),
+  /**
+    Use to add an icon to the component
+  */
+  withIcon: PropTypes.shape({
+    icon: PropTypes.string,
+    size: PropTypes.string,
+    position: PropTypes.string,
+  }),
+  /**
     Use to show/hide the component
-    */
-    isHidden: PropTypes.bool,
-    /**
+  */
+  isHidden: PropTypes.bool,
+  /**
     Use to enable/disable the component
-    */
-    isDisabled: PropTypes.bool,
-    /**
+  */
+  isDisabled: PropTypes.bool,
+  /**
     Slider component must have the onClick function passed as props
-    */
-    onClick: PropTypes.func.isRequired,
+  */
+  onClick: PropTypes.func.isRequired,
 };
 
 TodayMenuBtn.defaultProps = {
-    // Component Specific props
-    //=======================================
-    content: "",
-
-    // Quommon props
-    //=======================================
-    withIcon: null,
-    asFloated: "left",
-    withColor: null,
-    isHidden: false,
-    isDisabled: false
+  //=======================================
+  // Component Specific props
+  //=======================================
+  content: "",
+  //=======================================
+  // Quommon props
+  //=======================================
+  asVariant: "secondary",
+  asPadded: "normal",
+  asFloated: "inline",
+  withIcon: null,
+  withColor: null,
+  isHidden: false,
+  isDisabled: false,
 };
 
 /**
@@ -80,37 +93,46 @@ TodayMenuBtn.defaultProps = {
 - Pass withColor props to change the styling of TodayMenuComponent.
 **/
 export default function TodayMenuBtn(props) {
-    //-------------------------------------------------------------------
-    // 1. Set the classes
-    //-------------------------------------------------------------------
-    let quommonClasses = getQuommons(props, "today-menu-btn");
+  //-------------------------------------------------------------------
+  // 1. Set the classes
+  //-------------------------------------------------------------------
+  let quommonClasses = getQuommons(props, "today-menu-btn");
 
-    //-------------------------------------------------------------------
-    // 2. Get animation of the component
-    //-------------------------------------------------------------------
-    const animate = getAnimation(props);
+  let colors = {
+    backgroundColor: props.isDisabled
+      ? "#454545"
+      : props.withColor?.backgroundColor
+      ? props.withColor?.backgroundColor
+      : "#ED6E6E",
+    textColor: props.isDisabled ? "#AAAAAA" : props.withColor?.textColor,
+    accentColor: props.isDisabled ? "#AAAAAA" : props.withColor?.accentColor,
+  };
 
-    let colors = {
-        backgroundColor: props.isDisabled ? "#454545" : props.withColor?.backgroundColor ? props.withColor?.backgroundColor : "#ED6E6E",
-        textColor: props.isDisabled ? "#AAAAAA" : props.withColor?.textColor ? props.withColor?.textColor : "#FFFFFF",
-        iconColor: props.isDisabled ? "#AAAAAA" : props.withColor?.iconColor ? props.withColor?.iconColor : "#FFFFFF"
-    }
-
-    return (
-        <motion.div
-            initial={animate?.from}
-            animate={animate?.to}
-            className={`qui ${quommonClasses.parentClasses}`}>
-            {(props.content || props.withIcon?.name) &&
-                <div className={`${quommonClasses.childClasses} qui-today-menu-btn-container`} style={{ backgroundColor: colors?.backgroundColor }}
-                    onClick={props.onClick}>
-                    {props.withIcon?.name && <i className={`${props.withIcon?.name} qui-today-menu-btn-icon`} style={{ color: colors?.iconColor }} />}
-                    {props.content !== "" &&
-                        <h6 className={`qui-today-menu-btn-text`} style={{ color: colors?.textColor, marginLeft: props.withIcon?.name ? " 0.5em" : "0" }} >
-                            {props.content}
-                        </h6>
-                    }
-                </div>}
-        </motion.div>
-    );
+  return (
+    <div className={`qui ${quommonClasses.parentClasses}`}>
+      <div
+        className={`${quommonClasses.childClasses} qui-today-menu-btn-container`}
+        style={{ backgroundColor: colors?.backgroundColor }}
+        onClick={props.onClick}
+      >
+        {props.withIcon?.icon && (
+          <i
+            className={`${props.withIcon?.icon} qui-icon qui-today-menu-btn-icon`}
+            style={{ color: colors?.accentColor }}
+          />
+        )}
+        <span>
+          <h6
+            className={`qui-today-menu-btn-text`}
+            style={{
+              color: colors?.textColor,
+              marginLeft: props.withIcon?.icon ? " 0.5em" : "0",
+            }}
+          >
+            {props.content}
+          </h6>
+        </span>
+      </div>
+    </div>
+  );
 }

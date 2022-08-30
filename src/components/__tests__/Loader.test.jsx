@@ -1,7 +1,7 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount, render } from 'enzyme';
+import { shallow } from 'enzyme';
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------
@@ -15,7 +15,6 @@ describe("Loader", () => {
     // -------------------------------------
     // Run common tests
     // -------------------------------------
-
     const args = {
         target: Loader,
         required: {

@@ -70,9 +70,7 @@ describe("OpenAnswer", () => {
         asVariant="primary"
         isHidden={false}
         isDisabled={false}
-        onClick={(e) => {
-          console.log(e);
-        }}
+        onClick={() => {}}
       />
     );
   });
@@ -182,7 +180,7 @@ describe("OpenAnswer", () => {
           buttonHoverBackgroundColor: "ffff00",
           buttonHoverTextColor: "ff00ff",
         }}
-        onClick={() => console.log("testing")}
+        onClick={() => {}}
       />
     );
     const tree = component.toJSON();

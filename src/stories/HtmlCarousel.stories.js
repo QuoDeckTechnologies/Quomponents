@@ -1,17 +1,5 @@
 import React from "react";
 import HtmlCarousel from "../components/Carousel/HtmlCarousel/HtmlCarousel.react";
-
-const dictionary = JSON.stringify({
-  hi: {
-    bannerCard: { header: "", content: "" },
-    ribbon: {
-      new: "नया",
-      restricted: "प्रतिबंधित",
-      premium: "अधिमूल्य",
-      free: "नि: शुल्क",
-    },
-  },
-});
 export default {
   title: "Design System/Carousel/HtmlCarousel",
   component: HtmlCarousel,
@@ -31,22 +19,11 @@ export default {
       defaultValue: null,
     },
   },
-  withTranslation: {
-    table: {
-      category: "with-Params",
-      defaultValue: {
-        lang: "",
-        tgt: "",
-        dictionary: "",
-      },
-    },
-  },
   decorators: [
     (story) => (
       <div
         style={{
           width: "100%",
-          textAlign: "center",
         }}
       >
         {story()}
@@ -54,7 +31,8 @@ export default {
     ),
   ],
   parameters: {
-    componentSubheader: "Displays a Html carousel.",
+    componentSubheader:
+      "Displays a Html carousel using react-slick. add content from prop to add more slides to the carosuel",
     a11y: { disable: true },
     docs: {
       iframeHeight: 800,
@@ -64,6 +42,10 @@ export default {
 
 let dataprops = {
   asVariant: "warning",
+  withColor: {
+    backgroundColor: "",
+    textColor: "",
+  },
 };
 // -------------------------------------------------------------
 // Default
@@ -103,70 +85,52 @@ Default.args = {
       },
     },
   ],
-  withTranslation: {
-    lang: "en",
-    tgt: "bannerCard",
-    dictionary: dictionary,
-  },
 };
 Default.parameters = {
   docs: {
     source: {
-      code: `<HtmlCarousel {...${JSON.stringify(Default.args, null, 2)}}/>`,
-    },
-  },
-};
-// -------------------------------------------------------------
-// TranslatedHtmlCarousel
-// -------------------------------------------------------------
-export const TranslatedHtmlCarousel = Template.bind({});
-TranslatedHtmlCarousel.args = {
-  content: [
-    {
-      image:
-        "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
-      content: "This is HtmlCarousel, Imported from banner card.",
-      tag: "new",
-      props: {
-        ...dataprops,
-        asVariant: "primary",
-      },
-    },
-    {
-      image:
-        "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
-      tag: "premium",
-      content: "This is HtmlCarousel, Imported from banner card.",
-      props: {
-        ...dataprops,
-        asVariant: "secondary",
-      },
-    },
-    {
-      image:
-        "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
-      tag: "restricted",
-      content: "This is HtmlCarousel, Imported from banner card.",
-      props: {
-        ...dataprops,
-        asVariant: "warning",
-      },
-    },
-  ],
-  withTranslation: {
-    lang: "hi",
-    tgt: "bannerCard",
-    dictionary: dictionary,
-  },
-};
-TranslatedHtmlCarousel.parameters = {
-  docs: {
-    source: {
-      code: `<HtmlCarousel {...${JSON.stringify(
-        TranslatedHtmlCarousel.args,
-        null,
-        2
-      )}}/>`,
+      code: `<HtmlCarousel 
+      content ={[
+        {
+          image:
+            "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
+          content: "This is HtmlCarousel, Imported from banner card.",
+          tag: "new",
+          props: {
+            asVariant: "primary",
+            withColor: {
+              backgroundColor: "",
+              textColor: "",
+            }
+          },
+        },
+        {
+          image:
+            "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+          tag: "premium",
+          content: "This is HtmlCarousel, Imported from banner card.",
+          props: {
+            asVariant: "secondary",
+            withColor: {
+              backgroundColor: "",
+              textColor: "",
+            }
+          },
+        },
+        {
+          image:
+            "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
+          tag: "restricted",
+          content: "This is HtmlCarousel, Imported from banner card.",
+          props: {
+            asVariant: "warning",
+            withColor: {
+              backgroundColor: "",
+              textColor: "",
+            }
+          },
+        },
+      ]}/>`,
     },
   },
 };
@@ -202,11 +166,6 @@ HtmlCarouselWithoutBox.args = {
       },
     },
   ],
-  withTranslation: {
-    lang: "en",
-    tgt: "bannerCard",
-    dictionary: dictionary,
-  },
 };
 HtmlCarouselWithoutBox.parameters = {
   docs: {
@@ -214,11 +173,45 @@ HtmlCarouselWithoutBox.parameters = {
       story: "We can see the Html Carousel without any header box",
     },
     source: {
-      code: `<HtmlCarousel {...${JSON.stringify(
-        HtmlCarouselWithoutBox.args,
-        null,
-        2
-      )}}/>`,
+      code: `<HtmlCarousel 
+      content = {[
+        {
+          image:
+            "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
+          tag: "new",
+          props: {
+            asVariant: "primary",
+            withColor: {
+              backgroundColor: "",
+              textColor: "",
+            }
+          },
+        },
+        {
+          image:
+            "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+          tag: "premium",
+          props: {
+            asVariant: "secondary",
+            withColor: {
+              backgroundColor: "",
+              textColor: "",
+            }
+          },
+        },
+        {
+          image:
+            "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
+          tag: "restricted",
+          props: {
+            asVariant: "warning",
+            withColor: {
+              backgroundColor: "",
+              textColor: "",
+            }
+          },
+        },
+      ]}/>`,
     },
   },
 };
@@ -255,11 +248,6 @@ HtmlCarouselWithoutTag.args = {
       },
     },
   ],
-  withTranslation: {
-    lang: "en",
-    tgt: "bannerCard",
-    dictionary: dictionary,
-  },
 };
 HtmlCarouselWithoutTag.parameters = {
   docs: {
@@ -267,11 +255,42 @@ HtmlCarouselWithoutTag.parameters = {
       story: "We can see the Html Carousel without any Tag",
     },
     source: {
-      code: `<HtmlCarousel {...${JSON.stringify(
-        HtmlCarouselWithoutTag.args,
-        null,
-        2
-      )}}/>`,
+      code: `<HtmlCarousel 
+      content = {[
+        {
+          image:
+            "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
+            props: {
+              asVariant: "primary",
+              withColor: {
+                backgroundColor: "",
+                textColor: "",
+              }
+            },
+        },
+        {
+          image:
+            "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+            props: {
+              asVariant: "secondary",
+              withColor: {
+                backgroundColor: "",
+                textColor: "",
+              }
+            },
+        },
+        {
+          image:
+            "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
+            props: {
+              asVariant: "warning",
+              withColor: {
+                backgroundColor: "",
+                textColor: "",
+              }
+            },
+        },
+      ]}/>`,
     },
   },
 };

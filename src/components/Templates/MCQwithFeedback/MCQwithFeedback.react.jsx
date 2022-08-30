@@ -21,7 +21,7 @@ MCQwithFeedback.propTypes = {
   //=======================================
   /**
     MCQwithFeedback data should be passed in data field and it is a required field
-    */
+  */
   data: PropTypes.shape({
     image: PropTypes.object,
     title: PropTypes.string,
@@ -33,22 +33,22 @@ MCQwithFeedback.propTypes = {
   }).isRequired,
   /**
     MCQwithFeedback can set background image from imageLibrary array
-    */
+  */
   imageLibrary: PropTypes.array,
   /**
     slideId can be used if same template is used continueously for multiple slides in qdf.
-    */
+  */
   slideId: PropTypes.number,
   /**
     Use for rounded corners of buttons 
-    */
+  */
   isCircular: PropTypes.bool,
   //=======================================
   // Quommon props
   //=======================================
   /**
     Use to override component colors and behavior
-    */
+  */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
     textColor: PropTypes.string,
@@ -62,7 +62,7 @@ MCQwithFeedback.propTypes = {
   }),
   /**
     Use to define the entry animation of the component
-    */
+  */
   withAnimation: PropTypes.shape({
     animation: PropTypes.oneOf([
       "zoom",
@@ -79,20 +79,16 @@ MCQwithFeedback.propTypes = {
   }),
   /**
     Use to float the component in parent container
-    */
+  */
   asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
   /**
     Use to enable/disable the component
-    */
+  */
   isDisabled: PropTypes.bool,
   /**
     Use to show/hide the component
-    */
+  */
   isHidden: PropTypes.bool,
-  /**
-    MCQwithFeedback component must have the onClick function passed as props
-    */
-  onClick: PropTypes.func.isRequired,
 };
 
 MCQwithFeedback.defaultProps = {
@@ -172,7 +168,8 @@ export default function MCQwithFeedback(props) {
         <div className="qui-mcq-with-feedback-slide-header">
           {!data?.image && (data?.title || data?.subtitle) ? (
             <SlideHeader
-              content={{ title: data?.title, subTitle: data?.subtitle }}
+              title={data?.title}
+              subtitle={data?.subtitle}
               withColor={{
                 accentColor: withColor?.slideHeaderAccentColor,
                 textColor: withColor?.slideHeaderTextColor,
@@ -182,7 +179,7 @@ export default function MCQwithFeedback(props) {
           ) : (
             <img
               className="qui-mcq-with-feedback-image"
-              src={resolveImage(data?.image?.id,imageLibrary)}
+              src={resolveImage(data?.image?.id, imageLibrary)}
               alt="slide"
             />
           )}
@@ -207,8 +204,7 @@ export default function MCQwithFeedback(props) {
           {data?.question}
         </p>
         <ButtonBank
-          {...props}
-          content={optionsArray}
+          content={data?.options}
           asVariant="warning"
           asFloated="none"
           withColor={{
@@ -218,11 +214,6 @@ export default function MCQwithFeedback(props) {
             hoverTextColor: withColor?.buttonHoverTextColor,
           }}
           withAnimation={null}
-          onClick={(e) =>
-            props.onClick(
-              optionsArray.indexOf(e.target.innerText?.toLowerCase())
-            )
-          }
         />
       </div>
     </motion.div>

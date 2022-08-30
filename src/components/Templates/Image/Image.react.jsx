@@ -20,7 +20,7 @@ Image.propTypes = {
   //=======================================
   /**
     Image data should be passed in data field and it is a required field
-    */
+  */
   data: PropTypes.shape({
     title: PropTypes.string,
     subtitle: PropTypes.string,
@@ -31,18 +31,18 @@ Image.propTypes = {
   }),
   /**
     Image can set presenter image from imageLibrary array
-    */
+  */
   imageLibrary: PropTypes.array,
   /**
     Image slideId should be passed with props, to specify the slide.
-    */
+  */
   slideId: PropTypes.number,
   //=======================================
   // Quommon props
   //=======================================
   /**
     Use to override component colors and behavior
-    */
+  */
   withColor: PropTypes.shape({
     slideHeaderTextColor: PropTypes.string,
     slideHeaderAccentColor: PropTypes.string,
@@ -53,7 +53,7 @@ Image.propTypes = {
   }),
   /**
     Use to define the entry animation of the component
-    */
+  */
   withAnimation: PropTypes.shape({
     animation: PropTypes.oneOf([
       "zoom",
@@ -125,10 +125,6 @@ export default function Image(props) {
     textColor: props.withColor?.textBlockTextColor,
     backgroundColor: props.withColor?.textBlockBackgroundColor,
   };
-  let SlideHeaderText = {
-    title: data?.title,
-    subTitle: data?.subtitle,
-  };
   //-------------------------------------------------------------------
   // Function to return a content
   //-------------------------------------------------------------------
@@ -162,7 +158,8 @@ export default function Image(props) {
         >
           {!data?.image && (data?.title || data?.subtitle) && (
             <SlideHeader
-              content={SlideHeaderText}
+              title={data?.title}
+              subtitle={data?.subtitle}
               withColor={slideHeaderColors}
             />
           )}

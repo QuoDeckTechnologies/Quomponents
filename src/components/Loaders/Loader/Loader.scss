@@ -1,41 +1,41 @@
 .qui .qui-loader-block {
-    max-width: 256px;
-    margin: 0 auto;
+  max-width: 256px;
+  margin: 0 auto;
 }
 
 .qui .qui-loader-icon {
-    font-size: 2em;
-    margin: 15px auto;
+  font-size: 2em;
+  margin: 15px auto;
 }
 
 .qui .qui-loader-image {
-    max-width: 256px;
-    margin: 15px auto;
+  max-width: 256px;
+  margin: 15px auto;
 }
 
 .qui .qui-loader-header {
-    margin-bottom: 5px;
-    font-weight: bold;
-    line-height: 1.2;
+  margin-bottom: 5px;
+  font-weight: bold;
+  line-height: 1.2;
 }
 
 .qui .qui-loader-content {
-    font-size: 0.85em;
-    line-height: 1.2;
+  font-size: 0.85em;
+  line-height: 1.2;
 }
 
 .qui .qui-loader-label {
-    max-width: 256px;
+  max-width: 256px;
 }
 
 .qui:not(.is-fluid) .qui-loader-dash {
-    height: 10px;
-    margin-top: 15px;
-    margin-bottom: 15px;
+  height: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .qui:not(.is-fluid) .qui-loader-slash {
-    display: none;
+  display: none;
 }
 
 /* ================================================= */
@@ -43,42 +43,42 @@
 /* ================================================= */
 
 .qui.qui-loader.is-fluid {
-    height: 90%;
-    min-height: 90vh;
-    position: relative;
+  height: 90%;
+  min-height: 90vh;
+  position: relative;
 }
 
 .qui.is-fluid .qui-loader-block {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .qui.is-fluid .qui-loader-icon,
 .qui.is-fluid .qui-loader-label,
-.qui.is-fluid .qui-loader-caption{
-    max-width: 256px;
-    margin: 7.5px auto;
+.qui.is-fluid .qui-loader-caption {
+  max-width: 256px;
+  margin: 7.5px auto;
 }
 
 .qui.is-fluid .qui-loader-dash {
-    display: none;
+  display: none;
 }
 
 .qui.is-fluid .qui-loader-slash {
-    position: absolute;
-    bottom: -20%;
-    left: -10%;
-    width: 120%;
-    height: 30%;
+  position: absolute;
+  bottom: -20%;
+  left: -10%;
+  width: 120%;
+  height: 30%;
 }
 
 @media only screen and (orientation: portrait) and (max-width: 1024px) {
-    .qui.is-fluid .qui-loader-slash {
-        height: 40%;
-        transform: rotate(10deg);
-    }
+  .qui.is-fluid .qui-loader-slash {
+    height: 40%;
+    transform: rotate(10deg);
+  }
 }
 
 /* ================================================= */
@@ -86,5 +86,5 @@
 /* ================================================= */
 
 .qui.qui-loader .pad-relaxed {
-    padding: 30px 30px 45px 30px;
+  padding: 30px 30px 45px 30px;
 }

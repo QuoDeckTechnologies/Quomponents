@@ -19,7 +19,7 @@ describe("VoiceoverUploadModal", () => {
     target: VoiceoverUploadModal,
     required: {
       isOpen: true,
-      onClick: () => console.log("Button Testing"),
+      onClick: () => { }
     },
     translations: {
       tgt: "voiceoveruploadmodal",
@@ -68,8 +68,8 @@ describe("VoiceoverUploadModal", () => {
         withTranslation={null}
         isDisabled={false}
         isHidden={false}
-        onClick={() => { }}
-        onClose={() => { }}
+        onClick={() => {}}
+        onClose={() => {}}
       />
     );
   });

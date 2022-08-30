@@ -19,7 +19,6 @@ describe("Brancher", () => {
     target: Brancher,
     required: {
       content: "Testing Button",
-      onClick: () => console.log("Button Testing"),
     },
     translations: {
       tgt: "button",
@@ -104,19 +103,6 @@ describe("Brancher", () => {
         backgroundImage: {},
       },
     });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly without throwing error when brancher array is not provided", () => {
-    component.setProps({
-      data: {
-        brancher: null,
-      },
-    });
-    component
-      .find("ButtonBank")
-      .at(0)
-      .simulate("click", { target: { innerText: "button name" } });
     expect(component.exists()).toBe(true);
   });
 

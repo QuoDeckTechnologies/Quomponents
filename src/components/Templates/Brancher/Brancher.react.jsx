@@ -20,7 +20,7 @@ Brancher.propTypes = {
   //=======================================
   /**
     Brancher data should be passed in data field and it is a required field
-    */
+  */
   data: PropTypes.shape({
     image: PropTypes.object,
     title: PropTypes.string,
@@ -31,22 +31,22 @@ Brancher.propTypes = {
   }).isRequired,
   /**
     Brancher can set background image from imageLibrary array
-    */
+  */
   imageLibrary: PropTypes.array,
   /**
     slideId can be used if same template is used continueously for multiple slides in qdf.
-    */
+  */
   slideId: PropTypes.number,
   /**
     Use for rounded corners of buttons 
-    */
+  */
   isCircular: PropTypes.bool,
   //=======================================
   // Quommon props
   //=======================================
   /**
     Use to override component colors and behavior
-    */
+  */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
     textColor: PropTypes.string,
@@ -60,7 +60,7 @@ Brancher.propTypes = {
   }),
   /**
     Use to define the entry animation of the component
-    */
+  */
   withAnimation: PropTypes.shape({
     animation: PropTypes.oneOf([
       "zoom",
@@ -77,7 +77,7 @@ Brancher.propTypes = {
   }),
   /**
     Use to define standard component type
-    */
+  */
   asVariant: PropTypes.oneOf([
     "primary",
     "secondary",
@@ -87,20 +87,16 @@ Brancher.propTypes = {
   ]),
   /**
     Use to float the component in parent container
-    */
+  */
   asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
   /**
     Use to enable/disable the component
-    */
+  */
   isDisabled: PropTypes.bool,
   /**
     Use to show/hide the component
-    */
+  */
   isHidden: PropTypes.bool,
-  /**
-    Brancher component must have the onClick function passed as props
-    */
-  onClick: PropTypes.func.isRequired,
 };
 
 Brancher.defaultProps = {
@@ -132,13 +128,6 @@ export default function Brancher(props) {
   //-------------------------------------------------------------------
   const { data, withColor, slideId, imageLibrary, asVariant } = props;
   //-------------------------------------------------------------------
-  // 2. Variable for ButtonBank content props
-  //-------------------------------------------------------------------
-  let optionsArray = [];
-  data?.brancher?.forEach((item) =>
-    optionsArray.push(item?.text?.toLowerCase())
-  );
-  //-------------------------------------------------------------------
   // 3. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "brancher");
@@ -160,16 +149,6 @@ export default function Brancher(props) {
     }
   };
   const background = getBackground();
-  //-------------------------------------------------------------------
-  // 7. Functions to return slideLink
-  //-------------------------------------------------------------------
-  const handleClick = (index) => {
-    if (data?.brancher) {
-      let slide = data?.brancher;
-      let slideSeq = slide[index]["slideLink"];
-      props.onClick(slideSeq);
-    }
-  };
 
   // ========================= Render Function =================================
 
@@ -190,7 +169,8 @@ export default function Brancher(props) {
         <div className="qui-brancher-slide-header">
           {!data?.image && (data?.title || data?.subtitle) ? (
             <SlideHeader
-              content={{ title: data?.title, subTitle: data?.subtitle }}
+              title={data?.title}
+              subtitle={data?.subtitle}
               withColor={{
                 accentColor: withColor?.slideHeaderAccentColor,
                 textColor: withColor?.slideHeaderTextColor,
@@ -213,8 +193,7 @@ export default function Brancher(props) {
           {data?.paragraph}
         </p>
         <ButtonBank
-          {...props}
-          content={optionsArray}
+          content={data?.brancher}
           asVariant={asVariant}
           asFloated="none"
           withColor={{
@@ -224,9 +203,6 @@ export default function Brancher(props) {
             hoverTextColor: withColor?.buttonHoverTextColor,
           }}
           withAnimation={null}
-          onClick={(e) =>
-            handleClick(optionsArray.indexOf(e.target.innerText?.toLowerCase()))
-          }
         />
       </div>
     </motion.div>

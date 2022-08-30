@@ -17,7 +17,6 @@ describe("QuestionBankSection", () => {
   // -------------------------------------
   // Run common tests
   // -------------------------------------
-
   const args = {
     target: QuestionBankSection,
     translations: {

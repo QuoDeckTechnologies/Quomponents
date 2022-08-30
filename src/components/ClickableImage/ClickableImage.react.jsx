@@ -20,10 +20,20 @@ ClickableImage.propTypes = {
   /**
   Use to show the selection of the component
   */
-  isActive: PropTypes.bool,
+  active: PropTypes.bool,
   //=======================================
   // Quommon props
   //=======================================
+  /**
+    Use to define standard component type
+    */
+  asVariant: PropTypes.oneOf([
+    "primary",
+    "secondary",
+    "success",
+    "warning",
+    "error",
+  ]),
   /**
   Use to define the entry animation of the component
   */
@@ -70,10 +80,11 @@ ClickableImage.defaultProps = {
   // Component Specific props
   //=======================================
   image: "",
-  isActive: false,
+  active: false,
   //=======================================
   // Quommon props
   //=======================================
+  asVariant: "primary",
   withAnimation: null,
   isHidden: false,
   isCircular: false,
@@ -98,10 +109,10 @@ export default function ClickableImage(props) {
   // 2. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props);
-  const [isActive, setisActive] = useState(props.isActive);
+  const [active, setActive] = useState(props.active);
   useEffect(() => {
-    setisActive(props.isActive);
-  }, [props.isActive]);
+    setActive(props.active);
+  }, [props.active]);
   let handleClick = (e) => {
     props.onClick(e);
   };
@@ -116,8 +127,9 @@ export default function ClickableImage(props) {
     >
       <img
         src={image ? image : defaultImage}
-        className={`${quommonClasses.childClasses} ${isActive ? `qui-active-image-click` : `qui-clicked-on-image`
-          } qui-image-clickable qt-shadow`}
+        className={`${quommonClasses.childClasses} ${
+          active ? `qui-active-image-click` : `qui-clicked-on-image`
+        } qui-image-clickable qt-shadow`}
         alt="ClickableImage"
         onClick={(e) => handleClick(e)}
         style={{ borderColor: props.withColor?.borderColor }}

@@ -1,23 +1,45 @@
-.qui .qui-actionmenu-items {
-    display: flex;
-    padding: 0.2em;
-    align-items: center;
-    border-bottom: 0.2em solid #f5f5f5;
-    cursor: pointer;
-}
+.qui.qui-action-menu {
+  width: 100%;
+  cursor: pointer;
 
-.qui .qui-actionmenu-icon {
-    width: 2.5em;
-    display: flex;
-    justify-content: center;
-}
+  .qui-action-menu-items {
+    width: 100%;
+    border-bottom: 0.2em solid #e5e5e5;
 
-.qui .qui-actionmenu-titles {
-    text-align: left;
+    .qui-actionmenu-icons {
+      width: 1.5em;
+    }
+
+    .qui-actionmenu-titles {
+      padding: 0.25em 2em 0.25em 0em;
+    }
+
+    .popover {
+      position: relative;
+      display: block;
+    }
+
+    .qui-action-menu-popover {
+      visibility: hidden;
+      width: auto;
+      padding: 0.2em;
+      border-radius: 5px;
+      background-color: #121212;
+      color: #ffffff;
+      position: absolute;
+      left: 8em;
+      top: 0.25em;
+      z-index: 1;
+    }
+
+    .popover:hover .qui-action-menu-popover {
+      visibility: visible;
+    }
+  }
 }
 
 @media screen and (min-width: 481px) {
-    .qui .qui-actionmenu-items {
-        font-size: 1.1em;
-    }
+  .qui .qui-action-menu-items {
+    font-size: 1.1em;
+  }
 }

@@ -1,87 +1,84 @@
 import React from "react";
 import PropTypes from "prop-types";
-
 import { getQuommons } from "../../common/javascripts/helpers";
-
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./RibbonMenu.scss";
 import "../../common/stylesheets/overrule.scss";
-
 import RibbonToolsMenu from "./toolsMenu/RibbonToolsMenu.react";
 import RibbonDesignMenu from "./designMenu/RibbonDesignMenu.react";
 import RibbonHomeMenu from "./homeMenu/RibbonHomeMenu.react";
 import RibbonHtmlMenu from "./htmlMenu/RibbonHtmlMenu.react";
 
 RibbonMenu.propTypes = {
-	//=======================================
-	// Component Specific props
-	//=======================================
-	/**
+  //=======================================
+  // Component Specific props
+  //=======================================
+  /**
 	RibbonMenu tabs data should be passed in content field and it is required field  
-	*/
-	asEmphasis: PropTypes.oneOf(["html", "design", "tools", "home"]),
-	/** 
+  */
+  asEmphasis: PropTypes.oneOf(["html", "design", "tools", "home"]),
+  /** 
 	The Actions object is received from DeckEditorContainer for use.
-	*/
-	actions: PropTypes.shape({
-		updateDeck: PropTypes.func,
-		addSlide: PropTypes.func,
-		duplicateSlide: PropTypes.func,
-		deleteSlide: PropTypes.func,
-		changeSlideNav: PropTypes.func,
-		setUserOptions: PropTypes.func
-	}),
-	/** 
+  */
+  actions: PropTypes.shape({
+    updateDeck: PropTypes.func,
+    addSlide: PropTypes.func,
+    duplicateSlide: PropTypes.func,
+    deleteSlide: PropTypes.func,
+    changeSlideNav: PropTypes.func,
+    setUserOptions: PropTypes.func,
+  }),
+  /** 
 	The Deck state is handed down from DeckEditorContainer for use.
-	*/
-	deck: PropTypes.shape({
-		navEnabled: PropTypes.bool,
-		snEnabled: PropTypes.bool,
-		voEnabled: PropTypes.bool,
-		content: PropTypes.array,
-		currentSlide: PropTypes.number
-	}),
+  */
+  deck: PropTypes.shape({
+    navEnabled: PropTypes.bool,
+    snEnabled: PropTypes.bool,
+    voEnabled: PropTypes.bool,
+    content: PropTypes.array,
+    currentSlide: PropTypes.number,
+  }),
 
-	//=======================================
-	// Quommon props
-	//=======================================
-	/**
+  //=======================================
+  // Quommon props
+  //=======================================
+  /**
 	Use to show a translated version of the component text. Dictionary must be valid JSON. 
-	*/
-	withTranslation: PropTypes.shape({
-		lang: PropTypes.string,
-		tgt: PropTypes.string,
-		dictionary: PropTypes.string,
-	}),
-	/**
+  */
+  withTranslation: PropTypes.shape({
+    lang: PropTypes.string,
+    tgt: PropTypes.string,
+    dictionary: PropTypes.string,
+  }),
+  /**
 	Use to show/hide the component
-	*/
-	isHidden: PropTypes.bool,
-	/**
+  */
+  isHidden: PropTypes.bool,
+  /**
 	Use to enable/disable the component
-	*/
-	isDisabled: PropTypes.bool,
-	/**
+  */
+  isDisabled: PropTypes.bool,
+  /**
 	RibbonMenu component must have the onClick function passed as props
-	*/
-	onClick: PropTypes.func,
+  */
+  onClick: PropTypes.func,
 };
 
 RibbonMenu.defaultProps = {
-	//=======================================
-	// Component Specific props
-	//=======================================
-	asEmphasis: "html",
+  //=======================================
+  // Component Specific props
+  //=======================================
+  asEmphasis: "html",
 
-	//=======================================
-	// Quommon props
-	//=======================================
-	withTranslation: null,
-	isHidden: false,
-	isDisabled: false,
+  //=======================================
+  // Quommon props
+  //=======================================
+  withTranslation: null,
+  isHidden: false,
+  isDisabled: false,
 
-	onClick: null,
+  onClick: null,
 };
 
 /**
@@ -93,28 +90,30 @@ RibbonMenu.defaultProps = {
 - Pass tabs props to display different tabs
 **/
 export default function RibbonMenu(props) {
-	//-------------------------------------------------------------------
-	// 1. Set the classes
-	//-------------------------------------------------------------------
-	let quommonClasses = getQuommons(props, "ribbon-menu");
+  //-------------------------------------------------------------------
+  // 1. Set the classes
+  //-------------------------------------------------------------------
+  let quommonClasses = getQuommons(props, "ribbon-menu");
 
-	// ========================= Render Function =================================
-	const ribbonMenu = (tabs) => {
-		if (tabs?.toUpperCase() === "HTML") {
-			return <RibbonHtmlMenu {...props} />;
-		} else if (tabs?.toUpperCase() === "DESIGN") {
-			return <RibbonDesignMenu {...props} />;
-		} else if (tabs?.toUpperCase() === "TOOLS") {
-			return <RibbonToolsMenu {...props} />;
-		} else {
-			return <RibbonHomeMenu {...props} />;
-		}
-	};
-	return (
-		<div className={`qui ${quommonClasses.parentClasses}`}>
-			<div className={`qt-shadow ${quommonClasses.childClasses} qui-ribbon-menu`}>
-				{ribbonMenu(props.asEmphasis)}
-			</div>
-		</div>
-	);
+  // ========================= Render Function =================================
+  const ribbonMenu = (tabs) => {
+    if (tabs?.toUpperCase() === "HTML") {
+      return <RibbonHtmlMenu {...props} />;
+    } else if (tabs?.toUpperCase() === "DESIGN") {
+      return <RibbonDesignMenu {...props} />;
+    } else if (tabs?.toUpperCase() === "TOOLS") {
+      return <RibbonToolsMenu {...props} />;
+    } else {
+      return <RibbonHomeMenu {...props} />;
+    }
+  };
+  return (
+    <div className={`qui ${quommonClasses.parentClasses}`}>
+      <div
+        className={`qt-shadow ${quommonClasses.childClasses} qui-ribbon-menu`}
+      >
+        {ribbonMenu(props.asEmphasis)}
+      </div>
+    </div>
+  );
 }

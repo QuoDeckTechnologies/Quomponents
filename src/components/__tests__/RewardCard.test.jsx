@@ -2,7 +2,7 @@ import React from 'react';
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount, render } from 'enzyme';
+import { mount } from 'enzyme';
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------
@@ -16,12 +16,10 @@ describe("RewardCard", () => {
     // -------------------------------------
     // Run common tests
     // -------------------------------------
-
     const args = {
         target: RewardCard,
         required: {
-            content: {},
-            onClick: () => console.log("Button Testing"),
+            onClick: () => { },
         },
         translations: {
             tgt: "rewardCard",
@@ -45,7 +43,7 @@ describe("RewardCard", () => {
 
     hasValid("defaults", args);
 
-    hasValid("positions", args);
+    hasValid("padding", args);
 
     hasValid("colors", args);
     hasValid("animations", args);
@@ -53,11 +51,9 @@ describe("RewardCard", () => {
 
     hasValid("hidden", args);
     hasValid("disabled", args);
-
     // -------------------------------------
     // Run component specific tests
     // -------------------------------------
-
     let component;
     let onClick = jest.fn();
     beforeEach(() => {
@@ -70,7 +66,6 @@ describe("RewardCard", () => {
                 cost={0}
                 stock={{}}
                 asEmphasis="default"
-                asSize="normal"
                 withColor={null}
                 withAnimation={null}
                 withTranslation={null}
@@ -80,7 +75,6 @@ describe("RewardCard", () => {
             />
         );
     });
-
 
     it("should render correctly when passed name,image,cost & stock prop with values", () => {
         component.setProps({
@@ -125,6 +119,5 @@ describe("RewardCard", () => {
         component.setProps({ asEmphasis: "soldout" })
         expect(component.exists()).toBe(true);
     });
-
 });
 

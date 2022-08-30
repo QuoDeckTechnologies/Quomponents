@@ -21,7 +21,7 @@ LinkwithSlide.propTypes = {
   //=======================================
   /**
     LinkwithSlide data should be passed in data field and it is a required field
-    */
+  */
   data: PropTypes.shape({
     title: PropTypes.string,
     subtitle: PropTypes.string,
@@ -32,14 +32,14 @@ LinkwithSlide.propTypes = {
   }),
   /**
     LinkwithSlide can set presenter image from imageLibrary array
-    */
+  */
   imageLibrary: PropTypes.array,
   //=======================================
   // Quommon props
   //=======================================
   /**
     Use to define standard component type
-    */
+  */
   asVariant: PropTypes.oneOf([
     "primary",
     "secondary",
@@ -49,11 +49,11 @@ LinkwithSlide.propTypes = {
   ]),
   /**
     Use to float the component in parent container
-    */
+  */
   asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
   /**
     Use to override component colors and behavior
-    */
+  */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
     textColor: PropTypes.string,
@@ -67,7 +67,7 @@ LinkwithSlide.propTypes = {
   }),
   /**
     Use to define the entry animation of the component
-    */
+  */
   withAnimation: PropTypes.shape({
     animation: PropTypes.oneOf([
       "zoom",
@@ -84,7 +84,7 @@ LinkwithSlide.propTypes = {
   }),
   /**
     Use to show a translated version of the component text. Dictionary must be valid JSON. 
-    */
+  */
   withTranslation: PropTypes.shape({
     lang: PropTypes.string,
     tgt: PropTypes.string,
@@ -92,11 +92,11 @@ LinkwithSlide.propTypes = {
   }),
   /**
     Use to show/hide the component
-    */
+  */
   isHidden: PropTypes.bool,
   /**
     LinkwithSlide component must have the onClick function passed as props
-    */
+  */
   onClick: PropTypes.func.isRequired,
 };
 
@@ -139,7 +139,8 @@ export default function LinkwithSlide(props) {
     if (!data?.image && (data?.title || data?.subtitle)) {
       return (
         <SlideHeader
-          content={{ title: data?.title, subTitle: data?.subtitle }}
+          title={data?.title}
+          subtitle={data?.subtitle}
           withColor={{
             backgroundColor: withColor?.slideHeaderBackgroundColor,
             accentColor: withColor?.slideHeaderAccentColor,
@@ -206,8 +207,9 @@ export default function LinkwithSlide(props) {
         className={`qui-link-with-slide-container ${quommonClasses.childClasses}`}
       >
         <div
-          className={`qui-link-with-slide-header ${data?.presenter ? "qui-link-with-slide-header-presenter" : ""
-            }`}
+          className={`qui-link-with-slide-header ${
+            data?.presenter ? "qui-link-with-slide-header-presenter" : ""
+          }`}
         >
           {getView(data)}
         </div>

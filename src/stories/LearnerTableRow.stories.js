@@ -6,9 +6,9 @@ export default {
   component: LearnerTableRow,
   argTypes: {
     content: [],
-    asPadded: {
+    asVariant: {
       control: "select",
-      options: ["fitted", "compact", "normal", "relaxed"],
+      options: ["primary", "secondary", "success", "warning", "error"],
       table: {
         category: "as-Flags",
       },
@@ -20,16 +20,6 @@ export default {
           backgroundColor: "",
           accentColor: "",
           textColor: "",
-        },
-      },
-    },
-    withAnimation: {
-      table: {
-        category: "with-Params",
-        defaultValue: {
-          animation: "",
-          duration: 0,
-          delay: 0,
         },
       },
     },
@@ -90,22 +80,29 @@ export const Default = Template.bind({});
 Default.args = {
   content: [
     {
-      _id: "",
+      _id: "first",
       username: "sysadmin",
       first_name: "System",
       last_name: "Administrator",
     },
+    {
+      _id: "second",
+      username: "learner",
+      first_name: "New",
+      last_name: "Learner",
+    },
+    {
+      _id: "third",
+      username: "creator",
+      first_name: "New",
+      last_name: "Creator",
+    },
   ],
-  asPadded: "normal",
+  asVariant: "primary",
   withColor: {
     backgroundColor: "",
     accentColor: "",
     textColor: "",
-  },
-  withAnimation: {
-    animation: "zoom",
-    duration: 0.5,
-    delay: 0,
   },
   isDisabled: false,
   isHidden: false,
@@ -114,63 +111,6 @@ Default.parameters = {
   docs: {
     source: {
       code: `<LearnerTableRow {...${JSON.stringify(Default.args, null, 2)}}/>`,
-    },
-  },
-};
-// -------------------------------------------------------------
-// LearnerTableRow List
-// -------------------------------------------------------------
-const ListTemplate = (args) => {
-  return (
-    <div className="qui-content-table-row-list">
-      <LearnerTableRow
-        {...args}
-        content={[
-          {
-            _id: "",
-            username: "sysadmin",
-            first_name: "System",
-            last_name: "Administrator",
-          },
-        ]}
-      />
-      <LearnerTableRow
-        {...args}
-        content={[
-          {
-            _id: "",
-            username: "john_doe",
-            first_name: "John",
-            last_name: "Doe",
-          },
-        ]}
-      />
-      <LearnerTableRow
-        {...args}
-        content={[
-          {
-            _id: "",
-            username: "superadmin",
-            first_name: "Super",
-            last_name: "Administrator",
-          },
-        ]}
-      />
-    </div>
-  );
-};
-export const LearnerTableRowList = ListTemplate.bind({});
-LearnerTableRowList.parameters = {
-  docs: {
-    description: {
-      story: "Shows a list of LearnerTableRow Component",
-    },
-    source: {
-      code: `<LearnerTableRowList {...${JSON.stringify(
-        LearnerTableRowList.args,
-        null,
-        2
-      )}}/>`,
     },
   },
 };

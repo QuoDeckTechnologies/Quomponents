@@ -12,11 +12,9 @@ import { hasValid } from "./common";
 import ClickableImage from "../ClickableImage/ClickableImage.react";
 
 describe("Clickable Image", () => {
-
   // -------------------------------------
   // Run common tests
   // -------------------------------------
-
   const args = {
     target: ClickableImage,
     required: {
@@ -25,18 +23,12 @@ describe("Clickable Image", () => {
   };
 
   hasValid("defaults", args);
-
   hasValid("variants", args);
-  hasValid("sizes", args);
-  hasValid("positions", args);
-  hasValid("padding", args);
-  hasValid("alignment", args);
-
   hasValid("colors", args);
   hasValid("animations", args);
-
   hasValid("hidden", args);
-  hasValid("disabled", args);  // -------------------------------------
+  hasValid("disabled", args);  
+  // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------
   let component;
@@ -45,7 +37,7 @@ describe("Clickable Image", () => {
     component = mount(
       <ClickableImage
         onClick={() => { }}
-        isActive={false}
+        active={false}
         withColor={null}
       />
     );
@@ -65,7 +57,7 @@ describe("Clickable Image", () => {
   it("should render correctly without throwing error when clicked on image", () => {
     component.find(".qui-clicked-on-image").simulate("click");
     component.setProps({
-      isActive: true,
+      active: true,
       withColor: {
         borderColor: "#ff0000",
       },

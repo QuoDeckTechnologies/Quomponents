@@ -2,137 +2,173 @@ import React from "react";
 import StatisticsCard from "../components/StatisticsCard/StatisticsCard.react";
 
 export default {
-    title: "Design System/StatisticsCard",
-    component: StatisticsCard,
-    argTypes: {
-        label: "",
-        icon: "",
-        value: "",
-        isCircular: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: false,
-            },
-        },
-        asFloated: {
-            control: "select",
-            options: ["left", "right", "none", "inline"],
-            table: {
-                category: "as-Flags",
-            },
-        },
-        withColor: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    backgroundColor: "",
-                    accentColor: "",
-                    textColor: "",
-                },
-            },
-        },
-        withAnimation: {
-            table: {
-                category: "with-Params",
-                defaultValue: {
-                    animation: "",
-                    duration: 0,
-                    delay: 0,
-                },
-            },
-        },
-        isHidden: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: false,
-            },
-        },
+  title: "Design System/StatisticsCard",
+  component: StatisticsCard,
+  argTypes: {
+    value: "",
+
+    asVariant: {
+      control: "select",
+      options: ["primary", "secondary", "success", "warning", "error"],
+      table: {
+        category: "as-Flags",
+      },
     },
-    decorators: [
-        (story) => (
-            <div
-                style={{
-                    width: "100%",
-                    textAlign: "center",
-                }}
-            >
-                {story()}
-            </div>
-        ),
-    ],
-    parameters: {
-        componentSublabel: "Displays a basic StatisticsCard for general-purpose use",
-        a11y: { disable: true },
-        docs: { iframeHeight: 300 },
+    asPadded: {
+      control: "select",
+      options: ["fitted", "compact", "normal", "relaxed"],
+      table: {
+        category: "as-Flags",
+      },
     },
+    asFloated: {
+      control: "select",
+      options: ["left", "right", "none", "inline"],
+      table: {
+        category: "as-Flags",
+      },
+    },
+    asAligned: {
+      control: "select",
+      options: ["left", "right", "center"],
+      table: {
+        category: "as-Flags",
+      },
+    },
+
+    withColor: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          backgroundColor: "",
+          accentColor: "",
+          textColor: "",
+        },
+      },
+    },
+    withIcon: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          icon: "",
+          size: "",
+          position: "left",
+        },
+      },
+    },
+    withLabel: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          content: "",
+        },
+      },
+    },
+
+    isCircular: {
+      table: {
+        category: "is-Toggles",
+        defaultValue: false,
+      },
+    },
+    isHidden: {
+      table: {
+        category: "is-Toggles",
+        defaultValue: false,
+      },
+    },
+  },
+  decorators: [(story) => <div style={{}}>{story()}</div>],
+  parameters: {
+    componentSublabel:
+      "Displays a basic StatisticsCard for general-purpose use",
+    a11y: { disable: true },
+    docs: { iframeHeight: 300 },
+  },
 };
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
-const Template = (args) => (
-    <StatisticsCard {...args} />
-);
+const Template = (args) => <StatisticsCard {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    label: "PLAYERS",
-    icon: "fas fa-users",
-    value: "20,539",
-    isCircular: true,
-    asFloated: "inline",
-    withColor: {
+  value: "20,539",
+
+  asVariant: "primary",
+  asFloated: "none",
+  asPadded: "fitted",
+  asAligned: "center",
+
+  withLabel: {
+    content: "PLAYERS",
+  },
+  withIcon: { icon: "fas fa-users", size: "1em", position: "left" },
+  withColor: {
+    backgroundColor: "",
+    accentColor: "",
+    textColor: "",
+  },
+
+  isCircular: true,
+  isHidden: false,
+};
+Default.parameters = {
+  docs: {
+    source: {
+      code: `<StatisticsCard
+      value="20,539"
+      asVariant="primary"
+      asFloated="none"
+      asPadded="fitted"
+      asAligned="center"
+      withLabel={{
+        content: "PLAYERS",
+      }}
+      withIcon={{ icon: "fas fa-users", size: "1em", position: "left" }}
+      withColor={{
         backgroundColor: "",
         accentColor: "",
         textColor: "",
+      }}
+      isCircular={true}
+      isHidden={false}
+    />`,
     },
-    withAnimation: {
-        animation: "zoom",
-        duration: 0.5,
-        delay: 0,
-    },
-    isHidden: false,
-};
-Default.parameters = {
-    docs: {
-        source: {
-            code: `<StatisticsCard {...${JSON.stringify(Default.args, null, 2)}}/>`,
-        },
-    },
+  },
 };
 // -------------------------------------------------------------
 // Colored StatisticsCard
 // -------------------------------------------------------------
 export const ColoredStatisticsCard = Template.bind({});
 ColoredStatisticsCard.args = {
-    ...Default.args,
-    withColor: {
+  ...Default.args,
+  withColor: {
+    backgroundColor: "#F3E5F5",
+    accentColor: "#F2A52D",
+    textColor: "#3A8080",
+  },
+};
+ColoredStatisticsCard.parameters = {
+  docs: {
+    source: {
+      code: `<StatisticsCard
+      value="20,539"
+      asVariant="primary"
+      asFloated="none"
+      asPadded="fitted"
+      asAligned="center"
+      withLabel={{
+        content: "PLAYERS",
+      }}
+      withIcon={{ icon: "fas fa-users", size: "1em", position: "left" }}
+      withColor={{
         backgroundColor: "#F3E5F5",
         accentColor: "#F2A52D",
         textColor: "#3A8080",
+      }}
+      isCircular={true}
+      isHidden={false}
+    />`,
     },
-};
-ColoredStatisticsCard.parameters = {
-    docs: {
-        source: {
-            code: `<StatisticsCard {...${JSON.stringify(ColoredStatisticsCard.args, null, 2)}}/>`,
-        },
-    },
-};
-// -------------------------------------------------------------
-// Animated StatisticsCard
-// -------------------------------------------------------------
-export const AnimatedStatisticsCard = Template.bind({});
-AnimatedStatisticsCard.args = {
-    ...Default.args,
-    withAnimation: {
-        animation: "fade",
-        duration: 0.5,
-        delay: 0,
-    },
-};
-AnimatedStatisticsCard.parameters = {
-    docs: {
-        source: {
-            code: `<StatisticsCard {...${JSON.stringify(AnimatedStatisticsCard.args, null, 2)}}/>`,
-        },
-    },
+  },
 };

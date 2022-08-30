@@ -5,6 +5,9 @@ const dictionary = JSON.stringify({
   hi: {
     hCard: {
       buttonText: "प्रयत्न करें",
+      name: "बेलून बस्ट",
+      description:
+        "सितारों को इकट्ठा करने के लिए उन गुब्बारों को पॉप करें और इसे करने के लिए अधिक समय प्राप्त करने के लिए सवालों के जवाब दें।",
     },
   },
 });
@@ -13,31 +16,16 @@ export default {
   title: "Design System/HCard",
   component: HCard,
   argTypes: {
-    content: {},
-    asEmphasis: {
-      control: "select",
-      options: ["text", "outlined", "contained"],
-      table: {
-        category: "as-Flags",
-      },
-    },
-    isButton: {
+    id: "",
+    name: "",
+    description: "",
+    buttonText: "",
+    checked: true,
+    image: {},
+    showButton: {
       table: {
         category: "is-Toggles",
         defaultValue: false,
-      },
-    },
-    isCircular: {
-      table: {
-        category: "is-Toggles",
-        defaultValue: false,
-      },
-    },
-    asVariant: {
-      control: "select",
-      options: ["primary", "secondary", "success", "warning", "error"],
-      table: {
-        category: "as-Flags",
       },
     },
     asFloated: {
@@ -53,10 +41,9 @@ export default {
         defaultValue: {
           backgroundColor: "",
           accentColor: "",
-          accentBackgroundColor: "",
           textColor: "",
-          buttonBackgroundColor: "",
-          buttonTextColor: "",
+          hoverBackgroundColor: "",
+          hoverTextColor: "",
         },
       },
     },
@@ -114,34 +101,28 @@ export default {
 const Template = (args) => <HCard {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-  content: {
-    id: "default-id",
-    name: "BALLOON BURST",
-    description:
-      "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
-    buttonText: "try game",
-    checked: true,
-    image: { id: "background-image", extention: "" },
-  },
+  id: "default-id",
+  name: "BALLOON BURST",
+  description:
+    "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
+  buttonText: "try game",
+  checked: true,
+  image: { id: "background-image", extention: "" },
   imageLibrary: [
     {
       id: "background-image",
       image:
-      "https://images.unsplash.com/photo-1653844124305-6606b561dee3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+        "https://images.unsplash.com/photo-1653844124305-6606b561dee3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
     },
   ],
-  isButton: true,
-  asEmphasis: "contained",
-  isCircular: false,
-  asVariant: "warning",
+  showButton: true,
   asFloated: "none",
   withColor: {
     backgroundColor: "",
     accentColor: "",
-    accentBackgroundColor: "",
     textColor: "",
-    buttonBackgroundColor: "",
-    buttonTextColor: "",
+    hoverBackgroundColor: "",
+    hoverTextColor: "",
   },
   withAnimation: {
     animation: "zoom",
@@ -159,7 +140,52 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<HCard {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<HCard
+          id="default-id"
+          name="BALLOON BURST"
+          description="Pop those balloons to collect stars and answer questions to gain more time to do it in."
+          buttonText="try game"
+          checked={true}
+          image={{ id: "background-image", extention: "" }}
+          imageLibrary={[
+            {
+              id: "background-image",
+              image:
+                "https://images.unsplash.com/photo-1653844124305-6606b561dee3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+            },
+          ]}
+          showButton={true}
+          asFloated="none"
+          withColor={{
+            backgroundColor: "",
+            accentColor: "",
+            textColor: "",
+            hoverBackgroundColor: "",
+            hoverTextColor: "",
+          }}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          withTranslation={{
+            lang: "en",
+            tgt: "hCard",
+            dictionary: ${JSON.stringify({
+              hi: {
+                hCard: {
+                  buttonText: "प्रयत्न करें",
+                  name: "बेलून बस्ट",
+                  description:
+                    "सितारों को इकट्ठा करने के लिए उन गुब्बारों को पॉप करें और इसे करने के लिए अधिक समय प्राप्त करने के लिए सवालों के जवाब दें।",
+                },
+              },
+            })},
+          }}
+          isDisabled={false}
+          isHidden={false}
+          onClick={() => {}}
+        />`,
     },
   },
 };
@@ -169,23 +195,67 @@ Default.parameters = {
 export const HcardWithDefaultImage = Template.bind({});
 HcardWithDefaultImage.args = {
   ...Default.args,
-  content: {
-    id: "",
-    name: "BALLOON BURST",
-    description:
-      "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
-    buttonText: "try game",
-    checked: true,
-    image: { id: "background-", extention: "" },
-  },
+  id: "",
+  name: "BALLOON BURST",
+  description:
+    "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
+  buttonText: "try game",
+  checked: true,
+  image: { id: "", extention: "" },
 };
 HcardWithDefaultImage.parameters = {
   docs: {
     description: {
-      story: "Displays a HCard with default image when image is not provided in image library",
+      story:
+        "Displays a HCard with default image when image is not provided in image library",
     },
     source: {
-      code: `<HCard {...${JSON.stringify(HcardWithDefaultImage.args, null, 2)}}/>`,
+      code: `<HCard
+          id=""
+          name="BALLOON BURST"
+          description="Pop those balloons to collect stars and answer questions to gain more time to do it in."
+          buttonText="try game"
+          checked={true}
+          image={{ id: "", extention: "" }}
+          imageLibrary={[
+            {
+              id: "background-image",
+              image:
+                "https://images.unsplash.com/photo-1653844124305-6606b561dee3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+            },
+          ]}
+          showButton={true}
+          asFloated="none"
+          withColor={{
+            backgroundColor: "",
+            accentColor: "",
+            textColor: "",
+            hoverBackgroundColor: "",
+            hoverTextColor: "",
+          }}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          withTranslation={{
+            lang: "en",
+            tgt: "hCard",
+            dictionary: ${JSON.stringify({
+              hi: {
+                hCard: {
+                  buttonText: "प्रयत्न करें",
+                  name: "बेलून बस्ट",
+                  description:
+                    "सितारों को इकट्ठा करने के लिए उन गुब्बारों को पॉप करें और इसे करने के लिए अधिक समय प्राप्त करने के लिए सवालों के जवाब दें।",
+                },
+              },
+            })},
+          }}
+          isDisabled={false}
+          isHidden={false}
+          onClick={() => {}}
+        />`,
     },
   },
 };
@@ -195,15 +265,13 @@ HcardWithDefaultImage.parameters = {
 export const UncheckedHcard = Template.bind({});
 UncheckedHcard.args = {
   ...Default.args,
-  content: {
-    id: "",
-    name: "BALLOON BURST",
-    description:
-      "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
-    buttonText: "try game",
-    checked: false,
-    image: { id: "background-", extention: "" },
-  },
+  id: "",
+  name: "BALLOON BURST",
+  description:
+    "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
+  buttonText: "try game",
+  checked: false,
+  image: { id: "background-", extention: "" },
 };
 UncheckedHcard.parameters = {
   docs: {
@@ -211,7 +279,52 @@ UncheckedHcard.parameters = {
       story: "Displays a HCard with checked props set as false",
     },
     source: {
-      code: `<HCard {...${JSON.stringify(UncheckedHcard.args, null, 2)}}/>`,
+      code: `<HCard
+          id=""
+          name="BALLOON BURST"
+          description="Pop those balloons to collect stars and answer questions to gain more time to do it in."
+          buttonText="try game"
+          checked={false}
+          image={{ id: "background-", extention: "" }}
+          imageLibrary={[
+            {
+              id: "background-image",
+              image:
+                "https://images.unsplash.com/photo-1653844124305-6606b561dee3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+            },
+          ]}
+          showButton={true}
+          asFloated="none"
+          withColor={{
+            backgroundColor: "",
+            accentColor: "",
+            textColor: "",
+            hoverBackgroundColor: "",
+            hoverTextColor: "",
+          }}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          withTranslation={{
+            lang: "en",
+            tgt: "hCard",
+            dictionary: ${JSON.stringify({
+              hi: {
+                hCard: {
+                  buttonText: "प्रयत्न करें",
+                  name: "बेलून बस्ट",
+                  description:
+                    "सितारों को इकट्ठा करने के लिए उन गुब्बारों को पॉप करें और इसे करने के लिए अधिक समय प्राप्त करने के लिए सवालों के जवाब दें।",
+                },
+              },
+            })},
+          }}
+          isDisabled={false}
+          isHidden={false}
+          onClick={() => {}}
+        />`,
     },
   },
 };
@@ -224,10 +337,9 @@ ColoredHcard.args = {
   withColor: {
     backgroundColor: "#fefae0",
     accentColor: "#606c38",
-    accentBackgroundColor: "#fefae0",
     textColor: "#bc6c25",
-    buttonBackgroundColor: "#606c38",
-    buttonTextColor: "#dda15e",
+    hoverBackgroundColor: "",
+    hoverTextColor: "",
   },
 };
 ColoredHcard.parameters = {
@@ -236,7 +348,52 @@ ColoredHcard.parameters = {
       story: "Use to override the standard colors of the component.",
     },
     source: {
-      code: `<HCard {...${JSON.stringify(ColoredHcard.args, null, 2)}}/>`,
+      code: `<HCard
+          id="default-id"
+          name="BALLOON BURST"
+          description="Pop those balloons to collect stars and answer questions to gain more time to do it in."
+          buttonText="try game"
+          checked={true}
+          image={{ id: "background-image", extention: "" }}
+          imageLibrary={[
+            {
+              id: "background-image",
+              image:
+                "https://images.unsplash.com/photo-1653844124305-6606b561dee3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+            },
+          ]}
+          showButton={true}
+          asFloated="none"
+          withColor={{
+            backgroundColor: "#fefae0",
+            accentColor: "#606c38",
+            textColor: "#bc6c25",
+            hoverBackgroundColor: "",
+            hoverTextColor: "",
+          }}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          withTranslation={{
+            lang: "en",
+            tgt: "hCard",
+            dictionary: ${JSON.stringify({
+              hi: {
+                hCard: {
+                  buttonText: "प्रयत्न करें",
+                  name: "बेलून बस्ट",
+                  description:
+                    "सितारों को इकट्ठा करने के लिए उन गुब्बारों को पॉप करें और इसे करने के लिए अधिक समय प्राप्त करने के लिए सवालों के जवाब दें।",
+                },
+              },
+            })},
+          }}
+          isDisabled={false}
+          isHidden={false}
+          onClick={() => {}}
+        />`,
     },
   },
 };
@@ -258,7 +415,52 @@ TranslatedHcard.parameters = {
       story: "Use to change the language that the text appears in.",
     },
     source: {
-      code: `<HCard {...${JSON.stringify(TranslatedHcard.args, null, 2)}}/>`,
+      code: `<HCard
+          id="default-id"
+          name="BALLOON BURST"
+          description="Pop those balloons to collect stars and answer questions to gain more time to do it in."
+          buttonText="try game"
+          checked={true}
+          image={{ id: "background-image", extention: "" }}
+          imageLibrary={[
+            {
+              id: "background-image",
+              image:
+                "https://images.unsplash.com/photo-1653844124305-6606b561dee3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+            },
+          ]}
+          showButton={true}
+          asFloated="none"
+          withColor={{
+            backgroundColor: "",
+            accentColor: "",
+            textColor: "",
+            hoverBackgroundColor: "",
+            hoverTextColor: "",
+          }}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          withTranslation={{
+            lang: "hi",
+            tgt: "hCard",
+            dictionary: ${JSON.stringify({
+              hi: {
+                hCard: {
+                  buttonText: "प्रयत्न करें",
+                  name: "बेलून बस्ट",
+                  description:
+                    "सितारों को इकट्ठा करने के लिए उन गुब्बारों को पॉप करें और इसे करने के लिए अधिक समय प्राप्त करने के लिए सवालों के जवाब दें।",
+                },
+              },
+            })},
+          }}
+          isDisabled={false}
+          isHidden={false}
+          onClick={() => {}}
+        />`,
     },
   },
 };

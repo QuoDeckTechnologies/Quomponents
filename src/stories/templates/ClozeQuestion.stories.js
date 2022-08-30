@@ -4,20 +4,20 @@ import ClozeQuestion from "../../components/Templates/ClozeQuestion/ClozeQuestio
 const dictionary = JSON.stringify({
   en: {
     templateActions: {
-      checkAnswer: 'Check Answer',
-      submitAnswer: 'Submit Answer',
-      thanks: 'Thanks for your response',
-      go: 'Go',
-    }
+      checkAnswer: "Check Answer",
+      submitAnswer: "Submit Answer",
+      thanks: "Thanks for your response",
+      go: "Go",
+    },
   },
   hi: {
     templateActions: {
-      checkAnswer: 'अपना उत्तर जाँच लें',
-      submitAnswer: 'अपना जवाब सबमिट करें',
-      thanks: 'आपके उत्तर के लिए धन्यवाद',
-      go: 'आगे बढ़ें',
-    }
-  }
+      checkAnswer: "अपना उत्तर जाँच लें",
+      submitAnswer: "अपना जवाब सबमिट करें",
+      thanks: "आपके उत्तर के लिए धन्यवाद",
+      go: "आगे बढ़ें",
+    },
+  },
 });
 export default {
   title: "Design System/Templates/ClozeQuestion",
@@ -92,8 +92,8 @@ export default {
       },
     },
     trackInteraction: {
-      action: 'trackInteraction'
-    }
+      action: "trackInteraction",
+    },
   },
   decorators: [
     (story) => (
@@ -108,7 +108,8 @@ export default {
     ),
   ],
   parameters: {
-    componentSubtitle: "Displays a ClozeQuestion with a question and Input Fieled, the user need to submit the answer, we can switch between the image and SlideHeader by adding or removing the image prop",
+    componentSubtitle:
+      "Displays a ClozeQuestion with a question and Input Fieled, the user need to submit the answer, we can switch between the image and SlideHeader by adding or removing the image prop",
     a11y: { disable: true },
     docs: {
       iframeHeight: 650,
@@ -124,22 +125,27 @@ export const Default = Template.bind({});
 Default.args = {
   data: {
     title: "Neque porro quisquam est qui dolorem",
-    subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
+    subtitle:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
     image: {
       id: "header-image",
-      extention: ""
+      extention: "",
     },
     question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
     answer: "Answer",
-    purpose: ""
+    purpose: "",
   },
-  imageLibrary: [{
-    id: "background-image",
-    image: ""
-  }, {
-    id: "header-image",
-    image: "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
-  }],
+  imageLibrary: [
+    {
+      id: "background-image",
+      image: "",
+    },
+    {
+      id: "header-image",
+      image:
+        "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+    },
+  ],
   slideId: 0,
   asVariant: "warning",
   withColor: {
@@ -184,10 +190,11 @@ export const ClozeQuestionWithSlideHeader = Template.bind({});
 ClozeQuestionWithSlideHeader.args = {
   data: {
     title: "Neque porro quisquam est qui dolorem",
-    subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
+    subtitle:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
     question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
     answer: "Answer",
-    purpose: ""
+    purpose: "",
   },
   slideId: 0,
   asVariant: "warning",
@@ -221,7 +228,11 @@ ClozeQuestionWithSlideHeader.args = {
 ClozeQuestionWithSlideHeader.parameters = {
   docs: {
     source: {
-      code: `<ClozeQuestion {...${JSON.stringify(ClozeQuestionWithSlideHeader.args, null, 2)}}/>`,
+      code: `<ClozeQuestion {...${JSON.stringify(
+        ClozeQuestionWithSlideHeader.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };
@@ -233,19 +244,23 @@ export const ClozeQuestionWithSlideHeaderAndBackgroundImage = Template.bind({});
 ClozeQuestionWithSlideHeaderAndBackgroundImage.args = {
   data: {
     title: "Neque porro quisquam est qui dolorem",
-    subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
+    subtitle:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
     backgroundImage: {
       id: "background-image",
-      extention: ""
+      extention: "",
     },
     question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
     answer: "Answer",
-    purpose: ""
+    purpose: "",
   },
-  imageLibrary: [{
-    id: 'background-image',
-    image: "https://media.istockphoto.com/vectors/question-mark-3d-seamless-wallpaper-pattern-vector-id494094966?k=20&m=494094966&s=612x612&w=0&h=tXbLXNlUjL-jLsZOm7VBjDKY-Pp4yXJRwKv2pmi3TII=",
-  }],
+  imageLibrary: [
+    {
+      id: "background-image",
+      image:
+        "https://media.istockphoto.com/vectors/question-mark-3d-seamless-wallpaper-pattern-vector-id494094966?k=20&m=494094966&s=612x612&w=0&h=tXbLXNlUjL-jLsZOm7VBjDKY-Pp4yXJRwKv2pmi3TII=",
+    },
+  ],
   slideId: 0,
   asVariant: "primary",
   withColor: {
@@ -278,7 +293,11 @@ ClozeQuestionWithSlideHeaderAndBackgroundImage.args = {
 ClozeQuestionWithSlideHeaderAndBackgroundImage.parameters = {
   docs: {
     source: {
-      code: `<ClozeQuestion {...${JSON.stringify(ClozeQuestionWithSlideHeaderAndBackgroundImage.args, null, 2)}}/>`,
+      code: `<ClozeQuestion {...${JSON.stringify(
+        ClozeQuestionWithSlideHeaderAndBackgroundImage.args,
+        null,
+        2
+      )}}/>`,
     },
   },
 };
@@ -292,7 +311,7 @@ TranslatedClozeQuestion.args = {
   withTranslation: {
     lang: "hi",
     tgt: "templateActions",
-    dictionary: dictionary
+    dictionary: dictionary,
   },
 };
 TranslatedClozeQuestion.parameters = {

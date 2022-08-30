@@ -42,7 +42,7 @@ describe("Choice", () => {
           },
         ],
       },
-      onClick: () => console.log("Button Testing"),
+      onClick: () => {},
     },
   };
 
@@ -100,7 +100,7 @@ describe("Choice", () => {
         withAnimation={null}
         isHidden={false}
         isDisabled={false}
-        onClick={() => console.log("Choice Testing")}
+        onClick={() => {}}
       />
     );
   });
@@ -175,10 +175,10 @@ describe("Choice", () => {
         ],
       },
     });
-    expect(component.find(SlideHeader).props().content.title).toBe(
+    expect(component.find(SlideHeader).props().title).toBe(
       "Neque porro quisquam est qui dolorem"
     );
-    expect(component.find(SlideHeader).props().content.subTitle).toBe(
+    expect(component.find(SlideHeader).props().subtitle).toBe(
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem"
     );
   });

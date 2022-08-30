@@ -1,16 +1,14 @@
 import React, { useRef } from "react";
 import PropTypes from "prop-types";
 import _ from "lodash";
-import { motion } from "framer-motion";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { getQuommons, getAnimation } from "../../../common/javascripts/helpers";
+import { getQuommons } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./SquareCarousel.scss";
 import "../../../common/stylesheets/overrule.scss";
-
 import BannerCard from "../BannerCard/BannerCard.react";
 
 SquareCarousel.propTypes = {
@@ -18,8 +16,8 @@ SquareCarousel.propTypes = {
   // Quommon props
   //=======================================
   /**
-    SquareCarousel data should be passed in content field and it is required field
-    */
+  SquareCarousel data should be passed in content field and it is required field
+  */
   content: PropTypes.arrayOf(
     PropTypes.shape({
       image: PropTypes.string,
@@ -29,27 +27,9 @@ SquareCarousel.propTypes = {
       props: PropTypes.object,
     })
   ).isRequired,
-
   /**
-    Use to define the entry animation of the component
-    */
-  withAnimation: PropTypes.shape({
-    animation: PropTypes.oneOf([
-      "zoom",
-      "collapse",
-      "fade",
-      "slideDown",
-      "slideUp",
-      "slideLeft",
-      "slideRight",
-      "",
-    ]),
-    duration: PropTypes.number,
-    delay: PropTypes.number,
-  }),
-  /**
-    Button component must have the onClick function passed as props
-    */
+  Button component must have the onClick function passed as props
+  */
   onClick: PropTypes.func.isRequired,
 };
 
@@ -57,7 +37,6 @@ SquareCarousel.defaultProps = {
   // Component Specific props
   //=======================================
   content: [],
-  withAnimation: null,
 };
 
 /**
@@ -72,12 +51,9 @@ export default function SquareCarousel(props) {
   const sliderRef = useRef();
   let { content } = props;
   let quommonClasses = getQuommons(props, "square-carousel");
-
   //-------------------------------------------------------------------
   // 4. Get animation of the component
   //-------------------------------------------------------------------
-  const animate = getAnimation(props);
-
   var settings = {
     dots: true,
     speed: 500,
@@ -94,11 +70,7 @@ export default function SquareCarousel(props) {
   };
   // ========================= Render Function =================================
   return (
-    <motion.div
-      initial={animate.from}
-      animate={animate.to}
-      className={`qui ${quommonClasses.parentClasses}`}
-    >
+    <div className={`qui ${quommonClasses.parentClasses}`}>
       <Slider ref={sliderRef} {...settings}>
         {_.map(content, (slide, index) => {
           return (
@@ -109,7 +81,10 @@ export default function SquareCarousel(props) {
               <div className={`qui-square-slide`}>
                 <BannerCard
                   {...slide.props}
-                  content={slide}
+                  content={slide.content}
+                  header={slide.header}
+                  image={slide.image}
+                  tag={slide.tag}
                   onClick={props.onClick}
                   withTranslation={props.withTranslation}
                 />
@@ -118,6 +93,6 @@ export default function SquareCarousel(props) {
           );
         })}
       </Slider>
-    </motion.div>
+    </div>
   );
 }

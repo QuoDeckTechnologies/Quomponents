@@ -1,13 +1,11 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount, render } from "enzyme";
-
+import { shallow, mount } from "enzyme";
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------
 import { hasValid } from "./common";
-
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -17,11 +15,10 @@ describe("FeedbackForm", () => {
     // -------------------------------------
     // Run common tests
     // -------------------------------------
-
     const args = {
         target: FeedbackForm,
         required: {
-            onClick: () => console.log("Button Testing"),
+            onEnter: () => { },
         },
         translations: {
             tgt: "feedbackForm",
@@ -40,6 +37,7 @@ describe("FeedbackForm", () => {
 
     hasValid("defaults", args);
     hasValid("colors", args);
+    hasValid("variants", args);
     hasValid("animations", args);
     hasValid("translations", args);
 
@@ -54,30 +52,12 @@ describe("FeedbackForm", () => {
         jest.resetAllMocks();
         component = mount(
             <FeedbackForm
-                withAnimation={{
-                    animation: "zoom",
-                    duration: 0.5,
-                    delay: 0,
-                }}
-                withColor={null}
-                onClick={() => console.log("FeedbackForm testing")}
+                onEnter={() => { }}
             />
         );
     });
-    it("should render correctly when passed withColor props", () => {
-        let colors = {
-            toggleBarColor: "#454545",
-            toggleActiveColor: "#FFAB00",
-            toggleLabelColor: "",
-            inputBackgroundColor: "#ffab000d",
-            inputAccentColor: "#ffab00",
-            inputTextColor: "#666666",
-        }
-        component.setProps({ withColor: colors })
-        expect(component.exists()).toBe(true);
-    })
     it('should render and handle click event', () => {
-        const wrapper = shallow(<FeedbackForm onSubmit={() => console.log("Testing FeedbackForm")} />);
+        const wrapper = shallow(<FeedbackForm onEnter={() => { }} />);
         wrapper.find("legend").children().simulate('click');
     });
     it('should render when content is null', () => {

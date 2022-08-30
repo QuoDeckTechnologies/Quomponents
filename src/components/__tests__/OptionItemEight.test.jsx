@@ -15,13 +15,12 @@ describe("Option Item Eight", () => {
   // -------------------------------------
   // Run common tests
   // -------------------------------------
-
   const args = {
     target: OptionItemEight,
     required: {
-      onInput: () => { },
-      onClick: () => { },
-      onSubmit: () => { },
+      onInput: () => {},
+      onClick: () => {},
+      onSubmit: () => {},
     },
     translations: {
       tgt: "optionItemEight",
@@ -38,14 +37,8 @@ describe("Option Item Eight", () => {
   };
 
   hasValid("defaults", args);
-
   hasValid("colors", args);
-  hasValid("animations", args);
   hasValid("translations", args);
-
-  hasValid("hidden", args);
-    hasValid("disabled", args);
-
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------
@@ -57,32 +50,29 @@ describe("Option Item Eight", () => {
     jest.resetAllMocks();
     component = shallow(
       <OptionItemEight
-        content={{
-          targetName: "name",
-          value: "optionItem",
-          placeholder: "placeholder",
-          maxLength: 300,
-          buttonText: "Button Text",
-        }}
+        targetName="name"
+        value="optionItem"
+        placeholder="placeholder"
+        maxLength={300}
+        buttonText="Button Text"
         withColor={null}
-        withAnimation={null}
         withTranslation={null}
-        isDisabled={false}
-        isHidden={false}
-        onInput={() => { }}
-        onClick={() => { }}
-        onSubmit={() => { }}
+        onInput={() => {}}
+        onClick={() => {}}
+        onSubmit={() => {}}
       />
     );
   });
 
   it("should render correctly without throwing error when wriiten in input field", () => {
     component.find("InputField").simulate("submit");
+    expect(component.exists()).toBe(true);
   });
 
   it("should render correctly without throwing error when clicked on close icon", () => {
     component
       .find(".fa-times")
       .simulate("click", { target: { dataset: { id: "name" } } });
+    expect(component.exists()).toBe(true);
   });
 });

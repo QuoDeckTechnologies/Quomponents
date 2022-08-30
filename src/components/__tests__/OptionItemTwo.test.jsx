@@ -15,24 +15,31 @@ describe("Option Item Two", () => {
   // -------------------------------------
   // Run common tests
   // -------------------------------------
-
   const args = {
     target: OptionItemTwo,
     required: {
-      onInput: () => { },
-      onSelect: () => { },
-      onClick: () => { },
+      onInput: () => {},
+      onSelect: () => {},
+      onClick: () => {},
+    },
+    translations: {
+      tgt: "optionItemTwo",
+      lang: { valid: "hi", invalid: "xx" },
+      dictionary: JSON.stringify({
+        hi: {
+          optionItemTwo: {
+            placeholder: "यह विकल्प ए है",
+            correct: "सही",
+            incorrect: "ग़लत",
+          },
+        },
+      }),
     },
   };
 
   hasValid("defaults", args);
-
   hasValid("colors", args);
-  hasValid("animations", args);
-
-  hasValid("hidden", args);
-  hasValid("disabled", args);
-
+  hasValid("translations", args);
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------
@@ -53,57 +60,33 @@ describe("Option Item Two", () => {
     jest.resetAllMocks();
     component = shallow(
       <OptionItemTwo
-        content={{
-          targetName: "name",
-          value: "value",
-          image: {},
-          placeholder: "placeholder",
-          checked: false,
-          maxLength: 300,
-        }}
-        withColor={{
-          backgroundColor: "",
-          accentColor: "",
-          textColor: "",
-        }}
-        withAnimation={{
-          animation: "zoom",
-          duration: 0.5,
-          delay: 0,
-        }}
+        targetName="name"
+        value="value"
+        placeholder="placeholder"
+        checked={false}
+        maxLength={300}
+        withColor={null}
+        withAnimation={null}
         isDisabled={false}
         isHidden={false}
-        onInput={() => { }}
-        onSelect={() => { }}
-        onClick={() => { }}
+        onInput={() => {}}
+        onSelect={() => {}}
+        onClick={() => {}}
       />
     );
-  });
-
-  it("should render correctly without throwing error when withTranslation prop is passed", () => {
-    component.setProps({
-      withTranslation: {
-        lang: "hi",
-        tgt: "optionItemTwo",
-        dictionary: dictionary,
-      },
-    });
-    expect(component.exists()).toBe(true);
   });
 
   it("should render correctly without throwing error", () => {
     let component = mount(
       <OptionItemTwo
-        content={{
-          targetName: "name",
-          value: "",
-          placeholder: "placeholder",
-          checked: false,
-        }}
-        onInput={() => { }}
-        onSelect={() => { }}
-        onUpload={() => { }}
-        onClick={() => { }}
+        targetName="name"
+        value=""
+        placeholder="placeholder"
+        checked={false}
+        onInput={() => {}}
+        onSelect={() => {}}
+        onUpload={() => {}}
+        onClick={() => {}}
       />
     );
     expect(component.exists()).toBe(true);
@@ -125,17 +108,20 @@ describe("Option Item Two", () => {
 
   it("should render correctly without throwing error when wriiten in input field", () => {
     component.find("InputField").simulate("submit");
+    expect(component.exists()).toBe(true);
   });
 
   it("should render correctly without throwing error when radio button is used", () => {
     component
       .find(".qui-option-item-radio")
       .simulate("change", { target: { checked: true } });
+    expect(component.exists()).toBe(true);
   });
 
   it("should render correctly without throwing error when clicked on close icon", () => {
     component
       .find(".fa-times")
       .simulate("click", { target: { dataset: { id: "name" } } });
+    expect(component.exists()).toBe(true);
   });
 });

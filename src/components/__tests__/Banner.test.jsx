@@ -2,7 +2,7 @@ import React from 'react';
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount, render } from 'enzyme';
+import { shallow } from 'enzyme';
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------
@@ -13,7 +13,6 @@ import { hasValid } from "./common";
 import Banner from "../Carousel/Banner/Banner.react"
 
 describe("Banner", () => {
-
     // -------------------------------------
     // Run common tests
     // -------------------------------------
@@ -30,20 +29,18 @@ describe("Banner", () => {
                 header: "What is Lorem Ipsum?",
                 description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
             }],
-            onClick: () => console.log("Banner Testing"),
+            onClick: () => { },
         },
     };
 
     hasValid("defaults", args);
 
     hasValid("variants", args);
-    hasValid("positions", args);
 
     hasValid("colors", args);
     hasValid("animations", args);
 
     hasValid("hidden", args);
-    hasValid("disabled", args);
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
@@ -61,10 +58,6 @@ describe("Banner", () => {
         );
     });
 
-    it("should render correctly without throwing error", () => {
-        expect(component.exists()).toBe(true);
-    });
-
     it("should render correctly when passed Content props", () => {
         let data = [{
             image: "https://www.gannett-cdn.com/media/2019/01/18/USATODAY/usatsports/gettyimages-500740897.jpg?crop=1365,768,x0,y0&width=660&height=372&format=pjpg&auto=webp",
@@ -77,15 +70,6 @@ describe("Banner", () => {
             description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
         }]
         component.setProps({ content: data })
-        expect(component.exists()).toBe(true);
-    });
-    it("should render correctly when passed withColor props", () => {
-        let colors = {
-            accentColor: "#FF0000",
-            backgroundColor: "#454545",
-            textColor: "#FFFF",
-        }
-        component.setProps({ withColor: colors })
         expect(component.exists()).toBe(true);
     });
 });

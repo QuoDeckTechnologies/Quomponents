@@ -1,27 +1,24 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount, render } from "enzyme";
-
+import { mount } from "enzyme";
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------
 import { hasValid } from "./common";
-
 //--------------------------------------
 // Import Components
 // -------------------------------------
 import DateField from "../DateField/DateField.react";
 
 describe("DateField", () => {
-
     // -------------------------------------
     // Run common tests
     // -------------------------------------
     const args = {
         target: DateField,
         required: {
-            onClick: () => { },
+            onChange: () => { },
         },
         translations: {
             tgt: "dateField",
@@ -42,20 +39,19 @@ describe("DateField", () => {
     };
 
     hasValid("defaults", args);
-
-    hasValid("padding", args);
-
+    hasValid("sizes", args);
+    hasValid("positions", args);
     hasValid("colors", args);
     hasValid("animations", args);
     hasValid("translations", args);
-
     hasValid("hidden", args);
     hasValid("disabled", args);
+    hasValid("fluid", args);
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
     let component;
-    let onClick = jest.fn();
+    let onChange = jest.fn();
     let handleClickDatepickerIcon = jest.fn();
     let preventDefault = jest.fn();
 
@@ -63,22 +59,19 @@ describe("DateField", () => {
         jest.resetAllMocks();
         component = mount(
             <DateField
-                label="Start Date"
-                asPadded="normal"
+                asSize="normal"
+                asFloated="none"
                 withColor={null}
                 withAnimation={null}
                 withTranslation={null}
                 isHidden={false}
                 isDisabled={false}
-                onClick={onClick}
+                isFluid={false}
+                onChange={onChange}
                 handleClickDatepickerIcon={handleClickDatepickerIcon}
                 preventDefault={preventDefault}
             />
         );
-    });
-
-    it("should render correctly without throwing error", () => {
-        expect(component.exists()).toBe(true);
     });
 
     it("should open Calender card correctly without throwing error", () => {
@@ -92,20 +85,18 @@ describe("DateField", () => {
         expect(component.exists()).toBe(true);
     });
 
-    it("should prevent Default action when click on DatePicker", () => {
-        let e = {
-            preventDefault: jest.fn()
-        }
-        component.find('.qui-date-field-date-picker').at(1).props().onKeyDown(e)
+    it("should pass the value to the DatePicker", () => {
+        component.setProps({
+            value: "2016-01-04 10:34:23"
+        })
         expect(component.exists()).toBe(true);
     });
-    it("should render correctly when passed withColor props", () => {
-        let colors = {
-            backgroundColor: "#fff",
-            accentColor: "#FF0000",
-            textColor: "#00FFFF",
-        }
-        component.setProps({ withColor: colors })
+
+    it("should pass the default date value to the DatePicker", () => {
+        component.setProps({
+            value: ""
+        })
         expect(component.exists()).toBe(true);
-    })
+    });
+
 });

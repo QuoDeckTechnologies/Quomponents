@@ -54,12 +54,13 @@ describe("AppMenu", () => {
     jest.resetAllMocks();
     component = shallow(
       <AppMenu
+        avatar="https://i.pinimg.com/736x/64/81/22/6481225432795d8cdf48f0f85800cf66.jpg"
         label="AppMenu"
         withColor={null}
         withIcon={null}
         isHidden={false}
         isDisabled={false}
-        onClick={() => {}}
+        onClick={() => { }}
       />
     );
   });
@@ -67,21 +68,8 @@ describe("AppMenu", () => {
   it("should render correctly without throwing error", () => {
     expect(component.exists()).toBe(true);
   });
-  it("should render correctly when passed withColor", () => {
-    component.setProps({
-      withColor: {
-        backgroundColor: "#ffffff",
-        textColor: "#ffffff",
-      },
-    });
-    expect(component.exists()).toBe(true);
-  });
   it("should render correctly without throwing an error", () => {
     component.setProps({ icon: true });
-    expect(component.exists()).toBe(true);
-  });
-  it("should render correctly without throwing an error if color props is passed", () => {
-    component.setProps({ color: "primary" });
     expect(component.exists()).toBe(true);
   });
   it("should render correctly without throwing an error withLabel props is passed", () => {
@@ -101,12 +89,6 @@ describe("AppMenu", () => {
     });
     expect(component.exists()).toBe(true);
   });
-
-  it("should render correctly without throwing an error if AsSize props is passed", () => {
-    component.setProps({ asSize: "huge" });
-    expect(component.exists()).toBe(true);
-  });
-
   it("should render correctly when passed isCircular props is false", () => {
     component.setProps({
       isCircular: false,

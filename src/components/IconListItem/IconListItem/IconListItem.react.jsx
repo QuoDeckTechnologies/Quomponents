@@ -3,7 +3,11 @@ import React from "react";
 import _ from "lodash";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import { getAnimation, getQuommons, resolveImage } from "../../../common/javascripts/helpers";
+import {
+  getAnimation,
+  getQuommons,
+  resolveImage,
+} from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./IconListItem.scss";
@@ -112,9 +116,21 @@ export default function IconListItem(props) {
         <div>
           {_.map(content, (item, index) => {
             return (
-              <motion.div initial={animate.from} animate={animate.to} key={index}>
-                <div className={`qui-icon-list-item ${quommonClasses.childClasses}`}>
-                  <div className={`qui-icon-list-item-text`} style={{ order: index % 2 === 0 ? 2 : 1, color: withColor?.textColor }} >
+              <motion.div
+                initial={animate.from}
+                animate={animate.to}
+                key={index}
+              >
+                <div
+                  className={`qui-icon-list-item ${quommonClasses.childClasses}`}
+                >
+                  <div
+                    className={`qui-icon-list-item-text`}
+                    style={{
+                      order: index % 2 === 0 ? 2 : 1,
+                      color: withColor?.textColor,
+                    }}
+                  >
                     {item?.text}
                   </div>
                   <img
@@ -126,24 +142,31 @@ export default function IconListItem(props) {
                 </div>
               </motion.div>
             );
-          })
-          }
+          })}
         </div>
-      )
-    }
-    else {
+      );
+    } else {
       return (
         <div>
           {_.map(content, (item, index) => {
             return (
-              <motion.div initial={animate.from} animate={animate.to} key={index}>
-                <div className={`qui-icon-list-item ${quommonClasses.childClasses}`}>
+              <motion.div
+                initial={animate.from}
+                animate={animate.to}
+                key={index}
+              >
+                <div
+                  className={`qui-icon-list-item ${quommonClasses.childClasses}`}
+                >
                   <img
                     className="qui-icon-list-item-image"
                     src={resolveImage(item?.image.id, imageLibrary)}
                     alt="iconlist"
                   />
-                  <div className="qui-icon-list-item-text" style={{ color: withColor?.textColor }}>
+                  <div
+                    className="qui-icon-list-item-text"
+                    style={{ color: withColor?.textColor }}
+                  >
                     {item?.text}
                   </div>
                 </div>
@@ -151,13 +174,13 @@ export default function IconListItem(props) {
             );
           })}
         </div>
-      )
+      );
     }
-  }
+  };
   //-------------------------------------------------------------------
   // 4. Get animation of the component
   //-------------------------------------------------------------------
-  const animate = getAnimation(props);
+  const animate = getAnimation(props) === null || !null;
   // ========================= Render Function =================================
   return (
     <div className={`qui ${quommonClasses.parentClasses}`}>

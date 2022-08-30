@@ -15,14 +15,13 @@ describe("Option Item Six", () => {
   // -------------------------------------
   // Run common tests
   // -------------------------------------
-
   const args = {
     target: OptionItemSix,
     required: {
-      onInput: () => { },
-      onCaption: () => { },
-      onUpload: () => { },
-      onClick: () => { },
+      onInput: () => {},
+      onCaption: () => {},
+      onUpload: () => {},
+      onClick: () => {},
     },
     translations: {
       tgt: "optionItemSix",
@@ -40,14 +39,8 @@ describe("Option Item Six", () => {
   };
 
   hasValid("defaults", args);
-
   hasValid("colors", args);
-  hasValid("animations", args);
   hasValid("translations", args);
-
-  hasValid("hidden", args);
-  hasValid("disabled", args);
-
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------
@@ -60,16 +53,14 @@ describe("Option Item Six", () => {
     jest.resetAllMocks();
     component = shallow(
       <OptionItemSix
-        content={{
-          targetName: "target",
-          value: "",
-          placeholder: "This is option A",
-          captionName: "caption",
-          captionValue: "",
-          captionPlaceholder: "Caption For Option A",
-          image: {},
-          maxLength: 300,
-        }}
+        targetName="target"
+        value=""
+        placeholder="This is option A"
+        captionName="caption"
+        captionValue=""
+        captionPlaceholder="Caption For Option A"
+        image={null}
+        maxLength={300}
         withColor={{
           backgroundColor: "",
           accentColor: "",
@@ -82,10 +73,10 @@ describe("Option Item Six", () => {
         }}
         isDisabled={false}
         isHidden={false}
-        onInput={() => { }}
-        onCaption={() => { }}
-        onUpload={() => { }}
-        onClick={() => { }}
+        onInput={() => {}}
+        onCaption={() => {}}
+        onUpload={() => {}}
+        onClick={() => {}}
       />
     );
   });
@@ -93,15 +84,13 @@ describe("Option Item Six", () => {
   it("should render correctly without throwing error", () => {
     let component = mount(
       <OptionItemSix
-        content={{
-          targetName: "name",
-          value: "",
-          placeholder: "placeholder",
-        }}
-        onInput={() => { }}
-        onCaption={() => { }}
-        onUpload={() => { }}
-        onClick={() => { }}
+        targetName="target"
+        value=""
+        placeholder="This is option A"
+        onInput={() => {}}
+        onCaption={() => {}}
+        onUpload={() => {}}
+        onClick={() => {}}
       />
     );
     expect(component.exists()).toBe(true);
@@ -110,10 +99,11 @@ describe("Option Item Six", () => {
   it("should render correctly without throwing error when wriiten in input field", () => {
     component.find("InputField").at(0).simulate("submit");
     component.find("InputField").at(1).simulate("submit");
+    expect(component.exists()).toBe(true);
   });
 
   it("should render correctly when file is uploaded", async () => {
-    component.find("OptionalImageField").simulate("click", {});
+    component.find("OptionalImageField").simulate("upload", {});
     await pauseFor(100);
     expect(component.exists()).toBe(true);
   });
@@ -122,5 +112,6 @@ describe("Option Item Six", () => {
     component
       .find(".fa-times")
       .simulate("click", { target: { dataset: { id: "name" } } });
+    expect(component.exists()).toBe(true);
   });
 });

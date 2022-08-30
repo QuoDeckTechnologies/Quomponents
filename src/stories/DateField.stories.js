@@ -19,9 +19,17 @@ export default {
     component: DateField,
     argTypes: {
         label: "",
-        asPadded: {
+        value: "",
+        asSize: {
             control: "select",
-            options: ["fitted", "compact", "normal", "relaxed"],
+            options: ["tiny", "small", "normal", "big", "huge", "massive"],
+            table: {
+                category: "as-Flags",
+            },
+        },
+        asFloated: {
+            control: "select",
+            options: ["left", "right", "none", "inline"],
             table: {
                 category: "as-Flags",
             },
@@ -68,23 +76,22 @@ export default {
                 defaultValue: false,
             },
         },
-        onClick: {
+        isFluid: {
+            table: {
+                category: "is-Toggles",
+                defaultValue: false,
+            },
+        },
+        onChange: {
             table: {
                 category: "Events",
                 defaultValue: null,
             },
         },
     },
-    decorators: [
-        (story) => (
-            <div>
-                {story()}
-            </div>
-        ),
-    ],
+    decorators: [(story) => <div>{story()}</div>],
     parameters: {
-        componentSubtitle:
-            "Default DateField for general purpose use",
+        componentSubtitle: "Default DateField for general purpose use",
         a11y: { disable: true },
         docs: { iframeHeight: 400 },
     },
@@ -96,7 +103,9 @@ const Template = (args) => <DateField {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     label: "Start Date",
-    asPadded: "normal",
+    value: "2016-01-04 10:34:23",
+    asSize: "normal",
+    asFloated: "none",
     withColor: {
         backgroundColor: "#aaaaaa",
         accentColor: "",
@@ -114,11 +123,33 @@ Default.args = {
     },
     isDisabled: false,
     isHidden: false,
+    isFluid: false,
 };
 Default.parameters = {
     docs: {
         source: {
-            code: `<DateField {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<DateField 
+            label= "Start Date"
+            asSize= "normal"
+            asFloated= "none"
+            withColor= {{
+                backgroundColor: "#aaaaaa",
+                accentColor: "",
+                textColor: "#666666",
+            }}
+            withAnimation= {{
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0,
+            }}
+            withTranslation= {{
+                lang: "en",
+                tgt: "dateField",
+                dictionary: dictionary,
+            }}
+            isDisabled= {false}
+            isHidden= {false}
+            isFluid= {false}/>`,
         },
     },
 };
@@ -137,15 +168,31 @@ ColoredDateField.args = {
 ColoredDateField.parameters = {
     docs: {
         description: {
-            story:
-                "Use to override the standard colors of the DateField.",
+            story: "Use to override the standard colors of the DateField.",
         },
         source: {
-            code: `<ColoredDateField {...${JSON.stringify(
-                ColoredDateField.args,
-                null,
-                2
-            )}}/>`,
+            code: `<DateField 
+            label= "Start Date"
+            asSize= "normal"
+            asFloated= "none"
+            withColor= {{
+                backgroundColor: "#666666",
+                textColor: "#ffbf00",
+                accentColor: "#ffbf00",
+            }}
+            withAnimation= {{
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0,
+            }}
+            withTranslation= {{
+                lang: "en",
+                tgt: "dateField",
+                dictionary: dictionary,
+            }}
+            isDisabled= {false}
+            isHidden= {false}
+            isFluid= {false}/>`,
         },
     },
 };
@@ -168,11 +215,28 @@ AnimatedDateField.parameters = {
                 "Use to animate the entry of the DateField with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
         },
         source: {
-            code: `<AnimatedDateField {...${JSON.stringify(
-                AnimatedDateField.args,
-                null,
-                2
-            )}}/>`,
+            code: `<DateField 
+            label= "Start Date"
+            asSize= "normal"
+            asFloated= "none"
+            withColor= {{
+                backgroundColor: "#aaaaaa",
+                accentColor: "",
+                textColor: "#666666",
+            }}
+            withAnimation= {{
+                animation: "slideRight",
+                duration: 0.5,
+                delay: 0,
+            }}
+            withTranslation= {{
+                lang: "en",
+                tgt: "dateField",
+                dictionary: dictionary,
+            }}
+            isDisabled= {false}
+            isHidden= {false}
+            isFluid= {false}/>`,
         },
     },
 };
@@ -191,15 +255,31 @@ TranslatedDateField.args = {
 TranslatedDateField.parameters = {
     docs: {
         description: {
-            story:
-                "Use to change the language that the text appears in DateField.",
+            story: "Use to change the language that the text appears in DateField.",
         },
         source: {
-            code: `<DateField {...${JSON.stringify(
-                TranslatedDateField.args,
-                null,
-                2
-            )}}/>`,
+            code: `<DateField 
+            label= "Start Date"
+            asSize= "normal"
+            asFloated= "none"
+            withColor= {{
+                backgroundColor: "#aaaaaa",
+                accentColor: "",
+                textColor: "#666666",
+            }}
+            withAnimation= {{
+                animation: "zoom",
+                duration: 0.5,
+                delay: 0,
+            }}
+            withTranslation= {{
+                lang: "hi",
+                tgt: "dateField",
+                dictionary: dictionary,
+            }}
+            isDisabled= {false}
+            isHidden= {false}
+            isFluid= {false}/>`,
         },
     },
 };

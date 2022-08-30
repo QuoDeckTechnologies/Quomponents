@@ -31,13 +31,11 @@ export default {
       table: {
         category: "with-Params",
         defaultValue: {
-          arcButtonColor: "",
-          arcIconColor: "",
-          arcColor: "",
+          backgroundColor: "",
           textColor: "",
-          buttonColor: "",
-          hoverButtonColor: "",
-          sliderColor: "",
+          accentColor: "",
+          hoverBackgroundColor: "",
+          hoverTextColor: "",
         },
       },
     },
@@ -62,12 +60,6 @@ export default {
       },
     },
     isHidden: {
-      table: {
-        category: "is-Toggles",
-        defaultValue: false,
-      },
-    },
-    isFluid: {
       table: {
         category: "is-Toggles",
         defaultValue: false,
@@ -118,21 +110,77 @@ Default.args = {
     dictionary: dictionary,
   },
   withColor: {
-    arcButtonColor: "",
-    arcIconColor: "",
-    arcColor: "",
+    backgroundColor: "",
     textColor: "",
-    buttonColor: "",
-    hoverButtonColor: "",
-    sliderColor: "",
+    accentColor: "",
+    hoverBackgroundColor: "",
+    hoverTextColor: "",
   },
   isHidden: false,
-  isFluid: false,
 };
 Default.parameters = {
   docs: {
     source: {
-      code: `<ImageUploadModal {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<ImageUploadModal
+          isOpen={true}
+          aspectRatio={1}
+          image=""
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          withColor={{
+            backgroundColor: "",
+            textColor: "",
+            accentColor: "",
+            hoverBackgroundColor: "",
+            hoverTextColor: "",
+          }}
+          isHidden={false}
+          onClick={()=>{}}
+          onChange={()=>{}}
+        />`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// ImageUploadModal with initial image
+// -------------------------------------------------------------
+export const ColoredImageUploadModal = Template.bind({});
+ColoredImageUploadModal.args = {
+  ...Default.args,
+  withColor: {
+    backgroundColor: "#86BC25",
+    textColor: "#86BC25",
+    accentColor: "#86BC25",
+    hoverBackgroundColor: "#86BC2526",
+    hoverTextColor: "#86BC25",
+  },
+};
+ColoredImageUploadModal.parameters = {
+  docs: {
+    source: {
+      code: `<ImageUploadModal
+      isOpen={true}
+      aspectRatio={1}
+      image=""
+      withAnimation={{
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+      }}
+      withColor={{
+        backgroundColor: "#86BC25",
+        textColor: "#86BC25",
+        accentColor: "#86BC25",
+        hoverBackgroundColor: "#86BC2526",
+        hoverTextColor: "#86BC25",
+      }}
+      isHidden={false}
+      onClick={()=>{}}
+      onChange={()=>{}}
+    />`,
     },
   },
 };
@@ -148,11 +196,26 @@ ImageUploadModalWithInitialImage.args = {
 ImageUploadModalWithInitialImage.parameters = {
   docs: {
     source: {
-      code: `<ImageUploadModal {...${JSON.stringify(
-        ImageUploadModalWithInitialImage.args,
-        null,
-        2
-      )}}/>`,
+      code: `<ImageUploadModal
+      isOpen={true}
+      aspectRatio={1}
+      image="https://images.unsplash.com/photo-1655910299073-9efb4ae052f1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+      withAnimation={{
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+      }}
+      withColor={{
+        backgroundColor: "",
+        textColor: "",
+        accentColor: "",
+        hoverBackgroundColor: "",
+        hoverTextColor: "",
+      }}
+      isHidden={false}
+      onClick={()=>{}}
+      onChange={()=>{}}
+    />`,
     },
   },
 };
@@ -169,11 +232,31 @@ ImageUploadModalWithCustomAspectRatio.args = {
 ImageUploadModalWithCustomAspectRatio.parameters = {
   docs: {
     source: {
-      code: `<ImageUploadModal {...${JSON.stringify(
-        ImageUploadModalWithCustomAspectRatio.args,
-        null,
-        2
-      )}}/>`,
+      code: `<ImageUploadModal
+          isOpen={true}
+          aspectRatio={0.66}
+          image="https://images.unsplash.com/photo-1655910299073-9efb4ae052f1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          withTranslation={{
+            lang: "en",
+            tgt: "imageuploadmodal",
+            dictionary: dictionary,
+          }}
+          withColor={{
+            backgroundColor: "",
+            textColor: "",
+            accentColor: "",
+            hoverBackgroundColor: "",
+            hoverTextColor: "",
+          }}
+          isHidden={false}
+          onClick={()=>{}}
+          onChange={()=>{}}
+        />`,
     },
   },
 };
@@ -196,11 +279,42 @@ TranslatedImageUploadModal.parameters = {
         "We can translate the language of Image Upload Modal if dictionary is provided",
     },
     source: {
-      code: `<ImageUploadModal {...${JSON.stringify(
-        TranslatedImageUploadModal.args,
-        null,
-        2
-      )}}/>`,
+      code: `<ImageUploadModal
+          isOpen={true}
+          aspectRatio={1}
+          image=""
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          withTranslation={{
+            lang: "hi",
+            tgt: "imageuploadmodal",
+            dictionary: ${JSON.stringify({
+              hi: {
+                imageuploadmodal: {
+                  header: "तस्वीर अपलोड करें",
+                  buttons: {
+                    chooseFile: "फाइलें चुनें",
+                    cancel: "रद्द करें",
+                    save: "स्वीकार",
+                  },
+                },
+              },
+            })},
+          }}
+          withColor={{
+            backgroundColor: "",
+            textColor: "",
+            accentColor: "",
+            hoverBackgroundColor: "",
+            hoverTextColor: "",
+          }}
+          isHidden={false}
+          onClick={()=>{}}
+          onChange={()=>{}}
+        />`,
     },
   },
 };

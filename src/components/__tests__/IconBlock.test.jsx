@@ -18,17 +18,18 @@ describe("IconBlock", () => {
 
   const args = {
     target: IconBlock,
-    required: {
-    },
+    required: {},
   };
 
   hasValid("defaults", args);
 
+  hasValid("variants", args);
   hasValid("sizes", args);
   hasValid("positions", args);
   hasValid("padding", args);
 
   hasValid("colors", args);
+  hasValid("icons", args);
   hasValid("animations", args);
 
   hasValid("hidden", args);
@@ -44,6 +45,7 @@ describe("IconBlock", () => {
     component = shallow(
       <IconBlock
         asEmphasis="contained"
+        asVariant="primary"
         asSize="normal"
         asPadded="normal"
         asFloated="inline"
@@ -53,7 +55,7 @@ describe("IconBlock", () => {
         withTranslation={null}
         isHidden={false}
         isDisabled={false}
-        onClick={() => console.log("IconBlock Testing")}
+        onClick={() => {}}
       />
     );
   });
@@ -61,83 +63,73 @@ describe("IconBlock", () => {
   it("should render correctly when passed asEmphasis prop as text", () => {
     let colors = {
       backgroundColor: "#fff",
-      accentColor: "#FF0000",
-      textColor: "#00FFFF",
-      hoverBackgroundColor: "#0000FF",
-      hoverTextColor: "	#00008B",
-    }
-    component.setProps({ asEmphasis: "text" })
-    component.setProps({ withColor: colors })
+      textColor: "#FF0000",
+    };
+    component.setProps({ asEmphasis: "text" });
+    component.setProps({ withColor: colors });
     expect(component.exists()).toBe(true);
-  })
+  });
   it("should render correctly when passed asEmphasis prop as contained", () => {
     let colors = {
       backgroundColor: "#fff",
-      accentColor: "#FF0000",
-      textColor: "#00FFFF",
-      hoverBackgroundColor: "#0000FF",
-      hoverTextColor: "	#00008B",
-    }
-    component.setProps({ asEmphasis: "contained" })
-    component.setProps({ withColor: colors })
+      textColor: "#FF0000",
+    };
+    component.setProps({ asEmphasis: "contained" });
+    component.setProps({ withColor: colors });
     expect(component.exists()).toBe(true);
-  })
+  });
   it("should render correctly when passed asEmphasis prop as outlined", () => {
     let colors = {
       backgroundColor: "#fff",
-      accentColor: "#FF0000",
-      textColor: "#00FFFF",
-      hoverBackgroundColor: "#0000FF",
-      hoverTextColor: "	#00008B",
-    }
-    component.setProps({ asEmphasis: "outlined" })
-    component.setProps({ withColor: colors })
+      textColor: "#FF0000",
+    };
+    component.setProps({ asEmphasis: "outlined" });
+    component.setProps({ withColor: colors });
     expect(component.exists()).toBe(true);
-  })
+  });
   it("should render correctly when passed withColor props", () => {
     let colors = {
       backgroundColor: "#fff",
-      accentColor: "#FF0000",
-      textColor: "#00FFFF",
-      hoverBackgroundColor: "#0000FF",
-      hoverTextColor: "	#00008B",
-    }
-    component.setProps({ withColor: colors })
+      textColor: "#FF0000",
+    };
+    component.setProps({ withColor: colors });
     expect(component.exists()).toBe(true);
-  })
+  });
   it("should render correctly when passed emphasis prop as text", () => {
-    component.setProps({ asEmphasis: "text" })
-    component.setProps({ withColor: { backgroundColor: "#000", accentColor: "#fff" } })
+    component.setProps({ asEmphasis: "text" });
+    component.setProps({
+      withColor: { backgroundColor: "#000", textColor: "#fff" },
+    });
 
-    component.setProps({ withIcon: { icon: "fas fa-book" } })
-    expect(component.find("i").at(0).props().style.color).toBe("#fff")
-  })
+    component.setProps({ withIcon: { icon: "fas fa-book" } });
+    expect(component.find("i").props().style.color).toBe("#fff");
+  });
 
   it("should render component with correct styling of disabled icon even if we pass the background and icon color in the Outlined Emphasis Icon", () => {
-    component.setProps({ isDisabled: true })
-    component.setProps({ asEmphasis: "outlined" })
-    component.setProps({ withColor: { backgroundColor: "#000" } })
-    component.setProps({ withIcon: { icon: "fas fa-book", color: "#fff" } })
+    component.setProps({ isDisabled: true });
+    component.setProps({ asEmphasis: "outlined" });
+    component.setProps({ withColor: { backgroundColor: "#000" } });
+    component.setProps({ withIcon: { icon: "fas fa-book", color: "#fff" } });
 
-    expect(component.find("div").at(1).props().style.borderColor).toBe("#cccccc")
-    expect(component.find("i").at(0).props().style.color).toBe("#cccccc")
-  })
+    expect(component.find("div").props().style.borderColor).toBe("#cccccc");
+    expect(component.find("i").props().style.color).toBe("#cccccc");
+  });
   it("should render component with correct styling of disabled icon even if we pass the background and icon color in the Text Emphasis Icon", () => {
-    component.setProps({ isDisabled: true })
-    component.setProps({ asEmphasis: "text" })
-    component.setProps({ withColor: { backgroundColor: "#000" } })
-    component.setProps({ withIcon: { icon: "fas fa-book", color: "#fff" } })
+    component.setProps({ isDisabled: true });
+    component.setProps({ asEmphasis: "text" });
+    component.setProps({ withColor: { backgroundColor: "#000" } });
+    component.setProps({ withIcon: { icon: "fas fa-book", color: "#fff" } });
 
-    expect(component.find("div").at(1).props().style.background).toBe("transparent")
-    expect(component.find("i").at(0).props().style.color).toBe("#666666")
-  })
+    expect(component.find("div").props().style.background).toBe("transparent");
+    expect(component.find("i").props().style.color).toBe("#666666");
+  });
   it("should render component with correct styling of disabled icon even if we pass the background and icon color in the Contained Emphasis Icon", () => {
-    component.setProps({ isDisabled: true })
-    component.setProps({ asEmphasis: "contained" })
-    component.setProps({ withColor: { backgroundColor: "#000" } })
-    component.setProps({ withIcon: { icon: "fas fa-book", color: "#fff" } })
+    component.setProps({ isDisabled: true });
+    component.setProps({ asEmphasis: "contained" });
+    component.setProps({ withColor: { backgroundColor: "#000" } });
+    component.setProps({ withIcon: { icon: "fas fa-book", color: "#fff" } });
 
-    expect(component.find("div").at(1).props().style.background).toBe("#cccccc")
-    expect(component.find("i").at(0).props().style.color).toBe("#666666")
-  })
+    expect(component.find("div").props().style.background).toBe("#cccccc");
+    expect(component.find("i").props().style.color).toBe("#666666");
+  });
 });

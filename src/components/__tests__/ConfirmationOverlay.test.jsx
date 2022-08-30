@@ -15,7 +15,6 @@ describe("ConfirmationOverlay", () => {
     // -------------------------------------
     // Run common tests
     // -------------------------------------
-
     const args = {
         target: ConfirmationOverlay,
         required: {
@@ -56,39 +55,11 @@ describe("ConfirmationOverlay", () => {
                     yes: "Yes",
                     no: "No",
                 }}
-                withColor={{
-                    backgroundColor: "",
-                    textColor: "",
-                    confirmBackgroundColor: "",
-                    confirmTextColor: "",
-                    cancelBackgroundColor: "",
-                    cancelTextColor: "",
-                }}
             />
         );
     });
 
     it("should render correctly without throwing error", () => {
-        expect(component.exists()).toBe(true);
-    });
-    it("should render correctly when withColor props is passed", () => {
-        component.setProps({
-            withColor: {
-                backgroundColor: "#000000",
-                textColor: "#ffffff",
-                confirmBackgroundColor: "#ffbf00",
-                confirmTextColor: "#000000",
-                cancelBackgroundColor: "#ffbf00",
-                cancelTextColor: "#000000",
-            }
-        });
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render correctly when withColor props is undefined", () => {
-        component.setProps({
-            withColor: undefined
-        });
         expect(component.exists()).toBe(true);
     });
     it("should render correctly when withConfirmation props is not passed", () => {
@@ -99,7 +70,7 @@ describe("ConfirmationOverlay", () => {
     });
 
     it("on submit event should get called on confirm button click", () => {
-        component.setProps({ onSubmit: mockFn });
+        component.setProps({ onConfirm: mockFn });
         component.find('Button').at(0).simulate('click')
         expect(mockFn).toBeCalled();
     });

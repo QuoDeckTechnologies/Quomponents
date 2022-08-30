@@ -1,16 +1,19 @@
-.qui-learner-table-row {
-  background-color: #ffffff;
-  padding: 0.5em 0.8em;
+.qui.qui-learner-table-row {
   margin-bottom: 0.5em;
 }
 .qui .qui-learner-list-element {
+  background-color: #fff;
   display: flex;
   flex-direction: row;
   align-items: center;
+  padding: 0.5em;
+  &:not(:last-child) {
+    margin-bottom: 0.1em;
+  }
 }
 .qui .qui-learner-username {
   display: flex;
-  flex: 0.8;
+  flex: 1;
   margin-left: 0.2em;
   width: 10em;
 }

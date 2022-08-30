@@ -194,7 +194,7 @@ export default function NavBar(props) {
   //-------------------------------------------------------------------
   // 4. Get animation of the component
   //-------------------------------------------------------------------
-  const animate = getAnimation(props.withAnimation);
+  const animate = getAnimation(props);
   //-------------------------------------------------------------------
   // 5. Function to return menu icon
   //-------------------------------------------------------------------
@@ -226,7 +226,7 @@ export default function NavBar(props) {
             <IconLink
               {...props}
               asPadded="fitted"
-              content={{ link: iconLink?.link }}
+              link={iconLink?.link}
               withIcon={{ icon: iconLink?.icon }}
               withColor={{ backgroundColor: withColor?.backIconColor }}
               onClick={props.onClick}

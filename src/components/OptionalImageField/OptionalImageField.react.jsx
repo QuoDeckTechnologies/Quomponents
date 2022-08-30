@@ -3,11 +3,7 @@ import React, { useRef, useState } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import Button from "@mui/material/Button";
-import {
-  getQuommons,
-  getAnimation,
-  getTranslation,
-} from "../../common/javascripts/helpers";
+import { getQuommons, getAnimation } from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./OptionalImageField.scss";
@@ -18,60 +14,42 @@ OptionalImageField.propTypes = {
   // Component Specific props
   //=======================================
   /**
-  OptionalImageField title, icon and actionButton has to be in content.
+  Use to define OptionalImageField title.
   */
-  content: PropTypes.shape({
-    title: PropTypes.string,
-    icon: PropTypes.string,
-    actionButton: PropTypes.bool,
-  }),
+  title: PropTypes.string,
+  /**
+  Use to define OptionalImageField icon.
+  */
+  icon: PropTypes.string,
+  /**
+  Use to set OptionalImageField actionButton.
+  */
+  actionButton: PropTypes.bool,
   /**
   Use to define the file type which is supported to upload.
   Suppoted file type image/*.
   */
-  withFile: PropTypes.shape({
-    type: PropTypes.string,
-    capture: PropTypes.string,
-  }),
+  type: PropTypes.string,
+  /**
+  Use to define the capture attribute for upload.
+  */
+  capture: PropTypes.string,
   /**
   Use to toggle a multiple to upload more than one images
   */
-  isMultiple: PropTypes.bool,
+  multiple: PropTypes.bool,
   //=======================================
   // Quommon props
   //=======================================
   /**
-  Use to override component colors
+  Use to override component colors and behavior
   */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
-    accentColor: PropTypes.string,
     textColor: PropTypes.string,
-  }),
-  /**
-  Use to define the entry animation of the component
-  */
-  withAnimation: PropTypes.shape({
-    animation: PropTypes.oneOf([
-      "zoom",
-      "collapse",
-      "fade",
-      "slideDown",
-      "slideUp",
-      "slideLeft",
-      "slideRight",
-      "",
-    ]),
-    duration: PropTypes.number,
-    delay: PropTypes.number,
-  }),
-  /**
-    Use to show a translated version of the component text. Dictionary must be valid JSON. 
-    */
-  withTranslation: PropTypes.shape({
-    lang: PropTypes.string,
-    tgt: PropTypes.string,
-    dictionary: PropTypes.string,
+    accentColor: PropTypes.string,
+    hoverBackgroundColor: PropTypes.string,
+    hoverTextColor: PropTypes.string,
   }),
   /**
    Use to show/hide the component
@@ -86,43 +64,28 @@ OptionalImageField.propTypes = {
   */
   isFluid: PropTypes.bool,
   /**
-  OptionalImageField component must have the onClick function passed as props
+  OptionalImageField component must have the onUpload function passed as props
   */
-  onClick: PropTypes.func.isRequired,
+  onUpload: PropTypes.func.isRequired,
 };
 
 OptionalImageField.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
-  content: {},
-  withFile: null,
-  isMultiple: false,
+  title: "Upload",
+  icon: "fas fa-image",
+  actionButton: true,
+  type: "image/*",
+  capture: "",
+  multiple: false,
   //=======================================
   // Quommon props
   //=======================================
   withColor: null,
-  withAnimation: null,
-  withTranslation: null,
   isHidden: false,
   isDisabled: false,
   isFluid: false,
-};
-const getColors = (withColor) => {
-  let colors = {
-    iconBoundries: {
-      borderColor: withColor.accentColor,
-    },
-    border: {
-      backgroundColor: withColor.accentColor,
-    },
-    button: {
-      backgroundColor: withColor.backgroundColor,
-      borderColor: withColor.accentColor,
-      color: withColor.textColor,
-    },
-  };
-  return colors;
 };
 /**
 ## Notes
@@ -137,29 +100,31 @@ export default function OptionalImageField(props) {
   //-------------------------------------------------------------------
   const fileRef = useRef();
   const [file, setFile] = useState(false);
-  const [baseFile, setBaseFile] = useState("")
+  const [hovered, setHovered] = useState(false);
+  const [baseFile, setBaseFile] = useState("");
   //-------------------------------------------------------------------
   // 2. Destructuring props
   //-------------------------------------------------------------------
-  const { content } = props;
+  const {
+    title,
+    icon,
+    actionButton,
+    multiple,
+    type,
+    capture,
+    withColor,
+    isDisabled,
+  } = props;
   //-------------------------------------------------------------------
   // 3. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "optional-image-field");
   //-------------------------------------------------------------------
-  // 4. Set the component colors
-  //-------------------------------------------------------------------
-  let colors = props.withColor ? getColors(props.withColor) : {};
-  //-------------------------------------------------------------------
-  // 5. Translate the text objects in case their is a dictionary provided
-  //-------------------------------------------------------------------
-  let tObj = getTranslation(props.withTranslation);
-  //-------------------------------------------------------------------
-  // 6. Get animation of the component
+  // 5. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props);
   //-------------------------------------------------------------------
-  // 7. File upload handlers
+  // 6. File upload handlers
   //-------------------------------------------------------------------
   const uploadFile = () => {
     fileRef.current.click();
@@ -181,12 +146,11 @@ export default function OptionalImageField(props) {
         };
         allFiles.push(fileInfo);
         if (allFiles.length === files.length) {
-          if (props.isMultiple) {
-            props.onClick(allFiles);
-          }
-          else {
-            setBaseFile(allFiles[0].base64)
-            props.onClick(allFiles[0]);
+          if (props.multiple) {
+            props.onUpload(allFiles);
+          } else {
+            setBaseFile(allFiles[0].base64);
+            props.onUpload(allFiles[0]);
           }
         }
       };
@@ -204,51 +168,88 @@ export default function OptionalImageField(props) {
       <input
         type="file"
         ref={fileRef}
-        accept={props.withFile?.type}
-        capture={props.withFile?.capture}
-        multiple={props.isMultiple}
+        accept={type}
+        capture={capture}
+        multiple={multiple}
         className="qui-image-upload-field"
         onChange={handleChange}
         onClick={(e) => (e.target.value = "")}
         hidden
       />
-      <div
+      <table
         className={`qui-optional-image-field-wrapper ${quommonClasses.childClasses}`}
-        style={colors.iconBoundries}
+        style={
+          isDisabled
+            ? {
+                borderColor: "#c9c9c9",
+              }
+            : { borderColor: withColor?.accentColor }
+        }
       >
-        {content?.icon && (
-          <div className="qui-optional-image-field-container" onClick={uploadFile}>
-            {baseFile ?
-              <div
-                className="qui-optional-image-field-image"
-                style={{
-                  backgroundImage: `url(${baseFile})`,
-                  backgroundRepeat: "no-repeat",
-                  backgroundPosition: "center",
-                  backgroundSize: "cover",
-                }}>
-              </div> : <i className={`qui-optional-image-field-icon ${content?.icon}`}></i>
-            }
-          </div>
-        )}
-        {content?.icon && (
-          <div
-            style={colors.border}
-            className="qui-optional-image-field-middle-border"
-          ></div>
-        )}
-        <div className="qui-optional-image-field-button-container">
-          <Button
-            className="qui-optional-image-field-button"
-            variant="outlined"
-            style={colors.button}
-            onClick={uploadFile}
-          >
-            {tObj?.title || content?.title || "Upload"}
-          </Button>
-        </div>
-      </div>
-      {content?.actionButton && (
+        <tbody>
+          <tr>
+            {icon && (
+              <td
+                className="qui-optional-image-field-container"
+                onClick={uploadFile}
+                onMouseEnter={() => setHovered(true)}
+                onMouseLeave={() => setHovered(false)}
+              >
+                {baseFile ? (
+                  <div
+                    className="qui-optional-image-field-image"
+                    style={{
+                      backgroundImage: `url(${baseFile})`,
+                      backgroundRepeat: "no-repeat",
+                      backgroundPosition: "center",
+                      backgroundSize: "cover",
+                    }}
+                  ></div>
+                ) : (
+                  <i className={`qui-optional-image-field-icon ${icon}`}></i>
+                )}
+              </td>
+            )}
+            <td
+              className="qui-optional-image-field-button-container"
+              style={
+                isDisabled
+                  ? {
+                      borderColor: "#c9c9c9",
+                    }
+                  : { borderColor: withColor?.accentColor }
+              }
+            >
+              <Button
+                className="qui-optional-image-field-button"
+                variant="outlined"
+                style={
+                  hovered
+                    ? {
+                        backgroundColor: withColor?.hoverBackgroundColor,
+                        color: withColor?.hoverTextColor,
+                      }
+                    : isDisabled
+                    ? {
+                        backgroundColor: "#fcfcfc",
+                        color: "#c9c9c9",
+                      }
+                    : {
+                        backgroundColor: withColor?.backgroundColor,
+                        color: withColor?.textColor,
+                      }
+                }
+                onClick={uploadFile}
+                onMouseEnter={() => setHovered(true)}
+                onMouseLeave={() => setHovered(false)}
+              >
+                {title || "Upload"}
+              </Button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      {actionButton && (
         <div
           className={`qui-optional-image-field-action-icon ${
             file ? "qui-uploaded" : ""

@@ -21,7 +21,7 @@ describe("PictureFuddleWithFeedback", () => {
     target: PictureFuddleWithFeedback,
     required: {
       content: "Testing Button",
-      onClick: () => console.log("Button Testing"),
+      onClick: () => {},
     },
     translations: {
       tgt: "templateActions",

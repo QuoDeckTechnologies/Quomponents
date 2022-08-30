@@ -13,33 +13,43 @@ AmplayfierDrawerRect.propTypes = {
   // Component Specific props
   //=======================================
   /**
-    Wrap AmplayfierDrawerRect across child component to use.
-    */
+  Wrap AmplayfierDrawerRect across child component to use.
+  */
   children: PropTypes.element,
   /**
-    Use for rounded bottom corners
-    */
+  Use for rounded corners
+  */
   isCircular: PropTypes.bool,
   //=======================================
   // Quommon props
   //=======================================
   /**
-    Use to define component padding in increasing order
-    */
+  Use to define standard component type
+  */
+  asVariant: PropTypes.oneOf([
+    "primary",
+    "secondary",
+    "success",
+    "warning",
+    "error",
+  ]),
+  /**
+  Use to define component padding in increasing order
+  */
   asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
   /**
-    Use to float the component in parent container
-    */
+  Use to float the component in parent container
+  */
   asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
   /**
-    Use to override component colors and behavior
-    */
+  Use to override component colors and behavior
+  */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
   }),
   /**
-    Use to define the entry animation of the component
-    */
+  Use to define the entry animation of the component
+  */
   withAnimation: PropTypes.shape({
     animation: PropTypes.oneOf([
       "zoom",
@@ -55,8 +65,8 @@ AmplayfierDrawerRect.propTypes = {
     delay: PropTypes.number,
   }),
   /**
-    Use to show/hide the component
-    */
+  Use to show/hide the component
+  */
   isHidden: PropTypes.bool,
 };
 
@@ -68,6 +78,7 @@ AmplayfierDrawerRect.defaultProps = {
   //=======================================
   // Quommon props
   //=======================================
+  asVariant: "primary",
   asPadded: "normal",
   asFloated: "none",
   withColor: null,
@@ -88,7 +99,7 @@ export default function AmplayfierDrawerRect(props) {
   let quommonClasses = getQuommons(props, "amplayfier-drawer-rect");
   if (props.isCircular) quommonClasses.parentClasses += ` is-circular`;
   //-------------------------------------------------------------------
-  // 7. Get animation of the component
+  // 2. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props);
 
@@ -99,10 +110,10 @@ export default function AmplayfierDrawerRect(props) {
       initial={animate.from}
       animate={animate.to}
       className={`qui ${quommonClasses.parentClasses}`}
-      style={{ backgroundColor: withColor?.backgroundColor }}
     >
       <div
-        className={`qui-amplayfier-drawer-rect-container ${quommonClasses.childClasses}`}
+        className={`qui-amplayfier-drawer-rect-container qui-btn ${quommonClasses.childClasses}`}
+        style={{ backgroundColor: withColor?.backgroundColor }}
       >
         {children}
       </div>

@@ -1,5 +1,6 @@
 .qui-app-menu {
   overflow: hidden;
+  text-align: center;
   .qui-app-menu-avatar {
     display: flex;
     align-items: center;
@@ -26,11 +27,19 @@
   .qui .qui-menu-block-container {
     border-radius: 0;
   }
-  .qui-app-menu-inner-container.qui-menu-block-container {
-    border-top-right-radius: 0;
-    border-top-left-radius: 0;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
+  .qui-app-menu-inner-container {
+    &.qui-menu-block-container {
+      border-top-right-radius: 0;
+      border-top-left-radius: 0;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    &.size-huge {
+      line-height: 2.7em;
+    }
+    &.size-massive {
+      line-height: 3.7em;
+    }
   }
 }
 

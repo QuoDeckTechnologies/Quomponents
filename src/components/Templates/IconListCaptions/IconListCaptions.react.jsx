@@ -25,7 +25,7 @@ IconListCaptions.propTypes = {
   //=======================================
   /**
     IconListCaptions data should be passed in data field and it is a required field
-    */
+  */
   data: PropTypes.shape({
     title: PropTypes.string,
     subtitle: PropTypes.string,
@@ -35,18 +35,18 @@ IconListCaptions.propTypes = {
   }),
   /**
     IconListCaptions can set presenter image from imageLibrary array
-    */
+  */
   imageLibrary: PropTypes.array,
   /**
     IconListCaptions slideId should be passed with props, to specify the slide.
-    */
+  */
   slideId: PropTypes.number,
   //=======================================
   // Quommon props
   //=======================================
   /**
     Use to override component colors and behavior
-    */
+  */
   withColor: PropTypes.shape({
     slideHeaderTextColor: PropTypes.string,
     slideHeaderAccentColor: PropTypes.string,
@@ -59,7 +59,7 @@ IconListCaptions.propTypes = {
 
   /**
     Use to define the entry animation of the component
-    */
+  */
   withAnimation: PropTypes.shape({
     animation: PropTypes.oneOf([
       "zoom",
@@ -76,7 +76,7 @@ IconListCaptions.propTypes = {
   }),
   /**
     Use to enable/disable the component
-    */
+  */
   isDisabled: PropTypes.bool,
   /**
     Use to show/hide the component
@@ -84,7 +84,7 @@ IconListCaptions.propTypes = {
   isHidden: PropTypes.bool,
   /**
     Diptych component must have the onClick function passed as props
-    */
+  */
   onClick: PropTypes.func.isRequired,
 };
 
@@ -97,7 +97,7 @@ IconListCaptions.defaultProps = {
     subtitle: "",
     image: {},
     backgroundImage: {},
-    cards: []
+    cards: [],
   },
   imageLibrary: [{}],
   slideId: 0,
@@ -117,9 +117,9 @@ IconListCaptions.defaultProps = {
 - Displays a Captioned IconListCaptions with TextBlock and a SlideHeader with circular images
 **/
 export default function IconListCaptions(props) {
-  let { data, withColor, imageLibrary } = props
-  const [state, setState] = useState(0)
-  const [activeImage, setActiveImage] = useState(0)
+  let { data, withColor, imageLibrary } = props;
+  const [state, setState] = useState(0);
+  const [activeImage, setActiveImage] = useState(0);
   const sliderRef = useRef();
   //-------------------------------------------------------------------
   // Set the classes
@@ -135,30 +135,33 @@ export default function IconListCaptions(props) {
   let slideHeaderColors = {
     textColor: props.withColor?.slideHeaderTextColor,
     accentColor: props.withColor?.slideHeaderAccentColor,
-    backgroundColor: props.withColor?.slideHeaderBackgroundColor
-  }
+    backgroundColor: props.withColor?.slideHeaderBackgroundColor,
+  };
   let textBlockColors = {
     textColor: props.withColor?.textBlockTextColor,
-    backgroundColor: props.withColor?.textBlockBackgroundColor
-  }
-  let SlideHeaderText = {
-    title: props.data?.title,
-    subTitle: props.data?.subtitle,
-  }
+    backgroundColor: props.withColor?.textBlockBackgroundColor,
+  };
   const getBackground = () => {
     return {
-      background: `url(${resolveImage(data?.backgroundImage.id, imageLibrary)})`,
+      background: `url(${resolveImage(
+        data?.backgroundImage.id,
+        imageLibrary
+      )})`,
       backgroundSize: "cover",
     };
   };
   const background = data?.backgroundImage
     ? getBackground()
-    : { backgroundColor: withColor?.backgroundColor ? withColor?.backgroundColor : "#fff" };
+    : {
+        backgroundColor: withColor?.backgroundColor
+          ? withColor?.backgroundColor
+          : "#fff",
+      };
 
   function handleClick(e) {
-    props.onClick(e)
-    setState(e)
-    setActiveImage(e)
+    props.onClick(e);
+    setState(e);
+    setActiveImage(e);
   }
 
   var settings = {
@@ -181,44 +184,70 @@ export default function IconListCaptions(props) {
       initial={animate.from}
       animate={animate.to}
       className={`qui ${quommonClasses.parentClasses}`}
-    >{data &&
-      <div className="qui-icon-list-captions-card" style={{ ...background }}>
-        <div className={`${quommonClasses.childClasses}`} key={"icon-list-captions-" + props.slideId}>
-          {!data?.image && (data?.title || data?.subtitle) && (
-            <SlideHeader
-              content={SlideHeaderText}
-              withColor={slideHeaderColors} />
-          )}
-          {data?.image && (
-            <img className="qui-icon-list-captions-image" src={resolveImage(data?.image.id, imageLibrary)} alt="" />
-          )}
-          {_.map(data?.cards, (image, index) => {
-            return (
-              <div key={'textblock' + index}>
-                {state === index &&
-                  <TextBlock {...props} content={image.text} withColor={textBlockColors} />
-                }
-              </div>
-            );
-          })}
-          <div className="qui-fixed-clickable-images-container">
-            <div className="qui-icon-list-captions-track" style={{ backgroundColor: withColor?.iconlistTrackColor }}></div>
-            <Slider ref={sliderRef} {...settings}>
-              {_.map(data?.cards, (image, index) => {
-                return (
-                  <ClickableImage
-                    key={"clickableImage: " + index}
-                    content={{ image: resolveImage(image.image?.id ? image.image?.id : "", imageLibrary) }}
-                    isActive={activeImage === index ? true : false}
-                    isCircular={true}
-                    onClick={() => handleClick(index)}
-                    withColor={{ borderColor: props.withColor?.iconlistTrackColor }} />
-                );
-              })}
-            </Slider>
+    >
+      {data && (
+        <div className="qui-icon-list-captions-card" style={{ ...background }}>
+          <div
+            className={`${quommonClasses.childClasses}`}
+            key={"icon-list-captions-" + props.slideId}
+          >
+            {!data?.image && (data?.title || data?.subtitle) && (
+              <SlideHeader
+                title={data?.title}
+                subtitle={data?.subtitle}
+                withColor={slideHeaderColors}
+              />
+            )}
+            {data?.image && (
+              <img
+                className="qui-icon-list-captions-image"
+                src={resolveImage(data?.image.id, imageLibrary)}
+                alt=""
+              />
+            )}
+            {_.map(data?.cards, (image, index) => {
+              return (
+                <div key={"textblock" + index}>
+                  {state === index && (
+                    <TextBlock
+                      {...props}
+                      content={image.text}
+                      withColor={textBlockColors}
+                    />
+                  )}
+                </div>
+              );
+            })}
+            <div className="qui-fixed-clickable-images-container">
+              <div
+                className="qui-icon-list-captions-track"
+                style={{ backgroundColor: withColor?.iconlistTrackColor }}
+              ></div>
+              <Slider ref={sliderRef} {...settings}>
+                {_.map(data?.cards, (image, index) => {
+                  return (
+                    <ClickableImage
+                      key={"clickableImage: " + index}
+                      content={{
+                        image: resolveImage(
+                          image.image?.id ? image.image?.id : "",
+                          imageLibrary
+                        ),
+                      }}
+                      isActive={activeImage === index ? true : false}
+                      isCircular={true}
+                      onClick={() => handleClick(index)}
+                      withColor={{
+                        borderColor: props.withColor?.iconlistTrackColor,
+                      }}
+                    />
+                  );
+                })}
+              </Slider>
+            </div>
           </div>
         </div>
-      </div>}
+      )}
     </motion.div>
   );
 }

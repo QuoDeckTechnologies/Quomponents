@@ -3,7 +3,6 @@ import React from "react";
 // Import from NPM
 // -------------------------------------
 import { shallow } from "enzyme";
-
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------
@@ -17,7 +16,6 @@ describe("DeckSettingsSection", () => {
   // -------------------------------------
   // Run common tests
   // -------------------------------------
-
   const args = {
     target: DeckSettingsSection,
     required: {

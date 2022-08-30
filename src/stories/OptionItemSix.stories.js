@@ -15,14 +15,23 @@ export default {
   title: "Design System/OptionItem/OptionItemSix",
   component: OptionItemSix,
   argTypes: {
-    content: {},
+    targetName: "target",
+    value: "",
+    placeholder: "This is option A",
+    captionName: "caption",
+    captionValue: "",
+    captionPlaceholder: "Caption For Option A",
+    image: {},
+    maxLength: 300,
     withColor: {
       table: {
         category: "with-Params",
         defaultValue: {
           backgroundColor: "",
-          accentColor: "",
           textColor: "",
+          accentColor: "",
+          hoverBackgroundColor: "",
+          hoverTextColor: "",
         },
       },
     },
@@ -100,20 +109,20 @@ const Template = (args) => {
 };
 export const Default = Template.bind({});
 Default.args = {
-  content: {
-    targetName: "target",
-    value: "",
-    placeholder: "This is option A",
-    captionName: "caption",
-    captionValue: "",
-    captionPlaceholder: "Caption For Option A",
-    image: {},
-    maxLength: 300,
-  },
+  targetName: "target",
+  value: "",
+  placeholder: "This is option A",
+  captionName: "caption",
+  captionValue: "",
+  captionPlaceholder: "Caption For Option A",
+  image: {},
+  maxLength: 300,
   withColor: {
     backgroundColor: "#ffab000d",
-    accentColor: "",
     textColor: "",
+    accentColor: "#FFBF00",
+    hoverBackgroundColor: "",
+    hoverTextColor: "",
   },
   withAnimation: {
     animation: "zoom",
@@ -131,7 +140,29 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<OptionItemSix {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<OptionItemSix  targetName= "target"
+      value= ""
+      placeholder= "This is option A"
+      captionName= "caption"
+      captionValue= ""
+      captionPlaceholder= "Caption For Option A"
+      image= ""
+      maxLength= "300"
+      withColor= {{
+        backgroundColor: "#ffab000d",
+        textColor: "",
+        accentColor: "#FFBF00",
+        hoverBackgroundColor: "",
+        hoverTextColor: "",
+      }}
+      withAnimation= {{
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+      }}
+      isDisabled= {false}
+      isHidden= {false}
+      />`,
     },
   },
 };
@@ -142,42 +173,39 @@ export const ColoredOptionItemSix = Template.bind({});
 ColoredOptionItemSix.args = {
   ...Default.args,
   withColor: {
-    backgroundColor: "#8c9ea3",
-    accentColor: "#597387",
-    textColor: "#bac2c8",
+    backgroundColor: "#ffab000d",
+    textColor: "",
+    accentColor: "#FFBF00",
+    hoverBackgroundColor: "",
+    hoverTextColor: "",
   },
 };
 ColoredOptionItemSix.parameters = {
   docs: {
     source: {
-      code: `<OptionItemSix {...${JSON.stringify(
-        ColoredOptionItemSix.args,
-        null,
-        2
-      )}}/>`,
-    },
-  },
-};
-// -------------------------------------------------------------
-// Animated OptionItem Six
-// -------------------------------------------------------------
-export const AnimatedOptionItemSix = Template.bind({});
-AnimatedOptionItemSix.args = {
-  ...Default.args,
-  withAnimation: {
-    animation: "fade",
-    duration: 0.5,
-    delay: 0,
-  },
-};
-AnimatedOptionItemSix.parameters = {
-  docs: {
-    source: {
-      code: `<OptionItemSix {...${JSON.stringify(
-        AnimatedOptionItemSix.args,
-        null,
-        2
-      )}}/>`,
+      code: `<OptionItemSix  targetName= "target"
+      value= ""
+      placeholder= "This is option A"
+      captionName= "caption"
+      captionValue= ""
+      captionPlaceholder= "Caption For Option A"
+      image= ""
+      maxLength= "300"
+      withColor= {{
+        backgroundColor: "#ffab000d",
+        textColor: "",
+        accentColor: "#FFBF00",
+        hoverBackgroundColor: "",
+        hoverTextColor: "",
+      }}
+      withAnimation= {{
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+      }}
+      isDisabled= {false}
+      isHidden= {false}
+      />`,
     },
   },
 };
@@ -196,11 +224,29 @@ TranslatedOptionItemSix.args = {
 TranslatedOptionItemSix.parameters = {
   docs: {
     source: {
-      code: `<OptionItemSix {...${JSON.stringify(
-        TranslatedOptionItemSix.args,
-        null,
-        2
-      )}}/>`,
+      code: `<OptionItemSix  targetName= "target"
+      value= ""
+      placeholder= "This is option A"
+      captionName= "caption"
+      captionValue= ""
+      captionPlaceholder= "Caption For Option A"
+      image= ""
+      maxLength= "300"
+      withColor= {{
+        backgroundColor: "#ffab000d",
+        textColor: "",
+        accentColor: "#FFBF00",
+        hoverBackgroundColor: "",
+        hoverTextColor: "",
+      }}
+      withAnimation= {{
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+      }}
+      isDisabled= {false}
+      isHidden= {false}
+      />`,
     },
   },
 };
@@ -330,7 +376,14 @@ const MultipleTemplate = (args) => {
           <div style={{ marginBottom: "1em" }} key={index}>
             <OptionItemSix
               {...args}
-              content={{ ...content }}
+              targetName={content.targetName}
+              value={content.value}
+              placeholder={content.placeholder}
+              captionName={content.captionName}
+              captionValue={content.captionValue}
+              captionPlaceholder={content.captionPlaceholder}
+              image={content.image}
+              maxLength={content.maxLength}
               onUpload={(targetName, image) => handleUpload(targetName, image)}
               onInput={(targetName, value) => handleInput(targetName, value)}
               onCaption={(captionName, captionValue) =>
@@ -351,11 +404,148 @@ MultipleOptionItemSix.args = {
 MultipleOptionItemSix.parameters = {
   docs: {
     source: {
-      code: `<OptionItemSix {...${JSON.stringify(
-        MultipleOptionItemSix.args,
-        null,
-        2
-      )}}/>`,
+      code: `const [contentArr, setContentArr] = useState([
+        {
+          targetName: "target A",
+          value: "",
+          placeholder: "This is option A",
+          captionName: "caption A",
+          captionValue: "",
+          captionPlaceholder: "Caption For Option A",
+          image: {},
+          maxLength: 300,
+        },
+        {
+          targetName: "target B",
+          value: "",
+          placeholder: "This is option B",
+          captionName: "caption B",
+          captionValue: "",
+          captionPlaceholder: "Caption For Option B",
+          image: {},
+          maxLength: 300,
+        },
+        {
+          targetName: "target C",
+          value: "",
+          placeholder: "This is option C",
+          captionName: "caption C",
+          captionValue: "",
+          captionPlaceholder: "Caption For Option C",
+          image: {},
+          maxLength: 300,
+        },
+      ]);
+      // -------------------------------------------------------------
+      // Hook to return modified content object
+      // -------------------------------------------------------------
+      useEffect(() => {
+        args.onInput(contentArr);
+      });
+      // -------------------------------------------------------------
+      // Temporary variables for operations
+      // -------------------------------------------------------------
+      let tmp_state = contentArr;
+      let tmp_arr = [];
+      let tmp_obj = {};
+      // -------------------------------------------------------------
+      // Function to remove an object from the array
+      // -------------------------------------------------------------
+      const handleRemove = (dataID) => {
+        tmp_state = contentArr;
+        tmp_arr = [];
+        tmp_state.forEach((dataObj) => {
+          tmp_arr.push({ ...dataObj });
+        });
+        tmp_arr = tmp_state.filter((dataObj) => dataObj.targetName !== dataID);
+        setContentArr([...tmp_arr]);
+      };
+      // -------------------------------------------------------------
+      // Function to insert image object in the multiContent array
+      // -------------------------------------------------------------
+      const handleUpload = (targetName, image) => {
+        tmp_state = contentArr;
+        tmp_arr = [];
+        tmp_obj = {};
+        tmp_state.forEach((dataObj) => {
+          if (dataObj.targetName === targetName) {
+            tmp_obj = { ...dataObj };
+            tmp_obj.image = image;
+            tmp_arr.push(tmp_obj);
+          } else {
+            tmp_obj = { ...dataObj };
+            tmp_arr.push(tmp_obj);
+          }
+        });
+        setContentArr([...tmp_arr]);
+      };
+      // -------------------------------------------------------------
+      // Function to put value in the array
+      // -------------------------------------------------------------
+      const handleInput = (targetName, value) => {
+        tmp_state = contentArr;
+        tmp_arr = [];
+        tmp_obj = {};
+    
+        tmp_state.forEach((dataObj) => {
+          if (dataObj.targetName === targetName) {
+            tmp_obj = { ...dataObj };
+            tmp_obj.value = value;
+            tmp_arr.push(tmp_obj);
+          } else {
+            tmp_obj = { ...dataObj };
+            tmp_arr.push(tmp_obj);
+          }
+        });
+        setContentArr([...tmp_arr]);
+      };
+      // -------------------------------------------------------------
+      // Function to put caption value in the array
+      // -------------------------------------------------------------
+      const handleCaption = (captionName, captionValue) => {
+        tmp_state = contentArr;
+        tmp_arr = [];
+        tmp_obj = {};
+    
+        tmp_state.forEach((dataObj) => {
+          if (dataObj.captionName === captionName) {
+            tmp_obj = { ...dataObj };
+            tmp_obj.captionValue = captionValue;
+            tmp_arr.push(tmp_obj);
+          } else {
+            tmp_obj = { ...dataObj };
+            tmp_arr.push(tmp_obj);
+          }
+        });
+        setContentArr([...tmp_arr]);
+      };
+      return (
+        <div>
+          {contentArr.map((content, index) => {
+            return (
+              <div style={{ marginBottom: "1em" }} key={index}>
+                <OptionItemSix
+                  {...args}
+                  targetName={content.targetName}
+                  value={content.value}
+                  placeholder={content.placeholder}
+                  captionName={content.captionName}
+                  captionValue={content.captionValue}
+                  captionPlaceholder={content.captionPlaceholder}
+                  image={content.image}
+                  maxLength={content.maxLength}
+                  onUpload={(targetName, image) => handleUpload(targetName, image)}
+                  onInput={(targetName, value) => handleInput(targetName, value)}
+                  onCaption={(captionName, captionValue) =>
+                    handleCaption(captionName, captionValue)
+                  }
+                  onClick={handleRemove}
+                />
+              </div>
+            );
+          })}
+        </div>
+      );`,
     },
   },
 };

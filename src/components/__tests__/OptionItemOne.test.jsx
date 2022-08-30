@@ -15,12 +15,11 @@ describe("Option Item One", () => {
   // -------------------------------------
   // Run common tests
   // -------------------------------------
-
   const args = {
     target: OptionItemOne,
     required: {
-      onInput: () => { },
-      onClick: () => { },
+      onInput: () => {},
+      onClick: () => {},
     },
     translations: {
       tgt: "optionItemOne",
@@ -36,14 +35,8 @@ describe("Option Item One", () => {
   };
 
   hasValid("defaults", args);
-
   hasValid("colors", args);
-  hasValid("animations", args);
   hasValid("translations", args);
-
-  hasValid("hidden", args);
-    hasValid("disabled", args);
-
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------
@@ -60,19 +53,26 @@ describe("Option Item One", () => {
           placeholder: "placeholder",
           maxLength: 300,
         }}
-        onInput={() => { }}
-        onClick={() => { }}
+        onInput={() => {}}
+        onClick={() => {}}
       />
     );
   });
 
   it("should render correctly without throwing error when written in input field", () => {
     component.find("InputField").simulate("submit");
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly without throwing error when written in input field and clicked outside", () => {
+    component.find("InputField").simulate("blur");
+    expect(component.exists()).toBe(true);
   });
 
   it("should render correctly without throwing error when clicked on close icon", () => {
     component
       .find(".fa-times")
       .simulate("click", { target: { dataset: { id: "name" } } });
+    expect(component.exists()).toBe(true);
   });
 });

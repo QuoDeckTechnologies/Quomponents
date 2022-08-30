@@ -137,8 +137,8 @@ export default function OpenAnswer(props) {
   //  Translate the text objects in case their is a dictionary provided
   //-------------------------------------------------------------------
   let tObj = getTranslation(props.withTranslation);
-  let inputName = "Input Name"
-  if (tObj && inputName !== "") inputName = tObj.label
+  let inputName = "Input Name";
+  if (tObj && inputName !== "") inputName = tObj.label;
   //-------------------------------------------------------------------
   //  Get animation of the component
   //-------------------------------------------------------------------
@@ -166,10 +166,6 @@ export default function OpenAnswer(props) {
     hoverBackgroundColor: props.withColor?.buttonHoverBackgroundColor,
     hoverTextColor: props.withColor?.buttonHoverTextColor,
   };
-  let SlideHeaderText = {
-    title: props.data?.title,
-    subTitle: props.data?.subtitle,
-  };
   const getBackground = () => {
     return {
       backgroundImage: `url(${resolveImage(
@@ -182,10 +178,10 @@ export default function OpenAnswer(props) {
   const background = data?.backgroundImage
     ? getBackground()
     : {
-      backgroundColor: withColor?.backgroundColor
-        ? withColor?.backgroundColor
-        : "#fff",
-    };
+        backgroundColor: withColor?.backgroundColor
+          ? withColor?.backgroundColor
+          : "#fff",
+      };
 
   const [state, setState] = useState();
   function handleSubmit() {
@@ -206,7 +202,8 @@ export default function OpenAnswer(props) {
           >
             {!data?.image && (data?.title || data?.subtitle) && (
               <SlideHeader
-                content={SlideHeaderText}
+                title={data?.title}
+                subtitle={data?.subtitle}
                 withColor={slideHeaderColors}
               />
             )}

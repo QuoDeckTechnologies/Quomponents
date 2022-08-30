@@ -12,6 +12,13 @@ export default {
         defaultValue: false,
       },
     },
+    asVariant: {
+      control: "select",
+      options: ["primary", "secondary", "success", "warning", "error"],
+      table: {
+        category: "as-Flags",
+      },
+    },
     asPadded: {
       control: "select",
       options: ["fitted", "compact", "normal", "relaxed"],
@@ -51,18 +58,6 @@ export default {
       },
     },
   },
-  decorators: [
-    (story) => (
-      <div
-        style={{
-          width: "100%",
-          textAlign: "center",
-        }}
-      >
-        {story()}
-      </div>
-    ),
-  ],
   parameters: {
     componentSubtitle:
       "Displays a basic AmplayfierDrawerRect for general-purpose use",
@@ -84,6 +79,7 @@ export const Default = Template.bind({});
 Default.args = {
   isCircular: false,
   asFloated: "inline",
+  asVariant: "primary",
   asPadded: "normal",
   withColor: {
     backgroundColor: "",
@@ -98,11 +94,23 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<AmplayfierDrawerRect {...${JSON.stringify(
-        Default.args,
-        null,
-        2
-      )}}/>`,
+      code: `<AmplayfierDrawerRect
+          isCircular={false}
+          asFloated="inline"
+          asVariant="primary"
+          asPadded="normal"
+          withColor={{
+            backgroundColor: "",
+          }}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          isHidden={false}
+        >
+          <div style={{ height: "25em", width: "30em" }}></div>
+        </AmplayfierDrawerRect>`,
     },
   },
 };
@@ -151,9 +159,8 @@ const AmplayfierDrawerWithOtherComponentTemplate = (args) => (
     </div>
   </AmplayfierDrawerRect>
 );
-export const AmplayfierDrawerWithOtherComponent = AmplayfierDrawerWithOtherComponentTemplate.bind(
-  {}
-);
+export const AmplayfierDrawerWithOtherComponent =
+  AmplayfierDrawerWithOtherComponentTemplate.bind({});
 AmplayfierDrawerWithOtherComponent.args = {
   ...Default.args,
   asPadded: "relaxed",
@@ -165,11 +172,25 @@ AmplayfierDrawerWithOtherComponent.parameters = {
       story: "Displays AmplayfierDrawerRect wrapping other component",
     },
     source: {
-      code: `<AmplayfierDrawerRect {...${JSON.stringify(
-        AmplayfierDrawerWithOtherComponent.args,
-        null,
-        2
-      )}}/>`,
+      code: `<AmplayfierDrawerRect
+          isCircular={true}
+          asFloated="inline"
+          asVariant="primary"
+          asPadded="relaxed"
+          withColor={{
+            backgroundColor: "",
+          }}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          isHidden={false}
+        >
+          <div>
+            // childern components
+          </div>
+        </AmplayfierDrawerRect>`,
     },
   },
 };
@@ -187,11 +208,23 @@ FloatedAmplayfierDrawer.parameters = {
       story: "Use to float AmplayfierDrawerRect left, right, inline or none",
     },
     source: {
-      code: `<AmplayfierDrawerRect {...${JSON.stringify(
-        FloatedAmplayfierDrawer.args,
-        null,
-        2
-      )}}/>`,
+      code: `<AmplayfierDrawerRect
+          isCircular={false}
+          asFloated="none"
+          asVariant="primary"
+          asPadded="normal"
+          withColor={{
+            backgroundColor: "",
+          }}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          isHidden={false}
+        >
+          <div style={{ height: "25em", width: "30em" }}></div>
+        </AmplayfierDrawerRect>`,
     },
   },
 };
@@ -209,11 +242,23 @@ ColoredAmplayfierDrawer.parameters = {
       story: "Use to override the standard colors of the component.",
     },
     source: {
-      code: `<AmplayfierDrawerRect {...${JSON.stringify(
-        ColoredAmplayfierDrawer.args,
-        null,
-        2
-      )}}/>`,
+      code: `<AmplayfierDrawerRect
+          isCircular={false}
+          asFloated="inline"
+          asVariant="primary"
+          asPadded="normal"
+          withColor={{
+            backgroundColor: "#f8af09",
+          }}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          isHidden={false}
+        >
+          <div style={{ height: "25em", width: "30em" }}></div>
+        </AmplayfierDrawerRect>`,
     },
   },
 };
@@ -235,11 +280,23 @@ AnimatedAmplayfierDrawer.parameters = {
       story: "We can animate the appearance of AmplayfierDateBlock",
     },
     source: {
-      code: `<AmplayfierDrawerRect {...${JSON.stringify(
-        AnimatedAmplayfierDrawer.args,
-        null,
-        2
-      )}}/>`,
+      code: `<AmplayfierDrawerRect
+          isCircular={false}
+          asFloated="inline"
+          asVariant="primary"
+          asPadded="normal"
+          withColor={{
+            backgroundColor: "",
+          }}
+          withAnimation={{
+            animation: "fade",
+            duration: 0.5,
+            delay: 0,
+          }}
+          isHidden={false}
+        >
+          <div style={{ height: "25em", width: "30em" }}></div>
+        </AmplayfierDrawerRect>`,
     },
   },
 };

@@ -83,9 +83,7 @@ describe("CarouselList", () => {
         withAnimation={null}
         isHidden={false}
         isDisabled={false}
-        onClick={(e) => {
-          console.log(e);
-        }}
+        onClick={() => {}}
       />
     );
   });

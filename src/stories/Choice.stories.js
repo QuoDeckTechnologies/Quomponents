@@ -3,25 +3,28 @@ import Choice from "../components/Buttons/Choice/Choice.react";
 
 const dictionary = JSON.stringify({
   hi: {
-    options: [{
+    options: {
       text1: "वस्तु 1",
-    }, {
       text2: "वस्तु 2",
-    }]
-  }
+    },
+    loading: "लोड हो रहा है...",
+  },
 });
 export default {
   title: "Design System/Buttons/Choice",
   component: Choice,
   argTypes: {
-    options: [{
-      correct: "checked",
-      text: "Item 1",
-    }, {
-      correct: "",
-      text: "Item 2",
-    }],
-    isChoice: {
+    options: [
+      {
+        correct: "checked",
+        text: "Item 1",
+      },
+      {
+        correct: "",
+        text: "Item 2",
+      },
+    ],
+    textSeparator: {
       table: {
         category: "is-Toggles",
         defaultValue: true,
@@ -34,9 +37,23 @@ export default {
         category: "as-Flags",
       },
     },
+    asVariant: {
+      control: "select",
+      options: ["primary", "secondary", "success", "warning", "error"],
+      table: {
+        category: "as-Flags",
+      },
+    },
     asSize: {
       control: "select",
       options: ["tiny", "small", "normal", "big", "huge", "massive"],
+      table: {
+        category: "as-Flags",
+      },
+    },
+    asPadded: {
+      control: "select",
+      options: ["fitted", "compact", "normal", "relaxed"],
       table: {
         category: "as-Flags",
       },
@@ -48,15 +65,33 @@ export default {
         category: "as-Flags",
       },
     },
+    asAligned: {
+      control: "select",
+      options: ["left", "right", "center"],
+      table: {
+        category: "as-Flags",
+      },
+    },
+    withLabel: {
+      table: {
+        category: "with-Params",
+        defaultValue: {
+          format: "label",
+          contentOne: "",
+          contentTwo: "",
+          textColor: "",
+        },
+      },
+    },
     withColor: {
       table: {
         category: "with-Params",
         defaultValue: {
-          primaryBackgroundColor: "",
-          secondaryBackgroundColor: "",
+          backgroundColor: "",
+          textColor: "",
           accentColor: "",
-          primaryTextColor: "",
-          secondaryTextColor: ""
+          hoverBackgroundColor: "",
+          hoverTextColor: "",
         },
       },
     },
@@ -86,7 +121,19 @@ export default {
         defaultValue: false,
       },
     },
+    isFluid: {
+      table: {
+        category: "is-Toggles",
+        defaultValue: false,
+      },
+    },
     isDisabled: {
+      table: {
+        category: "is-Toggles",
+        defaultValue: false,
+      },
+    },
+    isLoading: {
       table: {
         category: "is-Toggles",
         defaultValue: false,
@@ -104,7 +151,6 @@ export default {
       <div
         style={{
           width: "100%",
-          textAlign: "center",
         }}
       >
         {story()}
@@ -123,22 +169,35 @@ export default {
 const Template = (args) => <Choice {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-  options: [{
-    correct: "checked",
-    text: "Item 1",
-  }, {
-    correct: "",
-    text: "Item 2",
-  }],
+  options: [
+    {
+      correct: "checked",
+      text: "Item 1",
+    },
+    {
+      correct: "",
+      text: "Item 2",
+    },
+  ],
+  textSeparator: true,
+  asVariant: "primary",
   asEmphasis: "contained",
   asSize: "normal",
   asFloated: "inline",
+  asPadded: "normal",
+  asAligned: "center",
+  withLabel: {
+    format: "caption",
+    contentOne: "Do not press this button repeatedly...",
+    contentTwo: "Do not press this button repeatedly...",
+    textColor: "#000000",
+  },
   withColor: {
-    primaryBackgroundColor: "",
-    secondaryBackgroundColor: "",
-    accentColor: "",
-    primaryTextColor: "",
-    secondaryTextColor: ""
+    backgroundColor: "#FFBF00",
+    textColor: "#ffffff",
+    accentColor: "#333333",
+    hoverBackgroundColor: "",
+    hoverTextColor: "",
   },
   withAnimation: {
     animation: "zoom",
@@ -151,25 +210,63 @@ Default.args = {
     dictionary: dictionary,
   },
   isDisabled: false,
-  isChoice: true,
+  isFluid: false,
   isHidden: false,
+  isLoading: false,
 };
 Default.parameters = {
   docs: {
     description: {
-      story: "Default component shows features like selected ,not selected , animation in the component",
+      story:
+        "Default component shows features like selected ,not selected , animation in the component",
     },
     source: {
-      code: `<Choice {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<Choice 
+      options= [{
+        correct: "checked",
+        text: "Item 1",
+      }, {
+        correct: "",
+        text: "Item 2",
+      }]
+      textSeparator= {true}
+      asVariant: "primary",
+      asEmphasis= "contained"
+      asSize= "normal"
+      asFloated= "inline"
+      asAligned:"center",
+      asPadded= "normal"
+      withColor= {{
+        backgroundColor= "#FFBF00",
+        textColor= "#ffffff",
+        accentColor= "#333333",
+        hoverBackgroundColor= "",
+        hoverTextColor= "",
+      }}
+      withAnimation= {{
+        animation= "zoom",
+        duration= 0.5,
+        delay= 0,
+      }}
+      withTranslation= {{
+        lang= "en",
+        tgt= "options",
+        dictionary= dictionary,
+      }}
+      isDisabled= {false}
+      isFluid= {false}
+      isHidden= {false}
+      isLoading= {false}/>`,
     },
   },
 };
 // -------------------------------------------------------------
-// Translated Button
+// Translated Choice
 // -------------------------------------------------------------
 export const TranslatedChoice = Template.bind({});
 TranslatedChoice.args = {
   ...Default.args,
+  textSeparator: true,
   withTranslation: {
     lang: "hi",
     tgt: "options",
@@ -180,10 +277,98 @@ TranslatedChoice.parameters = {
   docs: {
     description: {
       story:
-        "Use to change the language that the text appears in. To make this work for the Choice Button, add a Choice:{Choice1,Choice2} value to the dictionary.",
+        "Use to change the language that the text appears in. To make this work for the Choice Button, add a Choice:{text1,text2} value to the dictionary.",
     },
     source: {
-      code: `<Choice {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<Choice 
+      options= [{
+        correct: "checked",
+        text: "Item 1",
+      }, {
+        correct: "",
+        text: "Item 2",
+      }]
+      textSeparator= {true}
+      asVariant: "primary",
+      asEmphasis= "contained"
+      asSize= "normal"
+      asFloated= "inline"
+      asAligned:"center",
+      asPadded= "normal"
+      withColor= {{
+        backgroundColor= "#FFBF00",
+        textColor= "#ffffff",
+        accentColor= "#333333",
+        hoverBackgroundColor= "",
+        hoverTextColor= "",
+      }}
+      withAnimation= {{
+        animation= "zoom",
+        duration= 0.5,
+        delay= 0,
+      }}
+      withTranslation= {{
+        lang= "hi",
+        tgt= "options",
+        dictionary= dictionary,
+      }}
+      isDisabled= {false}
+      isFluid= {false}
+      isHidden= {false}
+      isLoading= {false}/>`,
+    },
+  },
+};
+// -------------------------------------------------------------
+// Without Text Separator
+// -------------------------------------------------------------
+export const withoutTextSeparator = Template.bind({});
+withoutTextSeparator.args = {
+  ...Default.args,
+  textSeparator: false,
+};
+withoutTextSeparator.parameters = {
+  docs: {
+    description: {
+      story: "can remove the textSeparator from the component",
+    },
+    source: {
+      code: `<Choice 
+      options= [{
+        correct: "checked",
+        text: "Item 1",
+      }, {
+        correct: "",
+        text: "Item 2",
+      }]
+      textSeparator= {false}
+      asVariant: "primary",
+      asEmphasis= "contained"
+      asSize= "normal"
+      asFloated= "inline"
+      asAligned:"center",
+      asPadded= "normal"
+      withColor= {{
+        backgroundColor= "#FFBF00",
+        textColor= "#ffffff",
+        accentColor= "#333333",
+        hoverBackgroundColor= "",
+        hoverTextColor= "",
+      }}
+      withAnimation= {{
+        animation= "zoom",
+        duration= 0.5,
+        delay= 0,
+      }}
+      withTranslation= {{
+        lang= "en",
+        tgt= "options",
+        dictionary= dictionary,
+      }}
+      isDisabled= {false}
+      isFluid= {false}
+      isHidden= {false}
+      isLoading= {false}/>`,
     },
   },
 };

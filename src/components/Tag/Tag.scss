@@ -2,16 +2,17 @@
 /* Tag Definitions */
 /* ================================================= */
 .qui .qui-tag-block {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 0.6em;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.6em;
 }
 .qui .qui-tag-label {
-    padding: 0.2em 0.2em;
-    max-width: 37ch;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis; 
-    text-align: left;
+  padding: 0.2em 0.2em;
+  max-width: 37ch;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
 }

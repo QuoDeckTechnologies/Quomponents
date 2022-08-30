@@ -1,7 +1,7 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow } from 'enzyme';
+import { shallow } from "enzyme";
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------
@@ -9,178 +9,141 @@ import { hasValid } from "./common";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import MobileToolbar from '../MobileToolbar/MobileToolbar.react'
-import ArcMenu from "../ArcMenu/ArcMenu.react"
-import IconLink from '../Buttons/IconLink/IconLink.react'
+import MobileToolbar from "../MobileToolbar/MobileToolbar.react";
+import IconLink from "../Buttons/IconLink/IconLink.react";
 
 describe("MobileToolbar", () => {
-
-    // -------------------------------------
-    // Run common tests
-    // -------------------------------------
-
-    const args = {
-        target: MobileToolbar,
-        required: {
+  // -------------------------------------
+  // Run common tests
+  // -------------------------------------
+  const args = {
+    target: MobileToolbar,
+    required: {
+      content: [],
+      onClick: () => {},
+    },
+    translations: {
+      tgt: "mobileToolbar",
+      lang: { valid: "hi", invalid: "xx" },
+      dictionary: JSON.stringify({
+        hi: {
+          mobileToolbar: {
+            title: "संपादन मोड",
             content: [
-                {
-                    icon: "fa fa-share",
-                    label: "Certificate",
-                    format: "caption",
-                    link: "https://quodeck.com/",
-                },
-                {
-                    icon: "fa fa-wallet",
-                    label: "Wallet",
-                    format: "caption",
-                    link: "https://www.google.com/",
-                },
-                {
-                    icon: "fa fa-gift",
-                    label: "Rewards",
-                    format: "caption",
-                    link: "https://github.com/",
-                },
-                {
-                    icon: "fa fa-chart-pie",
-                    label: "Reports",
-                    format: "caption",
-                    link: "https://www.youtube.com/",
-                },
+              { label: "पाठ्यक्रम" },
+              { label: "नगेट्स" },
+              { label: "परीक्षण" },
+              { label: "प्रतियोगिता" },
+              { label: "संदेश" },
             ],
-            onClick: () => { }
+          },
         },
-        translations: {
-            tgt: "mobileToolbar",
-            lang: { valid: "hi", invalid: "xx" },
-            dictionary: JSON.stringify({
-                hi: {
-                    mobileToolbar: {
-                        title: "संपादन मोड",
-                        content: [
-                            { label: "पाठ्यक्रम" },
-                            { label: "नगेट्स" },
-                            { label: "परीक्षण" },
-                            { label: "प्रतियोगिता" },
-                            { label: "संदेश" },
-                        ]
-                    },
-                },
-            })
-        },
+      }),
+    },
+  };
+
+  hasValid("defaults", args);
+
+  hasValid("variants", args);
+
+  hasValid("colors", args);
+  hasValid("animations", args);
+  hasValid("translations", args);
+
+  hasValid("hidden", args);
+  hasValid("disabled", args);
+  const dictionary = JSON.stringify({
+    hi: {
+      mobileToolbar: {
+        title: "संपादन मोड",
+        content: [
+          { label: "पाठ्यक्रम" },
+          { label: "नगेट्स" },
+          { label: "परीक्षण" },
+          { label: "प्रतियोगिता" },
+          { label: "संदेश" },
+        ],
+      },
+    },
+  });
+  let component;
+  let handleSelect = jest.fn();
+  beforeEach(() => {
+    jest.resetAllMocks();
+    component = shallow(
+      <MobileToolbar
+        title="Edit"
+        content={[
+          {
+            link: "https://quodeck.com/",
+            icon: "fa fa-share",
+            label: "Certificate",
+            format: "label",
+            isActive: false,
+          },
+        ]}
+        asEmphasis="default"
+        asVariant="primary"
+        withColor={null}
+        withAnimation={null}
+        withTranslation={null}
+        isDisabled={false}
+        isHidden={false}
+        onClick={() => {
+          handleSelect;
+        }}
+      />
+    );
+  });
+
+  it("should render correctly when click ArcMenu", () => {
+    component = shallow(
+      <MobileToolbar title="Edit" asEmphasis="editing" onClick={() => {}} />
+    );
+    component.find("ArcMenu").simulate("click");
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when call handleSelect when click", () => {
+    component = shallow(
+      <MobileToolbar
+        content={[
+          {
+            link: "https://quodeck.com/",
+            icon: "fa fa-share",
+            label: "Certificate",
+            format: "label",
+            isActive: false,
+          },
+        ]}
+        asEmphasis="default"
+        onClick={() => {
+          handleSelect;
+        }}
+      />
+    );
+    component.find(IconLink).at(0).props().onClick({
+      link: "https://quodeck.com/",
+      icon: "fa fa-share",
+      label: "Certificate",
+      format: "label",
+      isActive: true,
+    });
+    component.find(IconLink).simulate("click");
+    expect(component.exists()).toBe(true);
+  });
+  it("should render correctly when pass withtranslation props ", () => {
+    let iconLabel = {
+      label: "Certificate",
     };
-
-    hasValid("defaults", args);
-
-    hasValid("variants", args);
-
-    hasValid("colors", args);
-    hasValid("animations", args);
-    hasValid("translations", args);
-
-    hasValid("hidden", args);
-    hasValid("disabled", args);
-    let component;
-
-    let setState = jest.fn();
-    beforeEach(() => {
-        jest.resetAllMocks();
-        component = shallow(
-            <MobileToolbar
-                lable={"Edit"}
-                content={[
-                    {
-                        icon: "fa fa-share",
-                        label: "Certificate",
-                        format: "caption",
-                        link: "https://quodeck.com/",
-                    },
-                    {
-                        icon: "fa fa-wallet",
-                        label: "Wallet",
-                        format: "caption",
-                        link: "https://www.google.com/",
-                    },
-                    {
-                        icon: "fa fa-gift",
-                        label: "Rewards",
-                        format: "caption",
-                        link: "https://github.com/",
-                    },
-                    {
-                        icon: "fa fa-chart-pie",
-                        label: "Reports",
-                        format: "caption",
-                        link: "https://www.youtube.com/",
-                    },
-                ]}
-                asEmphasis="editing"
-                asVariant="primary"
-                withColor={null}
-                withAnimation={null}
-                withTranslation={null}
-                isDisabled={false}
-                isHidden={false}
-                isCircular={true}
-                onClick={() => { }} />
-        );
+    component.setProps({
+      withLabel: { content: iconLabel, format: "label" },
+      withTranslation: {
+        lang: "hi",
+        tgt: "mobileToolbar",
+        dictionary: dictionary,
+      },
     });
-
-    it("MobileToolbar", () => {
-        component = shallow(<MobileToolbar onClick={() => { }} />);
-    });
-
-    it("should call setState when click", () => {
-        component = shallow(<MobileToolbar
-            content={[
-                {
-                    icon: "fa fa-share",
-                    label: "Certificate",
-                    format: "caption",
-                    link: "https://quodeck.com/",
-                },
-            ]}
-            onClick={setState} />);
-        component.find(IconLink).at(0).simulate("click");
-    });
-
-    it("should render correctly when passed asEmphasis prop as default ", () => {
-        let colors = {
-            backgroundColor: "#fff",
-            accentColor: "#FF0000",
-            textColor: "#00FFFF",
-            hoverBackgroundColor: "#0000FF",
-            hoverTextColor: "	#00008B",
-        }
-        component.setProps({ asEmphasis: "default" })
-        component.setProps({ withColor: colors })
-        expect(component.exists()).toBe(true);
-    })
-
-    it("should render correctly when passed asEmphasis prop as editing", () => {
-        component.setProps({
-            asEmphasis: "editing"
-        });
-        component.update();
-        expect(component.find(ArcMenu).exists()).toBe(true);
-    });
-
-    it("should render correctly when passed asVariant prop as success", () => {
-        component.setProps({ asVariant: "success" })
-        expect(component.exists()).toBe(true);
-    })
-
-    it("should render correctly when passed withColor props", () => {
-        let colors = {
-            backgroundColor: "#fff",
-            accentColor: "#FF0000",
-            textColor: "#00FFFF",
-            hoverBackgroundColor: "#0000FF",
-            hoverTextColor: "	#00008B",
-        }
-        component.setProps({ withColor: colors })
-        expect(component.exists()).toBe(true);
-    })
+    expect(component.exists()).toBe(true);
+  });
 });
-
-

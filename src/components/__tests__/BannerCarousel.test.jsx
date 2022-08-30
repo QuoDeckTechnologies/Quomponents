@@ -32,7 +32,7 @@ describe('BannerCarousel', () => {
         component = shallow(
             <BannerCarousel
                 content={content}
-                onClick={() => console.log("Tesing Carousel")}
+                onClick={() => { }}
             />
         );
     });

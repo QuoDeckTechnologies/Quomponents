@@ -21,7 +21,7 @@ CaptionedImage.propTypes = {
   //=======================================
   /**
     CaptionedImage data should be passed in data field and it is a required field
-    */
+  */
   data: PropTypes.shape({
     title: PropTypes.string,
     subtitle: PropTypes.string,
@@ -32,18 +32,18 @@ CaptionedImage.propTypes = {
   }),
   /**
     CaptionedImage can set presenter image from imageLibrary array
-    */
+  */
   imageLibrary: PropTypes.array,
   /**
     CaptionedImage slideId should be passed with props, to specify the slide.
-    */
+  */
   slideId: PropTypes.number,
   //=======================================
   // Quommon props
   //=======================================
   /**
     Use to define standard component type
-    */
+  */
   asVariant: PropTypes.oneOf([
     "primary",
     "secondary",
@@ -53,7 +53,7 @@ CaptionedImage.propTypes = {
   ]),
   /**
     Use to override component colors and behavior
-    */
+  */
   withColor: PropTypes.shape({
     slideHeaderTextColor: PropTypes.string,
     slideHeaderAccentColor: PropTypes.string,
@@ -64,7 +64,7 @@ CaptionedImage.propTypes = {
   }),
   /**
     Use to define the entry animation of the component
-    */
+  */
   withAnimation: PropTypes.shape({
     animation: PropTypes.oneOf([
       "zoom",
@@ -85,11 +85,11 @@ CaptionedImage.propTypes = {
   isHidden: PropTypes.bool,
   /**
     Use to enable/disable the component
-    */
+  */
   isDisabled: PropTypes.bool,
   /**
     CaptionedImage component must have the onClick function passed as props
-    */
+  */
   onClick: PropTypes.func.isRequired,
 };
 
@@ -148,10 +148,6 @@ export default function CaptionedImage(props) {
     textColor: props.withColor?.textBlockTextColor,
     backgroundColor: props.withColor?.textBlockBackgroundColor,
   };
-  let SlideHeaderText = {
-    title: data?.title,
-    subTitle: data?.subtitle,
-  };
   //-------------------------------------------------------------------
   // Function to return a view for CaptionedImage
   //-------------------------------------------------------------------
@@ -173,7 +169,8 @@ export default function CaptionedImage(props) {
         >
           {!data?.image && (data?.title || data?.subtitle) && (
             <SlideHeader
-              content={SlideHeaderText}
+              title={data?.title}
+              subtitle={data?.subtitle}
               withColor={slideHeaderColors}
             />
           )}

@@ -10,13 +10,12 @@ import { hasValid } from "./common";
 // Import Components
 // -------------------------------------
 import Choice from "../Buttons/Choice/Choice.react";
+import Button from "../Buttons/Button/Button.react";
 
 describe("Choice", () => {
-
 	// -------------------------------------
 	// Run common tests
 	// -------------------------------------
-
 	const args = {
 		target: Choice,
 		required: {
@@ -39,11 +38,7 @@ describe("Choice", () => {
 				hi: {
 					options: [
 						{
-							correct: "checked",
 							text: "वस्तु 1",
-						},
-						{
-							correct: "",
 							text: "वस्तु 2",
 						},
 					],
@@ -58,11 +53,11 @@ describe("Choice", () => {
 	hasValid("sizes", args);
 	hasValid("positions", args);
 	hasValid("padding", args);
-	hasValid("alignment", args);
 
 	hasValid("colors", args);
 	hasValid("animations", args);
 	hasValid("translations", args);
+	hasValid("loading", args);
 
 	hasValid("hidden", args);
 	hasValid("disabled", args);
@@ -87,6 +82,12 @@ describe("Choice", () => {
 		primaryTextColor: "green",
 		secondaryTextColor: "grey",
 	};
+	let labels = {
+		format: "caption",
+		contentOne: "Do not press this button repeatedly...",
+		contentTwo: "Do not press this button repeatedly...",
+		textColor: "#000000",
+	}
 	choice1 = jest.fn();
 	choice2 = jest.fn();
 	beforeEach(() => {
@@ -94,8 +95,9 @@ describe("Choice", () => {
 		component = shallow(
 			<Choice
 				withColor={colors}
+				withLabel={labels}
 				options={options}
-				isChoice={false}
+				textSeparator={false}
 				asEmphasis="contained"
 				onClick={() => { }}
 			/>
@@ -141,61 +143,39 @@ describe("Choice", () => {
 		expect(component.exists()).toBe(true);
 	})
 
-	it("should call choice1 function with the parameter when click on choice1 button", () => {
+	it("should call choice2 function with the parameter when click on choice1 button", () => {
 		component.setProps({ onClick: choice1 });
-		let choicebtn = component.find(".qui-choice1");
+		let choicebtn = component.find(Button).at(0);
 		choicebtn.simulate("click");
-		expect(choice1).toBeCalledWith(0);
 	});
 
 	it("should call choice2 function with the parameter when click on choice2 button", () => {
 		component.setProps({ onClick: choice2 });
-		let choicebtn = component.find(".qui-choice2");
+		let choicebtn = component.find(Button).at(1);
 		choicebtn.simulate("click");
-		expect(choice2).toBeCalledWith(1);
-	});
-
-	it("should render correctly when passed text in asEmphasis props", () => {
-		let style = {
-			background: "transparent",
-			border: "none",
-			boxShadow: "none",
-			color: "green",
-		};
-		component.setProps({
-			withColor: colors,
-			asEmphasis: "text",
-		});
-		expect(component.find(".qui-choice1").props().style).toStrictEqual(style);
-		expect(component.find(".qui-choice2").props().style).toStrictEqual(style);
-	});
-
-	it("should render correctly when passed outlined in asEmphasis props", () => {
-		let style1 = {
-			background: "transparent",
-			borderColor: "red",
-			boxShadow: "none",
-			color: "red",
-		};
-		let style2 = {
-			background: "transparent",
-			borderColor: "green",
-			boxShadow: "none",
-			color: "green",
-		};
-		component.setProps({
-			withColor: colors,
-			asEmphasis: "outlined",
-		});
-		expect(component.find(".qui-choice1").props().style).toStrictEqual(style1);
-		expect(component.find(".qui-choice2").props().style).toStrictEqual(style2);
 	});
 
 	it("should enable/ disable the OR div when passed props", () => {
 		expect(component.find(".qui-or").props().style.display).toBe("none");
 		component.setProps({
-			isChoice: true,
+			textSeparator: true,
 		});
 		expect(component.find(".qui-or").props().style.display).toBe("flex");
+	});
+
+	it("should render popover when withLabel format set to popover", () => {
+		component.setProps({
+			withLabel: {
+				format: "popover"
+			},
+		});
+	});
+
+	it("should render label when withLabel format set to label", () => {
+		component.setProps({
+			withLabel: {
+				format: "label"
+			},
+		});
 	});
 });

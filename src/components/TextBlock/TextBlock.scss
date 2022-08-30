@@ -1,12 +1,25 @@
 .qui.qui-text-block {
   margin-bottom: 0.5em;
+  .qui-text-block-p {
+    &.pad-fitted {
+      padding: 0;
+    }
+    &.pad-normal {
+      padding: 0;
+    }
+    &.pad-compact {
+      padding: 0;
+    }
+    &.pad-relaxed {
+      padding: 0;
+    }
+  }
 }
 .qui .qui-text-block-area {
   width: 70vw;
   margin: 0 1em 0 1em;
   min-height: 2em;
   position: relative;
-  background-color: #ad292980;
   border-radius: 0.5em;
   font-weight: bold;
   display: flex;
@@ -42,36 +55,35 @@
   height: 0;
 }
 .qui .qui-arrow-right-bottom {
-  right: 0.1em;
+  right: -0.5em;
   bottom: 0.5em;
-  border-top: 0.6em solid transparent;
-  border-bottom: 0.6em solid transparent;
-  border-left: 0.9em solid #ad292980;
+  clip-path: polygon(0 0, 50% 50%, 0 100%);
+  width: 1.5em;
+  height: 1em;
 }
 .qui .qui-arrow-left-bottom {
-  left: 0.1em;
+  left: 0.2em;
   bottom: 0.5em;
-  border-top: 0.6em solid transparent;
-  border-bottom: 0.6em solid transparent;
-  border-right: 0.9em solid #ad292980;
+  clip-path: polygon(100% 0, 100% 100%, 0% 50%);
+  width: 0.8em;
+  height: 1em;
 }
 .qui .qui-arrow-left-top {
-  left: 0.1em;
+  left: 0.2em;
   top: 0.5em;
-  border-top: 0.6em solid transparent;
-  border-bottom: 0.6em solid transparent;
-  border-right: 0.9em solid #ad292980;
+  clip-path: polygon(100% 0, 100% 100%, 0% 50%);
+  width: 0.8em;
+  height: 1em;
 }
 .qui .qui-arrow-right-top {
-  right: 0.1em;
+  right: -0.5em;
   top: 0.5em;
-  border-top: 0.6em solid transparent;
-  border-bottom: 0.6em solid transparent;
-  border-left: 0.9em solid #ad292980;
+  clip-path: polygon(0 0, 50% 50%, 0 100%);
+  width: 1.5em;
+  height: 1em;
 }
 @media only screen and (min-width: 320px) {
   .qui .qui-text-block-area {
     width: 70vw;
-    padding: 0.5em;
   }
 }

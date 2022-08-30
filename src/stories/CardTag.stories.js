@@ -3,7 +3,7 @@ import CardTag from "../components/CardTag/CardTag.react";
 
 const dictionary = JSON.stringify({
   hi: {
-    cardTag: { content: "विषय", loading: "लोड हो रहा है...", },
+    cardTag: { content: "विषय", loading: "लोड हो रहा है..." },
   },
 });
 
@@ -55,8 +55,8 @@ export default {
         defaultValue: {
           backgroundColor: "",
           textColor: "",
-          activeBackgroundColor: "",
-          activeTextColor: "",
+          hoverBackgroundColor: "",
+          hoverTextColor: "",
         },
       },
     },
@@ -115,17 +115,7 @@ export default {
       },
     },
   },
-  decorators: [
-    (story) => (
-      <div
-        style={{
-          textAlign: "center",
-        }}
-      >
-        {story()}
-      </div>
-    ),
-  ],
+  decorators: [(story) => <div style={{}}>{story()}</div>],
   parameters: {
     componentSubtitle: "Default CardTag for general purpose use",
     a11y: { disable: true },
@@ -150,8 +140,8 @@ Default.args = {
   withColor: {
     backgroundColor: "#AAAAAA",
     textColor: "#FFF",
-    activeBackgroundColor: "#666666",
-    activeTextColor: "#FFAB00",
+    hoverBackgroundColor: "#666666",
+    hoverTextColor: "#FFAB00",
   },
   withAnimation: {
     animation: "collapse",
@@ -170,7 +160,35 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<CardTag {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: ` <CardTag
+      content="Content"
+      isActive={true}
+      isLeft={true}
+      asVariant="warning"
+      asSize="normal"
+      asFloated="inline"
+      asPadded="normal"
+      asAligned="center"
+      withIcon={{ icon: "fas fa-bullseye", size: "1em", position: "left" }}
+      withColor={{
+          backgroundColor: "#AAAAAA",
+          textColor: "#FFF",
+          hoverBackgroundColor: "#666666",
+          hoverTextColor: "#FFAB00",
+      }}
+      withAnimation={{
+          animation: "collapse",
+          duration: 0.5,
+          delay: 0,
+      }}
+      withTranslation={{
+          lang: "en",
+          tgt: "cardTag",
+          dictionary:dictionary,
+      }}
+      isLoading={false}
+      isHidden={false}
+      isDisabled={false} />`,
     },
   },
 };
@@ -183,8 +201,8 @@ ColoredCardTag.args = {
   withColor: {
     backgroundColor: "#AAAAAA",
     textColor: "#FFF",
-    activeBackgroundColor: "#88ee88",
-    activeTextColor: "#37285f",
+    hoverBackgroundColor: "#88ee88",
+    hoverTextColor: "#37285f",
   },
 };
 ColoredCardTag.parameters = {
@@ -193,11 +211,35 @@ ColoredCardTag.parameters = {
       story: "Use to override the standard colors of the CardTag.",
     },
     source: {
-      code: `<ColoredCardTag {...${JSON.stringify(
-        ColoredCardTag.args,
-        null,
-        2
-      )}}/>`,
+      code: `<CardTag
+      content="Content"
+      isActive={true}
+      isLeft={true}
+      asVariant="warning"
+      asSize="normal"
+      asFloated="inline"
+      asPadded="normal"
+      asAligned="center"
+      withIcon={{ icon: "fas fa-bullseye", size: "1em", position: "left" }}
+      withColor= {{
+        backgroundColor: "#AAAAAA",
+        textColor: "#FFF",
+        hoverBackgroundColor: "#88ee88",
+        hoverTextColor: "#37285f",
+      }},
+      withAnimation={{
+          animation: "collapse",
+          duration: 0.5,
+          delay: 0,
+      }}
+      withTranslation={{
+          lang: "en",
+          tgt: "cardTag",
+          dictionary:dictionary,
+      }}
+      isLoading={false}
+      isHidden={false}
+      isDisabled={false} />`,
     },
   },
 };
@@ -210,8 +252,8 @@ TranslatedCardTag.args = {
   withColor: {
     backgroundColor: "#AAAAAA",
     textColor: "#FFF",
-    activeBackgroundColor: "#88ee88",
-    activeTextColor: "#37285f",
+    hoverBackgroundColor: "#88ee88",
+    hoverTextColor: "#37285f",
   },
   withTranslation: {
     lang: "hi",
@@ -225,11 +267,35 @@ TranslatedCardTag.parameters = {
       story: "Use to override the standard colors of the CardTag.",
     },
     source: {
-      code: `<ColoredCardTag {...${JSON.stringify(
-        TranslatedCardTag.args,
-        null,
-        2
-      )}}/>`,
+      code: `<CardTag
+      content="Content"
+      isActive={true}
+      isLeft={true}
+      asVariant="warning"
+      asSize="normal"
+      asFloated="inline"
+      asPadded="normal"
+      asAligned="center"
+      withIcon={{ icon: "fas fa-bullseye", size: "1em", position: "left" }}
+      withColor= {{
+          backgroundColor: "#AAAAAA",
+          textColor: "#FFF",
+          hoverBackgroundColor: "#88ee88",
+          hoverTextColor: "#37285f",
+      }},
+      withTranslation= {{
+          lang: "hi",
+          tgt: "cardTag",
+          dictionary: dictionary,
+      }},
+      withAnimation={{
+          animation: "collapse",
+          duration: 0.5,
+          delay: 0,
+      }}
+      isLoading={false}
+      isHidden={false}
+      isDisabled={false} />`,
     },
   },
 };
@@ -249,7 +315,30 @@ LoadingCardTag.parameters = {
         "Use to indicate a loading state for the cardTag when it stops being clickable. The loading text can be customized with the withTranslation option through a common loading:'' value in the dictionary.",
     },
     source: {
-      code: `<CardTag isLoading={true}/>`,
+      code: `<CardTag
+      content="Content"
+      isActive={true}
+      isLeft={true}
+      asVariant="warning"
+      asSize="normal"
+      asFloated="inline"
+      asPadded="normal"
+      asAligned="center"
+      withIcon={{ icon: "fas fa-bullseye", size: "1em", position: "left" }}
+      withColor= {{
+          backgroundColor: "#AAAAAA",
+          textColor: "#FFF",
+          hoverBackgroundColor: "#88ee88",
+          hoverTextColor: "#37285f",
+      }},
+      withAnimation={{
+          animation: "collapse",
+          duration: 0.5,
+          delay: 0,
+      }}
+      isLoading={true}
+      isHidden={false}
+      isDisabled={false} />`,
     },
   },
 };
@@ -274,7 +363,35 @@ TranslatedLoadingCardTag.parameters = {
         "Use to indicate a loading state for the cardTag when it stops being clickable. The loading text can be customized with the withTranslation option through a common loading:'' value in the dictionary.",
     },
     source: {
-      code: `<CardTag isLoading={true}/>`,
+      code: `<CardTag
+      content="Content"
+      isActive={true}
+      isLeft={true}
+      asVariant="warning"
+      asSize="normal"
+      asFloated="inline"
+      asPadded="normal"
+      asAligned="center"
+      withIcon={{ icon: "fas fa-bullseye", size: "1em", position: "left" }}
+      withColor= {{
+          backgroundColor: "#AAAAAA",
+          textColor: "#FFF",
+          hoverBackgroundColor: "#88ee88",
+          hoverTextColor: "#37285f",
+      }},
+      withTranslation= {{
+          lang: "hi",
+          tgt: "cardTag",
+          dictionary: dictionary,
+      }},
+      withAnimation={{
+          animation: "collapse",
+          duration: 0.5,
+          delay: 0,
+      }}
+      isLoading={true}
+      isHidden={false}
+      isDisabled={false} />`,
     },
   },
 };

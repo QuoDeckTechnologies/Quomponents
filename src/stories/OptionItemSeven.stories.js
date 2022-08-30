@@ -16,7 +16,12 @@ export default {
   title: "Design System/OptionItem/OptionItemSeven",
   component: OptionItemSeven,
   argTypes: {
-    content: {},
+    targetName: "name",
+    value: "value",
+    image: {},
+    placeholder: "placeholder",
+    checked: false,
+    maxLength: 300,
     withColor: {
       table: {
         category: "with-Params",
@@ -24,16 +29,6 @@ export default {
           backgroundColor: "",
           accentColor: "",
           textColor: "",
-        },
-      },
-    },
-    withAnimation: {
-      table: {
-        category: "with-Params",
-        defaultValue: {
-          animation: "",
-          duration: 0,
-          delay: 0,
         },
       },
     },
@@ -45,18 +40,6 @@ export default {
           tgt: "",
           dictionary: "",
         },
-      },
-    },
-    isDisabled: {
-      table: {
-        category: "is-Toggles",
-        defaultValue: false,
-      },
-    },
-    isHidden: {
-      table: {
-        category: "is-Toggles",
-        defaultValue: false,
       },
     },
     onInput: {
@@ -101,23 +84,18 @@ const Template = (args) => {
 };
 export const Default = Template.bind({});
 Default.args = {
-  content: {
-    targetName: "Target Name",
-    value: "",
-    placeholder: "This is Option A",
-    checked: true,
-    image: {},
-    maxLength: 300,
-  },
+  targetName: "Target Name",
+  value: "",
+  placeholder: "This is Option A",
+  checked: true,
+  image: {},
+  maxLength: 300,
   withColor: {
     backgroundColor: "#ffab000d",
-    accentColor: "",
     textColor: "",
-  },
-  withAnimation: {
-    animation: "zoom",
-    duration: 0.5,
-    delay: 0,
+    accentColor: "#FFBF00",
+    hoverBackgroundColor: "",
+    hoverTextColor: "",
   },
   withTranslation: {
     lang: "en",
@@ -130,7 +108,22 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<OptionItemSeven {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<OptionItemSeven targetName= "Target Name"
+      value= ""
+      placeholder= "This is Option A"
+      checked= {true}
+      image= ""
+      maxLength= {300}
+      withColor={{
+        backgroundColor: "#ffab000d",
+        textColor: "",
+        accentColor: "#FFBF00",
+        hoverBackgroundColor: "",
+        hoverTextColor: "",
+      }}
+      isDisabled={false}
+      isHidden={false}
+      />`,
     },
   },
 };
@@ -141,42 +134,32 @@ export const ColoredOptionItemSeven = Template.bind({});
 ColoredOptionItemSeven.args = {
   ...Default.args,
   withColor: {
-    backgroundColor: "#8c9ea3",
-    accentColor: "#597387",
-    textColor: "#bac2c8",
+    backgroundColor: "#ffab000d",
+    textColor: "",
+    accentColor: "#FFBF00",
+    hoverBackgroundColor: "",
+    hoverTextColor: "",
   },
 };
 ColoredOptionItemSeven.parameters = {
   docs: {
     source: {
-      code: `<OptionItemSeven {...${JSON.stringify(
-        ColoredOptionItemSeven.args,
-        null,
-        2
-      )}}/>`,
-    },
-  },
-};
-// -------------------------------------------------------------
-// Animated OptionItem Seven
-// -------------------------------------------------------------
-export const AnimatedOptionItemSeven = Template.bind({});
-AnimatedOptionItemSeven.args = {
-  ...Default.args,
-  withAnimation: {
-    animation: "fade",
-    duration: 0.5,
-    delay: 0,
-  },
-};
-AnimatedOptionItemSeven.parameters = {
-  docs: {
-    source: {
-      code: `<OptionItemSeven {...${JSON.stringify(
-        AnimatedOptionItemSeven.args,
-        null,
-        2
-      )}}/>`,
+      code: `<OptionItemSeven targetName= "Target Name"
+      value= ""
+      placeholder= "This is Option A"
+      checked= {true}
+      image= ""
+      maxLength= {300}
+      withColor={{
+        backgroundColor: "#ffab000d",
+        textColor: "",
+        accentColor: "#FFBF00",
+        hoverBackgroundColor: "",
+        hoverTextColor: "",
+      }}
+      isDisabled={false}
+      isHidden={false}
+      />`,
     },
   },
 };
@@ -195,11 +178,22 @@ TranslatedOptionItemSeven.args = {
 TranslatedOptionItemSeven.parameters = {
   docs: {
     source: {
-      code: `<OptionItemSeven {...${JSON.stringify(
-        TranslatedOptionItemSeven.args,
-        null,
-        2
-      )}}/>`,
+      code: `<OptionItemSeven targetName= "Target Name"
+      value= ""
+      placeholder= "This is Option A"
+      checked= {true}
+      image= ""
+      maxLength= {300}
+      withColor={{
+        backgroundColor: "#ffab000d",
+        textColor: "",
+        accentColor: "#FFBF00",
+        hoverBackgroundColor: "",
+        hoverTextColor: "",
+      }}
+      isDisabled={false}
+      isHidden={false}
+      />`,
     },
   },
 };
@@ -323,7 +317,12 @@ const MultipleTemplate = (args) => {
           <div style={{ marginBottom: "1em" }} key={index}>
             <OptionItemSeven
               {...args}
-              content={content}
+              targetName={content.targetName}
+              value={content.value}
+              placeholder={content.placeholder}
+              checked={content.checked}
+              image={content.image}
+              maxLength={content.maxLength}
               onSelect={(targetName, checked) =>
                 handleSelect(targetName, checked)
               }
@@ -344,11 +343,140 @@ MultipleOptionItemSeven.args = {
 MultipleOptionItemSeven.parameters = {
   docs: {
     source: {
-      code: `<OptionItemSeven {...${JSON.stringify(
-        MultipleOptionItemSeven.args,
-        null,
-        2
-      )}}/>`,
+      code: `const [contentArr, setContentArr] = useState([
+        {
+          targetName: "Target Name A",
+          value: "",
+          placeholder: "This is Option A",
+          checked: false,
+          image: {},
+          maxLength: 300,
+        },
+        {
+          targetName: "Target Name B",
+          value: "",
+          placeholder: "This is Option B",
+          checked: true,
+          image: {},
+          maxLength: 300,
+        },
+        {
+          targetName: "Target Name C",
+          value: "",
+          placeholder: "This is Option C",
+          checked: false,
+          image: {},
+          maxLength: 300,
+        },
+      ]);
+      // -------------------------------------------------------------
+      // Hook to return modified content object
+      // -------------------------------------------------------------
+      useEffect(() => {
+        args.onUpload(contentArr);
+      });
+      // -------------------------------------------------------------
+      // Temporary variables for operations
+      // -------------------------------------------------------------
+      let tmp_state = contentArr;
+      let tmp_arr = [];
+      let tmp_obj = {};
+      // -------------------------------------------------------------
+      // Function to remove an object from the array
+      // -------------------------------------------------------------
+      const handleRemove = (dataID) => {
+        tmp_state = contentArr;
+        tmp_arr = [];
+        tmp_state.forEach((dataObj) => {
+          tmp_arr.push({ ...dataObj });
+        });
+        tmp_arr = tmp_state.filter((dataObj) => dataObj.targetName !== dataID);
+        setContentArr([...tmp_arr]);
+      };
+      // -------------------------------------------------------------
+      // Function to set selected option in the content array
+      // -------------------------------------------------------------
+      const handleSelect = (targetName, checked) => {
+        tmp_state = contentArr;
+        tmp_arr = [];
+        tmp_obj = {};
+        tmp_state.forEach((dataObj) => {
+          if (dataObj.targetName === targetName) {
+            tmp_obj = { ...dataObj };
+            tmp_obj.checked = checked;
+            tmp_arr.push(tmp_obj);
+          } else {
+            tmp_obj = { ...dataObj };
+            tmp_obj.checked = !checked;
+            tmp_arr.push(tmp_obj);
+          }
+        });
+        setContentArr([...tmp_arr]);
+      };
+      // -------------------------------------------------------------
+      // Function to image in the array of objects
+      // -------------------------------------------------------------
+      const handleUpload = (targetName, image) => {
+        tmp_state = contentArr;
+        tmp_arr = [];
+        tmp_obj = {};
+        tmp_state.forEach((dataObj) => {
+          if (dataObj.targetName === targetName) {
+            tmp_obj = { ...dataObj };
+            tmp_obj.image = image;
+            tmp_arr.push(tmp_obj);
+          } else {
+            tmp_obj = { ...dataObj };
+            tmp_arr.push(tmp_obj);
+          }
+        });
+        setContentArr([...tmp_arr]);
+      };
+      // -------------------------------------------------------------
+      // Function to put value in the array of objects
+      // -------------------------------------------------------------
+      const handleInput = (targetName, value) => {
+        tmp_state = contentArr;
+        tmp_arr = [];
+        tmp_obj = {};
+    
+        tmp_state.forEach((dataObj) => {
+          if (dataObj.targetName === targetName) {
+            tmp_obj = { ...dataObj };
+            tmp_obj.value = value;
+            tmp_arr.push(tmp_obj);
+          } else {
+            tmp_obj = { ...dataObj };
+            tmp_arr.push(tmp_obj);
+          }
+        });
+        setContentArr([...tmp_arr]);
+      };
+      return (
+        <div>
+          {contentArr?.map((content, index) => {
+            return (
+              <div style={{ marginBottom: "1em" }} key={index}>
+                <OptionItemSeven
+                  {...args}
+                  targetName={content.targetName}
+                  value={content.value}
+                  placeholder={content.placeholder}
+                  checked={content.checked}
+                  image={content.image}
+                  maxLength={content.maxLength}
+                  onSelect={(targetName, checked) =>
+                    handleSelect(targetName, checked)
+                  }
+                  onUpload={(targetName, image) => handleUpload(targetName, image)}
+                  onInput={(targetName, value) => handleInput(targetName, value)}
+                  onClick={handleRemove}
+                />
+              </div>
+            );
+          })}
+        </div>
+      );`,
     },
   },
 };

@@ -2,7 +2,7 @@ import React from "react";
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount, render } from "enzyme";
+import { shallow } from "enzyme";
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------
@@ -36,7 +36,7 @@ describe("CaptionedVideo", () => {
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
         presenter: {},
       },
-      onClick: () => console.log("Button Testing"),
+      onClick: () => {},
     },
   };
 

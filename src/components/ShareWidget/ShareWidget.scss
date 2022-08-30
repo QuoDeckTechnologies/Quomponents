@@ -2,34 +2,33 @@
 /* ShareWidget Container Definitions */
 /* ================================================= */
 .qui .qui-sharewidget-container {
-    padding-left: 1em;
-    width: fit-content;
-    background-color: #ffff;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  padding-left: 1em;
+  width: fit-content;
+  background-color: #ffff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 .qui .qui-share-label {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .qui .qui-shareicon-container {
-    padding: 0.5em;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  padding: 0.5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .qui .qui-shareicon-container button {
-    height: 1em;
-    width: 1em;
+  height: 1em;
+  width: 1em;
 }
 .qui .qui-share-icon {
-    display: flex;
-    align-items: center;
-    margin-right: 0.3em;
+  display: flex;
+  align-items: center;
+  margin-right: 0.3em;
 }
 .qui .qui-share-icon-disabled {
-    pointer-events: none;
-    opacity: 0.5;
+  pointer-events: none;
 }

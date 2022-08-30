@@ -5,7 +5,12 @@ export default {
   title: "Design System/CourseListCard",
   component: CourseListCard,
   argTypes: {
-    content: {},
+    id: "",
+    name: "",
+    description: "",
+    checked: true,
+    viewedPercentage: 10,
+    image: {},
     asFloated: {
       control: "select",
       options: ["left", "right", "none", "inline"],
@@ -18,10 +23,10 @@ export default {
         category: "with-Params",
         defaultValue: {
           backgroundColor: "",
-          accentColor: "",
-          accentBackgroundColor: "",
           textColor: "",
-          pathColor: "",
+          accentColor: "",
+          hoverBackgroundColor: "",
+          hoverTextColor: "",
         },
       },
     },
@@ -70,15 +75,13 @@ export default {
 const Template = (args) => <CourseListCard {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-  content: {
-    id: "1",
-    name: "BALLOON BURST",
-    description:
-      "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
-    checked: true,
-    viewedPercentage: 80,
-    image: { id: "background-image", extention: "" },
-  },
+  id: "1",
+  name: "BALLOON BURST",
+  description:
+    "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
+  checked: true,
+  viewedPercentage: 80,
+  image: { id: "background-image", extention: "" },
   imageLibrary: [
     {
       id: "background-image",
@@ -89,10 +92,10 @@ Default.args = {
   asFloated: "none",
   withColor: {
     backgroundColor: "",
-    accentColor: "",
-    accentBackgroundColor: "",
     textColor: "",
-    pathColor: "",
+    accentColor: "",
+    hoverBackgroundColor: "",
+    hoverTextColor: "",
   },
   withAnimation: {
     animation: "zoom",
@@ -105,7 +108,37 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<CourseListCard {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<CourseListCard
+          id="1"
+          name="BALLOON BURST"
+          description="Pop those balloons to collect stars and answer questions to gain more time to do it in."
+          checked={true}
+          viewedPercentage={80}
+          image={{ id: "background-image", extention: "" }}
+          imageLibrary={[
+            {
+              id: "background-image",
+              image:
+                "https://images.unsplash.com/photo-1653844124305-6606b561dee3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+            },
+          ]}
+          asFloated="none"
+          withColor={{
+            backgroundColor: "",
+            textColor: "",
+            accentColor: "",
+            hoverBackgroundColor: "",
+            hoverTextColor: "",
+          }}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          isDisabled={false}
+          isHidden={false}
+          onClick={() => {}}
+        />`,
     },
   },
 };
@@ -115,15 +148,13 @@ Default.parameters = {
 export const CourselistcardDefaultImage = Template.bind({});
 CourselistcardDefaultImage.args = {
   ...Default.args,
-  content: {
-    id: "",
-    name: "BALLOON BURST",
-    description:
-      "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
-    checked: true,
-    viewedPercentage: 80,
-    image: { id: "background-", extention: "" },
-  },
+  id: "",
+  name: "BALLOON BURST",
+  description:
+    "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
+  checked: true,
+  viewedPercentage: 80,
+  image: { id: "background-", extention: "" },
 };
 CourselistcardDefaultImage.parameters = {
   docs: {
@@ -132,11 +163,37 @@ CourselistcardDefaultImage.parameters = {
         "Displays a CourseListCard with default image when image is not provided in image library",
     },
     source: {
-      code: `<CourseListCard {...${JSON.stringify(
-        CourselistcardDefaultImage.args,
-        null,
-        2
-      )}}/>`,
+      code: `<CourseListCard
+          id=""
+          name="BALLOON BURST"
+          description="Pop those balloons to collect stars and answer questions to gain more time to do it in."
+          checked={true}
+          viewedPercentage={80}
+          image={{ id: "background-", extention: "" }}
+          imageLibrary={[
+            {
+              id: "background-image",
+              image:
+                "https://images.unsplash.com/photo-1653844124305-6606b561dee3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+            },
+          ]}
+          asFloated="none"
+          withColor={{
+            backgroundColor: "",
+            textColor: "",
+            accentColor: "",
+            hoverBackgroundColor: "",
+            hoverTextColor: "",
+          }}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          isDisabled={false}
+          isHidden={false}
+          onClick={() => {}}
+        />`,
     },
   },
 };
@@ -146,15 +203,13 @@ CourselistcardDefaultImage.parameters = {
 export const UncheckedCourselistcard = Template.bind({});
 UncheckedCourselistcard.args = {
   ...Default.args,
-  content: {
-    id: "",
-    name: "BALLOON BURST",
-    description:
-      "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
-    checked: false,
-    viewedPercentage: 80,
-    image: { id: "background-image", extention: "" },
-  },
+  id: "",
+  name: "BALLOON BURST",
+  description:
+    "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
+  checked: false,
+  viewedPercentage: 80,
+  image: { id: "background-image", extention: "" },
 };
 UncheckedCourselistcard.parameters = {
   docs: {
@@ -162,11 +217,37 @@ UncheckedCourselistcard.parameters = {
       story: "Displays a CourseListCard with checked props set as false",
     },
     source: {
-      code: `<CourseListCard {...${JSON.stringify(
-        UncheckedCourselistcard.args,
-        null,
-        2
-      )}}/>`,
+      code: `<CourseListCard
+          id=""
+          name="BALLOON BURST"
+          description="Pop those balloons to collect stars and answer questions to gain more time to do it in."
+          checked={false}
+          viewedPercentage={80}
+          image={{ id: "background-image", extention: "" }}
+          imageLibrary={[
+            {
+              id: "background-image",
+              image:
+                "https://images.unsplash.com/photo-1653844124305-6606b561dee3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+            },
+          ]}
+          asFloated="none"
+          withColor={{
+            backgroundColor: "",
+            textColor: "",
+            accentColor: "",
+            hoverBackgroundColor: "",
+            hoverTextColor: "",
+          }}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          isDisabled={false}
+          isHidden={false}
+          onClick={() => {}}
+        />`,
     },
   },
 };
@@ -178,10 +259,10 @@ ColoredCourselistcard.args = {
   ...Default.args,
   withColor: {
     backgroundColor: "#fefae0",
-    accentColor: "#606c38",
-    accentBackgroundColor: "#fefae0",
+    accentColor: "#86BC25",
     textColor: "#bc6c25",
-    pathColor: "#606c38",
+    hoverBackgroundColor: "",
+    hoverTextColor: "",
   },
 };
 ColoredCourselistcard.parameters = {
@@ -190,11 +271,37 @@ ColoredCourselistcard.parameters = {
       story: "Use to override the standard colors of the component.",
     },
     source: {
-      code: `<CourseListCard {...${JSON.stringify(
-        ColoredCourselistcard.args,
-        null,
-        2
-      )}}/>`,
+      code: `<CourseListCard
+          id="1"
+          name="BALLOON BURST"
+          description="Pop those balloons to collect stars and answer questions to gain more time to do it in."
+          checked={true}
+          viewedPercentage={80}
+          image={{ id: "background-image", extention: "" }}
+          imageLibrary={[
+            {
+              id: "background-image",
+              image:
+                "https://images.unsplash.com/photo-1653844124305-6606b561dee3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+            },
+          ]}
+          asFloated="none"
+          withColor={{
+            backgroundColor: "#fefae0",
+            accentColor: "#86BC25",
+            textColor: "#bc6c25",
+            hoverBackgroundColor: "",
+            hoverTextColor: "",
+          }}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          isDisabled={false}
+          isHidden={false}
+          onClick={() => {}}
+        />`,
     },
   },
 };
@@ -216,11 +323,37 @@ AnimatedCourselistcard.parameters = {
       story: "Use to override the standard colors of the component.",
     },
     source: {
-      code: `<CourseListCard {...${JSON.stringify(
-        AnimatedCourselistcard.args,
-        null,
-        2
-      )}}/>`,
+      code: `<CourseListCard
+          id="1"
+          name="BALLOON BURST"
+          description="Pop those balloons to collect stars and answer questions to gain more time to do it in."
+          checked={true}
+          viewedPercentage={80}
+          image={{ id: "background-image", extention: "" }}
+          imageLibrary={[
+            {
+              id: "background-image",
+              image:
+                "https://images.unsplash.com/photo-1653844124305-6606b561dee3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+            },
+          ]}
+          asFloated="none"
+          withColor={{
+            backgroundColor: "#fefae0",
+            accentColor: "#86BC25",
+            textColor: "#bc6c25",
+            hoverBackgroundColor: "",
+            hoverTextColor: "",
+          }}
+          withAnimation={{
+            animation: "fade",
+            duration: 0.5,
+            delay: 0,
+          }}
+          isDisabled={false}
+          isHidden={false}
+          onClick={() => {}}
+        />`,
     },
   },
 };

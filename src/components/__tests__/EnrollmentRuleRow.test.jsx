@@ -15,49 +15,24 @@ describe("EnrollmentRuleRow", () => {
   // -------------------------------------
   // Run common tests
   // -------------------------------------
-
   const args = {
     target: EnrollmentRuleRow,
     required: {
-      content: {
-        enrollmentRule: {
-          company: "",
-          zone: "",
+
+        criteria: {
+          company: "Quodeck",
+          zone: "East",
           branch: "",
-          department: "",
+          department: "IT",
           date_of_joining: "",
         },
-        allRules: [
-          { _id: "", criteria: { company: "Quodeck", zone: "East" } },
-          { _id: "", criteria: { branch: "Maharashtra", department: "IT" } },
-          {
-            _id: "",
-            criteria: { zone: "West", date_of_joining: "2-03-2022" },
-          },
-          {
-            _id: "",
-            criteria: {
-              company: "Microsoft",
-              zone: "West",
-              branch: "California",
-              department: "IT",
-              date_of_joining: "2-03-2022",
-            },
-          },
-        ],
-      },
-      onRemoveRule: () => { },
-      onRunRule: () => { }
+
+      onRemoveRule: () => {},
+      onRunRule: () => {},
     },
   };
 
   hasValid("defaults", args);
-
-  hasValid("colors", args);
-  hasValid("animations", args);
-
-  hasValid("hidden", args);
-  hasValid("disabled", args);
   // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------
@@ -66,50 +41,17 @@ describe("EnrollmentRuleRow", () => {
     jest.resetAllMocks();
     component = mount(
       <EnrollmentRuleRow
-        enrollmentRule={{
-          company: "",
-          zone: "",
+        criteria={{
+          company: "Quodeck",
+          zone: "East",
           branch: "",
-          department: "",
+          department: "IT",
           date_of_joining: "",
         }}
-        allRules={[
-          { _id: "", criteria: { company: "Quodeck", zone: "East" } },
-          { _id: "", criteria: { branch: "Maharashtra", department: "IT" } },
-          {
-            _id: "",
-            criteria: { zone: "West", date_of_joining: "2-03-2022" },
-          },
-          {
-            _id: "",
-            criteria: {
-              company: "Microsoft",
-              zone: "West",
-              branch: "California",
-              department: "IT",
-              date_of_joining: "2-03-2022",
-            },
-          },
-        ]}
-        withColor={{
-          backgroundColor: "",
-          accentColor: "",
-          textColor: "#b60d17",
-        }}
-        withAnimation={{
-          animation: "zoom",
-          duration: 0.5,
-          delay: 0,
-        }}
-        isDisabled={false}
-        isHidden={false}
-        onRunRule={() => { }}
-        onRemoveRule={() => { }}
+        onRunRule={() => {}}
+        onRemoveRule={() => {}}
       />
     );
-  });
-  it("should render correctly without throwing error", () => {
-    expect(component.exists()).toBe(true);
   });
   it("should render correctly without throwing error when clicked on icons", () => {
     component.find(".fas").at(0).simulate("click");
@@ -118,7 +60,7 @@ describe("EnrollmentRuleRow", () => {
   });
   it("should render correctly when props are changed", () => {
     component.setProps({
-      enrollmentRule: {
+      criteria: {
         company: "",
         zone: "west",
         branch: "",
@@ -129,7 +71,7 @@ describe("EnrollmentRuleRow", () => {
   });
   it("should render correctly when `enrollmentRule` key is null", () => {
     component.setProps({
-      enrollmentRule: null,
+      criteria: null,
     });
   });
 });

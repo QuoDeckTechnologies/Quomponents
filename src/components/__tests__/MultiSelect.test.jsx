@@ -12,11 +12,9 @@ import { hasValid } from "./common";
 import MultiSelect from "../MultiSelect/MultiSelect.react";
 
 describe("MultiSelect", () => {
-
   // -------------------------------------
   // Run common tests
   // -------------------------------------
-
   const args = {
     target: MultiSelect,
     required: {
@@ -26,7 +24,7 @@ describe("MultiSelect", () => {
           isSelected: true,
         },
       ],
-      onClick: () => console.log("Button Testing"),
+      onClick: () => { },
     },
     translations: {
       tgt: "templateActions",
@@ -109,9 +107,11 @@ describe("MultiSelect", () => {
   it("should render correctly without throwing error", () => {
     expect(component.exists()).toBe(true);
   });
+
   it("should render correctly onClick for Check true", () => {
     component.find(".qui-btn").at(1).simulate("click");
   });
+
   it("Test click event on handleSubmit funtion of Button", () => {
     const handleSubmit = jest.fn();
     const button = shallow(
@@ -123,10 +123,10 @@ describe("MultiSelect", () => {
     button.find("Button").at(1).simulate("click");
     expect(handleSubmit.mock.calls.length).toEqual(1);
   });
+
   it("should render correctly when passed asEmphasis prop as text", () => {
     let colors = {
       backgroundColor: "#fff",
-      accentColor: "#FF0000",
       textColor: "#00FFFF",
       hoverBackgroundColor: "#0000FF",
       hoverTextColor: "	#00008B",
@@ -135,11 +135,11 @@ describe("MultiSelect", () => {
     component.setProps({ withColor: colors });
     expect(component.exists()).toBe(true);
   });
+
   it("should render correctly when passed asEmphasis prop as contained", () => {
     let colors = {
       backgroundColor: "#fff",
       accentColor: "#FF0000",
-      textColor: "#00FFFF",
       hoverBackgroundColor: "#0000FF",
       hoverTextColor: "	#00008B",
     };
@@ -147,10 +147,10 @@ describe("MultiSelect", () => {
     component.setProps({ withColor: colors });
     expect(component.exists()).toBe(true);
   });
+
   it("should render correctly when passed asEmphasis prop as outlined", () => {
     let colors = {
       backgroundColor: "#fff",
-      accentColor: "#FF0000",
       textColor: "#00FFFF",
       hoverBackgroundColor: "#0000FF",
       hoverTextColor: "	#00008B",
@@ -159,10 +159,10 @@ describe("MultiSelect", () => {
     component.setProps({ withColor: colors });
     expect(component.exists()).toBe(true);
   });
+
   it("should render correctly when passed withColor props", () => {
     let colors = {
       backgroundColor: "#fff",
-      accentColor: "#FF0000",
       textColor: "#00FFFF",
       hoverBackgroundColor: "#0000FF",
       hoverTextColor: "	#00008B",
@@ -170,18 +170,22 @@ describe("MultiSelect", () => {
     component.setProps({ withColor: colors });
     expect(component.exists()).toBe(true);
   });
+
   it("should render with onclick toggleChecked", () => {
     let btn = component.find(".qui-multi-select-checkbox").at(0);
     btn.simulate("click");
   });
+
   it("should render submit answer text in the submit button", () => {
     component.setProps({ purpose: "" });
     expect(component.find("button").at(1).text()).toBe("Submit Answer");
   });
+
   it("should render check answer text in the submit button", () => {
     component.setProps({ purpose: "quiz" });
     expect(component.find("button").at(1).text()).toBe("Check Answer");
   });
+
   it("should render submit answer text in hindi", () => {
     component.setProps({
       purpose: "",
@@ -193,6 +197,7 @@ describe("MultiSelect", () => {
     });
     expect(component.find("button").at(1).text()).toBe("अपना जवाब सबमिट करें");
   });
+  
   it("should render check answer text in hindi", () => {
     component.setProps({
       purpose: "quiz",

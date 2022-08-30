@@ -1,7 +1,8 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { mount } from 'enzyme';
+import React from 'react';
+import { mount, shallow } from 'enzyme';
 import { render, fireEvent, getByPlaceholderText } from "@testing-library/react";
 //--------------------------------------
 // Import Common Tests
@@ -11,27 +12,27 @@ import { hasValid } from "./common";
 // Import Components
 // -------------------------------------
 import SearchBar from '../SearchBar/SearchBar.react';
+import Autocomplete from '@mui/material/Autocomplete';
 
 describe("SearchBar", () => {
     // -------------------------------------
     // Run common tests
     // -------------------------------------
-
     const args = {
         target: SearchBar,
         required: {
-            placeHolder: "Search...",
+            placeholder: "placeholder",
             onClick: () => { },
         },
         translations: {
-            tgt: "searchBar",
+            tgt: "button",
             lang: { valid: "hi", invalid: "xx" },
             dictionary: JSON.stringify({
                 hi: {
-                    searchBar: {
-                        placeHolder: "खोजें...",
+                    SearchBar: {
+                        placeholder: "खोजें...",
                     }
-                },
+                }
             }),
         },
     };
@@ -42,73 +43,45 @@ describe("SearchBar", () => {
     hasValid("positions", args);
 
     hasValid("colors", args);
+    hasValid("animations", args);
+    hasValid("icons", args);
     hasValid("translations", args);
 
-    hasValid("disabled", args);
-    hasValid("hidden", args);
     hasValid("fluid", args);
+    hasValid("hidden", args);
+    hasValid("disabled", args);
     // -------------------------------------
-    // Run component specific tests
+    // Setup definitions for the test suite
     // -------------------------------------
-
     let component;
     let handleButtonPress, handleKeyPress;
     handleKeyPress = jest.fn();
     handleButtonPress = jest.fn();
+    let onClick = jest.fn();
 
     beforeEach(() => {
         jest.resetAllMocks();
 
-        component = mount(<SearchBar
-            asSize="normal"
-            asFloated="inline"
-            withColor={null}
-            withIcon={null}
-            withAnimation={null}
-            withTranslation={null}
-            isHidden={false}
-            isDisabled={false}
-            isClosed={null}
-            isFluid={null}
-            onClick={() => { }}
-            placeHolder="Search..."
-            handleKeyPress={handleKeyPress}
-            handleButtonPress={handleButtonPress}
-        />);
+        component = mount(
+            <SearchBar
+                dictionaryOptions={[]}
+                placeholder="Search..."
+                isClosed={false}
+                isAutoSearch={false}
+                asFloated="inline"
+                asSize="normal"
+                withColor={null}
+                withIcon={null}
+                withTranslation={null}
+                withAnimation={null}
+                isHidden={false}
+                isDisabled={false}
+                isFluid={null}
+                onClick={onClick}
+                handleKeyPress={handleKeyPress}
+                handleButtonPress={handleButtonPress}
+            />);
     })
-
-    it("should render correctly when passed withIcon props", () => {
-        let icon = { name: "fas fa-share" }
-        component.setProps({ withIcon: icon })
-        expect(component.exists()).toBe(true);
-    });
-
-    it("should render closed Search Bar with closed SearchBar css classes", () => {
-        component.setProps({ isClosed: true });
-        component.setProps({ isFluid: false });
-
-        let searchBarChildContainer = component.find("div").at(3);
-        let inputBox = component.find("input");
-        let button = component.find("button");
-
-        expect(searchBarChildContainer.props().className).toBe('qui-search-bar-child-container qui-search-bar-child-container-closed');
-        expect(inputBox.props().className).toBe('qui-search-bar-input-field qui-search-bar-input-closed');
-        expect(button.props().className).toBe('qui-search-bar-icon qui-search-bar-icon-closed');
-    });
-
-    it("should render opened Search Bar with the opened searchbar css classes", () => {
-        component.setProps({ isClosed: false });
-
-        let searchBarContainer = component.find("div").at(2);
-        let searchBarChildContainer = component.find("div").at(3);
-        let inputBox = component.find("input");
-        let button = component.find("button");
-
-        searchBarContainer.simulate('click');
-        expect(searchBarChildContainer.props().className).toBe("qui-search-bar-child-container undefined");
-        expect(inputBox.props().className).toBe("qui-search-bar-input-field undefined");
-        expect(button.props().className).toBe("qui-search-bar-icon undefined");
-    });
 
     it("should pass the value when clicked on button", () => {
         const { container } = render(<SearchBar onClick={() => { }} />);
@@ -116,7 +89,28 @@ describe("SearchBar", () => {
         let button = component.find("button");
         button.simulate('click');
         fireEvent.click(inputElement, { target: { value: "some value" } });
-        expect(inputElement.value).toBe("some value");
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed placeholder props with empty string", () => {
+        component.setProps({ placeholder: "" });
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed placeholder props as has value", () => {
+        component.setProps({ placeholder: "Search..." });
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed isAutoSearch props as true with some values in dictionaryOptions ", () => {
+        let component = shallow(<SearchBar
+            dictionaryOptions={["Options3", "Options4"]}
+            isAutoSearch={true}
+            onClick={onClick}
+        />);
+        component.find(Autocomplete).at(0).simulate('change', { value: "Options1" })
+        component.find(".qui-search-bar-input-field").simulate('change')
+        expect(component.exists()).toBe(true);
     });
 
     it('should pass the value when pressed Enter', () => {
@@ -132,7 +126,6 @@ describe("SearchBar", () => {
 
     it('should pass the value when pressed enter', () => {
         const { queryByPlaceholderText } = render(<SearchBar onClick={() => {
-            console.log("Testing SearchBar")
             handleKeyPress = { handleKeyPress }
             handleButtonPress = { handleButtonPress }
         }} />);
@@ -146,6 +139,7 @@ describe("SearchBar", () => {
         component.setProps({ isClosed: true, isFluid: false, expandable: false });
         let searchBar = component.find(".qui-search-bar-container");
         searchBar.simulate('click');
+        expect(component.exists()).toBe(true);
     });
 
     it('should close the opened SearchBar when clicked outside', () => {
@@ -153,11 +147,6 @@ describe("SearchBar", () => {
         let searchBar = component.find(".qui-search-bar-container");
         searchBar.simulate('click');
         fireEvent.click(document.body)
+        expect(component.exists()).toBe(true);
     });
-
-    it("should render search icon when passed nothing with withIcon props", () => {
-        let icon = { name: "" }
-        component.setProps({ withIcon: icon })
-        expect(component.find("i").props().className).toBe("fas fa-search")
-    })
 });

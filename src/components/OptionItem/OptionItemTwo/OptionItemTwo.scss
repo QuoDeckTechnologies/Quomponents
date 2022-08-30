@@ -43,8 +43,15 @@
 
 .qui
   .qui-option-item-radio-container
-  .css-146k4iu-MuiButtonBase-root-MuiRadio-root.Mui-checked {
+  .css-vqmohf-MuiButtonBase-root-MuiRadio-root {
   color: #ffab00;
+  padding: 0;
+  margin-right: 0.5em;
+  &.Mui-checked {
+    color: #ffab00;
+    padding: 0;
+    margin-right: 0.5em;
+  }
 }
 
 .qui .qui-option-item-radio {
@@ -57,7 +64,7 @@
     min-width: 2.8em;
   }
   .qui .qui-option-item-radio-container {
-    min-width: 3.5em;
+    min-width: 2.5em;
   }
   .qui
     .qui-option-item-radio-container

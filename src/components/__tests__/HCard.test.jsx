@@ -6,7 +6,6 @@ import { shallow } from "enzyme";
 // Import Common Tests
 // -------------------------------------
 import { hasValid } from "./common";
-
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -16,11 +15,10 @@ describe("HCard", () => {
   // -------------------------------------
   // Run common tests
   // -------------------------------------
-
   const args = {
     target: HCard,
     required: {
-      onClick: () => { },
+      onClick: () => {},
     },
     translations: {
       tgt: "hCard",
@@ -29,41 +27,31 @@ describe("HCard", () => {
         hi: {
           hCard: {
             buttonText: "प्रयत्न करें",
+            name: "बेलून बस्ट",
+            description:
+              "सितारों को इकट्ठा करने के लिए उन गुब्बारों को पॉप करें और इसे करने के लिए अधिक समय प्राप्त करने के लिए सवालों के जवाब दें।",
           },
         },
-      })
+      }),
     },
   };
 
   hasValid("defaults", args);
-
-  hasValid("variants", args);
   hasValid("positions", args);
-
   hasValid("colors", args);
   hasValid("animations", args);
   hasValid("translations", args);
-
   hasValid("hidden", args);
   hasValid("disabled", args);
   // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------
   let component;
-
-  const dictionary = JSON.stringify({
-    hi: {
-      hCard: {
-        buttonText: "प्रयत्न करें",
-      },
-    },
-  });
-
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(
       <HCard
-        isButton={false}
+        showButton={false}
         imageLibrary={[]}
         asEmphasis="contained"
         isCircular={false}
@@ -74,50 +62,21 @@ describe("HCard", () => {
         withTranslation={null}
         isHidden={false}
         isDisabled={false}
-        onClick={() => { }}
+        onClick={() => {}}
       />
     );
-  });
-  it("should render correctly when passed isCircular props is true", () => {
-    component.setProps({
-      isHidden: true,
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isCircular props is false", () => {
-    component.setProps({
-      isHidden: false,
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed withColor", () => {
-    component.setProps({
-      withColor: {
-        backgroundColor: "#ffffff",
-        buttonBackgroundColor: "#ffffff",
-        textColor: "#ffffff",
-        buttonTextColor: "#ffffff",
-        accentColor: "#ffffff",
-        accentBackgroundColor: "#ffffff",
-      },
-    });
-    expect(component.exists()).toBe(true);
   });
 
   it("should render correctly when passed content props", () => {
     component.setProps({
-      content: {
-        id: "",
-        name: "BALLOON BURST",
-        description:
-          "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
-        buttonText: null,
-        checked: true,
-        image: { id: "background-image", extention: "" },
-      },
-      isButton: true,
+      id: "",
+      name: "BALLOON BURST",
+      description:
+        "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
+      buttonText: null,
+      checked: true,
+      image: { id: "background-image", extention: "" },
+      showButton: true,
       imageLibrary: [
         {
           id: "background-image",
@@ -131,15 +90,14 @@ describe("HCard", () => {
 
   it("should render correctly when image key is not provided in content props", () => {
     component.setProps({
-      content: {
-        id: "",
-        name: "BALLOON BURST",
-        description:
-          "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
-        buttonText: "try game",
-        checked: true,
-      },
-      isButton: true,
+      id: "",
+      name: "BALLOON BURST",
+      description:
+        "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
+      buttonText: "try game",
+      checked: true,
+      showButton: true,
+      image: null,
       imageLibrary: [
         {
           id: "background-image",
@@ -156,9 +114,9 @@ describe("HCard", () => {
     expect(component.exists()).toBe(true);
   });
 
-  it("should render correctly when clicked on card when isButton is true", () => {
+  it("should render correctly when clicked on card when showButton is true", () => {
     component.setProps({
-      isButton: true,
+      showButton: true,
     });
     component.find(".qui-h-card-container").simulate("click");
     expect(component.exists()).toBe(true);
@@ -166,7 +124,7 @@ describe("HCard", () => {
 
   it("should render correctly when clicked on card with larger window", () => {
     component.setProps({
-      isButton: true,
+      showButton: true,
     });
     component.find("Button").simulate("click");
     expect(component.exists()).toBe(true);

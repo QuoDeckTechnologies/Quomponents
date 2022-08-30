@@ -20,33 +20,30 @@ EarnCard.propTypes = {
   //=======================================
   /**
     EarnCard data should be passed in content field and it is a required field
-    */
-  content: PropTypes.shape({
-    image: PropTypes.string,
-    tag: PropTypes.oneOf(["new", "premium", "restricted", "free"]),
-    header: PropTypes.string,
-    content: PropTypes.string,
-    title: PropTypes.string,
-    description: PropTypes.string,
-    icon: PropTypes.string,
-    dates: PropTypes.shape({
-      end_date: PropTypes.string,
-      start_date: PropTypes.string,
-    }),
-    topics: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string,
-        contentList: PropTypes.arrayOf(PropTypes.shape({})),
-        checked: PropTypes.bool,
-      })
-    ),
-  }).isRequired,
+  */
+  image: PropTypes.string,
+  tag: PropTypes.oneOf(["new", "premium", "restricted", "free"]),
+  header: PropTypes.string,
+  title: PropTypes.string,
+  description: PropTypes.string,
+  icon: PropTypes.string,
+  dates: PropTypes.shape({
+    end_date: PropTypes.string,
+    start_date: PropTypes.string,
+  }),
+  topics: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      contentList: PropTypes.arrayOf(PropTypes.shape({})),
+      checked: PropTypes.bool,
+    })
+  ),
   //=======================================
   // Quommon props
   //=======================================
   /**
-    Use to define standard component type
-    */
+  Use to define standard component type
+  */
   asVariant: PropTypes.oneOf([
     "primary",
     "secondary",
@@ -55,8 +52,8 @@ EarnCard.propTypes = {
     "error",
   ]),
   /**
-    Use to define component size in increasing order
-    */
+  Use to define component size in increasing order
+  */
   asSize: PropTypes.oneOf([
     "tiny",
     "small",
@@ -66,17 +63,16 @@ EarnCard.propTypes = {
     "massive",
   ]),
   /**
-    Use to override component colors and behavior
-    */
+  Use to override component colors and behavior
+  */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
     accentColor: PropTypes.string,
     textColor: PropTypes.string,
   }),
-
   /**
-    Use to define the entry animation of the component
-    */
+  Use to define the entry animation of the component
+  */
   withAnimation: PropTypes.shape({
     animation: PropTypes.oneOf([
       "zoom",
@@ -92,24 +88,24 @@ EarnCard.propTypes = {
     delay: PropTypes.number,
   }),
   /**
-    Use to show a translated version of the component text. Dictionary must be valid JSON. 
-    */
+  Use to show a translated version of the component text. Dictionary must be valid JSON. 
+  */
   withTranslation: PropTypes.shape({
     lang: PropTypes.string,
     tgt: PropTypes.string,
     dictionary: PropTypes.string,
   }),
   /**
-    Use to enable/disable the component
-    */
+  Use to enable/disable the component
+  */
   isDisabled: PropTypes.bool,
   /**
-    Use to show/hide the component
-    */
+  Use to show/hide the component
+  */
   isHidden: PropTypes.bool,
   /**
-    Button component must have the onClick function passed as props
-    */
+  Button component must have the onClick function passed as props
+  */
   onClick: PropTypes.func.isRequired,
 };
 
@@ -159,7 +155,7 @@ export default function EarnCard(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring content from props
   //-------------------------------------------------------------------
-  let { content } = props;
+  let { dates, icon, topics, title, description, image, tag } = props;
   //-------------------------------------------------------------------
   // 2. Set the classes
   //-------------------------------------------------------------------
@@ -174,8 +170,8 @@ export default function EarnCard(props) {
   //-------------------------------------------------------------------
   let labelContent = {
     dates: {
-      end_date: content?.dates?.end_date,
-      start_date: content?.dates?.start_date,
+      end_date: dates?.end_date,
+      start_date: dates?.start_date,
     },
   };
   let tObj = null;
@@ -204,21 +200,22 @@ export default function EarnCard(props) {
       style={colors.cardColors}
       onClick={(e) => props.onClick(e)}
     >
-    <div className="qui-left-side">
+      <div className="qui-left-side">
         <div className="qui-banner-div">
-          <BannerCard {...props} onClick={() => { }} />
+          <BannerCard image={image} tag={tag} onClick={() => {}} />
         </div>
         <div className={`qui-left-lower ${quommonClasses.childClasses}`}>
           <div className="qui-earncard-icon" style={colors.accentColors}>
-            <i className={content?.icon}></i>
+            <i className={icon}></i>
           </div>
           <div>
             <div className="qui-checkbox">
-              {_.map(content?.topics, (topics, index) => {
+              {_.map(topics, (topics, index) => {
                 return (
                   <i
-                    className={`${topics.checked ? "fas fa-check-square" : "far fa-square"
-                      }`}
+                    className={`${
+                      topics.checked ? "fas fa-check-square" : "far fa-square"
+                    }`}
                     key={topics.name + index}
                     style={colors.accentColors}
                   ></i>
@@ -235,13 +232,13 @@ export default function EarnCard(props) {
       </div>
       <div className={`qui-right-side ${quommonClasses.childClasses}`}>
         <div className="qui-course-header" style={colors.textColors}>
-          <h1>{content?.title}</h1>
+          <h1>{title}</h1>
           <div className="qui-course-banner" style={colors.bannerColors}></div>
         </div>
         <div className="qui-course-description">
-          <h3>{content?.description}</h3>
+          <h3>{description}</h3>
         </div>
-    </div>
+      </div>
     </motion.div>
   );
 }

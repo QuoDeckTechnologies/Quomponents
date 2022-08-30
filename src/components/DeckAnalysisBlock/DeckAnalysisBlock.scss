@@ -1,62 +1,62 @@
 .qui-deck-analysis-block {
-    display: flex;
-    border-radius: 0.5em;
-    width: 100%;
+  display: flex;
+  border-radius: 0.5em;
+  width: 100%;
 }
 
 .qui .qui-main-deckblock {
-    width: 100%;
-    border-radius: 0.5em;
+  width: 100%;
+  border-radius: 0.5em;
 }
 
 .qui .qui-deckblock-rtop {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .qui .qui-deckblock-top {
-    padding: 1em 1em 0em 1em;
-    display: flex;
+  padding: 1em 1em 0em 1em;
+  display: flex;
 }
 
 .qui .qui-deckblock-icon {
-    font-size: 2em;
-    padding: 0em 0.3em;
+  font-size: 2em;
+  padding: 0em 0.3em;
 }
 
 .qui .qui-fheader {
-    margin: 0 0 0 0.5em;
-    padding: 0;
+  margin: 0 0 0 0.5em;
+  padding: 0;
 }
 
 .qui .qui-deckblock-slidecount {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .qui .qui-deckblock-bottom {
-    border-radius: 0.5em;
-    width: 100%;
-    height: 3.5em;
-    margin-top: 1em;
-    display: flex;
-    align-items: center;
+  border-radius: 0.5em;
+  width: 100%;
+  height: 3.5em;
+  margin-top: 1em;
+  display: flex;
+  align-items: center;
 
-    h6 {
-        margin: 0em  1em;
-    }
+  h6 {
+    margin: 0em 1em;
+  }
 }
 
 .qui .qui-deckblock-header-message h5 {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .qui .qui-deckblock-header-message span {
-    font-size: 0.8em;
+  font-size: 0.8em;
 }
 
 .qui .qui-deckblock-header-message {
-    padding: 0em 1em;
+  padding: 0em 1em;
 }

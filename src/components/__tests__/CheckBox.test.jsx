@@ -1,7 +1,7 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount } from "enzyme";
+import { shallow } from "enzyme";
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------
@@ -15,12 +15,11 @@ describe("CheckBox", () => {
   // -------------------------------------
   // Run common tests
   // -------------------------------------
-
   const args = {
     target: CheckBox,
     required: {
-      content: { name: "Default Label", checked: false },
-      onClick: () => {},
+      label: "Default Label", checked: false,
+      onClick: () => { },
     },
     translations: {
       tgt: "checkBox",
@@ -36,8 +35,8 @@ describe("CheckBox", () => {
   };
 
   hasValid("defaults", args);
-  hasValid("variants", args);
   hasValid("positions", args);
+  hasValid("sizes", args);
   hasValid("padding", args);
   hasValid("alignment", args);
   hasValid("colors", args);
@@ -52,55 +51,16 @@ describe("CheckBox", () => {
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(
-      <CheckBox name="Default Label" checked={false} onClick={() => {}} />
+      <CheckBox label="Default Label" checked={false} onClick={() => { }} />
     );
   });
-
-  it("should render correctly when passed withColor", () => {
-    component.setProps({
-      withColor: {
-        accentColor: "#ffffff",
-        textColor: "#ffffff",
-      },
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when asSize is tiny", () => {
-    component.setProps({
-      asSize: "tiny",
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when asSize is normal", () => {
-    component.setProps({
-      asSize: "normal",
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when asSize is huge", () => {
-    component.setProps({
-      asSize: "huge",
-    });
-    expect(component.exists()).toBe(true);
-  });
-
   it("should render correctly without throwing error", () => {
     component.setProps({
-      name: "default-name",
+      label: "default-name",
     });
     component.find("#qui-check-box-element-default-name").simulate("change", {
       target: { value: "Enable Checkbox", checked: true },
     });
     expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly without throwing error", () => {
-    let wrapper = mount(
-      <CheckBox name="Default Label" checked={false} onClick={() => {}} />
-    );
-    expect(wrapper.exists()).toBe(true);
   });
 });

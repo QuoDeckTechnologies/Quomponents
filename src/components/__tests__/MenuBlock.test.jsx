@@ -2,7 +2,7 @@ import React from "react";
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount, render } from "enzyme";
+import { shallow } from "enzyme";
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------
@@ -63,7 +63,7 @@ describe("MenuBlock", () => {
         withTranslation={null}
         isHidden={false}
         isDisabled={false}
-        onClick={() => console.log("MenuBlock testing")}
+        onClick={() => { }}
       />
     );
   });

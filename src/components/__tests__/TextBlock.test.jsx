@@ -15,7 +15,6 @@ describe("TextBlock", () => {
   // -------------------------------------
   // Run common tests
   // -------------------------------------
-
   const args = {
     target: TextBlock,
     required: {
@@ -27,6 +26,7 @@ describe("TextBlock", () => {
 
   hasValid("sizes", args);
   hasValid("positions", args);
+  hasValid("variants", args);
 
   hasValid("colors", args);
   hasValid("animations", args);
@@ -35,7 +35,6 @@ describe("TextBlock", () => {
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------
-
   let component;
   beforeEach(() => {
     jest.resetAllMocks();
@@ -48,21 +47,25 @@ describe("TextBlock", () => {
       />
     );
   });
+
   it("should render correctly with position is changed to left-top", () => {
     component.setProps({
       position: "left-top",
     });
   });
+  
   it("should render correctly with position is changed to right-top", () => {
     component.setProps({
       position: "right-top",
     });
   });
+
   it("should render correctly with position is changed to right-bottom", () => {
     component.setProps({
       position: "right-bottom",
     });
   });
+
   it("should render correctly with position is changed to left-bottom", () => {
     component.setProps({
       position: "left-bottom",

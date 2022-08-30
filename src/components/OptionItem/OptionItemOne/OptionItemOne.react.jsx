@@ -1,9 +1,7 @@
 // Import npm packages
 import React from "react";
 import PropTypes from "prop-types";
-import { motion } from "framer-motion";
 import {
-  getAnimation,
   getQuommons,
   getTranslation,
 } from "../../../common/javascripts/helpers";
@@ -18,40 +16,33 @@ OptionItemOne.propTypes = {
   // Component Specific props
   //=======================================
   /**
-  OptionItemOne targetName, value, placeholder should be passed in content object
+  Use to define OptionItemOne targetName.
   */
-  content: PropTypes.shape({
-    targetName: PropTypes.string,
-    value: PropTypes.string,
-    placeholder: PropTypes.string,
-    maxLength: PropTypes.number,
-  }),
+  targetName: PropTypes.string,
+  /**
+  Use to define OptionItemOne value.
+  */
+  value: PropTypes.string,
+  /**
+  Use to define OptionItemOne placeholder.
+  */
+  placeholder: PropTypes.string,
+  /**
+  Use to define OptionItemOne placeholder.
+  */
+  maxLength: PropTypes.number,
   //=======================================
   // Quommon props
   //=======================================
   /**
-  Use to override component colors
+  Use to override component colors and behavior
   */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
+    textColor: PropTypes.string,
     accentColor: PropTypes.string,
-  }),
-  /**
-  Use to define the entry animation of the component
-  */
-  withAnimation: PropTypes.shape({
-    animation: PropTypes.oneOf([
-      "zoom",
-      "collapse",
-      "fade",
-      "slideDown",
-      "slideUp",
-      "slideLeft",
-      "slideRight",
-      "",
-    ]),
-    duration: PropTypes.number,
-    delay: PropTypes.number,
+    hoverBackgroundColor: PropTypes.string,
+    hoverTextColor: PropTypes.string,
   }),
   /**
   Use to show a translated version of the component text. Dictionary must be valid JSON. 
@@ -61,14 +52,6 @@ OptionItemOne.propTypes = {
     tgt: PropTypes.string,
     dictionary: PropTypes.string,
   }),
-  /**
-  Use to enable/disable the component
-  */
-  isDisabled: PropTypes.bool,
-  /**
-  Use to show/hide the component
-  */
-  isHidden: PropTypes.bool,
   /**
   OptionItemOne component must have the onInput function passed as props
   */
@@ -83,15 +66,15 @@ OptionItemOne.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
-  content: {},
+  targetName: "",
+  value: "",
+  placeholder: "",
+  maxLength: 300,
   //=======================================
   // Quommon props
   //=======================================
   withColor: null,
-  withAnimation: null,
   withTranslation: null,
-  isDisabled: false,
-  isHidden: false,
 };
 /**
 ## Notes
@@ -102,9 +85,9 @@ OptionItemOne.defaultProps = {
 **/
 export default function OptionItemOne(props) {
   //-------------------------------------------------------------------
-  // 1. Destructuring content prop
+  // 1. Destructuring props
   //-------------------------------------------------------------------
-  const { content } = props;
+  const { targetName, value, placeholder, maxLength } = props;
   //-------------------------------------------------------------------
   // 2. Set the classes
   //-------------------------------------------------------------------
@@ -113,37 +96,30 @@ export default function OptionItemOne(props) {
   // 3. Translate the text objects in case their is a dictionary provided
   //-------------------------------------------------------------------
   let tObj = getTranslation(props.withTranslation);
-  //-------------------------------------------------------------------
-  // 4. Get animation of the component
-  //-------------------------------------------------------------------
-  const animate = getAnimation(props);
 
   // ========================= Render Function =================================
 
   return (
-    <motion.div
-      initial={animate.from}
-      animate={animate.to}
-      className={`qui ${quommonClasses.parentClasses}`}
-    >
+    <div className={`qui ${quommonClasses.parentClasses}`}>
       <div className="qui-inline-option-container">
         <InputField
-          name={content?.targetName || "default-target-name"}
-          value={content?.value}
-          placeholder={tObj?.placeholder || content?.placeholder}
-          maxLength={content?.maxLength}
+          name={targetName || "default-target-name"}
+          value={value}
+          placeholder={tObj?.placeholder || placeholder}
+          maxLength={maxLength}
           asEmphasis="listInput"
           withColor={props.withColor}
           onSubmit={(name, value) => props.onInput(name, value)}
+          onBlur={(name, value) => props.onInput(name, value)}
         />
         <div className="qui-inline-edit-with-remove-button-close-icon">
           <i
             className="qui-inline-edit-with-remove-button-icon fas fa-times"
-            data-id={content?.targetName}
+            data-id={targetName}
             onClick={(e) => props.onClick(e.target.dataset.id)}
           ></i>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

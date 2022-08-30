@@ -18,15 +18,13 @@ describe("VCardWithButton", () => {
   const args = {
     target: VCardWithButton,
     required: {
-      content: {
-        id: "default-id",
-        name: "BALLOON BURST",
-        description:
-          "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
-        buttonText: "try game",
-        checked: true,
-        image: { id: "background-image", extention: "" },
-      },
+      id: "default-id",
+      name: "BALLOON BURST",
+      description:
+        "Pop those balloons to collect stars and answer questions to gain more time to do it in.",
+      buttonText: "try game",
+      checked: true,
+      image: { id: "background-image", extention: "" },
       onClick: () => {},
     },
     translations: {
@@ -36,6 +34,9 @@ describe("VCardWithButton", () => {
         hi: {
           vCardWithButton: {
             buttonText: "प्रयत्न करें",
+            name: "बेलून बस्ट",
+            description:
+              "सितारों को इकट्ठा करने के लिए उन गुब्बारों को पॉप करें और इसे करने के लिए अधिक समय प्राप्त करने के लिए सवालों के जवाब दें।",
           },
         },
       }),
@@ -43,6 +44,7 @@ describe("VCardWithButton", () => {
   };
 
   hasValid("defaults", args);
+  hasValid("colors", args);
   hasValid("positions", args);
   hasValid("animations", args);
   hasValid("translations", args);
@@ -59,8 +61,6 @@ describe("VCardWithButton", () => {
       <VCardWithButton
         imageLibrary={[]}
         asEmphasis="contained"
-        isCircular={false}
-        asVariant="primary"
         asFloated="none"
         withColor={null}
         withAnimation={null}
@@ -70,20 +70,6 @@ describe("VCardWithButton", () => {
         onClick={() => {}}
       />
     );
-  });
-
-  it("should render correctly when passed withColor", () => {
-    component.setProps({
-      withColor: {
-        backgroundColor: "#ffffff",
-        buttonBackgroundColor: "#ffffff",
-        textColor: "#ffffff",
-        buttonTextColor: "#ffffff",
-        accentColor: "#ffffff",
-        accentBackgroundColor: "#ffffff",
-      },
-    });
-    expect(component.exists()).toBe(true);
   });
 
   it("should render correctly when passed content props", () => {

@@ -2,7 +2,7 @@ import React from "react";
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount, render } from "enzyme";
+import { shallow } from "enzyme";
 
 //--------------------------------------
 // Import Common Tests
@@ -23,7 +23,7 @@ describe("Avatar", () => {
     target: Avatar,
     required: {
       content: "Testing Button",
-      onClick: () => console.log("Avatar Testing"),
+      onClick: () => { },
     },
     translations: {
       tgt: "button",
@@ -60,7 +60,7 @@ describe("Avatar", () => {
     component = shallow(
       <Avatar
         withColor={null}
-        onClick={() => console.log("Avatar testing")}
+        onClick={() => { }}
       />
     );
   });

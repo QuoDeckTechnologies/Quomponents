@@ -1,9 +1,7 @@
 // Import npm packages
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { motion } from "framer-motion";
 import {
-  getAnimation,
   getQuommons,
   getTranslation,
 } from "../../../common/javascripts/helpers";
@@ -19,15 +17,25 @@ OptionItemTwo.propTypes = {
   // Component Specific props
   //=======================================
   /**
-  OptionItemTwo targetName, value, placeholder, checked should be passed in content object
+  Use to define OptionItemTwo targetName.
   */
-  content: PropTypes.shape({
-    targetName: PropTypes.string,
-    value: PropTypes.string,
-    placeholder: PropTypes.string,
-    checked: PropTypes.bool,
-    maxLength: PropTypes.number,
-  }),
+  targetName: PropTypes.string,
+  /**
+  Use to define OptionItemTwo value.
+  */
+  value: PropTypes.string,
+  /**
+  Use to define OptionItemTwo placeholder.
+  */
+  placeholder: PropTypes.string,
+  /**
+  Use to define OptionItemTwo checked props.
+  */
+  checked: PropTypes.bool,
+  /**
+  Use to define OptionItemTwo max length props
+  */
+  maxLength: PropTypes.number,
   //=======================================
   // Quommon props
   //=======================================
@@ -36,24 +44,10 @@ OptionItemTwo.propTypes = {
   */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
+    textColor: PropTypes.string,
     accentColor: PropTypes.string,
-  }),
-  /**
-  Use to define the entry animation of the component
-  */
-  withAnimation: PropTypes.shape({
-    animation: PropTypes.oneOf([
-      "zoom",
-      "collapse",
-      "fade",
-      "slideDown",
-      "slideUp",
-      "slideLeft",
-      "slideRight",
-      "",
-    ]),
-    duration: PropTypes.number,
-    delay: PropTypes.number,
+    hoverBackgroundColor: PropTypes.string,
+    hoverTextColor: PropTypes.string,
   }),
   /**
   Use to show a translated version of the component text. Dictionary must be valid JSON. 
@@ -63,14 +57,6 @@ OptionItemTwo.propTypes = {
     tgt: PropTypes.string,
     dictionary: PropTypes.string,
   }),
-  /**
-  Use to enable/disable the component
-  */
-  isDisabled: PropTypes.bool,
-  /**
-  Use to show/hide the component
-  */
-  isHidden: PropTypes.bool,
   /**
   OptionItemTwo component must have the onInput function passed as props
   */
@@ -89,15 +75,16 @@ OptionItemTwo.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
-  content: {},
+  targetName: "",
+  value: "",
+  placeholder: "",
+  checked: false,
+  maxLength: 300,
   //=======================================
   // Quommon props
   //=======================================
   withColor: null,
-  withAnimation: null,
   withTranslation: null,
-  isDisabled: false,
-  isHidden: false,
 };
 /**
 ## Notes
@@ -108,25 +95,21 @@ OptionItemTwo.defaultProps = {
 **/
 export default function OptionItemTwo(props) {
   //-------------------------------------------------------------------
-  // 1. Destructuring content prop
+  // 1. Destructuring props
   //-------------------------------------------------------------------
-  const { content } = props;
+  const { targetName, value, checked, placeholder, maxLength } = props;
   //-------------------------------------------------------------------
   // 2. Defining states and hooks
   //-------------------------------------------------------------------
-  const [value, setValue] = useState(content?.value);
-  const [isChecked, setIsChecked] = useState(content?.checked);
+  const [fieldValue, setFieldValue] = useState(value);
+  const [isChecked, setIsChecked] = useState(checked);
   useEffect(() => {
-    setIsChecked(content?.checked);
-  }, [content?.checked]);
+    setIsChecked(checked);
+  }, [checked]);
   //-------------------------------------------------------------------
   // 3. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "option-item-two");
-  //-------------------------------------------------------------------
-  // 4. Get animation of the component
-  //-------------------------------------------------------------------
-  const animate = getAnimation(props);
   //-------------------------------------------------------------------
   // 5. Translate the text objects in case their is a dictionary provided
   //-------------------------------------------------------------------
@@ -136,13 +119,13 @@ export default function OptionItemTwo(props) {
   //-------------------------------------------------------------------
   const handleRadio = (e) => {
     setIsChecked(e.target.checked);
-    props.onSelect(content?.targetName, value, e.target.checked);
+    props.onSelect(targetName, fieldValue, e.target.checked);
   };
   //-------------------------------------------------------------------
   // 7. Function to return input value of the component
   //-------------------------------------------------------------------
   const handleValue = (name, value) => {
-    setValue(value);
+    setFieldValue(value);
     props.onInput(name, value, isChecked);
   };
   //-------------------------------------------------------------------
@@ -156,18 +139,12 @@ export default function OptionItemTwo(props) {
   // ========================= Render Function =================================
 
   return (
-    <motion.div
-      initial={animate.from}
-      animate={animate.to}
-      className={`qui ${quommonClasses.parentClasses}`}
-    >
+    <div className={`qui ${quommonClasses.parentClasses}`}>
       <div className="qui-single-select-container">
         <div className="qui-option-item-radio-container">
           <FormControlLabel
             className="qui-option-item-radio"
-            value={
-              content?.targetName ? content?.targetName : "default-target-name"
-            }
+            value={targetName ? targetName : "default-target-name"}
             control={
               <Radio
                 checked={isChecked}
@@ -179,26 +156,23 @@ export default function OptionItemTwo(props) {
           />
         </div>
         <InputField
-          name={
-            content?.targetName ? content?.targetName : "default-target-name"
-          }
-          value={content?.value}
-          placeholder={tObj?.placeholder || content?.placeholder}
-          maxLength={content?.maxLength}
+          name={targetName ? targetName : "default-target-name"}
+          value={fieldValue}
+          placeholder={tObj?.placeholder || placeholder}
+          maxLength={maxLength}
           asEmphasis="listInput"
           withColor={props.withColor}
           onSubmit={handleValue}
+          onBlur={handleValue}
         />
         <div className="qui-single-select-close-icon">
           <i
             className="qui-single-select-icon fas fa-times"
-            data-id={
-              content?.targetName ? content?.targetName : "default-target-name"
-            }
+            data-id={targetName ? targetName : "default-target-name"}
             onClick={(e) => props.onClick(e.target.dataset.id)}
           ></i>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

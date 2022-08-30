@@ -18,7 +18,6 @@ describe("RedeemCard", () => {
     // -------------------------------------
     // Run common tests
     // -------------------------------------
-
     const args = {
         target: RedeemCard,
         translations: {
@@ -45,50 +44,38 @@ describe("RedeemCard", () => {
 
     hasValid("defaults", args);
 
+    hasValid("padding", args);
     hasValid("positions", args);
 
     hasValid("colors", args);
     hasValid("translations", args);
+    hasValid("animations", args);
 
     hasValid("hidden", args);
     hasValid("disabled", args);
-
     // -------------------------------------
     // Run component specific tests
     // -------------------------------------
-
     let component;
     beforeEach(() => {
         jest.resetAllMocks();
         component = mount(
             <RedeemCard
-                content={{
-                    name: "Yamaha FZ16 Bike",
-                    description: "A beast on the road, this motorbike commands respect.",
-                    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeATjmpNd-h_Ks3g4SsBtHhLZ5F3FURym4w7KBqmteMxBmPRLX6oFwH2g1CRT_ckAzzFw&usqp=CAU",
-                    cost: 600,
-                    stock: {
-                        left: 1,
-                        total: 1000
-                    },
-                    status: "Pending"
+                id=""
+                name="Yamaha FZ16 Bike"
+                description="A beast on the road this motorbike commands respect."
+                image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeATjmpNd-h_Ks3g4SsBtHhLZ5F3FURym4w7KBqmteMxBmPRLX6oFwH2g1CRT_ckAzzFw&usqp=CAU"
+                cost={600}
+                stock={{
+                    left: 1,
+                    total: 1000
                 }}
-                withColor={{
-                    textColor: "",
-                    accentColor: "#AD2929",
-                    buttonTextColor: "",
-                    buttonBackgroundColor: "#2C5F2DFF",
-                    buttonHoverBackgroundColor: "",
-                    buttonHoverTextColor: "",
-                    backgroundColor: "",
-                }}
-                withAnimation={{
-                    animation: "zoom",
-                    duration: 0.5,
-                    delay: 0,
-                }}
-                withTranslation={null}
+                status="Pending"
+                asPadded="normal"
                 asFloated="inline"
+                withColor={null}
+                withAnimation={null}
+                withTranslation={null}
                 isHidden={false}
                 isDisabled={false}
                 onClick={jest.fn()}
@@ -99,17 +86,15 @@ describe("RedeemCard", () => {
     it("should render correctly when passed extra content and should also display showmore button", () => {
         let component = mount(
             <RedeemCard
-                content={{
-                    name: "Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.",
-                    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeATjmpNd-h_Ks3g4SsBtHhLZ5F3FURym4w7KBqmteMxBmPRLX6oFwH2g1CRT_ckAzzFw&usqp=CAU",
-                    cost: 1000000,
-                    stock: {
-                        left: 1000000,
-                        total: 1000000
-                    },
-                    description: "Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.",
-                    status: "Pending"
+                name="Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content."
+                image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeATjmpNd-h_Ks3g4SsBtHhLZ5F3FURym4w7KBqmteMxBmPRLX6oFwH2g1CRT_ckAzzFw&usqp=CAU"
+                cost={1000000}
+                stock={{
+                    left: 1000000,
+                    total: 1000000
                 }}
+                description="Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content."
+                status="Pending"
                 onClick={jest.fn()}
             />
         );
@@ -121,9 +106,7 @@ describe("RedeemCard", () => {
     it("should render RedeemCard with Pending status", () => {
         let component = mount(
             <RedeemCard
-                content={{
-                    status: "Pending"
-                }}
+                status="Pending"
                 onClick={jest.fn()}
             />
         );
@@ -134,9 +117,7 @@ describe("RedeemCard", () => {
     it("should render RedeemCard with InProgress status", () => {
         let component = mount(
             <RedeemCard
-                content={{
-                    status: "InProgress"
-                }}
+                status="InProgress"
                 onClick={jest.fn()}
             />
         );
@@ -146,9 +127,7 @@ describe("RedeemCard", () => {
     it("should render RedeemCard with Completed status", () => {
         let component = mount(
             <RedeemCard
-                content={{
-                    status: "Completed"
-                }}
+                status="Completed"
                 onClick={jest.fn()}
             />
         );
@@ -158,9 +137,7 @@ describe("RedeemCard", () => {
     it("should render RedeemCard with default Image when nothing passed in the image props", () => {
         let component = mount(
             <RedeemCard
-                content={{
-                    image: "",
-                }}
+                image=""
                 onClick={jest.fn()}
             />
         );
@@ -170,9 +147,7 @@ describe("RedeemCard", () => {
     it("should render RedeemCard with Image when passed image in the image props", () => {
         let component = mount(
             <RedeemCard
-                content={{
-                    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeATjmpNd-h_Ks3g4SsBtHhLZ5F3FURym4w7KBqmteMxBmPRLX6oFwH2g1CRT_ckAzzFw&usqp=CAU",
-                }}
+                image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeATjmpNd-h_Ks3g4SsBtHhLZ5F3FURym4w7KBqmteMxBmPRLX6oFwH2g1CRT_ckAzzFw&usqp=CAU"
                 onClick={jest.fn()}
             />
         );

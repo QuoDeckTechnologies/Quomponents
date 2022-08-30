@@ -5,7 +5,7 @@ const dictionary = JSON.stringify({
   hi: {
     openAnswer: {
       label: "इनपुट नाम",
-      button: "उत्तर सबमिट करें"
+      button: "उत्तर सबमिट करें",
     },
   },
 });

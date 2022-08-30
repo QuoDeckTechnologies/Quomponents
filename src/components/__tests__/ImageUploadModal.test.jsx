@@ -4,12 +4,10 @@
 import { shallow, mount } from "enzyme";
 import { render } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
-
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------
 import { hasValid } from "./common";
-
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -173,21 +171,6 @@ describe("ImageUploadModal", () => {
     component.find("Button").at(0).simulate("click");
     component.find("Button").at(1).simulate("click");
     component.find("Button").at(2).simulate("click");
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly without throwing error when withColor props is passed", () => {
-    component.setProps({
-      withColor: {
-        arcButtonColor: "#ffffff",
-        arcIconColor: "#ffffff",
-        arcColor: "#ffffff",
-        textColor: "#ffffff",
-        buttonColor: "#ffffff",
-        hoverButtonColor: "#ffffff",
-        sliderColor: "#ffffff",
-      },
-    });
     expect(component.exists()).toBe(true);
   });
 

@@ -6,7 +6,6 @@ import { shallow } from "enzyme";
 // Import Common Tests
 // -------------------------------------
 import { hasValid } from "./common";
-
 //--------------------------------------
 // Import Components
 // -------------------------------------
@@ -16,7 +15,6 @@ describe("LearnerTableRow", () => {
   // -------------------------------------
   // Run common tests
   // -------------------------------------
-
   const args = {
     target: LearnerTableRow,
     required: {
@@ -28,18 +26,15 @@ describe("LearnerTableRow", () => {
           last_name: "Administrator",
         },
       ],
-      onUnenrollLearner: () => { },
-      onSendMessage: () => { }
+      onUnenrollLearner: () => {},
+      onSendMessage: () => {},
     },
   };
 
   hasValid("defaults", args);
-
-  hasValid("colors", args);
   hasValid("animations", args);
-
   hasValid("hidden", args);
-    hasValid("disabled", args);
+  hasValid("disabled", args);
   // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------
@@ -50,7 +45,13 @@ describe("LearnerTableRow", () => {
       <LearnerTableRow
         content={[
           {
-            _id: "",
+            _id: "first",
+            username: "sysadmin",
+            first_name: "System",
+            last_name: "Administrator",
+          },
+          {
+            _id: "second",
             username: "sysadmin",
             first_name: "System",
             last_name: "Administrator",
@@ -61,19 +62,33 @@ describe("LearnerTableRow", () => {
         withAnimation={null}
         isDisabled={false}
         isHidden={false}
-        onUnenrollLearner={() => { }}
-        onSendMessage={() => { }}
+        onUnenrollLearner={() => {}}
+        onSendMessage={() => {}}
       />
     );
   });
-  it("should render correctly without throwing error", () => {
-    expect(component.exists()).toBe(true);
-  });
   it("should render correctly without throwing error when clicked on checkbox", () => {
-    component.find(".qui-learner-checkbox").simulate("click");
+    component.find(".qui-learner-checkbox").at(0).simulate("click");
+    expect(component.exists()).toBe(true);
   });
   it("should render correctly without throwing error when clicked on icons", () => {
     component.find(".far").at(1).simulate("click");
-    component.find(".fas").simulate("click");
+    component.find(".fas").at(1).simulate("click");
+    expect(component.exists()).toBe(true);
+  });
+  it("should render correctly without throwing error when clicked on checkbox and clicked on send message button", () => {
+    component.find(".qui-learner-checkbox").at(0).simulate("click");
+    component.find(".far").at(0).simulate("click");
+    expect(component.exists()).toBe(true);
+  });
+  it("should render correctly without throwing error when clicked on checkbox and clicked on unenroll button", () => {
+    component.find(".qui-learner-checkbox").at(0).simulate("click");
+    component.find(".fas").at(1).simulate("click");
+    expect(component.exists()).toBe(true);
+  });
+  it("should render correctly without throwing error when clicked on checkbox twice", () => {
+    component.find(".qui-learner-checkbox").at(0).simulate("click");
+    component.find(".qui-learner-checkbox").at(0).simulate("click");
+    expect(component.exists()).toBe(true);
   });
 });

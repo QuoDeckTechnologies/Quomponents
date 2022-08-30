@@ -19,28 +19,35 @@ OptionItemTen.propTypes = {
   // Component Specific props
   //=======================================
   /**
-  OptionItemTen data should be passed in content field and it is a required field
+  Use to define OptionItemTen option targetName, value, placeholder.
   */
-  content: PropTypes.shape({
-    option: PropTypes.shape({
-      targetName: PropTypes.string,
-      value: PropTypes.string,
-      placeholder: PropTypes.string,
-    }),
-    header: PropTypes.shape({
-      targetName: PropTypes.string,
-      value: PropTypes.string,
-      placeholder: PropTypes.string,
-      maxLength: PropTypes.number,
-    }),
-    message: PropTypes.shape({
-      targetName: PropTypes.string,
-      value: PropTypes.string,
-      placeholder: PropTypes.string,
-      maxLength: PropTypes.number,
-    }),
-    image: PropTypes.object,
+  option: PropTypes.shape({
+    targetName: PropTypes.string,
+    value: PropTypes.string,
+    placeholder: PropTypes.string,
   }),
+  /**
+  Use to define OptionItemTen header targetName, value, placeholder.
+  */
+  header: PropTypes.shape({
+    targetName: PropTypes.string,
+    value: PropTypes.string,
+    placeholder: PropTypes.string,
+    maxLength: PropTypes.number,
+  }),
+  /**
+  Use to define OptionItemTen message targetName, value, placeholder.
+  */
+  message: PropTypes.shape({
+    targetName: PropTypes.string,
+    value: PropTypes.string,
+    placeholder: PropTypes.string,
+    maxLength: PropTypes.number,
+  }),
+  /**
+  Use to define OptionItemTen image.
+  */
+  image: PropTypes.object,
   //=======================================
   // Quommon props
   //=======================================
@@ -49,25 +56,10 @@ OptionItemTen.propTypes = {
   */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
-    accentColor: PropTypes.string,
     textColor: PropTypes.string,
-  }),
-  /**
-  Use to define the entry animation of the component
-  */
-  withAnimation: PropTypes.shape({
-    animation: PropTypes.oneOf([
-      "zoom",
-      "collapse",
-      "fade",
-      "slideDown",
-      "slideUp",
-      "slideLeft",
-      "slideRight",
-      "",
-    ]),
-    duration: PropTypes.number,
-    delay: PropTypes.number,
+    accentColor: PropTypes.string,
+    hoverBackgroundColor: PropTypes.string,
+    hoverTextColor: PropTypes.string,
   }),
   /**
   Use to show a translated version of the component text. Dictionary must be valid JSON. 
@@ -77,14 +69,6 @@ OptionItemTen.propTypes = {
     tgt: PropTypes.string,
     dictionary: PropTypes.string,
   }),
-  /**
-  Use to enable/disable the component
-  */
-  isDisabled: PropTypes.bool,
-  /**
-  Use to show/hide the component
-  */
-  isHidden: PropTypes.bool,
   /**
   OptionItemTen component must have the onClick function passed as props
   */
@@ -111,15 +95,14 @@ OptionItemTen.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
-  content: {},
+  option: {},
+  header: {},
+  message: {},
   //=======================================
   // Quommon props
   //=======================================
   withColor: null,
-  withAnimation: null,
   withTranslation: null,
-  isDisabled: false,
-  isHidden: false,
 };
 /**
 ## Notes
@@ -132,7 +115,7 @@ export default function OptionItemTen(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring content prop
   //-------------------------------------------------------------------
-  const { content } = props;
+  const { option, header, message } = props;
   //-------------------------------------------------------------------
   // 2. Set the classes
   //-------------------------------------------------------------------
@@ -149,7 +132,7 @@ export default function OptionItemTen(props) {
   // 5. Function to upload image to content array
   //-------------------------------------------------------------------
   const handleImageUpload = (image) => {
-    props.onUpload(content?.option?.targetName, image);
+    props.onUpload(option?.targetName, image);
   };
   //-------------------------------------------------------------------
   // 6. Function to return input value of the component
@@ -181,48 +164,47 @@ export default function OptionItemTen(props) {
         <div className="qui-option-item-ten-inputfield-one">
           <InputField
             name={
-              content?.option?.targetName
-                ? content?.option?.targetName
+              option?.targetName
+                ? option?.targetName
                 : "default-option-target-name"
             }
-            value={content?.option?.value}
-            placeholder={tObj?.placeholder || content?.option?.placeholder}
+            value={option?.value}
+            placeholder={tObj?.placeholder || option?.placeholder}
             asEmphasis="listInput"
             withColor={props.withColor}
             onSubmit={handleValue}
+            onBlur={handleValue}
           />
         </div>
         <div className="qui-option-item-upload-button">
           <OptionalImageField
-            content={{
-              title: tObj?.uploadButton || content?.uploadButton,
-              icon: "fas fa-upload",
-            }}
-            onClick={(image) => handleImageUpload(image)}
+            title={tObj?.uploadButton || "Upload"}
+            icon="fas fa-upload"
+            actionButton={false}
+            onUpload={(image) => handleImageUpload(image)}
             withColor={{ ...props.withColor }}
           />
         </div>
         <div className="qui-option-item-ten-inputfield-two">
           <InputField
             name={
-              content?.header?.targetName
-                ? content?.header?.targetName
+              header?.targetName
+                ? header?.targetName
                 : "default-header-target-name"
             }
-            value={content?.header?.value}
-            placeholder={
-              tObj?.headerPlaceholder || content?.header?.placeholder
-            }
-            maxLength={content?.header?.maxLength}
+            value={header?.value}
+            placeholder={tObj?.headerPlaceholder || header?.placeholder}
+            maxLength={header?.maxLength}
             asEmphasis="listInput"
             withColor={props.withColor}
             onSubmit={handleHeaderValue}
+            onBlur={handleHeaderValue}
           />
         </div>
         <div className="qui-option-item-ten-close-icon">
           <i
             className="fas fa-times"
-            data-id={content?.option?.targetName}
+            data-id={option?.targetName}
             onClick={(e) => props.onClick(e.target.dataset.id)}
           ></i>
         </div>
@@ -230,18 +212,17 @@ export default function OptionItemTen(props) {
       <div className="qui-option-item-ten-inputfield-three">
         <InputField
           name={
-            content?.message?.targetName
-              ? content?.message?.targetName
+            message?.targetName
+              ? message?.targetName
               : "default-message-target-name"
           }
-          value={content?.message?.value}
-          placeholder={
-            tObj?.messagePlaceholder || content?.message?.placeholder
-          }
-          maxLength={content?.message?.maxLength}
+          value={message?.value}
+          placeholder={tObj?.messagePlaceholder || message?.placeholder}
+          maxLength={message?.maxLength}
           asEmphasis="listInput"
           withColor={props.withColor}
           onSubmit={handleMessageValue}
+          onBlur={handleMessageValue}
         />
       </div>
     </motion.div>

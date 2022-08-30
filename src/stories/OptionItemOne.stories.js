@@ -13,23 +13,19 @@ export default {
   title: "Design System/OptionItem/OptionItemOne",
   component: OptionItemOne,
   argTypes: {
-    content: {},
+    targetName: "",
+    value: "",
+    placeholder: "",
+    maxLength: 300,
     withColor: {
       table: {
         category: "with-Params",
         defaultValue: {
           backgroundColor: "",
+          textColor: "",
           accentColor: "",
-        },
-      },
-    },
-    withAnimation: {
-      table: {
-        category: "with-Params",
-        defaultValue: {
-          animation: "",
-          duration: 0,
-          delay: 0,
+          hoverBackgroundColor: "",
+          hoverTextColor: "",
         },
       },
     },
@@ -41,18 +37,6 @@ export default {
           tgt: "",
           dictionary: "",
         },
-      },
-    },
-    isDisabled: {
-      table: {
-        category: "is-Toggles",
-        defaultValue: false,
-      },
-    },
-    isHidden: {
-      table: {
-        category: "is-Toggles",
-        defaultValue: false,
       },
     },
     onInput: {
@@ -85,33 +69,52 @@ const Template = (args) => {
 };
 export const Default = Template.bind({});
 Default.args = {
-  content: {
-    targetName: "Target Name",
-    value: "",
-    placeholder: "Option Item One",
-    maxLength: 300,
-  },
+  targetName: "Target Name",
+  value: "",
+  placeholder: "Option Item One",
+  maxLength: 300,
   withColor: {
     backgroundColor: "#ffab000d",
-    accentColor: "",
-  },
-  withAnimation: {
-    animation: "zoom",
-    duration: 0.5,
-    delay: 0,
+    textColor: "",
+    accentColor: "#FFBF00",
+    hoverBackgroundColor: "",
+    hoverTextColor: "",
   },
   withTranslation: {
     lang: "en",
     tgt: "optionItemOne",
     dictionary: dictionary,
   },
-  isDisabled: false,
-  isHidden: false,
 };
 Default.parameters = {
   docs: {
     source: {
-      code: `<OptionItemOne {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<OptionItemOne
+          targetName="Target Name"
+          value=""
+          placeholder="Option Item One"
+          maxLength={300}
+          withColor={{
+            backgroundColor: "#ffab000d",
+            textColor: "",
+            accentColor: "#FFBF00",
+            hoverBackgroundColor: "",
+            hoverTextColor: "",
+          }}
+          withTranslation={{
+            lang: "en",
+            tgt: "optionItemOne",
+            dictionary: ${JSON.stringify({
+              hi: {
+                optionItemOne: {
+                  placeholder: "प्रश्नोत्तरी परिणाम के लिए संदेश",
+                },
+              },
+            })}
+          }}
+          onClick={()=>{}}
+          onInput={()=>{}}
+        />`,
     },
   },
 };
@@ -124,39 +127,40 @@ ColoredOptionItemOne.args = {
   withColor: {
     backgroundColor: "#8c9ea3",
     accentColor: "#597387",
+    textColor: "",
+    hoverBackgroundColor: "",
+    hoverTextColor: "",
   },
 };
 ColoredOptionItemOne.parameters = {
   docs: {
     source: {
-      code: `<OptionItemOne {...${JSON.stringify(
-        ColoredOptionItemOne.args,
-        null,
-        2
-      )}}/>`,
-    },
-  },
-};
-// -------------------------------------------------------------
-// Animated OptionItem One
-// -------------------------------------------------------------
-export const AnimatedOptionItemOne = Template.bind({});
-AnimatedOptionItemOne.args = {
-  ...Default.args,
-  withAnimation: {
-    animation: "fade",
-    duration: 0.5,
-    delay: 0,
-  },
-};
-AnimatedOptionItemOne.parameters = {
-  docs: {
-    source: {
-      code: `<OptionItemOne {...${JSON.stringify(
-        AnimatedOptionItemOne.args,
-        null,
-        2
-      )}}/>`,
+      code: `<OptionItemOne
+          targetName="Target Name"
+          value=""
+          placeholder="Option Item One"
+          maxLength={300}
+          withColor={{
+            backgroundColor: "#8c9ea3",
+            accentColor: "#597387",
+            textColor: "",
+            hoverBackgroundColor: "",
+            hoverTextColor: "",
+          }}
+          withTranslation={{
+            lang: "en",
+            tgt: "optionItemOne",
+            dictionary: ${JSON.stringify({
+              hi: {
+                optionItemOne: {
+                  placeholder: "प्रश्नोत्तरी परिणाम के लिए संदेश",
+                },
+              },
+            })},
+          }}
+          onClick={() => {}}
+          onInput={()=>{}}
+        />`,
     },
   },
 };
@@ -175,11 +179,32 @@ TranslatedOptionItemOne.args = {
 TranslatedOptionItemOne.parameters = {
   docs: {
     source: {
-      code: `<OptionItemOne {...${JSON.stringify(
-        TranslatedOptionItemOne.args,
-        null,
-        2
-      )}}/>`,
+      code: `<OptionItemOne
+          targetName="Target Name"
+          value=""
+          placeholder="Option Item One"
+          maxLength={300}
+          withColor={{
+            backgroundColor: "#ffab000d",
+            textColor: "",
+            accentColor: "#FFBF00",
+            hoverBackgroundColor: "",
+            hoverTextColor: "",
+          }}
+          withTranslation={{
+            lang: "hi",
+            tgt: "optionItemOne",
+            dictionary: ${JSON.stringify({
+              hi: {
+                optionItemOne: {
+                  placeholder: "प्रश्नोत्तरी परिणाम के लिए संदेश",
+                },
+              },
+            })},
+          }}
+          onClick={() => {}}
+          onInput={()=>{}}
+        />`,
     },
   },
 };
@@ -255,7 +280,10 @@ const MultipleTemplate = (args) => {
           <div style={{ marginBottom: "1em" }} key={index}>
             <OptionItemOne
               {...args}
-              content={{ ...content }}
+              targetName={content.targetName}
+              value={content.value}
+              placeholder={content.placeholder}
+              maxLength={300}
               onInput={(targetName, value) => handleInput(targetName, value)}
               onClick={handleRemove}
             />
@@ -272,11 +300,86 @@ MultipleOptionItemOne.args = {
 MultipleOptionItemOne.parameters = {
   docs: {
     source: {
-      code: `<OptionItemOne {...${JSON.stringify(
-        MultipleOptionItemOne.args,
-        null,
-        2
-      )}}/>`,
+      code: `const [contentArr, setContentArr] = useState([
+        {
+          targetName: "TargetNameOne",
+          value: "",
+          placeholder: "Placeholder One",
+        },
+        {
+          targetName: "TargetNameTwo",
+          value: "",
+          placeholder: "Placeholder Two",
+        },
+        {
+          targetName: "TargetNameThree",
+          value: "Default Value",
+          placeholder: "Placeholder Three",
+        },
+      ]);
+      // -------------------------------------------------------------
+      // Hook to return modified content object
+      // -------------------------------------------------------------
+      useEffect(() => {
+        args.onInput(contentArr);
+      });
+      // -------------------------------------------------------------
+      // Temporary variables for operations
+      // -------------------------------------------------------------
+      let tmp_state = contentArr;
+      let tmp_arr = [];
+      let tmp_obj = {};
+      // -------------------------------------------------------------
+      // Function to remove an object from the array
+      // -------------------------------------------------------------
+      const handleRemove = (dataID) => {
+        tmp_state = contentArr;
+        tmp_arr = [];
+        tmp_state.forEach((dataObj) => {
+          tmp_arr.push({ ...dataObj });
+        });
+        tmp_arr = tmp_state.filter((dataObj) => dataObj.targetName !== dataID);
+        setContentArr([...tmp_arr]);
+      };
+      // -------------------------------------------------------------
+      // Function to put value in the array of objects
+      // -------------------------------------------------------------
+      const handleInput = (targetName, value) => {
+        tmp_state = contentArr;
+        tmp_arr = [];
+        tmp_obj = {};
+    
+        tmp_state.forEach((dataObj) => {
+          if (dataObj.targetName === targetName) {
+            tmp_obj = { ...dataObj };
+            tmp_obj.value = value;
+            tmp_arr.push(tmp_obj);
+          } else {
+            tmp_obj = { ...dataObj };
+            tmp_arr.push(tmp_obj);
+          }
+        });
+        setContentArr([...tmp_arr]);
+      };
+      return (
+        <div>
+          {contentArr?.map((content, index) => {
+            return (
+              <div style={{ marginBottom: "1em" }} key={index}>
+                <OptionItemOne
+                  {...args}
+                  targetName={content.targetName}
+                  value={content.value}
+                  placeholder={content.placeholder}
+                  maxLength={300}
+                  onInput={(targetName, value) => handleInput(targetName, value)}
+                  onClick={handleRemove}
+                />
+              </div>
+            );
+          })}
+        </div>
+      );`,
     },
   },
 };

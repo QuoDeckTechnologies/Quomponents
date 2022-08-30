@@ -1,17 +1,6 @@
 import React from "react";
 import LandscapeCarousel from "../components/Carousel/LandscapeCarousel/LandscapeCarousel.react";
 
-const dictionary = JSON.stringify({
-  hi: {
-    bannerCard: { header: "", content: "" },
-    ribbon: {
-      new: "नया",
-      restricted: "प्रतिबंधित",
-      premium: "अधिमूल्य",
-      free: "नि: शुल्क",
-    },
-  },
-});
 export default {
   title: "Design System/Carousel/LandscapeCarousel",
   component: LandscapeCarousel,
@@ -26,16 +15,6 @@ export default {
         props: {},
       },
     ],
-  },
-  withAnimation: {
-    table: {
-      category: "with-Params",
-      defaultValue: {
-        animation: "",
-        duration: 0,
-        delay: 0,
-      },
-    },
   },
   decorators: [
     (story) => (
@@ -56,7 +35,8 @@ export default {
     },
   },
   parameters: {
-    componentSubheader: "Displays a Landscape carousel.",
+    componentSubheader:
+      "Displays a Landscape carousel using react-slick. add content from prop to add more slides to the carosuel.",
     a11y: { disable: true },
     docs: {
       iframeHeight: 600,
@@ -64,6 +44,13 @@ export default {
   },
 };
 
+let dataprops = {
+  asVariant: "warning",
+  withColor: {
+    backgroundColor: "",
+    textColor: "",
+  },
+};
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
@@ -78,6 +65,10 @@ Default.args = {
       header: "Balloon Burst",
       tag: "new",
       selected: true,
+      props: {
+        ...dataprops,
+        asVariant: "primary",
+      },
     },
     {
       id: "second-slide",
@@ -86,6 +77,10 @@ Default.args = {
       tag: "premium",
       selected: false,
       header: "Cityscape",
+      props: {
+        ...dataprops,
+        asVariant: "secondary",
+      },
     },
     {
       id: "third-slide",
@@ -94,81 +89,64 @@ Default.args = {
       tag: "restricted",
       selected: false,
       header: "GhostBuster",
+      props: {
+        ...dataprops,
+        asVariant: "warning",
+      },
     },
   ],
-  withAnimation: {
-    animation: "slideRight",
-    duration: 0.5,
-    delay: 0,
-  },
-  withTranslation: {
-    lang: "en",
-    tgt: "bannerCard",
-    dictionary: dictionary,
-  },
 };
 Default.parameters = {
   docs: {
     source: {
-      code: `<LandscapeCarousel {...${JSON.stringify(
-        Default.args,
-        null,
-        2
-      )}}/>`,
-    },
-  },
-};
-
-// -------------------------------------------------------------
-// TranslatedLandscapeCarousel
-// -------------------------------------------------------------
-export const TranslatedLandscapeCarousel = Template.bind({});
-TranslatedLandscapeCarousel.args = {
-  content: [
+      code: `<LandscapeCarousel 
+  content= {[
     {
       id: "first-slide",
       image:
         "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
       header: "Balloon Burst",
       tag: "new",
-      selected: true,
+      selected: {true},
+      props: {
+        asVariant: "primary",
+        withColor: {
+          backgroundColor: "",
+          textColor: "",
+        }
+      },
     },
     {
       id: "second-slide",
       image:
         "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
       tag: "premium",
-      selected: false,
+      selected: {false},
       header: "Cityscape",
+      props: {
+        asVariant: "secondary",
+        withColor: {
+          backgroundColor: "",
+          textColor: "",
+        }
+      },
     },
     {
       id: "third-slide",
       image:
         "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
       tag: "restricted",
-      selected: false,
+      selected: {false},
       header: "GhostBuster",
+      props: {
+        asVariant: "warning",
+        withColor: {
+          backgroundColor: "",
+          textColor: "",
+        }
+      },
     },
-  ],
-  withAnimation: {
-    animation: "slideRight",
-    duration: 0.5,
-    delay: 0,
-  },
-  withTranslation: {
-    lang: "hi",
-    tgt: "bannerCard",
-    dictionary: dictionary,
-  },
-};
-TranslatedLandscapeCarousel.parameters = {
-  docs: {
-    source: {
-      code: `<LandscapeCarousel {...${JSON.stringify(
-        TranslatedLandscapeCarousel.args,
-        null,
-        2
-      )}}/>`,
+  ]}/>`,
     },
   },
 };
@@ -186,6 +164,10 @@ LandscapeCarouselWithoutBox.args = {
       header: "Balloon Burst",
       tag: "new",
       selected: true,
+      props: {
+        ...dataprops,
+        asVariant: "primary",
+      },
     },
     {
       id: "second-slide",
@@ -194,6 +176,10 @@ LandscapeCarouselWithoutBox.args = {
       tag: "premium",
       selected: false,
       header: "Cityscape",
+      props: {
+        ...dataprops,
+        asVariant: "secondary",
+      },
     },
     {
       id: "third-slide",
@@ -202,18 +188,12 @@ LandscapeCarouselWithoutBox.args = {
       tag: "restricted",
       selected: false,
       header: "GhostBuster",
+      props: {
+        ...dataprops,
+        asVariant: "warning",
+      },
     },
   ],
-  withTranslation: {
-    lang: "en",
-    tgt: "bannerCard",
-    dictionary: dictionary,
-  },
-  withAnimation: {
-    animation: "fade",
-    duration: 0.5,
-    delay: 0,
-  },
 };
 LandscapeCarouselWithoutBox.parameters = {
   docs: {
@@ -221,11 +201,51 @@ LandscapeCarouselWithoutBox.parameters = {
       story: "We can see the landscape Carousel without any header box",
     },
     source: {
-      code: `<LandscapeCarousel {...${JSON.stringify(
-        LandscapeCarouselWithoutBox.args,
-        null,
-        2
-      )}}/>`,
+      code: `<LandscapeCarousel 
+      content= {[
+        {
+          id: "first-slide",
+          image:
+            "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
+          tag: "new",
+          selected: {true},
+          props: {
+            asVariant: "primary",
+            withColor: {
+              backgroundColor: "",
+              textColor: "",
+            }
+          },
+        },
+        {
+          id: "second-slide",
+          image:
+            "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+          tag: "premium",
+          selected: {false},
+          props: {
+            asVariant: "secondary",
+            withColor: {
+              backgroundColor: "",
+              textColor: "",
+            }
+          },
+        },
+        {
+          id: "third-slide",
+          image:
+            "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
+          tag: "restricted",
+          selected: {false},
+          props: {
+            asVariant: "warning",
+            withColor: {
+              backgroundColor: "",
+              textColor: "",
+            }
+          },
+        },
+      ]}`,
     },
   },
 };
@@ -241,30 +261,32 @@ LandscapeCarouselWithoutTag.args = {
       image:
         " https://i.pinimg.com/564x/fc/cd/9f/fccd9ff066d6531ad19c042560cf78a0.jpg",
       header: "The Negotiation Room",
+      props: {
+        ...dataprops,
+        asVariant: "primary",
+      },
     },
     {
       id: "second-slide",
       image:
         "https://i.pinimg.com/564x/68/ed/88/68ed881d5ff0dbe232ff8d4d2e186a99.jpg",
       header: "The Negotiation Room",
+      props: {
+        ...dataprops,
+        asVariant: "secondary",
+      },
     },
     {
       id: "third-slide",
       image:
         "https://i.pinimg.com/564x/64/0b/57/640b5709e0cf312978a3912e736110e2.jpg",
       header: "What is Negotiation Room?",
+      props: {
+        ...dataprops,
+        asVariant: "warning",
+      },
     },
   ],
-  withTranslation: {
-    lang: "en",
-    tgt: "bannerCard",
-    dictionary: dictionary,
-  },
-  withAnimation: {
-    animation: "fade",
-    duration: 0.5,
-    delay: 0,
-  },
 };
 LandscapeCarouselWithoutTag.parameters = {
   docs: {
@@ -272,44 +294,54 @@ LandscapeCarouselWithoutTag.parameters = {
       story: "We can see the Landscape Carousel without any Tag",
     },
     source: {
-      code: `<LandscapeCarousel {...${JSON.stringify(
-        LandscapeCarouselWithoutTag.args,
-        null,
-        2
-      )}}/>`,
+      code: `<LandscapeCarousel 
+      content= {[
+        {
+          id: "first-slide",
+          image:
+            "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
+          header: "Balloon Burst",
+          selected: {true},
+          props: {
+            asVariant: "primary",
+            withColor: {
+              backgroundColor: "",
+              textColor: "",
+            }
+          },
+        },
+        {
+          id: "second-slide",
+          image:
+            "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+          selected: {false},
+          header: "Cityscape",
+          props: {
+            asVariant: "secondary",
+            withColor: {
+              backgroundColor: "",
+              textColor: "",
+            }
+          },
+        },
+        {
+          id: "third-slide",
+          image:
+            "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
+          selected: {false},
+          header: "GhostBuster",
+          props: {
+            asVariant: "warning",
+            withColor: {
+              backgroundColor: "",
+              textColor: "",
+            }
+          },
+        },
+      ]}`,
     },
   },
 };
-export const AnimatedLandscapeCarousel = Template.bind({});
-AnimatedLandscapeCarousel.args = {
-  ...Default.args,
-  withAnimation: {
-    animation: "slideRight",
-    duration: 0.5,
-    delay: 0,
-  },
-  withTranslation: {
-    lang: "en",
-    tgt: "bannerCard",
-    dictionary: dictionary,
-  },
-};
-AnimatedLandscapeCarousel.parameters = {
-  docs: {
-    description: {
-      story:
-        "Use to animate the entry of the LandscapeCarousel with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
-    },
-    source: {
-      code: `<AnimatedLandscapeCarousel {...${JSON.stringify(
-        AnimatedLandscapeCarousel.args,
-        null,
-        2
-      )}}/>`,
-    },
-  },
-};
-
 // -------------------------------------------------------------
 // MultipleLandscapeCarousels
 // -------------------------------------------------------------
@@ -324,6 +356,10 @@ const MultipleLandscapeCarouselsTemplate = (args) => {
           header: "Balloon Burst",
           tag: "new",
           selected: true,
+          props: {
+            ...dataprops,
+            asVariant: "primary",
+          },
         },
         {
           id: "second-slide",
@@ -332,6 +368,10 @@ const MultipleLandscapeCarouselsTemplate = (args) => {
           tag: "premium",
           selected: false,
           header: "Cityscape",
+          props: {
+            ...dataprops,
+            asVariant: "secondary",
+          },
         },
         {
           id: "third-slide",
@@ -340,13 +380,12 @@ const MultipleLandscapeCarouselsTemplate = (args) => {
           tag: "restricted",
           selected: false,
           header: "GhostBuster",
+          props: {
+            ...dataprops,
+            asVariant: "warning",
+          },
         },
       ],
-      withTranslation: {
-        lang: "en",
-        tgt: "bannerCard",
-        dictionary: dictionary,
-      },
     }),
   };
   return (
@@ -361,6 +400,10 @@ const MultipleLandscapeCarouselsTemplate = (args) => {
               header: "Balloon Burst",
               tag: "new",
               selected: true,
+              props: {
+                ...dataprops,
+                asVariant: "primary",
+              },
             },
             {
               id: "second-slide",
@@ -369,6 +412,10 @@ const MultipleLandscapeCarouselsTemplate = (args) => {
               tag: "premium",
               selected: false,
               header: "Cityscape",
+              props: {
+                ...dataprops,
+                asVariant: "secondary",
+              },
             },
             {
               id: "third-slide",
@@ -377,6 +424,10 @@ const MultipleLandscapeCarouselsTemplate = (args) => {
               tag: "restricted",
               selected: false,
               header: "GhostBuster",
+              props: {
+                ...dataprops,
+                asVariant: "warning",
+              },
             },
           ],
         })}
@@ -391,6 +442,10 @@ const MultipleLandscapeCarouselsTemplate = (args) => {
               header: "Balloon Burst",
               tag: "new",
               selected: true,
+              props: {
+                ...dataprops,
+                asVariant: "primary",
+              },
             },
             {
               id: "second-slide",
@@ -399,6 +454,10 @@ const MultipleLandscapeCarouselsTemplate = (args) => {
               tag: "premium",
               selected: false,
               header: "Cityscape",
+              props: {
+                ...dataprops,
+                asVariant: "secondary",
+              },
             },
             {
               id: "third-slide",
@@ -407,6 +466,10 @@ const MultipleLandscapeCarouselsTemplate = (args) => {
               tag: "restricted",
               selected: false,
               header: "GhostBuster",
+              props: {
+                ...dataprops,
+                asVariant: "warning",
+              },
             },
           ],
         })}
@@ -419,18 +482,30 @@ const MultipleLandscapeCarouselsTemplate = (args) => {
               image:
                 "https://i.pinimg.com/564x/a7/97/60/a79760adad76cba1c147450ec25b6225.jpg",
               tag: "new",
+              props: {
+                ...dataprops,
+                asVariant: "primary",
+              },
             },
             {
               id: "second-slide",
               image:
                 "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
               tag: "premium",
+              props: {
+                ...dataprops,
+                asVariant: "secondary",
+              },
             },
             {
               id: "third-slide",
               image:
                 "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
               tag: "restricted",
+              props: {
+                ...dataprops,
+                asVariant: "warning",
+              },
             },
           ],
         })}

@@ -4,20 +4,20 @@ import MultiSelect from "../components/MultiSelect/MultiSelect.react";
 const dictionary = JSON.stringify({
   en: {
     templateActions: {
-      checkAnswer: 'Check Answer',
-      submitAnswer: 'Submit Answer',
-      thanks: 'Thanks for your response',
-      go: 'Go',
-    }
+      checkAnswer: "Check Answer",
+      submitAnswer: "Submit Answer",
+      thanks: "Thanks for your response",
+      go: "Go",
+    },
   },
   hi: {
     templateActions: {
-      checkAnswer: 'अपना उत्तर जाँच लें',
-      submitAnswer: 'अपना जवाब सबमिट करें',
-      thanks: 'आपके उत्तर के लिए धन्यवाद',
-      go: 'आगे बढ़ें',
-    }
-  }
+      checkAnswer: "अपना उत्तर जाँच लें",
+      submitAnswer: "अपना जवाब सबमिट करें",
+      thanks: "आपके उत्तर के लिए धन्यवाद",
+      go: "आगे बढ़ें",
+    },
+  },
 });
 
 export default {
@@ -77,6 +77,8 @@ export default {
         defaultValue: {
           backgroundColor: "",
           textColor: "",
+          hoverBackgroundColor: "",
+          hoverTextColor: "",
         },
       },
     },
@@ -124,7 +126,6 @@ export default {
       <div
         style={{
           width: "100%",
-          textAlign: "center",
         }}
       >
         {story()}
@@ -135,7 +136,6 @@ export default {
     componentSubtitle: "Displays a MultiSelect Component",
     a11y: { disable: true },
     docs: { iframeHeight: 300 },
-
   },
 };
 
@@ -187,15 +187,59 @@ Default.args = {
     delay: 0,
   },
   isDisabled: false,
-  isHidden: false
+  isHidden: false,
 };
 Default.parameters = {
   docs: {
     description: {
-      story: "Default component shows features like selected ,not selected , animation in the component",
+      story:
+        "Default component shows features like selected ,not selected , animation in the component",
     },
     source: {
-      code: `<MultiSelect {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<MultiSelect 
+      content= [
+        {
+          name: "Primary Button",
+          isSelected: {false},
+        },
+        {
+          name: "Primary Button",
+          isSelected: {false},
+        },
+        {
+          name: "Primary Button",
+          isSelected: {false},
+        },
+        {
+          name: "Primary Button",
+          isSelected: {false},
+        },
+      ]
+      purpose= "quiz"
+      asEmphasis= "contained"
+    
+      asVariant= "warning"
+      asPadded= "normal"
+      asFloated= "none"
+    
+      withColor= {{
+        backgroundColor: "",
+        textColor: "",
+        hoverBackgroundColor: "",
+        hoverTextColor: "",
+      }}
+      withTranslation= {{
+        lang: "en",
+        tgt: "templateActions",
+        dictionary: dictionary,
+      }}
+      withAnimation= {{
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+      }}
+      isDisabled= {false}
+      isHidden= {false}/>`,
     },
   },
 };
@@ -386,8 +430,7 @@ export const AllVariants = AllVariantTemplate.bind({});
 AllVariants.parameters = {
   docs: {
     description: {
-      story:
-        "5 variants  is supported. Use as per purpose noted here.",
+      story: "5 variants  is supported. Use as per purpose noted here.",
     },
   },
 };
@@ -401,7 +444,7 @@ TranslatedMultiSelect.args = {
   withTranslation: {
     lang: "hi",
     tgt: "templateActions",
-    dictionary: dictionary
+    dictionary: dictionary,
   },
 };
 TranslatedMultiSelect.parameters = {
@@ -411,11 +454,50 @@ TranslatedMultiSelect.parameters = {
         "Use to change the language that the text appears in. To make this work for the MultiSelect, add a templateActions:{} value to the dictionary.",
     },
     source: {
-      code: `<MultiSelect {...${JSON.stringify(
-        TranslatedMultiSelect.args,
-        null,
-        2
-      )}}/>`,
+      code: `<MultiSelect 
+      content= [
+        {
+          name: "Primary Button",
+          isSelected: false,
+        },
+        {
+          name: "Primary Button",
+          isSelected: false,
+        },
+        {
+          name: "Primary Button",
+          isSelected: false,
+        },
+        {
+          name: "Primary Button",
+          isSelected: false,
+        },
+      ]
+      purpose= "quiz"
+      asEmphasis= "contained"
+    
+      asVariant= "warning"
+      asPadded= "normal"
+      asFloated= "none"
+    
+      withColor= {{
+        backgroundColor: "",
+        textColor: "",
+        hoverBackgroundColor: "",
+        hoverTextColor: "",
+      }}
+      withTranslation= {{
+        lang: "hi",
+        tgt: "templateActions",
+        dictionary: dictionary,
+      }}
+      withAnimation= {{
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+      }}
+      isDisabled= {false}
+      isHidden= {false}/>`,
     },
   },
 };

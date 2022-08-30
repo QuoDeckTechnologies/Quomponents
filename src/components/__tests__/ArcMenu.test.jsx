@@ -1,63 +1,30 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount } from "enzyme";
+import { shallow } from "enzyme";
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------
 import { hasValid } from "./common";
-
 //--------------------------------------
 // Import Components
 // -------------------------------------
 import ArcMenu from "../ArcMenu/ArcMenu.react";
+import ActionMenu from "../ActionMenu/ActionMenu.react";
 
 describe("ArcMenu", () => {
-
   const args = {
     target: ArcMenu,
     required: {
-      arcIcon: "menu",
-      onClick: () => { },
-    },
-    translations: {
-      tgt: "arcMenu",
-      lang: { valid: "hi", invalid: "xx" },
-      dictionary: JSON.stringify({
-        hi: {
-          arcMenu: {
-            menuContent: [
-              {
-                header: "सीखें",
-                list: [
-                  "अपलोड scorm",
-                  "अपलोड pdf",
-                  "वीडियो लिंक जोड़ें",
-                  "qdf डेक बनाएं",
-                ],
-              },
-              {
-                header: "मूल्यांकन",
-                list: ["सर्वेक्षण बनाएं", "प्रश्नोत्तरी बनाएँ", "एक खेल जोड़ें"],
-              },
-              {
-                header: "पुरस्कृत",
-                list: ["प्रमाण पत्र दो", "एक बैज दें", "इनाम दो"],
-              },
-            ],
-          },
-        },
-      }),
+      onClick: () => {},
     },
   };
 
   hasValid("defaults", args);
-  hasValid("positions", args);
-
+  hasValid("variants", args);
+  hasValid("icons", args);
   hasValid("colors", args);
   hasValid("animations", args);
-  hasValid("translations", args);
-
   hasValid("hidden", args);
   hasValid("disabled", args);
   // -------------------------------------
@@ -65,139 +32,107 @@ describe("ArcMenu", () => {
   // -------------------------------------
   let component;
 
-
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(
-      <ArcMenu
-        menuContent={[
-          {
-            header: "learning",
-            list: [
-              "upload scorm",
-              "upload pdf",
-              "add video link",
-              "create qdf deck",
-            ],
-          },
-          {
-            header: "evaluating",
-            list: ["create survey", "create quiz", "add a game"],
-          },
-          {
-            header: "rewarding",
-            list: ["give a certificate", "give a badge", "give a reward"],
-          },
-        ]}
-        nuggetContent={[
-          { image: "" },
-          { image: "" },
-          { image: "" },
-          { image: "" },
-          { image: "" },
-          { image: "" },
-        ]}
-        menuType="close"
-        arcIcon="menu"
-        position="top-right"
-        onClick={() => { }}
-      />
+      <ArcMenu asEmphasis="menu" position="top-right" onClick={() => {}}>
+        <ActionMenu
+          content={[
+            {
+              title: "Unpublish Deck",
+              icon: "fas fa-eye-slash",
+              popover: "Unpublish Deck...",
+              onClick: () => {},
+            },
+            {
+              title: "Delete Deck",
+              icon: "fas fa-trash-alt",
+              popover: "Delete Deck...",
+              onClick: () => {},
+            },
+          ]}
+          asPadded="normal"
+          asAligned="left"
+          withColor={{
+            backgroundColor: "#fff",
+            textColor: "",
+            accentColor: "",
+          }}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          isHidden={false}
+        />
+      </ArcMenu>
     );
-  });
-
-  it("should render correctly without throwing error", () => {
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed withColor", () => {
-    component.setProps({
-      withColor: {
-        backgroundColor: "#ffffff",
-        accentColor: "#ffffff",
-        textColor: "#ffffff",
-      },
-    });
-    expect(component.exists()).toBe(true);
-  });
-
-  it("should render correctly when passed isCircular props is true", () => {
-    component.setProps({
-      isHidden: true,
-    });
-    expect(component.exists()).toBe(true);
   });
 
   it("should render correctly whith top-left position", () => {
     component.setProps({
       position: "top-left",
     });
+    expect(component.exists()).toBe(true);
   });
 
   it("should render correctly with bottom-left position", () => {
     component.setProps({
       position: "bottom-left",
     });
+    expect(component.exists()).toBe(true);
   });
 
   it("should render correctly with bottom-right position", () => {
     component.setProps({
       position: "bottom-right",
     });
+    expect(component.exists()).toBe(true);
   });
 
   it("should render correctly when position not specified", () => {
     component.setProps({
       position: null,
     });
+    expect(component.exists()).toBe(true);
   });
 
-  it("should render correctly when modal is operated", () => {
+  it("should render correctly with add emphasis", () => {
     component.setProps({
-      menuType: "menu",
+      asEmphasis: "add",
     });
-    component.find(".qui-arc-menu-button").simulate("click");
-    component.find(".qui-arc-menu-backdrop").at(0).simulate("click");
+    expect(component.exists()).toBe(true);
   });
 
-  it("should render correctly with add menuType and add arcIcon", () => {
+  it("should render correctly when clicked on button", () => {
+    component.find("button").simulate("click");
+    expect(component.exists()).toBe(true);
+  });
+
+  it("should render correctly when hovered on close button", () => {
     component.setProps({
-      arcIcon: "add",
-      menuType: "add",
+      asEmphasis: "close",
     });
-    component.find(".qui-arc-menu-button").simulate("click");
+    component.find("button").simulate("mouseenter");
+    component.find("button").simulate("mouseleave");
+    expect(component.exists()).toBe(true);
   });
 
-  it("should render correctly with close menuType and close arcIcon", () => {
-    component.setProps({
-      arcIcon: "close",
-      menuType: "close",
-    });
-    component.find(".qui-arc-menu-button").simulate("click");
+  it("should render correctly when hovered on button", () => {
+    component.find("button").simulate("mouseenter");
+    component.find("button").simulate("mouseleave");
+    expect(component.exists()).toBe(true);
   });
 
-  it("should render correctly when clicked on close button", () => {
-    component.find(".qui-arc-menu-close-button").simulate("click");
+  it("should render correctly when clicked on button", () => {
+    let wrapper = shallow(<ArcMenu position="top-right" onClick={() => {}} />);
+    wrapper.find("button").simulate("click");
+    wrapper.find(".qui-arc-menu-backdrop").simulate("click");
+    expect(component.exists()).toBe(true);
   });
 
-  it("should render correctly when clicked on NuggetBlock", () => {
-    component.setProps({
-      menuType: "nugget-menu",
-    });
-    component.find(".qui-arc-menu-button").simulate("click");
-    component.find("NuggetBlock").at(0).simulate("click");
-  });
-
-  it("should render correctly when clicked on menu list items", () => {
-    component.setProps({
-      menuType: "menu",
-    });
-    component.find(".qui-arc-menu-list-item").at(0).simulate("mousedown");
-  });
-
-  it("should render correctly when menuType is menu and position is bottom-right", () => {
-    component.setProps({
-      menuType: "menu",
-      position: "bottom-right",
-    });
+  it("should render correctly when clicked on menu items", () => {
+    component.find(".qui-arc-menu-buttons").simulate("mouseup");
+    expect(component.exists()).toBe(true);
   });
 });

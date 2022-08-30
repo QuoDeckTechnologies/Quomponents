@@ -5,13 +5,13 @@ export default {
   title: "Design System/SlideHeader",
   component: SlideHeader,
   argTypes: {
-    content: {
+    title: "",
+    subtitle: "",
+    asVariant: {
+      control: "select",
+      options: ["primary", "secondary", "success", "warning", "error"],
       table: {
-        category: "with-Params",
-        defaultValue: {
-          title: "",
-          subTitle: "",
-        },
+        category: "as-Flags",
       },
     },
     asPadded: {
@@ -45,16 +45,6 @@ export default {
         },
       },
     },
-    withAnimation: {
-      table: {
-        category: "with-Params",
-        defaultValue: {
-          animation: "",
-          duration: 0,
-          delay: 0,
-        },
-      },
-    },
     isHidden: {
       table: {
         category: "is-Toggles",
@@ -62,20 +52,9 @@ export default {
       },
     },
   },
-  decorators: [
-    (story) => (
-      <div
-        style={{
-          textAlign: "center",
-        }}
-      >
-        {story()}
-      </div>
-    ),
-  ],
+  decorators: [(story) => <div>{story()}</div>],
   parameters: {
-    componentSubtitle:
-      "Default SlideHeader for general purpose use",
+    componentSubtitle: "Default SlideHeader for general purpose use",
     a11y: { disable: true },
     docs: { iframeHeight: 400 },
   },
@@ -86,10 +65,9 @@ export default {
 const Template = (args) => <SlideHeader {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-  content: {
-    title: "Neque porro quisquam est qui dolorem",
-    subTitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
-  },
+  title: "Neque porro quisquam est qui dolorem",
+  subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
+  asVariant: "primary",
   asFloated: "inline",
   asPadded: "normal",
   asAligned: "center",
@@ -98,17 +76,24 @@ Default.args = {
     textColor: "#ffffff",
     backgroundColor: "#ad292980",
   },
-  withAnimation: {
-    animation: "collapse",
-    duration: 0.5,
-    delay: 0,
-  },
   isHidden: false,
 };
 Default.parameters = {
   docs: {
     source: {
-      code: `<SlideHeader {...${JSON.stringify(Default.args, null, 2)}}/>`,
+      code: `<SlideHeader 
+      title= "Neque porro quisquam est qui dolorem"
+      subtitle= "Lorem ipsum dolor sit amet consectetur adipiscing elit curabitur ipsum sem"
+      asVariant= "primary"
+      asFloated= "inline"
+      asPadded= "normal"
+      asAligned= "center"
+      withColor= {{
+        accentColor: "#AD2929",
+        textColor: "#ffffff",
+        backgroundColor: "#ad292980",
+      }}
+      isHidden= {false}/>`,
     },
   },
 };
@@ -127,42 +112,22 @@ ColoredSlideHeader.args = {
 ColoredSlideHeader.parameters = {
   docs: {
     description: {
-      story:
-        "Use to override the standard colors of the SliderHeader.",
+      story: "Use to override the standard colors of the SliderHeader.",
     },
     source: {
-      code: `<ColoredSlideHeader {...${JSON.stringify(
-        ColoredSlideHeader.args,
-        null,
-        2
-      )}}/>`,
+      code: `<SlideHeader 
+      title= "Neque porro quisquam est qui dolorem"
+      subtitle= "Lorem ipsum dolor sit amet consectetur adipiscing elit curabitur ipsum sem"
+      asVariant= "primary"
+      asFloated= "inline"
+      asPadded= "normal"
+      asAligned= "center"
+      withColor= {{
+        backgroundColor: "#666666",
+        textColor: "#fffff",
+        accentColor: "#ffbf00",
+      }}
+      isHidden= {false}/>`,
     },
   },
 };
-// -------------------------------------------------------------
-// Animated SlideHeader
-// -------------------------------------------------------------
-export const AnimatedSlideHeader = Template.bind({});
-AnimatedSlideHeader.args = {
-  ...Default.args,
-  withAnimation: {
-    animation: "slideRight",
-    duration: 0.5,
-    delay: 0,
-  },
-};
-AnimatedSlideHeader.parameters = {
-  docs: {
-    description: {
-      story:
-        "Use to animate the entry of the SlideHeader with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
-    },
-    source: {
-      code: `<AnimatedSlideHeader {...${JSON.stringify(
-        AnimatedSlideHeader.args,
-        null,
-        2
-      )}}/>`,
-    },
-  },
-}; 

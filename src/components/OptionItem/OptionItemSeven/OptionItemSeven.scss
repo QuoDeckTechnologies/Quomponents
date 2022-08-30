@@ -52,6 +52,7 @@
 
 .qui.qui-option-item-seven .qui-input-field {
   text-indent: 0;
+  margin-left: 0.5em;
 }
 
 .qui .qui-option-item-seven-container .qui-option-item-upload-button {
@@ -59,9 +60,27 @@
   margin-bottom: -0.4em;
 }
 
+.qui
+  .qui-option-item-radio-container
+  .css-vqmohf-MuiButtonBase-root-MuiRadio-root {
+  color: #ffab00;
+  padding: 0;
+  margin-right: 0.5em;
+  &.Mui-checked {
+    color: #ffab00;
+    padding: 0;
+    margin-right: 0.5em;
+  }
+}
+
+.qui .qui-option-item-seven-container .qui .qui-optional-image-field-container {
+  width: 4.5em;
+  height: 1.2em;
+}
+
 @media only screen and (min-width: 320px) {
   .qui .qui-option-item-seven-container .qui-option-item-radio-container {
-    min-width: 3.25em;
+    min-width: 2em;
   }
   .qui .qui-option-item-seven-container .qui-optional-image-field-button {
     display: none;
@@ -75,6 +94,11 @@
     .qui-optional-image-field-middle-border {
     display: none;
   }
+  .qui
+    .qui-option-item-seven-container
+    .qui-optional-image-field-button-container {
+    display: none;
+  }
 }
 
 @media only screen and (min-width: 481px) {
@@ -84,7 +108,6 @@
   }
   .qui .qui-option-item-seven-container .qui .qui-optional-image-field-icon {
     font-size: 1.48em;
-    padding: 0.09em 0.2em;
   }
   .qui
     .qui-option-item-seven-container
@@ -98,11 +121,16 @@
     .qui-optional-image-field-middle-border {
     display: block;
   }
+  .qui
+    .qui-option-item-seven-container
+    .qui-optional-image-field-button-container {
+    display: table-cell;
+  }
 }
 
 @media only screen and (min-width: 769px) {
   .qui .qui-option-item-seven-container .qui-option-item-radio-container {
-    min-width: 7em;
+    min-width: 6em;
   }
   .qui .qui-option-item-seven-container .qui-optional-image-field-button {
     padding: 0.2em 1em;
@@ -110,7 +138,6 @@
   }
   .qui .qui-option-item-seven-container .qui .qui-optional-image-field-icon {
     font-size: 1.6em;
-    padding: 0.04em 0.2em;
   }
   .qui
     .qui-option-item-seven-container

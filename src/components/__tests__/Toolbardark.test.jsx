@@ -11,7 +11,6 @@ describe("ToolbarDark", () => {
     // -------------------------------------
     // Run common tests
     // -------------------------------------
-
     const args = {
         target: ToolbarDark,
         required: {
@@ -76,19 +75,19 @@ describe("ToolbarDark", () => {
                 isHidden={false}
                 isFluid={false}
                 isCircular={true}
-                onClick={() => { }} />
+                onClick={() => { }}
+            />
         );
     });
-    it("should render correctly with translation",
-        () => {
-            component.setProps({
-                withTranslation: {
-                    lang: "hi",
-                    tgt: "toolbarDark",
-                    dictionary: dictionary,
-                },
-            });
-            expect(component.exists()).toBe(true);
+    it("should render correctly with translation", () => {
+        component.setProps({
+            withTranslation: {
+                lang: "hi",
+                tgt: "toolbarDark",
+                dictionary: dictionary,
+            },
         });
+        expect(component.exists()).toBe(true);
+    });
 });
 

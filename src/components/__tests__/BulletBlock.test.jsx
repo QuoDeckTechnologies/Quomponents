@@ -1,73 +1,56 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount, render } from "enzyme";
-import renderer, { act } from "react-test-renderer";
-
+import { shallow } from "enzyme";
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------
 import { hasValid } from "./common";
-//--------------------------------------
-// Import from Config
-// -------------------------------------
-
 //--------------------------------------
 // Import Components
 // -------------------------------------
 import BulletBlock from "../BulletBlock/BulletBlock.react";
 
 describe("BulletBlock", () => {
+  // -------------------------------------
+  // Run common tests
+  // -------------------------------------
+  const args = {
+    target: BulletBlock,
+    required: {},
+  };
 
-    // -------------------------------------
-    // Run common tests
-    // -------------------------------------
+  hasValid("defaults", args);
 
-    const args = {
-        target: BulletBlock,
-        required: {
-        },
-    };
+  hasValid("sizes", args);
+  hasValid("positions", args);
+  hasValid("padding", args);
+  hasValid("alignment", args);
 
-    hasValid("defaults", args);
+  hasValid("colors", args);
 
-    hasValid("variants", args);
-    hasValid("sizes", args);
+  hasValid("hidden", args);
+  hasValid("fluid", args);
+  // -------------------------------------
+  // Setup definitions for the test suite
+  // -------------------------------------
+  let component;
 
-    hasValid("colors", args);
-    hasValid("animations", args);
-
-    hasValid("hidden", args);
-    // -------------------------------------
-    // Setup definitions for the test suite
-    // -------------------------------------
-    let component;
-
-    beforeEach(() => {
-        jest.resetAllMocks();
-        component = shallow(
-            <BulletBlock
-                content={[
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-                    "Quisque sed turpis vel lectus suscipit auctor",
-                    "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
-                ]}
-                let colors={{
-                    backgroundColor: "red",
-                    accentColor: "green",
-                    textColor: "blue",
-                }}
-            />
-        );
-    });
-    it("should render correctly with withColor prop ",
-        () => {
-            component = renderer.create(<BulletBlock
-                withColor={{
-                    backgroundColor: "#C9878",
-                    accentColor: "#ffffff",
-                    textColor: "#b60d17",
-                }}
-            />)
-        });
+  beforeEach(() => {
+    jest.resetAllMocks();
+    component = shallow(
+      <BulletBlock
+        content={[
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          "Quisque sed turpis vel lectus suscipit auctor",
+          "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor.",
+        ]}
+        asVariant="primary"
+        asSize="normal"
+        withColor={null}
+        withAnimation={null}
+        isHidden={false}
+      />
+    );
+  });
 });

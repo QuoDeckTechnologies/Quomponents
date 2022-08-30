@@ -3,21 +3,20 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import Backdrop from "@mui/material/Backdrop";
-import {
-  getAnimation,
-  getQuommons,
-  getTranslation,
-} from "../../common/javascripts/helpers";
+import { getAnimation, getQuommons } from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./ContentTableRow.scss";
 import "../../common/stylesheets/overrule.scss";
-import ActionMenu from "../ActionMenu/ActionMenu.react";
 
 ContentTableRow.propTypes = {
   //=======================================
   // Component Specific props
   //=======================================
+  /**
+  ContentTableRow can accept another component which is rendered when menu icon is clicked
+  */
+  children: PropTypes.element,
   /**
   ContentTableRow data should be passed in content field and it is a required field
   */
@@ -32,6 +31,16 @@ ContentTableRow.propTypes = {
   Use to define component padding in increasing order
   */
   asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
+  /**
+    Use to override component colors and behavior
+  */
+  withColor: PropTypes.shape({
+    backgroundColor: PropTypes.string,
+    textColor: PropTypes.string,
+    hoverTextColor: PropTypes.string,
+    hoverBackgroundColor: PropTypes.string,
+    accentColor: PropTypes.string,
+  }),
   /**
   Use to define the entry animation of the component
   */
@@ -50,25 +59,21 @@ ContentTableRow.propTypes = {
     delay: PropTypes.number,
   }),
   /**
-    Use to show a translated version of the component text. Dictionary must be valid JSON. 
-    */
-  withTranslation: PropTypes.shape({
-    lang: PropTypes.string,
-    tgt: PropTypes.string,
-    dictionary: PropTypes.string,
-  }),
-  /**
-    Use to enable/disable the component
-    */
-  isDisabled: PropTypes.bool,
-  /**
-  Use to show/hide the component
+  ContentTableRow component must have the onChange function passed as props
   */
-  isHidden: PropTypes.bool,
+  onChange: PropTypes.func.isRequired,
   /**
-  Button component must have the onClick function passed as props
+  ContentTableRow component must have the onChecked function passed as props
   */
-  onClick: PropTypes.func.isRequired,
+  onChecked: PropTypes.func.isRequired,
+  /**
+  ContentTableRow component must have the onUnchecked function passed as props
+  */
+  onUnchecked: PropTypes.func.isRequired,
+  /**
+  ContentTableRow component must have the onContentUpdate function passed as props
+  */
+  onContentUpdate: PropTypes.func.isRequired,
 };
 
 ContentTableRow.defaultProps = {
@@ -81,9 +86,7 @@ ContentTableRow.defaultProps = {
   //=======================================
   asPadded: "normal",
   withAnimation: null,
-  withTranslation: null,
-  isDisabled: false,
-  isHidden: false,
+  withColor: null,
 };
 
 function getIcon(readerType) {
@@ -102,8 +105,6 @@ function getIcon(readerType) {
       return "far fa-question-circle";
     case "casestudy":
       return "fas fa-archive";
-    // case "dialogue":
-    //   return "talking outline";
     case "qdf":
     case "deck":
       return "far fa-images";
@@ -127,17 +128,41 @@ export default function ContentTableRow(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring content props
   //-------------------------------------------------------------------
-  const { content } = props;
+  const {
+    content,
+    onChange,
+    onChecked,
+    onUnchecked,
+    onContentUpdate,
+    withColor,
+  } = props;
   //-------------------------------------------------------------------
   // 2. Setting states for file name and checkbox
   //-------------------------------------------------------------------
   const [name, setName] = useState(content?.name);
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(content?.checked);
   const [showMenu, setShowMenu] = useState(false);
-  const readerType = content.readerType;
+  const readerType = content?.readerType;
   useEffect(() => {
     setName(content?.name);
   }, [content?.name]);
+
+  useEffect(() => {
+    onChange(name);
+  }, [name, onChange]);
+
+  useEffect(() => {
+    if (isChecked) onChecked();
+    else onUnchecked();
+  }, [isChecked, onChecked, onUnchecked]);
+
+  useEffect(() => {
+    let tmp_obj = { ...content };
+    tmp_obj.name = name;
+    tmp_obj.checked = isChecked;
+    onContentUpdate(tmp_obj);
+  }, [name, isChecked, onContentUpdate, content]);
+
   useEffect(() => {
     const checkIfClickedOutside = (e) => {
       setShowMenu(false);
@@ -156,11 +181,7 @@ export default function ContentTableRow(props) {
   //-------------------------------------------------------------------
   const quommonClasses = getQuommons(props, "content-table-row");
   //-------------------------------------------------------------------
-  // 5. Translate the text objects in case their is a dictionary provided
-  //-------------------------------------------------------------------
-  let tObj = getTranslation(props.withTranslation);
-  //-------------------------------------------------------------------
-  // 6. Get animation of the component
+  // 5. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props);
 
@@ -175,20 +196,30 @@ export default function ContentTableRow(props) {
       <Backdrop open={showMenu} sx={{ zIndex: 10 }} />
       <div
         className={`qui-table-content-row-container ${quommonClasses.childClasses}`}
+        style={{ backgroundColor: withColor?.backgroundColor }}
       >
         <div className="qui-content-table-checkbox-container">
           <i
-            className={`${isChecked ? "far fa-square" : "fas fa-check-square"
-              } qui-content-checkbox`}
+            className={`${
+              isChecked ? "fas fa-check-square" : "far fa-square"
+            } qui-content-checkbox`}
+            style={{ color: withColor?.accentColor }}
             onClick={() => setIsChecked((prevState) => !prevState)}
           ></i>
         </div>
         <div className="qui-content-table-file-icon">
-          <i className={`${icon} qui-table-file-icon`}></i>
+          <i
+            className={`${icon} qui-table-file-icon`}
+            style={{ color: withColor?.hoverBackgroundColor }}
+          ></i>
         </div>
         <input
           type="text"
           className="qui-content-input"
+          style={{
+            backgroundColor: withColor?.backgroundColor,
+            color: withColor?.textColor,
+          }}
           value={name}
           maxLength={60}
           onChange={(e) => setName(e.target.value)}
@@ -196,23 +227,17 @@ export default function ContentTableRow(props) {
         <div className="qui-content-table-row-dropdown">
           <button
             className="qui-content-menu"
+            style={{ backgroundColor: withColor?.backgroundColor }}
             onClick={() => setShowMenu((prevState) => !prevState)}
           >
-            <i className="fas fa-ellipsis-v"></i>
+            <i
+              className="fas fa-ellipsis-v"
+              style={{ color: withColor?.hoverTextColor }}
+            ></i>
           </button>
           {showMenu && (
             <div className="qui-content-table-row-action-menu">
-              <ActionMenu
-                {...props}
-                withTranslation={null}
-                content={tObj?.menuData || content?.menuData}
-                withColor={{ backgroundColor: "#ffffff" }}
-                withAnimation={{
-                  animation: "slideDown",
-                  duration: 0.5,
-                  delay: 0,
-                }}
-              />
+              {props?.children}
             </div>
           )}
         </div>

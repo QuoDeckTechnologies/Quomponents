@@ -15,7 +15,6 @@ describe("ToggleButton", () => {
   // -------------------------------------
   // Run common tests
   // -------------------------------------
-
   const args = {
     target: ToggleButton,
     required: {
@@ -35,7 +34,7 @@ describe("ToggleButton", () => {
   };
 
   hasValid("defaults", args);
-
+  hasValid("variants", args);
   hasValid("positions", args);
 
   hasValid("colors", args);
@@ -60,8 +59,6 @@ describe("ToggleButton", () => {
     component = shallow(
       <ToggleButton
         label="Active"
-        withTranslation={null}
-
         onClick={() => { }}
         onChange={onChange}
       />
@@ -82,16 +79,4 @@ describe("ToggleButton", () => {
     component.setProps({ label: "" });
     expect(component.exists()).toBe(true);
   });
-
-  it("should render correctly with translation",
-    () => {
-      component.setProps({
-        withTranslation: {
-          lang: "hi",
-          tgt: "toggleButton",
-          dictionary: dictionary,
-        },
-      });
-      expect(component.find(".qui-toggle-button-title").text()).toBe("सक्रिय");
-    });
 });

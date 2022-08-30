@@ -16,24 +16,18 @@ describe("Segment", () => {
   // -------------------------------------
   // Run common tests
   // -------------------------------------
-
   const args = {
     target: Segment,
   };
 
   hasValid("defaults", args);
-
   hasValid("positions", args);
   hasValid("padding", args);
-
   hasValid("animations", args);
-
-  hasValid("disabled", args);
   hasValid("hidden", args);
   // -------------------------------------
   // Run component specific tests
   // -------------------------------------
-
   let component;
 
   beforeEach(() => {
@@ -48,7 +42,7 @@ describe("Segment", () => {
         withAnimation={null}
         isHidden={false}
         isDisabled={false}
-      ></Segment>
+      />
     );
   });
 

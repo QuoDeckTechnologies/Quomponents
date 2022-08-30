@@ -2,6 +2,11 @@
   overflow: visible;
 }
 
+.qui.qui-option-item-five .qui-input-field {
+  text-indent: 0;
+  margin-left: 0.5em;
+}
+
 .qui .qui-option-item-five-container {
   display: flex;
   align-items: center;
@@ -42,6 +47,11 @@
   margin-top: 0.2em;
 }
 
+.qui .qui-option-item-five-container .qui .qui-optional-image-field-container {
+  width: 4em;
+  height: 2.2em;
+}
+
 @media only screen and (min-width: 320px) {
   .qui .qui-option-item-five-close-icon {
     height: 1.5em;
@@ -49,18 +59,25 @@
     font-size: 1.45em;
   }
   .qui.qui-option-item-five .qui.qui-optional-image-field {
-    font-size: 0.8em;
+    font-size: 0.9em;
   }
   .qui .qui-option-item-five-container .qui-optional-image-field-button {
     display: none;
   }
   .qui .qui-option-item-five-container .qui .qui-optional-image-field-icon {
     font-size: 1.8em;
+    width: 100%;
+    text-align: center;
   }
   .qui
     .qui-option-item-five-container
     .qui.qui-optional-image-field
     .qui-optional-image-field-middle-border {
+    display: none;
+  }
+  .qui
+    .qui-option-item-five-container
+    .qui-optional-image-field-button-container {
     display: none;
   }
 }
@@ -79,13 +96,17 @@
   }
   .qui .qui-option-item-five-container .qui .qui-optional-image-field-icon {
     font-size: 1.85em;
-    padding: 0.085em 0.2em;
   }
   .qui
     .qui-option-item-five-container
     .qui.qui-optional-image-field
     .qui-optional-image-field-wrapper {
     border: 0.225em solid #ffbf00;
+  }
+  .qui
+    .qui-option-item-five-container
+    .qui-optional-image-field-button-container {
+    display: table-cell;
   }
 }
 
@@ -96,16 +117,12 @@
   }
   .qui .qui-option-item-five-container .qui-optional-image-field-button {
     padding: 0.25em 0.9em;
-    font-size: 0.8em;
   }
   .qui .qui-option-item-five-container .qui .qui-optional-image-field-icon {
     font-size: 1.6em;
   }
   .qui.qui-option-item-five .qui.qui-optional-image-field {
-    font-size: 1em;
-  }
-  .qui .qui-option-item-five-container .qui .qui-optional-image-field-icon {
-    padding: 0.05em 0.21em;
+    font-size: 0.85em;
   }
   .qui
     .qui-option-item-five-container

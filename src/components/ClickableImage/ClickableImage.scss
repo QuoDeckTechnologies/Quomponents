@@ -3,10 +3,21 @@
   object-fit: cover;
   display: inline;
   overflow: visible;
+  &.is-hidden {
+    display: none;
+  }
 }
 
 .qui .qui-active-image-click {
-  border: 0.5em solid;
+  .variant-primary {
+    border-color: #ed6e6e;
+  }
+  .variant-secondary {
+    border-color: #3e587a;
+  }
+  .variant-warning {
+    border-color: #ffbf00;
+  }
 }
 
 .qui .qui-image-clickable {
@@ -17,8 +28,8 @@
 }
 
 .qui .qui-image-clickable.is-circular {
-  height: 20em;
-  width: 20em;
+  height: 100%;
+  width: 100%;
   border-radius: 50%;
 }
 
@@ -26,11 +37,17 @@
   .qui.qui-clickable-image {
     font-size: 0.9em;
   }
+  .qui .qui-active-image-click {
+    border: 0.3em solid;
+  }
 }
 
 @media only screen and (min-width: 481px) {
   .qui.qui-clickable-image {
     font-size: 2em;
+  }
+  .qui .qui-active-image-click {
+    border: 0.2em solid;
   }
 }
 

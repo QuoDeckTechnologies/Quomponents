@@ -21,7 +21,12 @@ CourseListCard.propTypes = {
   /**
   CourseListCard component text has to be in content props.
   */
-  content: PropTypes.object,
+  id: PropTypes.string,
+  name: PropTypes.string,
+  description: PropTypes.string,
+  checked: PropTypes.bool,
+  viewedPercentage: PropTypes.number,
+  image: PropTypes.object,
   /**
   CourseListCard can set background image from imageLibrary array
   */
@@ -38,10 +43,10 @@ CourseListCard.propTypes = {
   */
   withColor: PropTypes.shape({
     backgroundColor: PropTypes.string,
-    accentColor: PropTypes.string,
-    accentBackgroundColor: PropTypes.string,
     textColor: PropTypes.string,
-    pathColor: PropTypes.string,
+    accentColor: PropTypes.string,
+    hoverBackgroundColor: PropTypes.string,
+    hoverTextColor: PropTypes.string,
   }),
   /**
   Use to define the entry animation of the component
@@ -78,14 +83,12 @@ CourseListCard.defaultProps = {
   //=======================================
   // Component Specific props
   //=======================================
-  content: {
-    id: "",
-    name: "",
-    description: "",
-    checked: true,
-    viewedPercentage: 80,
-    image: { id: "", extention: "" },
-  },
+  id: "",
+  name: "",
+  description: "",
+  checked: true,
+  viewedPercentage: 80,
+  image: { id: "", extention: "" },
   imageLibrary: [],
   //=======================================
   // Quommon props
@@ -107,7 +110,17 @@ export default function CourseListCard(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring props
   //-------------------------------------------------------------------
-  const { content, withColor, imageLibrary, onClick } = props;
+  const {
+    id,
+    name,
+    description,
+    checked,
+    viewedPercentage,
+    image,
+    withColor,
+    imageLibrary,
+    onClick,
+  } = props;
   //-------------------------------------------------------------------
   // 2. Set the classes
   //-------------------------------------------------------------------
@@ -120,12 +133,9 @@ export default function CourseListCard(props) {
   // 4. Function to set image of the card
   //-------------------------------------------------------------------
   const getBackground = () => {
-    if (content?.image) {
+    if (image) {
       return {
-        backgroundImage: `url(${resolveImage(
-          content?.image.id,
-          imageLibrary
-        )})`,
+        backgroundImage: `url(${resolveImage(image.id, imageLibrary)})`,
       };
     }
   };
@@ -140,11 +150,11 @@ export default function CourseListCard(props) {
       className={`qui ${quommonClasses.parentClasses}`}
     >
       <div
-        className="qui-course-list-card-container"
+        className="qui-course-list-card-container qt-shadow"
         style={{
           backgroundColor: withColor?.backgroundColor,
         }}
-        onClick={() => onClick(content)}
+        onClick={() => onClick(id)}
       >
         <div
           className="qui-course-list-card-image-container"
@@ -155,11 +165,8 @@ export default function CourseListCard(props) {
             backgroundSize: "cover",
           }}
         >
-          {content?.checked && (
-            <div
-              className="qui-course-list-card-checkbox-container"
-              style={{ backgroundColor: withColor?.accentBackgroundColor }}
-            >
+          {checked && (
+            <div className="qui-course-list-card-checkbox-container">
               <i
                 className="fas fa-check-square"
                 style={{ color: withColor?.accentColor }}
@@ -169,39 +176,37 @@ export default function CourseListCard(props) {
         </div>
         <div className="qui-course-list-card-text-container">
           <div className="qui-course-list-card-text">
-            <h4
+            <h6
               className="qui-course-list-card-name"
               style={{
                 color: withColor?.textColor,
               }}
             >
-              {content?.name}
-            </h4>
+              {name}
+            </h6>
             <p
-              className="qui-course-list-card-description"
+              className="qui-course-list-card-description qt-sm"
               style={{
                 color: withColor?.textColor,
               }}
             >
-              {content?.description}
+              {description}
             </p>
           </div>
-          {content?.viewedPercentage !== undefined &&
-            content?.viewedPercentage !== '' && (
-              <div className="qui-course-list-card-chart-container">
-                <div className="qui-course-list-card-doughnut-chart">
-                  <CircularProgressbar
-                    value={content.viewedPercentage}
-                    strokeWidth={30}
-                    styles={buildStyles({
-                      strokeLinecap: "butt",
-                      pathColor: withColor?.pathColor,
-                    })}
-                  />
-                </div>
-                <h2 className="qui-course-list-card-percentage-completion">{`${content.viewedPercentage}%`}</h2>
+          {viewedPercentage !== undefined && viewedPercentage !== "" && (
+            <div className="qui-course-list-card-chart-container">
+              <div className="qui-course-list-card-doughnut-chart">
+                <CircularProgressbar
+                  value={viewedPercentage}
+                  strokeWidth={30}
+                  styles={buildStyles({
+                    strokeLinecap: "butt",
+                  })}
+                />
               </div>
-            )}
+              <h5 className="qui-course-list-card-percentage-completion">{`${viewedPercentage}%`}</h5>
+            </div>
+          )}
         </div>
       </div>
     </motion.div>

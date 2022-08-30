@@ -2,24 +2,54 @@ import React from 'react';
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow, mount, render } from 'enzyme';
+import { shallow } from 'enzyme';
+//--------------------------------------
+// Import Common Tests
+// -------------------------------------
+import { hasValid } from "./common";
 //--------------------------------------
 // Import Components
 // -------------------------------------
 import BannerCard from "../Carousel/BannerCard/BannerCard.react"
 
 describe("BannerCard", () => {
+
+    // -------------------------------------
+    // Run common tests
+    // -------------------------------------
+    const args = {
+        target: BannerCard,
+        required: {
+            onClick: () => { },
+        },
+        translations: {
+            tgt: "button",
+            lang: { valid: "hi", invalid: "xx" },
+            dictionary: JSON.stringify({
+                hi: {
+                    bannerCard: { header: "बातचीत कक्ष", content: "प्रतियोगिता खेलें और फ्लिपकार्ट वाउचर अर्जित करने के लिए जीतें।" },
+                    ribbon: {
+                        new: "नया",
+                        restricted: "प्रतिबंधित",
+                        premium: "अधिमूल्य",
+                        free: "नि: शुल्क"
+                    }
+                },
+            }),
+        },
+    };
+
+    hasValid("defaults", args);
+    hasValid("colors", args);
+    hasValid("animations", args);
+    hasValid("translations", args);
+    hasValid("hidden", args);
+    hasValid("disabled", args);
     // -------------------------------------
     // Setup definitions for the test suite
     // -------------------------------------
     let component;
 
-    let content = {
-        image: "https://i.pinimg.com/564x/db/02/f4/db02f4f5fbd5cddc306153bea2315e9b.jpg",
-        tag: "new",
-        header: "Component",
-        content: "subtitle",
-    }
     const dictionary1 = JSON.stringify({
         hi: {
             bannerCard: { header: "बातचीत कक्ष", content: "प्रतियोगिता खेलें और फ्लिपकार्ट वाउचर अर्जित करने के लिए जीतें।" },
@@ -46,7 +76,10 @@ describe("BannerCard", () => {
         jest.resetAllMocks();
         component = shallow(
             <BannerCard
-                content={content}
+                image="https://i.pinimg.com/564x/db/02/f4/db02f4f5fbd5cddc306153bea2315e9b.jpg"
+                tag="new"
+                header="Component"
+                content="subtitle"
                 asVariant="warning"
                 withColor={null}
                 withAnimation={null}
@@ -64,11 +97,9 @@ describe("BannerCard", () => {
         });
     it("should render translation  with withTranslation prop ", () => {
         component.setProps({
-            content: {
-                header: "header",
-                content: "content",
-                image: "test.jpg"
-            },
+            header: "header",
+            content: "content",
+            image: "test.jpg",
             withTranslation: {
                 lang: "hi",
                 tgt: "bannerCard",
@@ -78,11 +109,9 @@ describe("BannerCard", () => {
     });
     it("should render translation  with withTranslation prop ", () => {
         component.setProps({
-            content: {
-                header: "header",
-                content: "content",
-                image: "test.jpg"
-            },
+            header: "header",
+            content: "content",
+            image: "test.jpg",
             withTranslation: {
                 lang: "hi",
                 tgt: "bannerCard",
@@ -92,57 +121,12 @@ describe("BannerCard", () => {
     });
     it("should render with empty header and content ", () => {
         component.setProps({
-            content: {
-                header: "",
-                content: "",
-                image: "test.jpg"
-            },
+            header: "",
+            content: "",
+            image: "test.jpg"
         });
     });
-
-    it("should render correctly when passed withAnimation props", () => {
-        let animation = {
-            animation: "zoom",
-            duration: 0.5,
-            delay: 0,
-        }
-        component.setProps({ withAnimation: animation })
-        expect(component.exists()).toBe(true);
-    })
-    it("should render correctly when passed isHidden props as false", () => {
-        component.setProps({ isHidden: false })
-        expect(component.exists()).toBe(true);
-    })
-    it("should render correctly when passed isHidden props as true", () => {
-        component.setProps({ isHidden: true })
-        expect(component.exists()).toBe(true);
-    })
-    it("should render correctly when passed isDisabled props as false", () => {
-        component.setProps({ isDisabled: false })
-        expect(component.exists()).toBe(true);
-    })
-    it("should render correctly when passed isDisabled props as true", () => {
-        component.setProps({ isDisabled: true })
-        expect(component.exists()).toBe(true);
-    })
-    it("should render correctly when passed asVariant prop as primary", () => {
-        component.setProps({ asVariant: "primary" })
-        expect(component.exists()).toBe(true);
-    })
-    it("should render correctly when passed asVariant prop as secondary", () => {
-        component.setProps({ asVariant: "secondary" })
-        expect(component.exists()).toBe(true);
-    })
-    it("should render correctly when passed asVariant prop as warning", () => {
-        component.setProps({ asVariant: "warning" })
-        expect(component.exists()).toBe(true);
-    })
-    it("should render correctly when passed asVariant prop as error", () => {
-        component.setProps({ asVariant: "error" })
-        expect(component.exists()).toBe(true);
-    })
-    it("should render correctly when passed asVariant prop as success", () => {
-        component.setProps({ asVariant: "success" })
-        expect(component.exists()).toBe(true);
-    })
+    it("should render when click on bannerCard ", () => {
+        component.find(".qui-banner-card").simulate("click");
+    });
 });
