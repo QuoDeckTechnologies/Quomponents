@@ -378,7 +378,7 @@ export default function NuggetCard(props) {
                     asSize="small"
                     asEmphasis="text"
                     withIcon={{ icon: "fas fa-copy", size: "0.8em" }}
-                    withColor={{ accentColor: "#FFBF00" }}
+                    withColor={{ textColor: "#FFBF00" }}
                     asPadded="fitted"
                     onClick={() => {
                       navigator.clipboard.writeText(link);

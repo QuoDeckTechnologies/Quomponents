@@ -421,7 +421,7 @@ export default function CourseCard(props) {
                   asSize="small"
                   asEmphasis="text"
                   withIcon={{ icon: "fas fa-copy", size: "1em" }}
-                  withColor={{ accentColor: "#FFBF00" }}
+                  withColor={{ textColor: "#FFBF00" }}
                   asPadded="fitted"
                   onClick={() => {
                     navigator.clipboard.writeText(link);

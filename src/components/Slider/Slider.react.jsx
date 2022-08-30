@@ -21,6 +21,10 @@ Slider.propTypes = {
   // Quommon props
   //=======================================
   /**
+  Use to define standard component type
+  */
+  asVariant: PropTypes.oneOf(["primary", "secondary"]),
+  /**
     Use to override component colors and behavior
   */
   withColor: PropTypes.shape({
@@ -67,6 +71,7 @@ Slider.defaultProps = {
   //=======================================
   // Quommon props
   //=======================================
+  asVariant: "primary",
   withAnimation: null,
   isHidden: false,
   isDisabled: false,
@@ -82,7 +87,7 @@ export default function Slider(props) {
   //-------------------------------------------------------------------
   // 1. Destructuring props
   //-------------------------------------------------------------------
-  const { withColor, initialValue, onClick } = props;
+  const { asVariant, withColor, initialValue, onClick } = props;
   //-------------------------------------------------------------------
   // 2. Set the classes
   //-------------------------------------------------------------------
@@ -104,36 +109,9 @@ export default function Slider(props) {
         <SliderPackage
           min={0}
           max={100}
-          sx={{
-            "& .MuiSlider-track": {
-              color: withColor?.backgroundColor
-                ? withColor?.backgroundColor
-                : "#FFBF00",
-            },
-            "& .MuiSlider-thumb": {
-              color: withColor?.backgroundColor
-                ? withColor?.backgroundColor
-                : "#FFBF00",
-              "&:hover": {
-                boxShadow: `0px 0px 0px 8px ${
-                  withColor?.hoverBackgroundColor
-                    ? withColor?.hoverBackgroundColor
-                    : "#FFBF0026"
-                }`,
-              },
-              "&.Mui-focusVisible": {
-                boxShadow: `0px 0px 0px 8px ${
-                  withColor?.hoverBackgroundColor
-                    ? withColor?.hoverBackgroundColor
-                    : "#FFBF0026"
-                }`,
-              },
-            },
-            "& .MuiSlider-rail": {
-              color: withColor?.accentColor
-                ? withColor?.accentColor
-                : "#FFBF00",
-            },
+          color={asVariant}
+          style={{
+            color: withColor?.backgroundColor,
           }}
           defaultValue={initialValue}
           onChange={(e) => {

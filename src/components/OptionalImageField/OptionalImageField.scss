@@ -6,6 +6,9 @@
   overflow: hidden;
   text-overflow: ellipsis;
   margin-bottom: 0.5em;
+  &.is-disabled {
+    filter: drop-shadow(0px 0px 0px #00000000);
+  }
 }
 
 .qui.qui-optional-image-field .is-fluid {

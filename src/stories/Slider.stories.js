@@ -6,6 +6,13 @@ export default {
   component: Slider,
   argTypes: {
     initialValue: 10,
+    asVariant: {
+      control: "select",
+      options: ["primary", "secondary"],
+      table: {
+        category: "as-Flags",
+      },
+    },
     withColor: {
       table: {
         category: "with-Params",
@@ -70,15 +77,16 @@ const Template = (args) => <Slider {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   initialValue: 10,
+  asVariant: "primary",
   withAnimation: {
     animation: "zoom",
     duration: 0.5,
     delay: 0,
   },
   withColor: {
-    backgroundColor: "",
-    accentColor: "",
-    hoverBackgroundColor: "",
+    backgroundColor: "#FFBF00",
+    accentColor: "#FFBF00",
+    hoverBackgroundColor: "#FFBF0026",
   },
   isDisabled: false,
   isHidden: false,
@@ -88,6 +96,7 @@ Default.parameters = {
     source: {
       code: `<Slider
           initialValue={10}
+          asVariant: "primary"
           withAnimation={{
             animation: "zoom",
             duration: 0.5,
