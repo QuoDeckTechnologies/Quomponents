@@ -20,10 +20,10 @@ describe("ActionMenu", () => {
           title: "Open Deck",
           icon: "fas fa-book-open",
           popover: "Deck",
-          onClick: () => { },
+          onClick: () => {},
         },
       ],
-      onClick: () => { },
+      onClick: () => {},
     },
     translations: {
       tgt: "actionMenu",
@@ -39,7 +39,7 @@ describe("ActionMenu", () => {
               { title: "विषय पर जाएं" },
               { title: "डेक को अप्रकाशित करें" },
               { title: "डेक हटाएं" },
-            ]
+            ],
           },
         },
       }),
@@ -69,7 +69,7 @@ describe("ActionMenu", () => {
             title: "Open Deck",
             icon: "fas fa-book-open",
             popover: "deck",
-            onClick: () => { },
+            onClick: () => {},
           },
         ]}
         withColor={null}

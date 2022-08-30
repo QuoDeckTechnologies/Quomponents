@@ -135,17 +135,7 @@ export default {
       },
     },
   },
-  decorators: [
-    (story) => (
-      <div
-        style={{
-          textAlign: "center",
-        }}
-      >
-        {story()}
-      </div>
-    ),
-  ],
+  decorators: [(story) => <div style={{}}>{story()}</div>],
   parameters: {
     componentSubtitle: "Displays icon with a link",
     a11y: { disable: true },
@@ -201,40 +191,38 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<IconLink 
-            link="https://quodeck.com/"
-            asEmphasis = "contained"
-            isCircular = {false}
-            isActive = {false}
-        
-            asVariant = "primary"
-            asSize = "normal"
-            asPadded =" normal"
-            asFloated = "inline"
-            asAligned = "center"
-        
-            withLabel = {{
-                format:"caption",
-                content:"Label",
-            }}
-            withIcon = {{
-                icon:"fa fa-paste",
-            }}
-            withColor = {{
-                accentColor="#666666",
-                backgroundColor="",
-                textColor="",
-                hoverBackgroundColor="",
-                hoverTextColor="",
-            }}
-            withAnimation = {{
-                animation:"zoom",
-                duration:0.5,
-                delay:0,
-            }}
-            isDisabled = {false}
-            isHidden = {false}
-        />`,
+      code: `<IconLink
+      link="https://quodeck.com/"
+      asEmphasis="contained"
+      isCircular={false}
+      isActive={false}
+      asVariant="primary"
+      asSize="normal"
+      asPadded=" normal"
+      asFloated="inline"
+      asAligned="center"
+      withLabel={{
+        format: "caption",
+        content: "Label",
+      }}
+      withIcon={{
+        icon: "fa fa-paste",
+      }}
+      withColor={{
+        accentColor: "#666666",
+        backgroundColor: "",
+        textColor: "",
+        hoverBackgroundColor: "",
+        hoverTextColor: "",
+      }}
+      withAnimation={{
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+      }}
+      isDisabled={false}
+      isHidden={false}
+    />`,
     },
   },
 };
@@ -259,38 +247,38 @@ ColoredIconlink.parameters = {
       story: "Use to override the standard colors of the Icon.",
     },
     source: {
-      code: `<IconLink 
-            link="https://quodeck.com/"
-            asEmphasis = "contained"
-            isCircular = {false}
-            isActive = {false}
-            asVariant = "primary"
-            asSize = "normal"
-            asPadded =" normal"
-            asFloated = "inline"
-            asAligned = "center"
-            withLabel = {{
-                format:"caption",
-                content:"Label",
-            }}
-            withIcon = {{
-                icon:"fa fa-paste",
-            }}
-            withColor = {{
-                accentColor: "#666666",
-                backgroundColor: "#FFA500",
-                textColor: "#E5E5E5",
-                hoverBackgroundColor: "#E5E5E5",
-                hoverTextColor: "#FFA500",
-            }}
-            withAnimation = {{
-                animation:"zoom",
-                duration:0.5,
-                delay:0,
-            }} 
-            isDisabled = {false}
-            isHidden = {false}
-            />`,
+      code: `<IconLink
+      link="https://quodeck.com/"
+      asEmphasis="contained"
+      isCircular={false}
+      isActive={false}
+      asVariant="primary"
+      asSize="normal"
+      asPadded=" normal"
+      asFloated="inline"
+      asAligned="center"
+      withLabel={{
+        format: "caption",
+        content: "Label",
+      }}
+      withIcon={{
+        icon: "fa fa-paste",
+      }}
+      withColor={{
+        accentColor: "#666666",
+        backgroundColor: "#FFA500",
+        textColor: "#E5E5E5",
+        hoverBackgroundColor: "#E5E5E5",
+        hoverTextColor: "#FFA500",
+      }}
+      withAnimation={{
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+      }}
+      isDisabled={false}
+      isHidden={false}
+    />`,
     },
   },
 };
@@ -314,37 +302,38 @@ WithoutLabelledIconlink.parameters = {
         "Use to provide a header callout (format:label) above the icon. Or use as an information caption (format:caption) below the icon. Or use as an information label (format:label) top the icon. The text here can be customized through the withTranslation option.",
     },
     source: {
-      code: `<IconLink link="https://quodeck.com/"
-            asEmphasis = "contained"
-            isCircular = {false}
-            isActive = {false}
-            asVariant = "primary"
-            asSize = "normal"
-            asPadded =" normal"
-            asFloated = "inline"
-            asAligned = "center"
-            withLabel = {{
-                format: "caption",
-                content: "",
-            }}
-            withIcon = {{
-                icon:"fa fa-paste",
-            }}
-            withColor = {{
-                accentColor: "#666666",
-                backgroundColor: "#FFA500",
-                textColor: "#E5E5E5",
-                hoverBackgroundColor: "#E5E5E5",
-                hoverTextColor: "#FFA500",
-            }}
-            withAnimation = {{
-                animation:"zoom",
-                duration:0.5,
-                delay:0,
-            }}    
-            isDisabled = {false}
-            isHidden = {false}
-            />`,
+      code: `<IconLink
+      link="https://quodeck.com/"
+      asEmphasis="contained"
+      isCircular={false}
+      isActive={false}
+      asVariant="primary"
+      asSize="normal"
+      asPadded=" normal"
+      asFloated="inline"
+      asAligned="center"
+      withLabel={{
+        format: "caption",
+        content: "",
+      }}
+      withIcon={{
+        icon: "fa fa-paste",
+      }}
+      withColor={{
+        accentColor: "#666666",
+        backgroundColor: "#FFA500",
+        textColor: "#E5E5E5",
+        hoverBackgroundColor: "#E5E5E5",
+        hoverTextColor: "#FFA500",
+      }}
+      withAnimation={{
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+      }}
+      isDisabled={false}
+      isHidden={false}
+    />`,
     },
   },
 };
@@ -368,36 +357,38 @@ AnimatedIconlink.parameters = {
         "Use to animate the entry of the Icon with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
     },
     source: {
-      code: `<IconLink link="https://quodeck.com/"
-            asEmphasis = "contained"
-            isCircular = {false}
-            isActive = {false}
-            asVariant = "primary"
-            asSize = "normal"
-            asPadded =" normal"
-            asFloated = "inline"
-            asAligned = "center"
-            withLabel = {{
-                format:"caption",
-                content:"Label",
-            }}
-            withIcon = {{
-                icon:fa fa-paste",
-            }}
-            withColor = {{
-                accentColor: "#666666",
-                backgroundColor: "#FFA500",
-                textColor: "#E5E5E5",
-                hoverBackgroundColor: "#E5E5E5",
-                hoverTextColor: "#FFA500",
-            }}
-            withAnimation = {{
-                animation: "collapse",
-                duration: .8,
-                delay: 0,
-            }}    isDisabled = {false}
-            isHidden = {false}
-        />`,
+      code: `<IconLink
+      link="https://quodeck.com/"
+      asEmphasis="contained"
+      isCircular={false}
+      isActive={false}
+      asVariant="primary"
+      asSize="normal"
+      asPadded=" normal"
+      asFloated="inline"
+      asAligned="center"
+      withLabel={{
+        format: "caption",
+        content: "Label",
+      }}
+      withIcon={{
+        icon: "fa fa-paste",
+      }}
+      withColor={{
+        accentColor: "#666666",
+        backgroundColor: "#FFA500",
+        textColor: "#E5E5E5",
+        hoverBackgroundColor: "#E5E5E5",
+        hoverTextColor: "#FFA500",
+      }}
+      withAnimation={{
+        animation: "collapse",
+        duration: 0.8,
+        delay: 0,
+      }}
+      isDisabled={false}
+      isHidden={false}
+    />`,
     },
   },
 };
@@ -421,37 +412,38 @@ TranslatedIconlink.parameters = {
         "Use to change the language that the text appears in iconlink. To make this work for the iconlink, add a icon:{label} value to the dictionary.",
     },
     source: {
-      code: `<IconLink link="https://quodeck.com/"
-            asEmphasis = "contained"
-            isCircular = {false}
-            isActive = {false}
-            asVariant = "primary"
-            asSize = "normal"
-            asPadded =" normal"
-            asFloated = "inline"
-            asAligned = "center"
-            withLabel = {{
-                format:"caption",
-                content:"Label",
-            }}
-            withIcon = {{
-                icon:"fa fa-paste",
-            }}
-            withColor = {{
-                accentColor: "#666666",
-                backgroundColor: "#FFA500",
-                textColor: "#E5E5E5",
-                hoverBackgroundColor: "#E5E5E5",
-                hoverTextColor: "#FFA500",
-            }}
-            withAnimation = {{
-                animation: "collapse",
-                duration: .8,
-                delay: 0,
-            }}
-            isDisabled = {false}
-            isHidden = {false}
-            />`,
+      code: `<IconLink
+      link="https://quodeck.com/"
+      asEmphasis="contained"
+      isCircular={false}
+      isActive={false}
+      asVariant="primary"
+      asSize="normal"
+      asPadded=" normal"
+      asFloated="inline"
+      asAligned="center"
+      withLabel={{
+        format: "caption",
+        content: "Label",
+      }}
+      withIcon={{
+        icon: "fa fa-paste",
+      }}
+      withColor={{
+        accentColor: "#666666",
+        backgroundColor: "#FFA500",
+        textColor: "#E5E5E5",
+        hoverBackgroundColor: "#E5E5E5",
+        hoverTextColor: "#FFA500",
+      }}
+      withAnimation={{
+        animation: "collapse",
+        duration: 0.8,
+        delay: 0,
+      }}
+      isDisabled={false}
+      isHidden={false}
+    />`,
     },
   },
 };

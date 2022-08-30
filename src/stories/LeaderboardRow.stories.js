@@ -54,7 +54,7 @@ export default {
     ),
   ],
   parameters: {
-    componentSubtitle: "Displays a LeaderboardRow",
+    componentSubtitle: "Displays a LeaderboardRow with rank, name and points",
     a11y: { disable: true },
     docs: { iframeHeight: 500 },
   },
@@ -84,22 +84,23 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<LeaderboardRow  rank={0}
-            firstName= "Quodeck"
-            lastName= "Technology"
-            points= {null}
-            asPadded= "normal"
+      code: `<LeaderboardRow
+            rank={0}
+            firstName="Quodeck"
+            lastName="Technology"
+            points={null}
+            asPadded="normal"
             withColor={{
-                backgroundColor: "",
-                textColor: "",
+              backgroundColor: "",
+              textColor: "",
             }}
             withAnimation={{
-                animation: "slideDown",
-                duration: 0.5,
-                delay: 0,
+              animation: "slideDown",
+              duration: 0.5,
+              delay: 0,
             }}
             isHidden={false}
-            />`,
+          />`,
     },
   },
 };

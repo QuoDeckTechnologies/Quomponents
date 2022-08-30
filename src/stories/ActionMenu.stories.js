@@ -80,18 +80,7 @@ export default {
       },
     },
   },
-  decorators: [
-    (story) => (
-      <div
-        style={{
-          width: "100%",
-          textAlign: "center",
-        }}
-      >
-        {story()}
-      </div>
-    ),
-  ],
+  decorators: [(story) => <div style={{}}>{story()}</div>],
   parameters: {
     componentSubtitle:
       "Displays a ActionMenu with icons & related contents for general-purpose use.",
@@ -177,49 +166,49 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<ActionMenu 
-      content= {[
+      code: `<ActionMenu
+      content={[
         {
           title: "Open Deck",
           icon: "fas fa-book-open",
           popover: "Open Deck...",
-          onClick: () => { },
+          onClick: () => {},
         },
         {
           title: "Edit Deck",
           icon: "fas fa-edit",
           popover: "Edit Deck...",
-          onClick: () => { },
+          onClick: () => {},
         },
         {
           title: "Move Deck Up",
           icon: "fas fa-chevron-up",
           popover: "Move Deck Up...",
-          onClick: () => { },
+          onClick: () => {},
         },
         {
           title: "Move Deck Down",
           icon: "fas fa-chevron-down",
           popover: "Move Deck Down...",
-          onClick: () => { },
+          onClick: () => {},
         },
         {
           title: "Move to Topic",
           icon: "fas fa-retweet",
           popover: "Move to Topic...",
-          onClick: () => { },
+          onClick: () => {},
         },
         {
           title: "Unpublish Deck",
           icon: "fas fa-eye-slash",
           popover: "Unpublish Deck...",
-          onClick: () => { },
+          onClick: () => {},
         },
         {
           title: "Delete Deck",
           icon: "fas fa-trash-alt",
           popover: "Delete Deck...",
-          onClick: () => { },
+          onClick: () => {},
         },
       ]}
       asPadded="normal"
@@ -229,13 +218,13 @@ Default.parameters = {
         textColor: "",
         accentColor: "",
       }}
-      withAnimation= {{
+      withAnimation={{
         animation: "zoom",
         duration: 0.5,
         delay: 0,
       }}
-      isHidden= {false}
-      />`,
+      isHidden={false}
+    />`,
     },
   },
 };
@@ -258,49 +247,49 @@ ColoredActionMenu.parameters = {
       story: "Use to override the standard colors of the Icon & Contents.",
     },
     source: {
-      code: `<ActionMenu 
-      content= {[
+      code: `<ActionMenu
+      content={[
         {
           title: "Open Deck",
           icon: "fas fa-book-open",
           popover: "Open Deck...",
-          onClick: () => { },
+          onClick: () => {},
         },
         {
           title: "Edit Deck",
           icon: "fas fa-edit",
           popover: "Edit Deck...",
-          onClick: () => { },
+          onClick: () => {},
         },
         {
           title: "Move Deck Up",
           icon: "fas fa-chevron-up",
           popover: "Move Deck Up...",
-          onClick: () => { },
+          onClick: () => {},
         },
         {
           title: "Move Deck Down",
           icon: "fas fa-chevron-down",
           popover: "Move Deck Down...",
-          onClick: () => { },
+          onClick: () => {},
         },
         {
           title: "Move to Topic",
           icon: "fas fa-retweet",
           popover: "Move to Topic...",
-          onClick: () => { },
+          onClick: () => {},
         },
         {
           title: "Unpublish Deck",
           icon: "fas fa-eye-slash",
           popover: "Unpublish Deck...",
-          onClick: () => { },
+          onClick: () => {},
         },
         {
           title: "Delete Deck",
           icon: "fas fa-trash-alt",
           popover: "Delete Deck...",
-          onClick: () => { },
+          onClick: () => {},
         },
       ]}
       asPadded="normal"
@@ -310,13 +299,13 @@ ColoredActionMenu.parameters = {
         textColor: "#C53816",
         accentColor: "#F2A52D",
       }}
-      withAnimation= {{
+      withAnimation={{
         animation: "zoom",
         duration: 0.5,
         delay: 0,
       }}
-      isHidden= {false}
-      />`,
+      isHidden={false}
+    />`,
     },
   },
 };
@@ -339,49 +328,49 @@ AnimatedActionMenu.parameters = {
       story: "We can animate the appearance of ActionMenu",
     },
     source: {
-      code: `<ActionMenu 
-      content= {[
+      code: `<ActionMenu   
+      content={[
         {
           title: "Open Deck",
           icon: "fas fa-book-open",
           popover: "Open Deck...",
-          onClick: () => { },
+          onClick: () => {},
         },
         {
           title: "Edit Deck",
           icon: "fas fa-edit",
           popover: "Edit Deck...",
-          onClick: () => { },
+          onClick: () => {},
         },
         {
           title: "Move Deck Up",
           icon: "fas fa-chevron-up",
           popover: "Move Deck Up...",
-          onClick: () => { },
+          onClick: () => {},
         },
         {
           title: "Move Deck Down",
           icon: "fas fa-chevron-down",
           popover: "Move Deck Down...",
-          onClick: () => { },
+          onClick: () => {},
         },
         {
           title: "Move to Topic",
           icon: "fas fa-retweet",
           popover: "Move to Topic...",
-          onClick: () => { },
+          onClick: () => {},
         },
         {
           title: "Unpublish Deck",
           icon: "fas fa-eye-slash",
           popover: "Unpublish Deck...",
-          onClick: () => { },
+          onClick: () => {},
         },
         {
           title: "Delete Deck",
           icon: "fas fa-trash-alt",
           popover: "Delete Deck...",
-          onClick: () => { },
+          onClick: () => {},
         },
       ]}
       asPadded="normal"
@@ -391,13 +380,13 @@ AnimatedActionMenu.parameters = {
         textColor: "#C53816",
         accentColor: "#F2A52D",
       }}
-      withAnimation= {{
+      withAnimation={{
         animation: "collapse",
         duration: 1,
-        delay: 0,,
+        delay: 0,
       }}
-      isHidden= {false}
-      />`,
+      isHidden={false}
+    />`,
     },
   },
 };
@@ -420,49 +409,49 @@ TranslatedActionMenu.parameters = {
       story: "Use to change the language that the text appears in ActionMenu.",
     },
     source: {
-      code: `<ActionMenu 
-      content= {[
+      code: `<ActionMenu
+      content={[
         {
           title: "Open Deck",
           icon: "fas fa-book-open",
           popover: "Open Deck...",
-          onClick: () => { },
+          onClick: () => {},
         },
         {
           title: "Edit Deck",
           icon: "fas fa-edit",
           popover: "Edit Deck...",
-          onClick: () => { },
+          onClick: () => {},
         },
         {
           title: "Move Deck Up",
           icon: "fas fa-chevron-up",
           popover: "Move Deck Up...",
-          onClick: () => { },
+          onClick: () => {},
         },
         {
           title: "Move Deck Down",
           icon: "fas fa-chevron-down",
           popover: "Move Deck Down...",
-          onClick: () => { },
+          onClick: () => {},
         },
         {
           title: "Move to Topic",
           icon: "fas fa-retweet",
           popover: "Move to Topic...",
-          onClick: () => { },
+          onClick: () => {},
         },
         {
           title: "Unpublish Deck",
           icon: "fas fa-eye-slash",
           popover: "Unpublish Deck...",
-          onClick: () => { },
+          onClick: () => {},
         },
         {
           title: "Delete Deck",
           icon: "fas fa-trash-alt",
           popover: "Delete Deck...",
-          onClick: () => { },
+          onClick: () => {},
         },
       ]}
       asPadded="normal"
@@ -472,13 +461,13 @@ TranslatedActionMenu.parameters = {
         textColor: "#C53816",
         accentColor: "#F2A52D",
       }}
-      withAnimation= {{
+      withAnimation={{
         animation: "zoom",
         duration: 0.5,
         delay: 0,
       }}
-      isHidden= {false}
-      />`,
+      isHidden={false}
+    />`,
     },
   },
 };

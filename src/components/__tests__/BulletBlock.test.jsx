@@ -12,46 +12,45 @@ import { hasValid } from "./common";
 import BulletBlock from "../BulletBlock/BulletBlock.react";
 
 describe("BulletBlock", () => {
-    // -------------------------------------
-    // Run common tests
-    // -------------------------------------
-    const args = {
-        target: BulletBlock,
-        required: {
-        },
-    };
+  // -------------------------------------
+  // Run common tests
+  // -------------------------------------
+  const args = {
+    target: BulletBlock,
+    required: {},
+  };
 
-    hasValid("defaults", args);
+  hasValid("defaults", args);
 
-    hasValid("sizes", args);
-    hasValid("positions", args);
-    hasValid("padding", args);
-    hasValid("alignment", args);
+  hasValid("sizes", args);
+  hasValid("positions", args);
+  hasValid("padding", args);
+  hasValid("alignment", args);
 
-    hasValid("colors", args);
+  hasValid("colors", args);
 
-    hasValid("hidden", args);
-    hasValid("fluid", args);
-    // -------------------------------------
-    // Setup definitions for the test suite
-    // -------------------------------------
-    let component;
+  hasValid("hidden", args);
+  hasValid("fluid", args);
+  // -------------------------------------
+  // Setup definitions for the test suite
+  // -------------------------------------
+  let component;
 
-    beforeEach(() => {
-        jest.resetAllMocks();
-        component = shallow(
-            <BulletBlock
-                content={[
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-                    "Quisque sed turpis vel lectus suscipit auctor",
-                    "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
-                ]}
-                asVariant="primary"
-                asSize="normal"
-                withColor={null}
-                withAnimation={null}
-                isHidden={false}
-            />
-        );
-    });
+  beforeEach(() => {
+    jest.resetAllMocks();
+    component = shallow(
+      <BulletBlock
+        content={[
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          "Quisque sed turpis vel lectus suscipit auctor",
+          "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor.",
+        ]}
+        asVariant="primary"
+        asSize="normal"
+        withColor={null}
+        withAnimation={null}
+        isHidden={false}
+      />
+    );
+  });
 });

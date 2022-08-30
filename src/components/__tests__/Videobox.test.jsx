@@ -97,7 +97,7 @@ describe("Videobox", () => {
     component = shallow(<Videobox autoplay={false} onReady={onReady} />);
     component
       .find(".react-player")
-      .simulate("ready", { target: { playVideo: () => { } } });
+      .simulate("ready", { target: { playVideo: () => {} } });
     expect(component.exists()).toBe(true);
   });
 
@@ -105,7 +105,7 @@ describe("Videobox", () => {
     component = shallow(<Videobox onReady={null} />);
     component
       .find(".react-player")
-      .simulate("ready", { target: { playVideo: () => { } } });
+      .simulate("ready", { target: { playVideo: () => {} } });
     expect(component.exists()).toBe(true);
   });
 
@@ -143,15 +143,15 @@ describe("Videobox", () => {
     component = shallow(<Videobox loop={true} onEnd={onEnd} />);
     component
       .find(".react-player")
-      .simulate("end", { target: { playVideo: () => { } } });
+      .simulate("end", { target: { playVideo: () => {} } });
     expect(component.exists()).toBe(true);
   });
-  
+
   it("should render correctly if call onEnd is equal to null", () => {
     component = shallow(<Videobox onEnd={null} />);
     component
       .find(".react-player")
-      .simulate("end", { target: { playVideo: () => { } } });
+      .simulate("end", { target: { playVideo: () => {} } });
     expect(component.exists()).toBe(true);
   });
 });

@@ -58,18 +58,7 @@ export default {
       },
     },
   },
-  decorators: [
-    (story) => (
-      <div
-        style={{
-          width: "100%",
-          textAlign: "center",
-        }}
-      >
-        {story()}
-      </div>
-    ),
-  ],
+  decorators: [(story) => <div style={{}}>{story()}</div>],
   parameters: {
     componentSubtitle:
       "Displays a BulletBlock with list of items for general-purpose use.",
@@ -111,22 +100,23 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: `<BulletBlock content={[
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-                "Quisque sed turpis vel lectus suscipit auctor",
-                "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
-            ]}
-            asSize= "small"
-            asFloated= "inline"
-            asPadded= "normal"
-            asAligned= "left"
-            withColor= {{
-                textColor: "#121212",
-                backgroundColor: "",
-            }}
-            isHidden={false}
-            isFluid={false}
-            />`,
+      code: `<BulletBlock
+      content={[
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "Quisque sed turpis vel lectus suscipit auctor",
+        "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor.",
+      ]}
+      asSize="small"
+      asFloated="inline"
+      asPadded="normal"
+      asAligned="left"
+      withColor={{
+        textColor: "#121212",
+        backgroundColor: "",
+      }}
+      isHidden={false}
+      isFluid={false}
+    />`,
     },
   },
 };
@@ -148,22 +138,23 @@ ColoredBulletblock.parameters = {
       story: "Use to override the standard colors of the contents.",
     },
     source: {
-      code: `<BulletBlock content={[
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-                "Quisque sed turpis vel lectus suscipit auctor",
-                "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
-            ]}
-            asSize= "small"
-            asFloated= "inline"
-            asPadded= "normal"
-            asAligned= "left"
-            withColor= {{
-                textColor: "#121212",
-                backgroundColor: "",
-            }}
-            isHidden={false}
-            isFluid={false}
-            />`,
+      code: `<BulletBlock
+      content={[
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "Quisque sed turpis vel lectus suscipit auctor",
+        "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor.",
+      ]}
+      asSize="small"
+      asFloated="inline"
+      asPadded="normal"
+      asAligned="left"
+      withColor={{
+        textColor: "#121212",
+        backgroundColor: "",
+      }}
+      isHidden={false}
+      isFluid={false}
+    />`,
     },
   },
 };
@@ -227,22 +218,23 @@ BulletblockWithAllVariant.parameters = {
       story: "All Variants are supported in BulletBock.",
     },
     source: {
-      code: `<BulletBlock content={[
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-                "Quisque sed turpis vel lectus suscipit auctor",
-                "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor."
-            ]}
-            asSize= "small"
-            asFloated= "inline"
-            asPadded= "normal"
-            asAligned= "left"
-            withColor= {{
-                textColor: "#121212",
-                backgroundColor: "",
-            }}
-            isHidden={false}
-            isFluid={false}
-            />`,
+      code: `<BulletBlock
+      content={[
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        "Quisque sed turpis vel lectus suscipit auctor",
+        "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor.",
+      ]}
+      asSize="small"
+      asFloated="inline"
+      asPadded="normal"
+      asAligned="left"
+      withColor={{
+        textColor: "#121212",
+        backgroundColor: "",
+      }}
+      isHidden={false}
+      isFluid={false}
+    />`,
     },
   },
 };

@@ -20,7 +20,7 @@ describe("WalletRow", () => {
     required: {
       date: "2016-01-04 10:34:23",
       coins: 1000,
-      onClick: () => { },
+      onClick: () => {},
     },
     translations: {
       tgt: "walletRow",
