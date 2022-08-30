@@ -28,7 +28,7 @@ describe("Feedback", () => {
         selectedIndex: 0,
         backgroundImage: { id: "background-image", extention: "" },
       },
-      onClick: () => console.log("Button Testing"),
+      onClick: () => {},
     },
     translations: {
       tgt: "feedback",
@@ -84,9 +84,7 @@ describe("Feedback", () => {
         withAnimation={null}
         withTranslation={null}
         isHidden={false}
-        onClick={(e) => {
-          console.log(e);
-        }}
+        onClick={() => {}}
       />
     );
   });
@@ -102,7 +100,7 @@ describe("Feedback", () => {
     component.setProps({ withColor: colors });
     expect(component.exists()).toBe(true);
   });
-  
+
   it("should render correctly when data pass as empty object", () => {
     let data = {};
     component.setProps({ data: data });

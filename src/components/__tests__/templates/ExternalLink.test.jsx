@@ -78,9 +78,7 @@ describe("ExternalLink", () => {
         withAnimation={null}
         withTranslation={null}
         isHidden={false}
-        onClick={(e) => {
-          console.log(e);
-        }}
+        onClick={(e) => {}}
       />
     );
   });

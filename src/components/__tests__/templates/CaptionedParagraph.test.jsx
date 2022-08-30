@@ -65,9 +65,7 @@ describe("CaptionedParagraph", () => {
         withColor={null}
         withAnimation={null}
         isHidden={false}
-        onClick={(e) => {
-          console.log(e);
-        }}
+        onClick={() => {}}
       />
     );
   });

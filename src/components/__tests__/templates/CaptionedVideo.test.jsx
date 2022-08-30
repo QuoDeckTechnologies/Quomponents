@@ -36,7 +36,7 @@ describe("CaptionedVideo", () => {
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In suscipit euismod nisl vitae interdum. Mauris ac vestibulum nisl.",
         presenter: {},
       },
-      onClick: () => console.log("Button Testing"),
+      onClick: () => {},
     },
   };
 

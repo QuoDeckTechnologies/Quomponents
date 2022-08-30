@@ -28,7 +28,7 @@ describe("SingleSelect", () => {
         question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
         options: [{ correct: "checked", text: "Item 1" }],
       },
-      onClick: () => { },
+      onClick: () => {},
     },
   };
 
@@ -75,7 +75,7 @@ describe("SingleSelect", () => {
         withAnimation={null}
         isHidden={false}
         isDisabled={false}
-        onClick={() => console.log("SingleSelect Testing")}
+        onClick={() => {}}
       />
     );
   });

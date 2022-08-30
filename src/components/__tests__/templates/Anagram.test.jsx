@@ -104,9 +104,7 @@ describe("Anagram", () => {
         withTranslation={null}
         isHidden={false}
         isDisabled={false}
-        onClick={(e) => {
-          console.log(e);
-        }}
+        onClick={() => {}}
       />
     );
   });
@@ -165,7 +163,7 @@ describe("Anagram", () => {
           buttonHoverBackgroundColor: "ffff00",
           buttonHoverTextColor: "ff00ff",
         }}
-        onClick={() => console.log("testing")}
+        onClick={() => {}}
       />
     );
     const tree = component.toJSON();

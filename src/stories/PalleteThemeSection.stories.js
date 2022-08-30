@@ -92,7 +92,7 @@ export const Default = Template.bind({});
 Default.args = {
   actions: {
     updateDeck: (value) => {
-      return console.log(value);
+      return () => {};
     },
   },
   asFloated: "left",

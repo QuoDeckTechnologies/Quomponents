@@ -43,7 +43,7 @@ describe("MultipleSelect", () => {
           },
         ],
       },
-      onClick: () => { },
+      onClick: () => {},
     },
     translations: {
       tgt: "templateActions",
@@ -136,7 +136,7 @@ describe("MultipleSelect", () => {
         withAnimation={null}
         isHidden={false}
         isDisabled={false}
-        onClick={() => console.log("MultipleSelect Testing")}
+        onClick={() => {}}
       />
     );
   });

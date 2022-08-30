@@ -31,7 +31,7 @@ describe("IconListGallery", () => {
           },
         ],
       },
-      onClick: () => console.log("Button Testing"),
+      onClick: () => {},
     },
   };
 

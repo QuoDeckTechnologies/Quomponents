@@ -19,7 +19,7 @@ describe("TitlewithVideo", () => {
     target: TitlewithVideo,
     required: {
       content: "Testing Button",
-      onClick: () => console.log("Button Testing"),
+      onClick: () => {},
     },
     translations: {
       tgt: "button",

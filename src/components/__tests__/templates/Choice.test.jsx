@@ -42,7 +42,7 @@ describe("Choice", () => {
           },
         ],
       },
-      onClick: () => console.log("Button Testing"),
+      onClick: () => {},
     },
   };
 
@@ -100,7 +100,7 @@ describe("Choice", () => {
         withAnimation={null}
         isHidden={false}
         isDisabled={false}
-        onClick={() => console.log("Choice Testing")}
+        onClick={() => {}}
       />
     );
   });
@@ -161,7 +161,8 @@ describe("Choice", () => {
     component.setProps({
       data: {
         title: "Neque porro quisquam est qui dolorem",
-        subtitle:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
+        subtitle:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
         choice: [
           {
             correct: "checked",

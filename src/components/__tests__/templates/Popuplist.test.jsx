@@ -138,7 +138,7 @@ describe("Popuplist", () => {
         withAnimation={null}
         isHidden={false}
         isDisabled={false}
-        onClick={() => console.log("Popuplist Testing")}
+        onClick={() => {}}
       />
     );
   });

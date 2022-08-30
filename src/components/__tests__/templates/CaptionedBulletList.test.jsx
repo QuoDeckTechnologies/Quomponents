@@ -36,7 +36,7 @@ describe("CaptionedBulletList", () => {
           "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor.",
         ],
       },
-      onClick: () => console.log("Button Testing"),
+      onClick: () => {},
     },
   };
 
@@ -93,9 +93,7 @@ describe("CaptionedBulletList", () => {
         }}
         isHidden={false}
         isDisabled={false}
-        onClick={(e) => {
-          console.log(e);
-        }}
+        onClick={() => {}}
       />
     );
   });

@@ -19,7 +19,7 @@ describe("BackgroundImage", () => {
     target: BackgroundImage,
     required: {
       content: "Testing Button",
-      onClick: () => console.log("Button Testing"),
+      onClick: () => {},
     },
   };
 

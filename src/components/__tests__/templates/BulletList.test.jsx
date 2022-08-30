@@ -29,7 +29,7 @@ describe("BulletList", () => {
           "Ut venenatis odio vestibulum, dictum augue ac, consequat dolor.",
         ],
       },
-      onClick: () => console.log("Button Testing"),
+      onClick: () => {},
     },
   };
 

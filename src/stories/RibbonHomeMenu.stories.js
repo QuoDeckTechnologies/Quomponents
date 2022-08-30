@@ -122,7 +122,7 @@ Default.args = {
       return value;
     },
     deleteSlide: (value) => {
-      return console.log(value);
+      return () => {};
     },
     changeSlideNav: (navObj) => {
       return navObj;
