@@ -62,8 +62,8 @@ export default function QuoBarChart(props) {
     window.innerWidth <= 481
       ? window.innerWidth * 2
       : window.innerWidth <= 834
-      ? window.innerWidth * 1.5
-      : window.innerWidth * 1.5
+        ? window.innerWidth * 1.5
+        : window.innerWidth * 1.5
   );
   const [height, setHeight] = useState(
     window.innerHeight <= 600 ? 150 : window.innerHeight <= 900 ? 220 : 300
