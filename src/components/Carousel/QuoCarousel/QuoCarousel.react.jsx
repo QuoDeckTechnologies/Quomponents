@@ -172,10 +172,10 @@ export default function QuoCarousel(props) {
   let showRightNav = props.infinite
     ? true
     : activeSlide !== content.length - 1
-    ? true
-    : onRightNavigation !== null && onRightNavigation !== undefined
-    ? true
-    : false;
+      ? true
+      : onRightNavigation !== null && onRightNavigation !== undefined
+        ? true
+        : false;
 
   // ========================= Render Function =================================
   return (

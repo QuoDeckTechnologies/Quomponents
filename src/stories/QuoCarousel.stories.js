@@ -131,7 +131,7 @@ export const Default = Template.bind({});
 Default.args = {
   content: [
     <HCard
-      onClick={() => {}}
+      onClick={() => { }}
       content={{
         image: {
           id: "image-1",
@@ -151,7 +151,7 @@ Default.args = {
       ]}
     />,
     <HCard
-      onClick={() => {}}
+      onClick={() => { }}
       content={{
         image: {
           id: "image-1",
@@ -171,7 +171,7 @@ Default.args = {
       ]}
     />,
     <HCard
-      onClick={() => {}}
+      onClick={() => { }}
       content={{
         image: {
           id: "image-1",
@@ -213,7 +213,7 @@ Default.args = {
   isHidden: false,
   isDisabled: false,
   centerPadding: "10",
-  onRightNavigation: () => {},
+  onRightNavigation: () => { },
 };
 Default.parameters = {
   docs: {
@@ -293,7 +293,7 @@ export const VCard = Template.bind({});
 VCard.args = {
   content: [
     <VCardWithButton
-      onClick={() => {}}
+      onClick={() => { }}
       content={{
         image: {
           id: "image-1",
@@ -312,7 +312,7 @@ VCard.args = {
       ]}
     />,
     <VCardWithButton
-      onClick={() => {}}
+      onClick={() => { }}
       content={{
         image: {
           id: "image-1",
@@ -331,7 +331,7 @@ VCard.args = {
       ]}
     />,
     <VCardWithButton
-      onClick={() => {}}
+      onClick={() => { }}
       content={{
         image: {
           id: "image-1",
@@ -350,7 +350,7 @@ VCard.args = {
       ]}
     />,
     <VCardWithButton
-      onClick={() => {}}
+      onClick={() => { }}
       content={{
         image: {
           id: "image-1",

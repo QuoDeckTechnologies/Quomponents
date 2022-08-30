@@ -10,15 +10,18 @@ SlideHeader.propTypes = {
   // Component Specific props
   //=======================================
   /**
-    Use to define title and subtitle in SliderHeader
+  Use to define title in SliderHeader
   */
   title: PropTypes.string,
+  /**
+  Use to define subtitle in SliderHeader
+  */
   subtitle: PropTypes.string,
   //=======================================
   // Quommon props
   //=======================================
   /**
-    Use to define standard component type
+  Use to define standard component type
   */
   asVariant: PropTypes.oneOf([
     "primary",
@@ -28,19 +31,19 @@ SlideHeader.propTypes = {
     "error",
   ]),
   /**
-    Use to define component padding in increasing order
+  Use to define component padding in increasing order
   */
   asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
   /**
-    Use to float the component in parent container
+  Use to float the component in parent container
   */
   asFloated: PropTypes.oneOf(["left", "right", "none", "inline"]),
   /**
-    Use to align content within the component container
+  Use to align content within the component container
   */
   asAligned: PropTypes.oneOf(["left", "right", "center"]),
   /**
-    Use to set Color 
+  Use to set Color 
   */
   withColor: PropTypes.shape({
     textColor: PropTypes.string,
@@ -48,7 +51,7 @@ SlideHeader.propTypes = {
     backgroundColor: PropTypes.string,
   }),
   /**
-    Use to show/hide the component
+  Use to show/hide the component
   */
   isHidden: PropTypes.bool,
 };
@@ -66,9 +69,7 @@ SlideHeader.defaultProps = {
   asPadded: "normal",
   asFloated: "none",
   asAligned: "center",
-
   withColor: null,
-
   isHidden: false,
 };
 /**
