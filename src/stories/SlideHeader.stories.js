@@ -66,8 +66,7 @@ const Template = (args) => <SlideHeader {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   title: "Neque porro quisquam est qui dolorem",
-  subtitle:
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
+  subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem",
   asVariant: "primary",
   asFloated: "inline",
   asPadded: "normal",

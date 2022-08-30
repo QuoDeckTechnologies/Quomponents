@@ -111,17 +111,17 @@ export default function ContentLine(props) {
     backgroundColor: props.isDisabled
       ? "#E8E8E8"
       : props.isActive
-      ? props.withColor?.backgroundColor
         ? props.withColor?.backgroundColor
-        : "#FFBF00CC"
-      : "#FFFFFF",
+          ? props.withColor?.backgroundColor
+          : "#FFBF00CC"
+        : "#FFFFFF",
     color: props.isDisabled
       ? "#454545"
       : props.isActive
-      ? props.withColor?.textColor
         ? props.withColor?.textColor
-        : "#454545"
-      : "#454545",
+          ? props.withColor?.textColor
+          : "#454545"
+        : "#454545",
   };
   //-------------------------------------------------------------------
   // 4. Conditional text renders for TopicLine and DeckLine components
@@ -146,14 +146,14 @@ export default function ContentLine(props) {
             props.withIcon?.icon && props?.name
               ? "qui-deck-line"
               : "qui-topic-line"
-          }`}
+            }`}
           style={contentStyle}
           onClick={props.onClick}
         >
           {props.withIcon?.icon && (
             <i
               className={`${props.withIcon?.icon} qui-icon qui-content-line-icon`}
-            ></i>
+            />
           )}
           {getName()}
           <div className="qui-content-line-right-arrow">
@@ -162,9 +162,9 @@ export default function ContentLine(props) {
                 props.withIcon?.icon && props?.name
                   ? "qui-deck-line-icon"
                   : "qui-topic-line-icon"
-              }`}
+                }`}
               style={{ color: contentStyle.color }}
-            ></i>
+            />
           </div>
         </div>
       </div>
