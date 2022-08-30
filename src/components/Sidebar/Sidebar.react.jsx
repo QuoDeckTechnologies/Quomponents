@@ -42,6 +42,10 @@ Sidebar.propTypes = {
     */
     width: PropTypes.string,
     /**
+    Use to define page title on the sidebar
+    */
+    pageTitle: PropTypes.string,
+    /**
     Use to define the text for edit mode on the sidebar
     */
     editMode: PropTypes.shape({
@@ -127,7 +131,7 @@ export default function Sidebar(props) {
                 className="qui-sidebar-logo"
                 style={{ width: props.width, height: props.width }}
             >
-                <img src={props.logo} alt="" />
+                <img src={props.logo} alt="Application Logo" />
             </div>
         );
     };
@@ -181,7 +185,7 @@ export default function Sidebar(props) {
                                         title={section.title}
                                         active={section.active}
                                         width={props.width}
-                                        asSize={props.asSize}
+                                        asSize={props.asSize || "tiny"}
                                         withColor={props.withColor}
                                         onClick={section.onClick}
                                     />
@@ -189,6 +193,9 @@ export default function Sidebar(props) {
                             );
                         })}
                     </div>
+                    <h3 className="qui-sidebar-page-title">
+                        {props.pageTitle}
+                    </h3>
                 </div>
             );
         }

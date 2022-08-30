@@ -220,7 +220,7 @@ export default function LinkIcon(props) {
                     ></i>
                     <br />
                     <div
-                        className={`qui-linkicon-caption secfont`}
+                        className={`qui-linkicon-caption`}
                         style={Object.assign({}, colors.textColor)}
                     >
                         {props.label}
