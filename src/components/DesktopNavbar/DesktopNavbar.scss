@@ -1,0 +1,136 @@
+.qui {
+  position: relative;
+}
+
+.qui.qui-desktop-navbar {
+  overflow: visible;
+}
+
+.qui .qui-desktop-navbar-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: black;
+}
+
+.qui .qui-desktop-navbar-link-icon-wrapper {
+  display: flex;
+  align-items: center;
+  margin: 0 0.5em;
+}
+
+.qui-desktop-navigation-navigation {
+  font-size: 1.5em;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.qui-desktop-navbar-button-disable {
+  opacity: 0.2;
+  cursor: auto;
+  pointer-events: none;
+}
+
+.qui .qui-desktop-navabr-search-bar-wrapper {
+  flex: 0.5;
+  padding: 0 1em 0 0;
+}
+
+.qui-desktop-navbar-navigation-link-icon-wrapper {
+  width: 30em;
+  overflow-x: clip;
+  overflow-y: visible;
+}
+
+.qui .qui-desktop-navbar-name-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.qui .qui-desktop-navbar-link-icon-container {
+  .qui-linkicon-caption {
+    white-space: nowrap;
+  }
+  .qui-linkicon-block {
+    min-width: 6em;
+  }
+}
+
+.qui .qui-desktop-navbar-app-menu-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 0.4;
+  margin-right: 1em;
+  .qui-desktop-navbar-user-name {
+    color: #fff;
+    font-size: 1.2em;
+    max-width: 6em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    &:last-child {
+      margin-right: 0.7em;
+    }
+  }
+}
+
+.qui-desktop-navabr-search-bar-wrapper
+  .qui-search-bar-container
+  .qui-search-bar-child-container {
+  border-radius: 0.7em;
+  overflow: hidden;
+}
+
+.qui .qui-desktop-navbar-logo {
+  width: 10em;
+  height: 4em;
+  margin-left: 1.5em;
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.qui-desktop-navbar-action-menu-modal {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  border: 0;
+  padding: 0;
+  width: 13em;
+}
+
+.qui-desktop-navbar-slick-slider .slick-list {
+  overflow: visible;
+}
+
+.qui-desktop-navbar-link-icon-container {
+  position: relative;
+}
+
+.qui-desktop-navbar-action-menu-modal {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-1em) scale(0.95);
+  transition: all 0.5s ease-in;
+}
+
+.qui-desktop-navbar-link-icon-button {
+  border: 0;
+  padding: 0;
+  &:focus + .qui-desktop-navbar-action-menu-modal {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(1em) scale(1);
+  }
+}
+
+.qui-desktop-navbar-action-menu-container {
+  .qui-actionmenu-items {
+    border-bottom: none;
+  }
+  .qui-actionmenu-titles {
+    margin: 0.5em;
+  }
+}
