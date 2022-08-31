@@ -20,6 +20,7 @@ Avatar.propTypes = {
         "success",
         "warning",
         "error",
+        "none",
     ]),
     /**
   Use to define component text size in increasing order

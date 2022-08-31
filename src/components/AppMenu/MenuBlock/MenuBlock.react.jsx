@@ -30,6 +30,7 @@ MenuBlock.propTypes = {
     "success",
     "warning",
     "error",
+    "none",
   ]),
   /**
   Use to define component text size in increasing order
@@ -85,7 +86,7 @@ MenuBlock.propTypes = {
   /**
   Button component must have the onClick function passed as props
   */
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
 };
 
 MenuBlock.defaultProps = {
