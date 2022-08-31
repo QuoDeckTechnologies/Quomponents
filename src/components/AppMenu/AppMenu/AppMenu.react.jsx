@@ -113,7 +113,7 @@ AppMenu.defaultProps = {
     //=======================================
     // Quommon props
     //=======================================
-    asVariant: "primary",
+    asVariant: "",
     asSize: "normal",
     withColor: null,
     withIcon: null,

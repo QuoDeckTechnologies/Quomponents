@@ -60,7 +60,7 @@ Avatar.propTypes = {
     /**
   Avatar component must have the onClick function passed as props
   */
-    onClick: PropTypes.func.isRequired,
+    onClick: PropTypes.func,
 };
 
 Avatar.defaultProps = {
