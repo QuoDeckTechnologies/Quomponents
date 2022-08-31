@@ -50,10 +50,10 @@ export default {
       table: {
         category: "with-Params",
         defaultValue: {
-          menuBackgroundColor: "",
-          backIconColor: "",
-          searchIconColor: "",
+          backgroundColor: "",
           textColor: "",
+          accentColor: "",
+          hoverTextColor: "",
         },
       },
     },
@@ -162,10 +162,10 @@ Default.args = {
     icon: "fas fa-user",
   },
   withColor: {
-    menuBackgroundColor: "",
-    backIconColor: "",
-    searchIconColor: "",
-    textColor: "",
+    backgroundColor: "#ed6e6e",
+    textColor: "#666666",
+    accentColor: "#ed6e6e",
+    hoverTextColor: "#fff",
   },
   withAnimation: {
     animation: "zoom",
@@ -200,10 +200,10 @@ Default.parameters = {
         icon: "fas fa-user",
       }}
       withColor= {{
-        menuBackgroundColor: "",
-        backIconColor: "",
-        searchIconColor: "",
-        textColor: "",
+        backgroundColor: "#ed6e6e",
+        textColor: "#666666",
+        accentColor: "#ed6e6e",
+        hoverTextColor: "#fff",
       }}
       withAnimation= {{
         animation: "zoom",
@@ -226,6 +226,7 @@ Default.parameters = {
 export const UserNavbar = Template.bind({});
 UserNavbar.args = {
   ...Default.args,
+  isCircular: true,
   title: "Earn",
   shortLogo: ShortLogo,
   fullLogo: FullLogo,
@@ -260,10 +261,10 @@ UserNavbar.parameters = {
         icon: "fas fa-user",
       }}
       withColor= {{
-        menuBackgroundColor: "",
-        backIconColor: "",
-        searchIconColor: "",
-        textColor: "",
+        backgroundColor: "#ed6e6e",
+        textColor: "#666666",
+        accentColor: "#ed6e6e",
+        hoverTextColor: "#fff",
       }}
       withAnimation= {{
         animation: "zoom",
@@ -321,10 +322,10 @@ AmplayfierHeader.parameters = {
         icon: "fas fa-user",
       }}
       withColor= {{
-        menuBackgroundColor: "",
-        backIconColor: "",
-        searchIconColor: "",
-        textColor: "",
+        backgroundColor: "#ed6e6e",
+        textColor: "#666666",
+        accentColor: "#ed6e6e",
+        hoverTextColor: "#fff",
       }}
       withAnimation= {{
         animation: "zoom",
@@ -373,10 +374,10 @@ AmplayfierHeaderWithoutBackButton.parameters = {
         icon: "fas fa-user",
       }}
       withColor= {{
-        menuBackgroundColor: "",
-        backIconColor: "",
-        searchIconColor: "",
-        textColor: "",
+        backgroundColor: "#ed6e6e",
+        textColor: "#666666",
+        accentColor: "#ed6e6e",
+        hoverTextColor: "#fff",
       }}
       withAnimation= {{
         animation: "zoom",
@@ -400,10 +401,10 @@ export const ColoredNavBar = Template.bind({});
 ColoredNavBar.args = {
   ...Default.args,
   withColor: {
-    menuBackgroundColor: "#C1DC9E",
-    backIconColor: "#FFBF00",
-    searchIconColor: "#FFBF00",
-    textColor: "#AAAAAA",
+    backgroundColor: "#86BC25",
+    textColor: "#666666",
+    accentColor: "#FFBF00",
+    hoverTextColor: "#fff",
   },
 };
 ColoredNavBar.parameters = {
@@ -413,40 +414,41 @@ ColoredNavBar.parameters = {
         "Use this to display Amplayfier Header without back and menu button component.",
     },
     source: {
-      code: `<NavBar 
-      title= "Earn"
-      shortLogo= ShortLogo
-      fullLogo= FullLogo
-      iconLink= {{
-        icon: "fas fa-angle-left",
-        link: "https://www.google.com/",
-      }}
-      isCircular= {false}
-      isSearch= {true}
-      isMenuBar= {true}
-      isBackButton= {true}
-      asVariant= "primary"
-      withIcon= {{
-        icon: "fas fa-user",
-      }}
-      withColor= {{
-        menuBackgroundColor: "#C1DC9E",
-        backIconColor: "#FFBF00",
-        searchIconColor: "#FFBF00",
-        textColor: "#AAAAAA",
-      }}
-      withAnimation= {{
-        animation: "zoom",
-        duration: 0.5,
-        delay: 0,
-      }}
-      withTranslation= {{
-        lang: "en",
-        tgt: "navBar",
-        dictionary: dictionary,
-      }}
-      isDisabled= {false}
-      isHidden= {false}/>`,
+      code: `<NavBar
+          title="Earn"
+          shortLogo={ShortLogo}
+          fullLogo={FullLogo}
+          iconLink={{
+            icon: "fas fa-angle-left",
+            link: "https://www.google.com/",
+          }}
+          isCircular={false}
+          isSearch={true}
+          isMenuBar={true}
+          isBackButton={true}
+          asVariant="primary"
+          withIcon={{
+            icon: "fas fa-user",
+          }}
+          withColor={{
+            backgroundColor: "#86BC25",
+            textColor: "#666666",
+            accentColor: "#FFBF00",
+            hoverTextColor: "#fff",
+          }}
+          withAnimation={{
+            animation: "zoom",
+            duration: 0.5,
+            delay: 0,
+          }}
+          withTranslation={{
+            lang: "en",
+            tgt: "navBar",
+            dictionary: dictionary,
+          }}
+          isDisabled={false}
+          isHidden={false}
+        />`,
     },
   },
 };
@@ -468,40 +470,41 @@ AnimatedNavbar.parameters = {
       story: "We can animate the appearance of Navbar",
     },
     source: {
-      code: `<NavBar 
-      title= "Earn"
-      shortLogo= ShortLogo
-      fullLogo= FullLogo
-      iconLink= {{
-        icon: "fas fa-angle-left",
-        link: "https://www.google.com/",
-      }}
-      isCircular= {false}
-      isSearch= {true}
-      isMenuBar= {true}
-      isBackButton= {true}
-      asVariant= "primary"
-      withIcon= {{
-        icon: "fas fa-user",
-      }}
-      withColor= {{
-        menuBackgroundColor: "#C1DC9E",
-        backIconColor: "#FFBF00",
-        searchIconColor: "#FFBF00",
-        textColor: "#AAAAAA",
-      }}
-      withAnimation= {{
-        animation: "fade",
-        duration: 0.5,
-        delay: 0,
-      }}
-      withTranslation= {{
-        lang: "en",
-        tgt: "navBar",
-        dictionary: dictionary,
-      }}
-      isDisabled= {false}
-      isHidden= {false}/>`,
+      code: `<NavBar
+          title="Earn"
+          shortLogo={ShortLogo}
+          fullLogo={FullLogo}
+          iconLink={{
+            icon: "fas fa-angle-left",
+            link: "https://www.google.com/",
+          }}
+          isCircular={false}
+          isSearch={true}
+          isMenuBar={true}
+          isBackButton={true}
+          asVariant="primary"
+          withIcon={{
+            icon: "fas fa-user",
+          }}
+          withColor={{
+            backgroundColor: "#86BC25",
+            textColor: "#666666",
+            accentColor: "#FFBF00",
+            hoverTextColor: "#fff",
+          }}
+          withAnimation={{
+            animation: "fade",
+            duration: 0.5,
+            delay: 0,
+          }}
+          withTranslation={{
+            lang: "en",
+            tgt: "navBar",
+            dictionary: dictionary,
+          }}
+          isDisabled={false}
+          isHidden={false}
+        />`,
     },
   },
 };
@@ -526,8 +529,8 @@ TranslatedNavBar.parameters = {
     source: {
       code: `<NavBar 
       title= "Earn"
-      shortLogo= ShortLogo
-      fullLogo= FullLogo
+      shortLogo= {ShortLogo}
+      fullLogo= {FullLogo}
       iconLink= {{
         icon: "fas fa-angle-left",
         link: "https://www.google.com/",
@@ -541,10 +544,10 @@ TranslatedNavBar.parameters = {
         icon: "fas fa-user",
       }}
       withColor= {{
-        menuBackgroundColor: "#C1DC9E",
-        backIconColor: "#FFBF00",
-        searchIconColor: "#FFBF00",
-        textColor: "#AAAAAA",
+        backgroundColor: "#86BC25",
+        textColor: "#666666",
+        accentColor: "#FFBF00",
+        hoverTextColor: "#fff",
       }}
       withAnimation= {{
         animation: "zoom",

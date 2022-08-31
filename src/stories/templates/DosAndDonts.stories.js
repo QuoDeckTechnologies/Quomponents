@@ -185,7 +185,7 @@ DosDontsWithImage.args = {
     {
       id: "header-image",
       image:
-        "https://i.pinimg.com/564x/7e/bd/95/7ebd9590368fb4bef3bfd7292f0523bd.jpg",
+        "https://images.unsplash.com/photo-1661553914969-1c781d515fae?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1661&q=80",
     },
   ],
   isChoice: false,
@@ -307,7 +307,7 @@ DosDontsWithBackgroundImage.args = {
     {
       id: "background-image",
       image:
-        "https://i.pinimg.com/564x/63/b7/c5/63b7c5e64164a4baca57c64aaea33dea.jpg",
+        "https://images.unsplash.com/photo-1661854735281-f597d47132ed?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2090&q=80",
     },
   ],
   isChoice: false,

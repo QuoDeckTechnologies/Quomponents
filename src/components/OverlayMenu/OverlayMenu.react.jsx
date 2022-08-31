@@ -25,10 +25,6 @@ OverlayMenu.propTypes = {
   */
   isOpen: PropTypes.bool.isRequired,
   /**
-  Use to define user image to component
-  */
-  withUser: PropTypes.string,
-  /**
   Use to define buttons to component
   */
   content: PropTypes.arrayOf(
@@ -141,10 +137,6 @@ OverlayMenu.defaultProps = {
   */
   content: [],
   /**
-  withUser contains the link to the progile image that can replace the profile default icon.
-  */
-  withUser: "",
-  /**
   Use it for open modal
   */
   isOpen: true,
@@ -233,7 +225,7 @@ export default function OverlayMenu(props) {
                 <div className="qui-profileCaption">
                   {withLabel?.format === "label" ? withLabel?.content : ""}
                 </div>
-                <Avatar {...props} withUser={props.withUser} />
+                <Avatar {...props} />
                 <div className={`qui-profileCaption size-${props.asSize}`}>
                   {withLabel?.format === "caption" ? withLabel?.content : ""}
                 </div>

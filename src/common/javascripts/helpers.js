@@ -129,6 +129,8 @@ export function getAnimation(props) {
         static: {
             scale: 1,
             opacity: 1,
+            x: 0,
+            y: 0,
         }
     };
     let transitionObj = {
@@ -172,6 +174,8 @@ export function getAnimation(props) {
         static: {
             scale: 1,
             opacity: 1,
+            x: 0,
+            y: 0,
             transition: transitionObj,
         }
     };

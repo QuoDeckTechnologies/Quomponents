@@ -2,7 +2,6 @@
 /* ParagraphwithVideo Definitions */
 /* ================================================= */
 .qui.qui-paragraph-with-video {
-  min-height: 30em;
   border-radius: 1em;
 }
 
@@ -42,7 +41,7 @@
 
 @media only screen and (min-width: 481px) {
   .qui.qui-paragraph-with-video {
-    width: 20em;
+    width: 23em;
   }
 
   .qui .qui-paragraph-with-video-textblock {

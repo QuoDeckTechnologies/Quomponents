@@ -6,10 +6,13 @@
   border-radius: 0.8em;
 }
 
-.qui .qui-voiceover-upload-modal-header h2 {
+.qui .qui-voiceover-upload-modal-header {
   margin: 0;
   margin-bottom: 1.5em;
   color: #666666;
+  .qui-voice-over-upload-modal-header-tag {
+    margin: 0;
+  }
 }
 
 .qui .qui-voiceover-upload-buttons {
@@ -26,9 +29,12 @@
   overflow: visible;
 }
 
-.qui .qui-voiceover-upload-button button {
-  padding: 0.7em 0;
-  box-shadow: 0px 3px 5px #dadada;
+.qui .qui-voiceover-upload-button {
+  width: 100%;
+  button {
+    padding: 0.7em 0;
+    box-shadow: 0px 3px 5px #dadada;
+  }
 }
 
 .qui .qui-voiceover-upload-buttons button {
@@ -40,13 +46,14 @@
   margin-bottom: 1em;
 }
 
+.qui-voice-over-modal-paragraph {
+  font-size: 0.8em;
+}
+
 @media only screen and (min-width: 320px) {
-  .qui.qui-voiceover-upload-modal {
-    font-size: 0.65em;
-  }
   .qui.qui-voiceover-upload-modal .qui .qui-arc {
-    height: 4.5em;
-    width: 4.5em;
+    height: 3em;
+    width: 3em;
   }
   .qui.qui-voiceover-upload-modal .qui .qui-arc .qui-arc-menu-button {
     height: 3.5em;
@@ -61,12 +68,9 @@
 }
 
 @media only screen and (min-width: 481px) {
-  .qui.qui-voiceover-upload-modal {
-    font-size: 0.8em;
-  }
   .qui.qui-voiceover-upload-modal .qui .qui-arc {
-    height: 4.5em;
-    width: 4.5em;
+    height: 4em;
+    width: 4em;
   }
   .qui.qui-voiceover-upload-modal .qui .qui-arc .qui-arc-menu-button {
     height: 4em;
@@ -81,21 +85,18 @@
 }
 
 @media only screen and (min-width: 769px) {
-  .qui.qui-voiceover-upload-modal {
-    font-size: 1em;
-  }
   .qui.qui-voiceover-upload-modal .qui .qui-arc {
-    height: 4.5em;
-    width: 4.5em;
+    height: 4em;
+    width: 4em;
   }
   .qui.qui-voiceover-upload-modal .qui .qui-arc .qui-arc-menu-button {
-    height: 5em;
-    width: 5em;
+    height: 4.5em;
+    width: 4.5em;
   }
   .qui.qui-voiceover-upload-modal.qui
     .qui-arc
     .qui-arc-menu-button.qui-arc-menu-close-button
     .qui-arc-close-icon {
-    font-size: 3em;
+    font-size: 2.5em;
   }
 }

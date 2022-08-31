@@ -1,6 +1,9 @@
 import React, { useState, useRef } from "react";
 import PropTypes from "prop-types";
-import { getTranslation } from "../../../common/javascripts/helpers";
+import {
+  getQuommons,
+  getTranslation,
+} from "../../../common/javascripts/helpers";
 import Button from "../Button/Button.react";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -223,7 +226,7 @@ export default function FlipConfirm(props) {
   }
 
   return (
-    <div className={`qui-fc-btn-main`}>
+    <div className={`qui-fc-btn-main ${props.asFloated}`}>
       <div className={`qui-fc-btn ${mode ? "is-open" : ""}`} ref={buttonRef}>
         <div
           className={`qui-fc-btn-back ${mode ? "is-enable" : "qui is-hidden"}`}

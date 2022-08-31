@@ -73,10 +73,10 @@ NavBar.propTypes = {
   Use to override component colors and behavior
   */
   withColor: PropTypes.shape({
-    menuBackgroundColor: PropTypes.string,
-    backIconColor: PropTypes.string,
-    searchIconColor: PropTypes.string,
+    backgroundColor: PropTypes.string,
     textColor: PropTypes.string,
+    accentColor: PropTypes.string,
+    hoverTextColor: PropTypes.string,
   }),
   /**
   Use to define the entry animation of the component
@@ -206,7 +206,7 @@ export default function NavBar(props) {
       >
         <i
           className="fas fa-bars qui-nav-bar-icon"
-          style={{ color: props.withColor?.menuBackgroundColor }}
+          style={{ color: props.withColor?.backgroundColor }}
         ></i>
       </div>
     );
@@ -226,9 +226,10 @@ export default function NavBar(props) {
             <IconLink
               {...props}
               asPadded="fitted"
+              isCircular={false}
               link={iconLink?.link}
               withIcon={{ icon: iconLink?.icon }}
-              withColor={{ backgroundColor: withColor?.backIconColor }}
+              withColor={{ textColor: withColor?.accentColor }}
               onClick={props.onClick}
             />
           )}
@@ -244,9 +245,19 @@ export default function NavBar(props) {
           )}
           <div className="qui-navbar-content">
             {isSearch ? (
-              <h4 className="qui-nav-bar-title">{labelContent}</h4>
+              <h4
+                className="qui-nav-bar-title"
+                style={{ color: withColor?.textColor }}
+              >
+                {labelContent}
+              </h4>
             ) : (
-              <h3 className="qui-nav-bar-title">{labelContent}</h3>
+              <h3
+                className="qui-nav-bar-title"
+                style={{ color: withColor?.textColor }}
+              >
+                {labelContent}
+              </h3>
             )}
           </div>
         </div>
@@ -254,7 +265,7 @@ export default function NavBar(props) {
           {isSearch && (
             <div
               className="qui-navbar-searching-icon-container"
-              style={{ color: withColor?.searchIconColor }}
+              style={{ color: withColor?.accentColor }}
               onClick={props.onSearch}
             >
               <i className="fas fa-search qui-navbar-search-icon"></i>
@@ -265,8 +276,8 @@ export default function NavBar(props) {
               {...props}
               withIcon={withIcon}
               withColor={{
-                backgroundColor: withColor?.menuBackgroundColor,
-                textColor: withColor?.textColor,
+                backgroundColor: withColor?.backgroundColor,
+                textColor: withColor?.hoverTextColor,
               }}
               withTranslation={null}
               onClick={props.onAppMenuClick}

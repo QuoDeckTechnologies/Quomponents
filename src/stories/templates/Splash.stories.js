@@ -83,7 +83,7 @@ Default.args = {
   asFloated: "none",
   withColor: {
     backgroundColor: "",
-    textBlockBackgroundColor: "",
+    textBlockBackgroundColor: "#ad292980",
     textBlockTextColor: "#ffffff",
     textColor: "",
   },

@@ -34,7 +34,7 @@
     margin: 0.5em 0 0 0;
   }
   .qui-bulletblock {
-    max-width: 17.5em;
+    max-width: 15em;
     margin: auto;
     padding: 0;
     ul {
@@ -42,6 +42,9 @@
     }
     .li:last-child {
       margin-bottom: 1.5em;
+    }
+    .qui-bulletblock-item:last-child{
+      margin-bottom: 0;
     }
   }
   .qui-dos-donts-image {
@@ -58,6 +61,13 @@
     width: 80%;
   }
 }
+
+.qui-dos-donts-card-inner-wrapper {
+  .qui .qui-choice-container .qui-or {
+    position: static;
+  }
+}
+
 @media only screen and (min-width: 320px) {
   .qui .qui-dos-donts-card {
     .qui-do-donts-default-text {

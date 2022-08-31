@@ -24,6 +24,7 @@
   margin-right: 0.4em;
   .qui-btn {
     min-height: 0;
+    min-width: 1em;
   }
 }
 
@@ -46,7 +47,6 @@
 .qui .qui-navbar-content {
   font-weight: bolder;
   color: #000000;
-  filter: drop-shadow(1px 1px 0.8px rgb(150, 146, 146));
   margin-left: 0.3em;
 }
 
@@ -62,7 +62,7 @@
 
 .qui .qui-navbar-searching-icon-container {
   margin-right: 0.5em;
-  filter: drop-shadow(1px 4px 1.5px #0000003a);
+  filter: drop-shadow(1px 2px 2px #0000003a);
   cursor: pointer;
 }
 

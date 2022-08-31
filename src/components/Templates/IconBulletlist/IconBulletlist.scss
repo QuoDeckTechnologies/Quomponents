@@ -13,12 +13,7 @@
   }
 
   .qui .qui-title {
-    font-size: 1.5em;
     padding: 0 0 0.2em 0;
-  }
-
-  .qui .qui-sub-title {
-    font-size: 1em;
   }
 
   .qui-icon-bullet-list-image {
@@ -50,13 +45,12 @@
     width: auto;
 
     .qui-icon-bullet-list {
-      font-size: 1em;
       width: fit-content;
     }
   }
 }
 @media only screen and (min-width: 481px) {
   .qui.qui-icon-bullet-list {
-    width: 20em;
+    width: 23em;
   }
 }

@@ -208,12 +208,12 @@ export default function SingleSelect(props) {
           style={{ ...background }}
         >
           {getView(data)}
-          <div
+          <h5
             className={`qui-slide-single-select-question variant-${props.asVariant}-text`}
             style={{ color: props.withColor?.questionColor }}
           >
             {data?.question}
-          </div>
+          </h5>
           <div className="qui-slide-single-select-container">
             <ButtonBank
               content={data?.options}

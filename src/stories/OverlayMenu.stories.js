@@ -32,12 +32,6 @@ export default {
         label: "",
       },
     ],
-    withUser: {
-      table: {
-        category: "with-Params",
-        defaultValue: "",
-      },
-    },
     asVariant: {
       control: "select",
       options: ["primary", "secondary", "success", "warning", "error"],
@@ -210,10 +204,6 @@ Default.args = {
       format: "caption",
     },
   ],
-
-  withUser:
-    "https://i.pinimg.com/564x/66/b7/b0/66b7b0cc1927986a85a41d754a360727.jpg",
-
   asVariant: "primary",
   asSize: "normal",
   asFloated: "none",

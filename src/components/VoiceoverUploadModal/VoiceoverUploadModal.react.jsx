@@ -192,12 +192,14 @@ export default function VoiceoverUploadModal(props) {
         <div
           className={`qui-voiceover-upload-modal-header ${quommonClasses.childClasses}`}
         >
-          <h2>{tObj?.header || "Upload Voiceovers"}</h2>
+          <h5 className="qui-voice-over-upload-modal-header-tag">
+            {tObj?.header || "Upload Voiceovers"}
+          </h5>
         </div>
 
         <div className="qui-voiceover-text-message">
           {tObj?.text || (
-            <p>
+            <p className="qui-voice-over-modal-paragraph">
               Create MP3 files for each slide individually and name them as the
               slide numbers they correspond to. e.g. 1.mp3, 2.mp3, etc. You can
               upload voiceovers for one or more slides in this fashion...
@@ -261,6 +263,7 @@ export default function VoiceoverUploadModal(props) {
           type="close"
           arcIcon="close"
           position="top-right"
+          withAnimation={null}
           onClick={() => {
             setOpenUploadModal(false);
             props.onClose(false);

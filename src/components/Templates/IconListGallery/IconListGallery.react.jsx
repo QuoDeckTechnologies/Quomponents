@@ -102,7 +102,6 @@ IconListGallery.defaultProps = {
   //=======================================
   withColor: null,
   withAnimation: null,
-
   isHidden: false,
   isDisabled: false,
 };
@@ -154,14 +153,15 @@ export default function IconListGallery(props) {
   }
 
   var settings = {
+    className: "qui-react-slick-icon-list-gallery",
     dots: false,
     speed: 500,
     initialSlide: 1,
     slidesToScroll: 1,
-    slidesToShow: 4.3,
-    centerMode: true,
+    slidesToShow: 4,
+    centerMode: false,
     arrows: false,
-    infinite: true,
+    infinite: false,
     autoplay: false,
     pauseOnHover: true,
     centerPadding: "0%",

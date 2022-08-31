@@ -216,12 +216,12 @@ export default function Paragraph(props) {
       {data?.presenter && getPresenterView(data)}
       {!data?.presenter && (
         <div className="qui-paragraph-card-subtitle">
-          <p
+          <h5
             style={{ color: withColor?.textColor }}
             className={`qui-paragraph-subtitle`}
           >
             {props.data?.paragraph}
-          </p>
+          </h5>
         </div>
       )}
       {hasPresenter && (

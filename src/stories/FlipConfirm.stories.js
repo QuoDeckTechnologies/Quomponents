@@ -174,23 +174,9 @@ export default {
       },
     },
   },
-  decorators: [
-    (story) => (
-      <div
-        style={{
-          width: "100%",
-          textAlign: "center",
-          fontSize: "0.85em",
-        }}
-      >
-        {story()}
-      </div>
-    ),
-  ],
   parameters: {
     componentSubtitle: "Displays a basic button for general-purpose use",
     a11y: { disable: true },
-    // controls: { expanded: true }
   },
 };
 

@@ -83,7 +83,7 @@ Default.args = {
     slideHeaderAccentColor: "#AD2929",
     slideHeaderBackgroundColor: "#ad292980",
     slideHeaderTextColor: "#ffffff",
-    textBlockBackgroundColor: "",
+    textBlockBackgroundColor: "#ad292980",
     textBlockTextColor: "#ffffff",
   },
   withAnimation: {
@@ -127,7 +127,7 @@ ParagraphWithHeaderImage.args = {
     slideHeaderAccentColor: "#AD2929",
     slideHeaderBackgroundColor: "#ad292980",
     slideHeaderTextColor: "#ffffff",
-    textBlockBackgroundColor: "",
+    textBlockBackgroundColor: "#ad292980",
     textBlockTextColor: "#ffffff",
   },
   withAnimation: {

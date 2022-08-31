@@ -248,6 +248,7 @@ export default function MultipleSelect(props) {
             <div className="qui-slide-multiple-select-container">
               <MultiSelect
                 {...props}
+                asPadded="fitted"
                 content={data?.multiselect}
                 purpose={data?.purpose}
                 withColor={buttonStyle}

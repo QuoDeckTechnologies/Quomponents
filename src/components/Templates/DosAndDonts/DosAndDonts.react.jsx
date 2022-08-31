@@ -217,11 +217,10 @@ export default function DosAndDonts(props) {
       animate={animate.to}
       className={`qui ${quommonClasses.parentClasses}`}
     >
-      {" "}
       {data && (
         <div className="qui-dos-donts-card" style={{ ...background }}>
           <div
-            className={`${quommonClasses.childClasses}`}
+            className={`qui-dos-donts-card-inner-wrapper ${quommonClasses.childClasses}`}
             key={"dos-donts-" + props.slideId}
           >
             {!data?.image && (data?.title || data?.subtitle) && (

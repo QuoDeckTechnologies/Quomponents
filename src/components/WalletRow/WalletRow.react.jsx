@@ -22,7 +22,7 @@ WalletRow.propTypes = {
   */
   date: PropTypes.string,
   coins: PropTypes.number,
-
+  //=======================================
   // Quommon props
   //=======================================
   /** 
@@ -68,10 +68,12 @@ WalletRow.propTypes = {
 };
 
 WalletRow.defaultProps = {
+  //=======================================
   // Component Specific props
   //=======================================
   date: "",
   coins: null,
+  //=======================================
   // Quommon props
   //=======================================
   asPadded: "normal",
@@ -94,12 +96,10 @@ export default function WalletRow(props) {
   // 1. Set the classes
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "wallet-row");
-
   //-------------------------------------------------------------------
   // 2. Get animation of the component
   //-------------------------------------------------------------------
   const animate = getAnimation(props);
-
   //-------------------------------------------------------------------
   // 3. Conditional styling
   //-------------------------------------------------------------------
@@ -109,7 +109,6 @@ export default function WalletRow(props) {
       : "#454545",
     color: props.withColor?.textColor ? props.withColor?.textColor : "#FFBF00",
   };
-
   //-------------------------------------------------------------------
   // 4. Date Validation
   //-------------------------------------------------------------------
@@ -125,14 +124,12 @@ export default function WalletRow(props) {
   } else {
     date = new Date(props.date).toDateString();
   }
-
   //-------------------------------------------------------------------
   // 5. Translate the text objects in case their is a dictionary provided
   //-------------------------------------------------------------------
   let coinsText = "coins";
   let tObj = getTranslation(props.withTranslation);
   if (tObj?.coins) coinsText = tObj?.coins;
-
   //-------------------------------------------------------------------
   // 6. Function to return suffix
   //-------------------------------------------------------------------
@@ -149,7 +146,6 @@ export default function WalletRow(props) {
       } else return "th";
     } else return "";
   };
-
   //-------------------------------------------------------------------
   // 7. Function to return date with suffix
   //-------------------------------------------------------------------
@@ -165,7 +161,6 @@ export default function WalletRow(props) {
       }
     } else return "";
   };
-
   //-------------------------------------------------------------------
   // 8. Function to return translated month if translation props is provided
   //-------------------------------------------------------------------
@@ -175,7 +170,6 @@ export default function WalletRow(props) {
     }
     return month;
   };
-
   //-------------------------------------------------------------------
   // 9. Function to handle date string
   //-------------------------------------------------------------------
@@ -207,7 +201,6 @@ export default function WalletRow(props) {
         )}
         {props.coins && (
           <div className={`qui-wallet-row-coins`}>
-            {" "}
             <div
               className="qui-wallet-row-coins-number"
               style={{ color: contentStyle?.color }}

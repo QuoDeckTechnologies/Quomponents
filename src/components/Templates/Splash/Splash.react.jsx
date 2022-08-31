@@ -116,7 +116,7 @@ export default function Splash(props) {
   const getView = (data) => {
     return (
       <div className="qui-splash-text" key={`splash-${slideId}`}>
-        <p style={{ color: withColor?.textColor }}>{data?.splash}</p>
+        <h5 style={{ color: withColor?.textColor }}>{data?.splash}</h5>
       </div>
     );
   };

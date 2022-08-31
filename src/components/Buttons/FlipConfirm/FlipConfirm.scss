@@ -13,6 +13,16 @@ $opened-height: 140px;
 .qui-fc-btn-main {
   width: auto;
   margin: 0 auto;
+  text-align: center;
+  &.inline {
+    display: inline-block;
+  }
+  &.left {
+    float: left;
+  }
+  &.right {
+    float: right;
+  }
   .qui-btn {
     padding: 0.7em 3em;
   }
@@ -79,6 +89,7 @@ $opened-height: 140px;
 .qui-fc-btn.is-open {
   width: $opened-width;
   height: $opened-height;
+  display: inline-block;
 }
 
 .qui-fc-btn[data-direction="top"].is-open {
