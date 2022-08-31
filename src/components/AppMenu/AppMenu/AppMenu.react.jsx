@@ -26,11 +26,16 @@ AppMenu.propTypes = {
   Use for rounded corners or circular icon button 
   */
     isCircular: PropTypes.bool,
-    menu: PropTypes.arrayOf({
-        icon: PropTypes.string.isRequired,
-        label: PropTypes.string.isRequired,
-        onClick: PropTypes.func.isRequired,
-    }),
+    username: PropTypes.string,
+    avatar: PropTypes.string,
+
+    menu: PropTypes.arrayOf(
+        PropTypes.shape({
+            icon: PropTypes.string.isRequired,
+            label: PropTypes.string.isRequired,
+            onClick: PropTypes.func.isRequired,
+        })
+    ),
     //=======================================
     // Quommon props
     //=======================================
@@ -168,19 +173,24 @@ export default function AppMenu(props) {
         <div
             className={`qui ${quommonClasses.parentClasses} ${
                 props.isCircular ? "qui-app-menu-circular" : ""
-            } qt-shadow`}
-            onClick={handleClick}
+            }`}
         >
-            <div className="qui-app-menu-container">
+            <div className="qui-app-menu-container" onClick={handleClick}>
                 <div
                     style={colors}
                     className={`qui-app-menu-inner-container qui-btn ${quommonClasses.childClasses} `}
                 >
                     <div className="qui-app-menu-icon-container">
                         <div className="qui-app-menu-catalog-container">
-                            {tObj || props.withLabel?.content ? (
+                            {props.username ||
+                            tObj ||
+                            props.withLabel?.content ? (
                                 <p className="qui-app-menu-catalog-label">
-                                    {tObj ? tObj.content : withLabel?.content}{" "}
+                                    {props.username
+                                        ? props.username
+                                        : tObj
+                                        ? tObj.content
+                                        : withLabel?.content}{" "}
                                 </p>
                             ) : null}
                         </div>
@@ -196,7 +206,9 @@ export default function AppMenu(props) {
                         <Avatar
                             {...props}
                             withIcon={
-                                props.withIcon
+                                props.avatar
+                                    ? { icon: props.avatar }
+                                    : props.withIcon
                                     ? props.withIcon
                                     : { icon: "fas fa-user" }
                             }
@@ -209,70 +221,70 @@ export default function AppMenu(props) {
                             withLabel={{ content: "" }}
                             withTranslation={null}
                         />
-                        <Menu
-                            id="app-menu"
-                            anchorEl={anchorEl}
-                            open={open}
-                            onClose={handleClose}
-                            MenuListProps={{
-                                "aria-labelledby": "app-menu-button",
-                            }}
-                            PaperProps={{
-                                elevation: 0,
-                                sx: {
-                                    overflow: "visible",
-                                    width: 240,
-                                    maxWidth: "100%",
-                                    filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-                                    mt: 1.5,
-                                    "& .MuiAvatar-root": {
-                                        width: 32,
-                                        height: 32,
-                                        ml: -0.5,
-                                        mr: 1,
-                                    },
-                                    "&:before": {
-                                        content: '""',
-                                        display: "block",
-                                        position: "absolute",
-                                        top: 0,
-                                        right: 14,
-                                        width: 10,
-                                        height: 10,
-                                        bgcolor: "background.paper",
-                                        transform:
-                                            "translateY(-50%) rotate(45deg)",
-                                        zIndex: 0,
-                                    },
-                                },
-                            }}
-                            transformOrigin={{
-                                horizontal: "right",
-                                vertical: "top",
-                            }}
-                            anchorOrigin={{
-                                horizontal: "right",
-                                vertical: "bottom",
-                            }}
-                        >
-                            {props.menu?.map((item) =>
-                                item.icon === "divider" ? (
-                                    <Divider />
-                                ) : (
-                                    <MenuItem onClick={item.onClick}>
-                                        <ListItemIcon>
-                                            <i className={item.icon} />
-                                        </ListItemIcon>
-                                        <ListItemText>
-                                            {item.label}
-                                        </ListItemText>
-                                    </MenuItem>
-                                )
-                            )}
-                        </Menu>
                     </div>
                 </div>
             </div>
+            <Menu
+                id="app-menu"
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                MenuListProps={{
+                    "aria-labelledby": "app-menu-button",
+                }}
+                PaperProps={{
+                    elevation: 0,
+                    sx: {
+                        overflow: "visible",
+                        width: 240,
+                        maxWidth: "100%",
+                        filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+                        mt: 1.5,
+                        "& .MuiAvatar-root": {
+                            width: 32,
+                            height: 32,
+                            ml: -0.5,
+                            mr: 1,
+                        },
+                        "&:before": {
+                            content: '""',
+                            display: "block",
+                            position: "absolute",
+                            top: 0,
+                            right: 14,
+                            width: 10,
+                            height: 10,
+                            bgcolor: "background.paper",
+                            transform: "translateY(-50%) rotate(45deg)",
+                            zIndex: 0,
+                        },
+                    },
+                }}
+                transformOrigin={{
+                    horizontal: "right",
+                    vertical: "top",
+                }}
+                anchorOrigin={{
+                    horizontal: "right",
+                    vertical: "bottom",
+                }}
+            >
+                {props.menu?.map((item, idx) =>
+                    item.icon === "divider" ? (
+                        <Divider key={`qui-appmenuitem-${idx}`} />
+                    ) : (
+                        <MenuItem
+                            onClick={item.onClick}
+                            key={`qui-appmenuitem-${idx}`}
+                        >
+                            <ListItemIcon>
+                                <i className={item.icon} />
+                            </ListItemIcon>
+                            <ListItemText>{item.label}</ListItemText>
+                        </MenuItem>
+                    )
+                )}
+            </Menu>
         </div>
     );
 }

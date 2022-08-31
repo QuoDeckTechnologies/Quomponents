@@ -13,6 +13,8 @@ export default {
     title: "Design System/Appmenu",
     component: AppMenu,
     argTypes: {
+        username: {},
+        avatar: {},
         menu: {
             table: {
                 defaultValue: [],
@@ -123,6 +125,8 @@ export default {
 const Template = (args) => <AppMenu {...args} />;
 export const Default = Template.bind({});
 Default.args = {
+    username: "Username",
+    avatar: "https://i.pravatar.cc/256",
     menu: [
         {
             icon: "fa fa-home",
@@ -150,7 +154,7 @@ Default.args = {
     asSize: "normal",
     asFloated: "inline",
     withIcon: {
-        icon: "https://i.pinimg.com/736x/64/81/22/6481225432795d8cdf48f0f85800cf66.jpg",
+        icon: "https://i.pravatar.cc/256",
     },
     withColor: {
         backgroundColor: "",
