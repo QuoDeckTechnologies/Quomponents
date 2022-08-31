@@ -150,7 +150,7 @@ Default.args = {
         },
     ],
     isCircular: true,
-    asVariant: "primary",
+    asVariant: "",
     asSize: "normal",
     asFloated: "inline",
     withIcon: {

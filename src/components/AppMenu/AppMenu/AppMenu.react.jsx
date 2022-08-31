@@ -25,7 +25,6 @@ AppMenu.propTypes = {
     /**
   Use for rounded corners or circular icon button 
   */
-    isCircular: PropTypes.bool,
     username: PropTypes.string,
     avatar: PropTypes.string,
 
@@ -48,6 +47,7 @@ AppMenu.propTypes = {
         "success",
         "warning",
         "error",
+        "none",
     ]),
     /**
   Use to define component text size in increasing order
@@ -109,11 +109,10 @@ AppMenu.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
-    isCircular: true,
     //=======================================
     // Quommon props
     //=======================================
-    asVariant: "",
+    asVariant: "none",
     asSize: "normal",
     withColor: null,
     withIcon: null,
@@ -147,7 +146,6 @@ export default function AppMenu(props) {
     // 2. Set the classes
     //-------------------------------------------------------------------
     let quommonClasses = getQuommons(props, "app-menu");
-    if (props.isCircular) quommonClasses.childClasses += ` is-circular`;
     //-------------------------------------------------------------------
     // 3. Set the color
     //-------------------------------------------------------------------
@@ -170,11 +168,7 @@ export default function AppMenu(props) {
     // ========================= Render Function =================================
 
     return (
-        <div
-            className={`qui ${quommonClasses.parentClasses} ${
-                props.isCircular ? "qui-app-menu-circular" : ""
-            }`}
-        >
+        <div className={`qui ${quommonClasses.parentClasses}`}>
             <div className="qui-app-menu-container" onClick={handleClick}>
                 <div
                     style={colors}
