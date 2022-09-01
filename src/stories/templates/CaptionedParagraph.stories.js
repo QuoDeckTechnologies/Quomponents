@@ -119,7 +119,7 @@ Default.args = {
     slideHeaderBackgroundColor: "#D39191",
     textblockTextColor: "",
     textblockBackgroundColor: "#ffffff",
-    captionTextColor: "#ffffff",
+    captionTextColor: "",
     captionBackgroundColor: "",
   },
   withAnimation: {
