@@ -24,6 +24,10 @@ Button.propTypes = {
     */
     content: PropTypes.string,
     /**
+    Can link the button to a URL route or pass an onClick function
+    */
+    url: PropTypes.string,
+    /**
     Set action emphasis in increasing order 
     */
     asEmphasis: PropTypes.oneOf(["text", "outlined", "contained"]),
@@ -188,9 +192,15 @@ function getColors(colors, emphasis, hovered) {
               color: colors.hoverTextColor,
           }
         : {
-            background: emphasis !== "contained" ? "transparent" : colors.backgroundColor,
-            color: emphasis !== "contained" ? colors.textColor : colors.textColor,
-        }
+              background:
+                  emphasis !== "contained"
+                      ? "transparent"
+                      : colors.backgroundColor,
+              color:
+                  emphasis !== "contained"
+                      ? colors.textColor
+                      : colors.textColor,
+          };
     if (!hovered && emphasis === "outlined")
         colorStyle.borderColor = colors.backgroundColor;
     return colorStyle;
@@ -307,14 +317,18 @@ export default function Button(props) {
                 color={props.asVariant}
                 title={getLabel(labelContent, "popover")}
                 disabled={props.isDisabled}
-                className={`qui-btn ${props.isDisabled ? "qui-btn-disabled" : ''} ${quommonClasses.childClasses}`}
+                className={`qui-btn ${
+                    props.isDisabled ? "qui-btn-disabled" : ""
+                } ${quommonClasses.childClasses}`}
                 style={Object.assign({}, colors, props.style)}
                 onClick={props.onClick}
             >
-                <i className="icon-loader fa fa-spinner fa-spin"></i>
-                {getIcon(props.withIcon, "left", iconOnly)}
-                {buttonText}
-                {getIcon(props.withIcon, "right", iconOnly)}
+                <a href={props.url}>
+                    <i className="icon-loader fa fa-spinner fa-spin"></i>
+                    {getIcon(props.withIcon, "left", iconOnly)}
+                    {buttonText}
+                    {getIcon(props.withIcon, "right", iconOnly)}
+                </a>
             </MUIButton>
             <div className="qui-caption qt-lbl" style={labelStyle}>
                 {getLabel(labelContent, "caption")}

@@ -32,7 +32,8 @@ AppMenu.propTypes = {
         PropTypes.shape({
             icon: PropTypes.string.isRequired,
             label: PropTypes.string.isRequired,
-            onClick: PropTypes.func.isRequired,
+            url: PropTypes.string,
+            onClick: PropTypes.func,
         })
     ),
     //=======================================

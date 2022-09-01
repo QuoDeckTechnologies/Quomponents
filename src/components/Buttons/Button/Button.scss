@@ -2,12 +2,20 @@
     min-width: 0;
     cursor: pointer;
 }
+
+.qui .qui-btn a {
+    text-decoration: none;
+    color: inherit;
+}
+
 .qui .qui-btn.qui-btn-disabled {
     background-color: #aaaaaa;
     color: #fff;
+
     &.emp-text {
         color: #aaaaaa;
     }
+
     &.emp-outlined {
         color: #aaaaaa;
         border: 1px solid #aaaaaa;

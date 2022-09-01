@@ -272,7 +272,11 @@ DisabledButton.args = {
 DisabledButton.parameters = {
     docs: {
         source: {
-            code: `<Button {...${JSON.stringify(DisabledButton.args, null, 2)}}/>`,
+            code: `<Button {...${JSON.stringify(
+                DisabledButton.args,
+                null,
+                2
+            )}}/>`,
         },
     },
 };
@@ -355,8 +359,27 @@ IconOnlyButton.args = {
 IconOnlyButton.parameters = {
     docs: {
         description: {
-            story:
-                "Any free fontawesome icon can be used as the icon definition. This component is typically used in a bank of buttons or for standalone floating actions. Use isCircular to toggle the rounding.",
+            story: "Any free fontawesome icon can be used as the icon definition. This component is typically used in a bank of buttons or for standalone floating actions. Use isCircular to toggle the rounding.",
+        },
+        source: {
+            code: `<Button isCircular={true} withIcon={{ icon: "fas fa-share", size: "1em", position: "left" }}} withLabel={{format: "popover",content: "Click to share this...",textColor: ""}}}/>`,
+        },
+    },
+};
+
+// -------------------------------------------------------------
+// Linked Button
+// -------------------------------------------------------------
+export const UrlButton = Template.bind({});
+UrlButton.args = {
+    ...Default.args,
+    content: "Go to QuoDeck",
+    url: "https://www.quodeck.com",
+};
+UrlButton.parameters = {
+    docs: {
+        description: {
+            story: "Any free fontawesome icon can be used as the icon definition. This component is typically used in a bank of buttons or for standalone floating actions. Use isCircular to toggle the rounding.",
         },
         source: {
             code: `<Button isCircular={true} withIcon={{ icon: "fas fa-share", size: "1em", position: "left" }}} withLabel={{format: "popover",content: "Click to share this...",textColor: ""}}}/>`,
@@ -401,8 +424,7 @@ LabelledButton.args = {
 LabelledButton.parameters = {
     docs: {
         description: {
-            story:
-                "Use to provide a header callout (format:label) above the button. Or use as an information caption (format:caption) below the button. Or use as a tooltip (format:tooltip) to explain what the button does. The text here can be customized through the withTranslation option.",
+            story: "Use to provide a header callout (format:label) above the button. Or use as an information caption (format:caption) below the button. Or use as a tooltip (format:tooltip) to explain what the button does. The text here can be customized through the withTranslation option.",
         },
         source: {
             code: `<Button withLabel={{format: "label",content: "Press to Confirm...",textColor: "#000000"}}}/>`,
@@ -421,8 +443,7 @@ LoadingButton.args = {
 LoadingButton.parameters = {
     docs: {
         description: {
-            story:
-                "Use to indicate a loading state for the button when it stops being clickable. The loading text can be customized with the withTranslation option through a common loading:'' value in the dictionary.",
+            story: "Use to indicate a loading state for the button when it stops being clickable. The loading text can be customized with the withTranslation option through a common loading:'' value in the dictionary.",
         },
         source: {
             code: `<Button isLoading={true}/>`,
@@ -471,8 +492,7 @@ AnimatedButton.args = {
 AnimatedButton.parameters = {
     docs: {
         description: {
-            story:
-                "Use to animate the entry of the button with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
+            story: "Use to animate the entry of the button with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
         },
         source: {
             code: `<Button withAnimation={{animation: "collapse", duration: 0.5, delay: 0}}}/>`,
@@ -496,8 +516,7 @@ TranslatedButton.args = {
 TranslatedButton.parameters = {
     docs: {
         description: {
-            story:
-                "Use to change the language that the text appears in. To make this work for the button, add a button:{text,label} value to the dictionary.",
+            story: "Use to change the language that the text appears in. To make this work for the button, add a button:{text,label} value to the dictionary.",
         },
         source: {
             code: `<Button withTranslation={{lang: "hi", tgt: "button", dictionary: ${JSON.stringify(

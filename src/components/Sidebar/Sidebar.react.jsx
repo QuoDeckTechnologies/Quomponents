@@ -30,7 +30,8 @@ Sidebar.propTypes = {
             label: PropTypes.string.isRequired,
             title: PropTypes.string,
             active: PropTypes.bool,
-            onClick: PropTypes.func.isRequired,
+            url: PropTypes.string,
+            onClick: PropTypes.func,
         })
     ).isRequired,
     /**
