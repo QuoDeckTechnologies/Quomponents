@@ -2,8 +2,20 @@
   overflow: visible;
   text-align: center;
 }
-.qui-multi-select-container .qui.qui-button {
-  overflow: visible;
+.qui-multi-select-container {
+  .qui-multi-select-submit-button {
+    .qui.qui-button {
+      &.float-left {
+        float: none;
+      }
+      &.float-right {
+        float: none;
+      }
+    }
+  }
+  .qui.qui-button {
+    overflow: visible;
+  }
 }
 .qui .qui-multi-select-checkbox {
   cursor: pointer;
@@ -46,11 +58,7 @@
   padding: 0.5em;
 }
 @media only screen and (min-width: 320px) {
-  .qui
-    .qui-multi-select-button-container
-    .qui-multi-select-button
-    .qui-button
-    button {
+  .qui .qui-multi-select-button-container .qui-multi-select-button .qui-button button {
     margin: 0 0.5em;
     width: 13em;
     padding: 0.7em;
@@ -70,11 +78,7 @@
   }
 }
 @media only screen and (min-width: 481px) {
-  .qui
-    .qui-multi-select-button-container
-    .qui-multi-select-button
-    .qui-button
-    button {
+  .qui .qui-multi-select-button-container .qui-multi-select-button .qui-button button {
     margin: 0 0.5em;
     width: 25em;
     padding: 0.9em;
@@ -94,11 +98,7 @@
   }
 }
 @media only screen and (min-width: 769px) {
-  .qui
-    .qui-multi-select-button-container
-    .qui-multi-select-button
-    .qui-button
-    button {
+  .qui .qui-multi-select-button-container .qui-multi-select-button .qui-button button {
     margin: 0 0.5em;
     width: 27em;
     padding: 1em;
@@ -118,11 +118,7 @@
   }
 }
 @media only screen and (min-width: 1024px) {
-  .qui
-    .qui-multi-select-button-container
-    .qui-multi-select-button
-    .qui-button
-    button {
+  .qui .qui-multi-select-button-container .qui-multi-select-button .qui-button button {
     margin: 0 0.5em;
     width: 30em;
     padding: 1.1em;

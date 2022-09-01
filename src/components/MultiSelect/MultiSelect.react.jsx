@@ -184,9 +184,8 @@ export default function MultiSelect(props) {
             <div className="qui-multi-select-button">
               <div className={`qui-square-background`}>
                 <i
-                  className={`qui-multi-select-checkbox  ${
-                    text.isSelected ? "fas fa-check-square" : "fa fa-square"
-                  }`}
+                  className={`qui-multi-select-checkbox  ${text.isSelected ? "fas fa-check-square" : "fa fa-square"
+                    }`}
                   onClick={() => toggleChecked(index)}
                 ></i>
               </div>
@@ -202,13 +201,14 @@ export default function MultiSelect(props) {
           </div>
         );
       })}
-      {
+      {<div className={`qui-multi-select-submit-button`}>
         <Button
           {...props}
           withTranslation={null}
           content={submitButtonText}
           onClick={() => handleSubmit()}
         />
+      </div>
       }
     </div>
   );
