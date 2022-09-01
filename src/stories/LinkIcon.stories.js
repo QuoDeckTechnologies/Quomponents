@@ -26,7 +26,7 @@ export default {
         },
         asPadded: {
             control: "select",
-            options: ["fitted", "compact", "normal", "relaxed"],
+            options: ["fitted", "compact", "normal", "relaxed","zero"],
             table: {
                 category: "as-Flags",
             },

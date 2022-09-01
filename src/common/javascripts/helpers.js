@@ -14,6 +14,7 @@ export function getQuommons(props, component) {
     else if (props.asSize) childArray.push(`size-${props.asSize}`);
 
     if (props.compact) childArray.push(`pad-compact`);
+    else if (props.zero) childArray.push(`pad-zero`);
     else if (props.fitted) childArray.push(`pad-fitted`);
     else if (props.relaxed) childArray.push(`pad-relaxed`);
     else if (props.padded) childArray.push(`pad-padded`);

@@ -1,10 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import {
-    getAnimation,
-    getQuommons,
-} from "../../common/javascripts/helpers";
+import { getAnimation, getQuommons } from "../../common/javascripts/helpers";
 import "../../common/stylesheets/common.css";
 import "./AccentLine.scss";
 import "../../common/stylesheets/overrule.scss";
@@ -37,7 +34,13 @@ AccentLine.propTypes = {
     /**
     Use to define component padding in increasing order
     */
-    asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
+    asPadded: PropTypes.oneOf([
+        "fitted",
+        "compact",
+        "normal",
+        "relaxed",
+        "zero",
+    ]),
     /**
     Use to float the component in parent container
     */
@@ -80,7 +83,7 @@ AccentLine.defaultProps = {
     // Quommon props
     //=======================================
     asVariant: "warning",
-    asPadded: "normal",
+    asPadded: "zero",
     asSize: "normal",
     asFloated: "none",
 
@@ -120,7 +123,9 @@ export default function AccentLine(props) {
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
         >
-            <div className={`qui-accentline-container ${quommonClasses.childClasses}`}>
+            <div
+                className={`qui-accentline-container ${quommonClasses.childClasses}`}
+            >
                 <div className="qui-accentline" style={AccentLineColors}></div>
             </div>
         </motion.div>
