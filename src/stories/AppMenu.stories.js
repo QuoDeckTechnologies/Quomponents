@@ -131,22 +131,22 @@ Default.args = {
         {
             icon: "fa fa-home",
             label: "Home",
-            onClick: () => {},
+            url: "/home",
         },
         {
             icon: "fa fa-archive",
             label: "Archives",
-            onClick: () => {},
+            url: "/archives",
         },
         {
             icon: "divider",
             label: "",
-            onClick: () => {},
+            url: "/",
         },
         {
             icon: "fa fa-power-off",
             label: "Logout",
-            onClick: () => {},
+            url: "/logout",
         },
     ],
     isCircular: true,

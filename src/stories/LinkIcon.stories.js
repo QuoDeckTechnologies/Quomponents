@@ -154,6 +154,25 @@ Default.parameters = {
 // -------------------------------------------------------------
 // Colored LinkIcon
 // -------------------------------------------------------------
+export const UrlIconlink = Template.bind({});
+UrlIconlink.args = {
+    ...Default.args,
+    url:"https://www.quodeck.com",
+};
+UrlIconlink.parameters = {
+    docs: {
+        description: {
+            story: "Use to override the standard colors of the Icon.",
+        },
+        source: {
+            code: `<LinkIcon withColor={{backgroundColor: "orange", textColor: "gray",hoverBackgroundColor: "gray", hoverTextColor: "orange"}}}/>`,
+        },
+    },
+};
+
+// -------------------------------------------------------------
+// Colored LinkIcon
+// -------------------------------------------------------------
 export const ColoredIconlink = Template.bind({});
 ColoredIconlink.args = {
     ...Default.args,

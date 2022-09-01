@@ -27,6 +27,11 @@ LinkIcon.propTypes = {
     label: PropTypes.string.isRequired,
 
     /**
+    Set label in linkIcon 
+    */
+    url: PropTypes.string,
+
+    /**
     Set active state in linkIcon 
     */
     active: PropTypes.bool,
@@ -44,7 +49,7 @@ LinkIcon.propTypes = {
     /**
     LinkIcon component must have the onClick function passed as props
     */
-    onClick: PropTypes.func.isRequired,
+    onClick: PropTypes.func,
 
     //=======================================
     // Quommon props
@@ -171,7 +176,7 @@ export default function LinkIcon(props) {
     //-------------------------------------------------------------------
     // 2. Set the component colors
     //-------------------------------------------------------------------
-    let colors = props.withColor ? {} : getColors(props.withColor, hovered);
+    let colors = props.withColor ? getColors(props.withColor, hovered) : {};
     //-------------------------------------------------------------------
     // 3. Set the label/caption/popover and loading text
     //-------------------------------------------------------------------
@@ -210,18 +215,24 @@ export default function LinkIcon(props) {
                     maxWidth: props.width,
                     height: props.width,
                     maxHeight: props.width,
+                    background: colors.background,
                 }}
             >
-                <a className="qui-linkicon-anchor" onClick={props.onClick}>
+                <a
+                    className="qui-linkicon-anchor"
+                    href={props.url}
+                    onClick={props.onClick}
+                >
                     <i
                         className={`${props.icon} qui-linkicon-icon  ${
                             tilt ? "tilt" : ""
                         }`}
+                        style={{ color: colors.color }}
                     ></i>
                     <br />
                     <div
                         className={`qui-linkicon-caption`}
-                        style={Object.assign({}, colors.textColor)}
+                        style={{ color: colors.color }}
                     >
                         {props.label}
                     </div>

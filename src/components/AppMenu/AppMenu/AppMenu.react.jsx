@@ -48,6 +48,7 @@ AppMenu.propTypes = {
         "warning",
         "error",
         "none",
+        "",
     ]),
     /**
   Use to define component text size in increasing order
@@ -219,7 +220,7 @@ export default function AppMenu(props) {
                 </div>
             </div>
             <Menu
-                id="app-menu"
+                id="qui-app-menu"
                 anchorEl={anchorEl}
                 open={open}
                 onClose={handleClose}
@@ -266,6 +267,15 @@ export default function AppMenu(props) {
                 {props.menu?.map((item, idx) =>
                     item.icon === "divider" ? (
                         <Divider key={`qui-appmenuitem-${idx}`} />
+                    ) : item.url ? (
+                        <MenuItem key={`qui-appmenuitem-${idx}`}>
+                            <ListItemIcon>
+                                <i className={item.icon} />
+                            </ListItemIcon>
+                            <ListItemText>
+                                <a href={item.url}>{item.label}</a>
+                            </ListItemText>
+                        </MenuItem>
                     ) : (
                         <MenuItem
                             onClick={item.onClick}

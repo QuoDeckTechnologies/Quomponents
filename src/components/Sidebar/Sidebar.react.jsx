@@ -1,12 +1,8 @@
 // Import npm packages
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import {
-    getQuommons,
-    getAnimation,
-    getTranslation,
-} from "../../common/javascripts/helpers.js";
+import { getQuommons, getAnimation } from "../../common/javascripts/helpers.js";
 import _ from "lodash";
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -131,7 +127,9 @@ export default function Sidebar(props) {
                 className="qui-sidebar-logo"
                 style={{ width: props.width, height: props.width }}
             >
-                <img src={props.logo} alt="Application Logo" />
+                <a href="/">
+                    <img src={props.logo} alt="Application Logo" />
+                </a>
             </div>
         );
     };
@@ -187,6 +185,7 @@ export default function Sidebar(props) {
                                         width={props.width}
                                         asSize={props.asSize || "small"}
                                         withColor={props.withColor}
+                                        url={section.url}
                                         onClick={section.onClick}
                                     />
                                 </div>

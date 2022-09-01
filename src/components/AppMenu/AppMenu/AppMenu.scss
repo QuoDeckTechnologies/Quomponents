@@ -1,9 +1,15 @@
 .qui-app-menu {
   overflow: hidden;
+
   .qui-app-menu-avatar {
     display: flex;
     align-items: center;
   }
+}
+
+#qui-app-menu a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .qui-app-menu .float-none {
@@ -26,6 +32,7 @@
   .qui .qui-menu-block-container {
     border-radius: 0;
   }
+
   .qui-app-menu-inner-container.qui-menu-block-container {
     border-top-right-radius: 0;
     border-top-left-radius: 0;
@@ -59,6 +66,7 @@
 
 .qui-app-menu {
   border-radius: 2em 1em 1em 2em;
+
   &.qui-app-menu-circular {
     border-radius: 2em;
   }
