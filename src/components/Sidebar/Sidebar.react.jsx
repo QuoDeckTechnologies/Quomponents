@@ -177,6 +177,10 @@ export default function Sidebar(props) {
                                 <div
                                     className={`qui-sidebar-section`}
                                     key={`panellink-${index}`}
+                                    style={{
+                                        position: "relative",
+                                        zIndex: props.content.length - index,
+                                    }}
                                 >
                                     <LinkIcon
                                         icon={section.icon}
