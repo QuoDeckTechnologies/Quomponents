@@ -2,74 +2,54 @@
 /* BulletList Definitions */
 /* ================================================= */
 .qui .qui-bullet-list-card {
-    background-color: #ffffff;
-    padding: 1.5em;
+  background-color: #ffffff;
+  padding: 1.5em;
+  border-radius: 1em;
+  min-height: 30.5em;
+
+  .qui-bullet-list-image {
+    width: 100%;
     border-radius: 1em;
-    min-height: 30.5em;
+    max-height: 14em;
+    filter: drop-shadow(0px 5px 2px #a09797);
+  }
 
-    .qui-bullet-list-image {
-        width: 100%;
-        border-radius: 1em;
-        max-height: 14em;
-        filter: drop-shadow(0px 5px 2px #a09797);
-    }
+  .qui-title-block {
+    min-width: 12em;
+    min-height: 10em;
+  }
 
-    .qui-title-block {
-        min-width: 12em;
-        min-height: 10em;
-    }
+  .qui-title {
+    font-size: 1.5em;
+    padding: 0 0 0.2em 0;
+  }
 
-    .qui-title {
-        font-size: 1.5em;
-        padding: 0 0 0.2em 0;
-    }
-
-    .qui-sub-title {
-        font-size: 1em;
-    }
-
-    .qui-bulletblock {
-        max-width: 17.5em;
-        margin: 1.5em 1em 3em;
-        padding: 0;
-        ul {
-            margin: 0.1em;
-        }
-        li {
-            margin: 0em;
-        }
-        .li:first-child {
-            margin-top: 1em;
-        }
-        .li:last-child {
-            margin-bottom: 1.5em;
-        }
-    }
+  .qui-sub-title {
+    font-size: 1em;
+  }
 }
 /* ================================================= */
 /* BulletList Sizing Definitions */
 /* ================================================= */
 @media only screen and (min-width: 320px) {
-    .qui .qui-bullet-list-card {
-        .qui-bulletblock {
-            max-width: 22em;
-            margin: 1.5em 0.5em 3em;
-        }
+  .qui .qui-bullet-list-card {
+    .qui-bulletblock {
+      max-width: fit-content;
     }
+  }
 }
 
 @media only screen and (min-width: 481px) {
-    .qui .qui-bullet-list-card {
-        width: 22em;
-        .qui-bulletblock {
-            font-size: 1.2em;
-            width: 17em;
-            margin: 1.5em 0.6em 3em;
-        }
+  .qui .qui-bullet-list-card {
+    width: 22em;
+    .qui-bulletblock {
+      font-size: 1.2em;
+      width: fit-content;
     }
+  }
 
-    .qui-bullet-list-image {
-        border-radius: 1em;
-        max-height: 16em;
-    }
+  .qui-bullet-list-image {
+    border-radius: 1em;
+    max-height: 16em;
+  }
 }

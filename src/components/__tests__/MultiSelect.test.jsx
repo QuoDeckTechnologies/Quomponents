@@ -24,7 +24,7 @@ describe("MultiSelect", () => {
           isSelected: true,
         },
       ],
-      onClick: () => { },
+      onClick: () => {},
     },
     translations: {
       tgt: "templateActions",
@@ -46,7 +46,7 @@ describe("MultiSelect", () => {
             go: "आगे बढ़ें",
           },
         },
-      })
+      }),
     },
   };
 
@@ -90,7 +90,7 @@ describe("MultiSelect", () => {
         go: "आगे बढ़ें",
       },
     },
-  })
+  });
   beforeEach(() => {
     jest.resetAllMocks();
     let handleSubmit = jest.fn();
@@ -197,7 +197,7 @@ describe("MultiSelect", () => {
     });
     expect(component.find("button").at(1).text()).toBe("अपना जवाब सबमिट करें");
   });
-  
+
   it("should render check answer text in hindi", () => {
     component.setProps({
       purpose: "quiz",

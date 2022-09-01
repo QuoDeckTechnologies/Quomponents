@@ -17,9 +17,7 @@ describe("HelpText", () => {
   // -------------------------------------
   const args = {
     target: HelpText,
-    required: {
-
-    },
+    required: {},
     translations: {
       tgt: "helpText",
       lang: { valid: "hi", invalid: "xx" },
@@ -27,7 +25,7 @@ describe("HelpText", () => {
         hi: {
           helpText: { content: "आपके शिक्षार्थी यही देखते हैं" },
         },
-      })
+      }),
     },
   };
 

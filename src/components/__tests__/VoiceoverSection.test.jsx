@@ -19,7 +19,7 @@ describe("VoiceoverSection", () => {
   const args = {
     target: VoiceoverSection,
     required: {
-      onClick: () => { },
+      onClick: () => {},
     },
     translations: {
       tgt: "voiceoverSection",

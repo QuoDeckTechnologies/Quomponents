@@ -53,7 +53,7 @@ describe("TextBlock", () => {
       position: "left-top",
     });
   });
-  
+
   it("should render correctly with position is changed to right-top", () => {
     component.setProps({
       position: "right-top",

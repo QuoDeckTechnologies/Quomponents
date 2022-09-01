@@ -25,7 +25,7 @@ describe("TreeBar", () => {
     target: SearchBar,
     required: {
       content: {},
-      onClick: () => { },
+      onClick: () => {},
     },
     translations: {
       tgt: "TreeBar",
@@ -164,11 +164,11 @@ describe("TreeBar", () => {
       <TreeBar
         content={{
           treeData: {
-            ...nodeData
+            ...nodeData,
           },
           props: {
-            ...dataprops
-          }
+            ...dataprops,
+          },
         }}
         placeHolder="Search..."
         asFloated="left"
@@ -229,7 +229,6 @@ describe("TreeBar", () => {
     component.setProps({ content: { treeData: {} } });
   });
 
-
   it("should toggle the treebeard", () => {
     let toggled = false;
     let onClick = jest.fn();
@@ -270,7 +269,7 @@ describe("TreeBar", () => {
         decorators={decorators}
         onClick={onClick}
       />
-    )
+    );
   });
   it("should render correctly when mount and nodeData is null", () => {
     let onToggle = jest.fn();
@@ -282,6 +281,6 @@ describe("TreeBar", () => {
         decorators={decorators}
         onClick={onClick}
       />
-    )
+    );
   });
 });

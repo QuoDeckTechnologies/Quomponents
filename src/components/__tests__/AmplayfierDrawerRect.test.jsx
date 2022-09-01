@@ -18,8 +18,7 @@ describe("AmplayfierDrawerRect", () => {
   // -------------------------------------
   const args = {
     target: AmplayfierDrawerRect,
-    required: {
-    },
+    required: {},
   };
 
   hasValid("defaults", args);
@@ -36,11 +35,7 @@ describe("AmplayfierDrawerRect", () => {
 
   beforeEach(() => {
     jest.resetAllMocks();
-    component = shallow(
-      <AmplayfierDrawerRect
-        content={null}
-      />
-    );
+    component = shallow(<AmplayfierDrawerRect content={null} />);
   });
 
   it("should render correctly when passed withColor props", () => {
@@ -61,11 +56,11 @@ describe("AmplayfierDrawerRect", () => {
 
   it("should render correctly when component is passed in content props", () => {
     component.setProps({
-      content: <Button content={"Testing Button"} onClick={() => { }} />,
+      content: <Button content={"Testing Button"} onClick={() => {}} />,
     });
     expect(component.exists()).toBe(true);
   });
-  
+
   it("should render correctly when passed isCircular props is true", () => {
     component.setProps({
       isCircular: true,

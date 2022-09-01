@@ -20,7 +20,7 @@ describe("Upload", () => {
     target: Upload,
     required: {
       asEmphasis: "contained",
-      onClick: () => { },
+      onClick: () => {},
     },
   };
 
@@ -79,7 +79,7 @@ describe("Upload", () => {
         isDisabled={false}
         isFluid={false}
         isLoading={false}
-        onClick={() => { }}
+        onClick={() => {}}
       />
     );
   });
@@ -110,7 +110,7 @@ describe("Upload", () => {
   });
 
   it("should render correctly if file type doesn't match", () => {
-    const { container } = render(<Upload onClick={() => { }} />);
+    const { container } = render(<Upload onClick={() => {}} />);
     const inputElement = container.querySelector("input");
     fireEvent.change(inputElement, { target: { files: [{ type: "" }] } });
   });
@@ -136,7 +136,7 @@ describe("Upload", () => {
         isDisabled={false}
         isFluid={false}
         isLoading={false}
-        onClick={() => { }}
+        onClick={() => {}}
       />
     );
     wrapper.find(".qui-btn").at(0).simulate("click");
@@ -144,7 +144,7 @@ describe("Upload", () => {
   });
 
   it("should render correctly when file is uploaded", async () => {
-    const { container } = render(<Upload onClick={() => { }} />);
+    const { container } = render(<Upload onClick={() => {}} />);
     const inputElement = container.querySelector("input");
     fireEvent.change(inputElement, { target: { files: [file] } });
     await pauseFor(100);
@@ -153,7 +153,7 @@ describe("Upload", () => {
 
   it("should render correctly when multiple files are uploaded", async () => {
     const { container } = render(
-      <Upload isMultiple={true} onClick={() => { }} />
+      <Upload isMultiple={true} onClick={() => {}} />
     );
     const inputElement = container.querySelector("input");
     fireEvent.change(inputElement, { target: { files: [file, file, file] } });

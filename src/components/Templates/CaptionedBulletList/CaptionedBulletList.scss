@@ -20,15 +20,7 @@
     margin: 0.5em 0 0 0;
   }
   .qui-bulletblock {
-    max-width: 17.5em;
-    margin: auto;
-    padding: 0;
-    ul {
-      margin: 1em;
-    }
-    .li:last-child {
-      margin-bottom: 1.5em;
-    }
+    width: fit-content;
   }
   .qui-captioned-bullet-list-image {
     width: 99%;
@@ -40,9 +32,6 @@
 @media only screen and (min-width: 481px) {
   .qui .qui-captioned-bullet-list-card {
     width: 22em;
-  }
-  .qui-bulletblock {
-    width: 17em;
   }
   .qui-captioned-bullet-list-image {
     border-radius: 1em;

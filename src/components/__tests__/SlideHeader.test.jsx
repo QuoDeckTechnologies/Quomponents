@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow } from 'enzyme';
+import { shallow } from "enzyme";
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------
@@ -10,44 +10,44 @@ import { hasValid } from "./common";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import SlideHeader from "../SlideHeader/SlideHeader.react"
+import SlideHeader from "../SlideHeader/SlideHeader.react";
 
 describe("SlideHeader", () => {
-    // -------------------------------------
-    // Run common tests
-    // -------------------------------------
-    const args = {
-        target: SlideHeader,
-    };
+  // -------------------------------------
+  // Run common tests
+  // -------------------------------------
+  const args = {
+    target: SlideHeader,
+  };
 
-    hasValid("defaults", args);
+  hasValid("defaults", args);
 
-    hasValid("variants", args);
-    hasValid("positions", args);
-    hasValid("padding", args);
-    hasValid("alignment", args);
+  hasValid("variants", args);
+  hasValid("positions", args);
+  hasValid("padding", args);
+  hasValid("alignment", args);
 
-    hasValid("colors", args);
+  hasValid("colors", args);
 
-    hasValid("hidden", args);
-    // -------------------------------------
-    // Run component specific tests
-    // -------------------------------------
-    let component;
+  hasValid("hidden", args);
+  // -------------------------------------
+  // Run component specific tests
+  // -------------------------------------
+  let component;
 
-    beforeEach(() => {
-        jest.resetAllMocks();
-        component = shallow(
-            <SlideHeader
-                title="Neque porro quisquam est qui dolorem"
-                subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem"
-                asVariant="primary"
-                asPadded="normal"
-                asFloated="none"
-                asAligned="center"
-                withColor={null}
-                isHidden={false}
-            />
-        );
-    });
+  beforeEach(() => {
+    jest.resetAllMocks();
+    component = shallow(
+      <SlideHeader
+        title="Neque porro quisquam est qui dolorem"
+        subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit, curabitur ipsum sem"
+        asVariant="primary"
+        asPadded="normal"
+        asFloated="none"
+        asAligned="center"
+        withColor={null}
+        isHidden={false}
+      />
+    );
+  });
 });

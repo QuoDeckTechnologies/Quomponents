@@ -18,8 +18,7 @@ describe("DeckSettingsSection", () => {
   // -------------------------------------
   const args = {
     target: DeckSettingsSection,
-    required: {
-    },
+    required: {},
     translations: {
       tgt: "deckSettingsSection",
       lang: { valid: "hi", invalid: "xx" },
@@ -40,7 +39,7 @@ describe("DeckSettingsSection", () => {
             enableVoiceovers: "वॉयस ओवर सक्षम करें",
           },
         },
-      })
+      }),
     },
   };
 

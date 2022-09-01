@@ -18,8 +18,9 @@ describe("CheckBox", () => {
   const args = {
     target: CheckBox,
     required: {
-      label: "Default Label", checked: false,
-      onClick: () => { },
+      label: "Default Label",
+      checked: false,
+      onClick: () => {},
     },
     translations: {
       tgt: "checkBox",
@@ -51,7 +52,7 @@ describe("CheckBox", () => {
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(
-      <CheckBox label="Default Label" checked={false} onClick={() => { }} />
+      <CheckBox label="Default Label" checked={false} onClick={() => {}} />
     );
   });
   it("should render correctly without throwing error", () => {

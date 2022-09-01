@@ -18,7 +18,7 @@ describe("Clickable Image", () => {
   const args = {
     target: ClickableImage,
     required: {
-      onClick: () => { },
+      onClick: () => {},
     },
   };
 
@@ -27,7 +27,7 @@ describe("Clickable Image", () => {
   hasValid("colors", args);
   hasValid("animations", args);
   hasValid("hidden", args);
-  hasValid("disabled", args);  
+  hasValid("disabled", args);
   // -------------------------------------
   // Setup definitions for the test suite
   // -------------------------------------
@@ -35,11 +35,7 @@ describe("Clickable Image", () => {
   beforeEach(() => {
     jest.resetAllMocks();
     component = mount(
-      <ClickableImage
-        onClick={() => { }}
-        active={false}
-        withColor={null}
-      />
+      <ClickableImage onClick={() => {}} active={false} withColor={null} />
     );
   });
 

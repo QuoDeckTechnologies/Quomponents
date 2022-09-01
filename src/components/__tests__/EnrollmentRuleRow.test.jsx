@@ -18,14 +18,13 @@ describe("EnrollmentRuleRow", () => {
   const args = {
     target: EnrollmentRuleRow,
     required: {
-
-        criteria: {
-          company: "Quodeck",
-          zone: "East",
-          branch: "",
-          department: "IT",
-          date_of_joining: "",
-        },
+      criteria: {
+        company: "Quodeck",
+        zone: "East",
+        branch: "",
+        department: "IT",
+        date_of_joining: "",
+      },
 
       onRemoveRule: () => {},
       onRunRule: () => {},

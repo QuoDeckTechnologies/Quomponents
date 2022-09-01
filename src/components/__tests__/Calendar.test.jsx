@@ -12,31 +12,28 @@ import { hasValid } from "./common";
 import Calendar from "../Calendar/Calendar.react";
 
 describe("Calendar", () => {
-    // -------------------------------------
-    // Run common tests
-    // -------------------------------------
-    const args = {
-        target: Calendar,
-    };
+  // -------------------------------------
+  // Run common tests
+  // -------------------------------------
+  const args = {
+    target: Calendar,
+  };
 
-    hasValid("defaults", args);
+  hasValid("defaults", args);
 
-    hasValid("positions", args);
-    hasValid("padding", args);
+  hasValid("positions", args);
+  hasValid("padding", args);
 
-    hasValid("animations", args);
+  hasValid("animations", args);
 
-    hasValid("hidden", args);
-    hasValid("disabled", args);
-    // -------------------------------------
-    // Setup definitions for the test suite
-    // -------------------------------------
-    let component;
-    beforeEach(() => {
-        jest.resetAllMocks();
-        component = shallow(
-            <Calendar
-                defaultDate="1 july 2022" />
-        );
-    });
+  hasValid("hidden", args);
+  hasValid("disabled", args);
+  // -------------------------------------
+  // Setup definitions for the test suite
+  // -------------------------------------
+  let component;
+  beforeEach(() => {
+    jest.resetAllMocks();
+    component = shallow(<Calendar defaultDate="1 july 2022" />);
+  });
 });

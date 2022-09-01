@@ -14,7 +14,6 @@ import AnalysisSection from "../RibbonMenu/toolsMenu/sections/AnalysisSection.re
 import IconLink from "../Buttons/IconLink/IconLink.react";
 
 describe("AnalysisSection", () => {
-
   const args = {
     target: AnalysisSection,
     required: {
@@ -58,11 +57,7 @@ describe("AnalysisSection", () => {
   let component;
   beforeEach(() => {
     jest.resetAllMocks();
-    component = shallow(
-      <AnalysisSection
-        onClick={jest.fn()}
-      />
-    );
+    component = shallow(<AnalysisSection onClick={jest.fn()} />);
   });
 
   it("should render correctly without throwing error", () => {

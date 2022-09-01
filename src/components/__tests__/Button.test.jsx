@@ -19,7 +19,7 @@ describe("Button", () => {
     target: Button,
     required: {
       content: "",
-      onClick: () => { },
+      onClick: () => {},
     },
     translations: {
       tgt: "button",
@@ -61,12 +61,7 @@ describe("Button", () => {
   let component;
   beforeEach(() => {
     jest.resetAllMocks();
-    component = shallow(
-      <Button
-        content="Testing Button"
-        onClick={() => { }}
-      />
-    );
+    component = shallow(<Button content="Testing Button" onClick={() => {}} />);
   });
 
   it("should render correctly with isCircular", () => {
@@ -96,7 +91,7 @@ describe("Button", () => {
     component.setProps({
       asEmphasis: "outlined",
       isDisabled: true,
-      withColor: null
+      withColor: null,
     });
     expect(component.exists()).toBe(true);
   });
@@ -178,12 +173,6 @@ describe("Button", () => {
   });
 
   it("should render correctly without throwing error when component mounts", () => {
-    component = mount(
-      <Button
-        content="Testing Button"
-        onClick={() => { }}
-      />
-    );
+    component = mount(<Button content="Testing Button" onClick={() => {}} />);
   });
-
 });

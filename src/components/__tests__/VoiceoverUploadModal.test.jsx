@@ -19,7 +19,7 @@ describe("VoiceoverUploadModal", () => {
     target: VoiceoverUploadModal,
     required: {
       isOpen: true,
-      onClick: () => { }
+      onClick: () => {},
     },
     translations: {
       tgt: "voiceoveruploadmodal",
@@ -97,7 +97,7 @@ describe("VoiceoverUploadModal", () => {
   });
 
   it("should render correctly when component mounts", async () => {
-    let wrapper = mount(<VoiceoverUploadModal onClick={() => { }} />);
+    let wrapper = mount(<VoiceoverUploadModal onClick={() => {}} />);
     expect(wrapper.exists()).toBe(true);
   });
 

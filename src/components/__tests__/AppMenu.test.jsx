@@ -12,11 +12,10 @@ import { hasValid } from "./common";
 import AppMenu from "../AppMenu/AppMenu/AppMenu.react";
 
 describe("AppMenu", () => {
-
   const args = {
     target: AppMenu,
     required: {
-      onClick: () => { },
+      onClick: () => {},
     },
     translations: {
       tgt: "appMenu",
@@ -60,7 +59,7 @@ describe("AppMenu", () => {
         withIcon={null}
         isHidden={false}
         isDisabled={false}
-        onClick={() => { }}
+        onClick={() => {}}
       />
     );
   });

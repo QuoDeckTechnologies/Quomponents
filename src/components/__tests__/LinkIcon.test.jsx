@@ -8,69 +8,69 @@ import { hasValid } from "./common";
 // -------------------------------------
 import LinkIcon from "../LinkIcon/LinkIcon.react";
 describe("LinkIcon", () => {
-    // -------------------------------------
-    // Run common tests
-    // -------------------------------------
-    const args = {
-        target: LinkIcon,
-        required: {
-            label: "Home",
-            icon: "fa fa-home",
-            onClick: () => { },
+  // -------------------------------------
+  // Run common tests
+  // -------------------------------------
+  const args = {
+    target: LinkIcon,
+    required: {
+      label: "Home",
+      icon: "fa fa-home",
+      onClick: () => {},
+    },
+    translations: {
+      tgt: "icon",
+      lang: { valid: "hi", invalid: "xx" },
+      dictionary: JSON.stringify({
+        en: {
+          label: "Home",
         },
-        translations: {
-            tgt: "icon",
-            lang: { valid: "hi", invalid: "xx" },
-            dictionary: JSON.stringify({
-                en: {
-                    label: "Home",
-                },
-                hi: {
-                    label: "होम",
-                },
-            }),
+        hi: {
+          label: "होम",
         },
-    };
+      }),
+    },
+  };
 
-    hasValid("defaults", args);
+  hasValid("defaults", args);
 
-    hasValid("sizes", args);
-    hasValid("positions", args);
-    hasValid("padding", args);
-    hasValid("alignment", args);
+  hasValid("sizes", args);
+  hasValid("positions", args);
+  hasValid("padding", args);
+  hasValid("alignment", args);
 
-    hasValid("colors", args);
-    hasValid("animations", args);
-    hasValid("translations", args);
+  hasValid("colors", args);
+  hasValid("animations", args);
+  hasValid("translations", args);
 
-    hasValid("hidden", args);
-    hasValid("disabled", args);
+  hasValid("hidden", args);
+  hasValid("disabled", args);
 
+  let component;
 
-    let component;
-
-    beforeEach(() => {
-        jest.resetAllMocks();
-        component = shallow(
-            <LinkIcon
-                icon="fa fa-home"
-                label="Home"
-                active={false}
-                onClick={() => { }} />
-        );
+  beforeEach(() => {
+    jest.resetAllMocks();
+    component = shallow(
+      <LinkIcon
+        icon="fa fa-home"
+        label="Home"
+        active={false}
+        onClick={() => {}}
+      />
+    );
+  });
+  it("should render correctly when hovered with active prop true", () => {
+    component.setProps({
+      active: true,
+      withColor: {
+        hoverBackgroundColor: "#666666",
+        hoverTextColor: "#ffc900",
+      },
     });
-    it("should render correctly when hovered with active prop true", () => {
-        component.setProps({
-            active: true,
-            withColor: {
-                hoverBackgroundColor: "#666666",
-                hoverTextColor: "#ffc900",
-            }
-        })
-        component.find(".qui-link-icon").at(0).simulate("mouseenter");
-        component.find(".qui-link-icon").at(0).simulate("mouseleave");
-        component.find(".qui-link-icon").at(0).simulate("mousedown");
-        component.find(".qui-link-icon").at(0).simulate("mouseup");
-        expect(component.exists()).toBe(true);
-    });
+    component.find(".qui-link-icon").at(0).simulate("mouseenter");
+    component.find(".qui-link-icon").at(0).simulate("mouseleave");
+    component.find(".qui-link-icon").at(0).simulate("mousedown");
+    component.find(".qui-link-icon").at(0).simulate("mouseup");
+    expect(component.exists()).toBe(true);
+  });
 });

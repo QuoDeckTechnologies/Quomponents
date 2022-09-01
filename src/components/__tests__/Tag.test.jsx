@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow } from 'enzyme';
+import { shallow } from "enzyme";
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------
@@ -10,53 +10,53 @@ import { hasValid } from "./common";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import Tag from "../Tag/Tag.react"
+import Tag from "../Tag/Tag.react";
 
 describe("Tag", () => {
-    // -------------------------------------
-    // Run common tests
-    // -------------------------------------
-    const args = {
-        target: Tag,
-        required: {
-            content: "test",
-        },
-    };
+  // -------------------------------------
+  // Run common tests
+  // -------------------------------------
+  const args = {
+    target: Tag,
+    required: {
+      content: "test",
+    },
+  };
 
-    hasValid("defaults", args);
+  hasValid("defaults", args);
 
-    hasValid("variants", args);
-    hasValid("sizes", args);
-    hasValid("positions", args);
-    hasValid("padding", args);
+  hasValid("variants", args);
+  hasValid("sizes", args);
+  hasValid("positions", args);
+  hasValid("padding", args);
 
-    hasValid("colors", args);
-    hasValid("animations", args);
+  hasValid("colors", args);
+  hasValid("animations", args);
 
-    hasValid("hidden", args);
-    // -------------------------------------
-    // Run component specific tests
-    // -------------------------------------
-    let component;
+  hasValid("hidden", args);
+  // -------------------------------------
+  // Run component specific tests
+  // -------------------------------------
+  let component;
 
-    beforeEach(() => {
-        jest.resetAllMocks();
-        component = shallow(
-            <Tag
-                content=""
-                asVariant="primary"
-                asSize="normal"
-                asPadded="normal"
-                asFloated="none"
-                withColor={null}
-                withAnimation={null}
-                isHidden={false}
-            />
-        );
-    });
+  beforeEach(() => {
+    jest.resetAllMocks();
+    component = shallow(
+      <Tag
+        content=""
+        asVariant="primary"
+        asSize="normal"
+        asPadded="normal"
+        asFloated="none"
+        withColor={null}
+        withAnimation={null}
+        isHidden={false}
+      />
+    );
+  });
 
-    it("should render correct content to Tag", () => {
-        component.setProps({ content: "TAG" })
-        expect(component.find('div').at(1).props().children).toEqual("TAG");
-    });
+  it("should render correct content to Tag", () => {
+    component.setProps({ content: "TAG" });
+    expect(component.find("div").at(1).props().children).toEqual("TAG");
+  });
 });

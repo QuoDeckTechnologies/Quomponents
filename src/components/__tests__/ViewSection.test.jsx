@@ -23,7 +23,7 @@ describe("ViewSection", () => {
       actions: {
         setUserOptions: jest.fn(),
       },
-      onClick: () => { },
+      onClick: () => {},
     },
     translations: {
       tgt: "viewSection",

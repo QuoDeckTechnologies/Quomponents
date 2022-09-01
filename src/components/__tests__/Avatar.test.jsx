@@ -18,12 +18,11 @@ import { hasValid } from "./common";
 import Avatar from "../AppMenu/Avatar/Avatar.react";
 
 describe("Avatar", () => {
-
   const args = {
     target: Avatar,
     required: {
       content: "Testing Button",
-      onClick: () => { },
+      onClick: () => {},
     },
     translations: {
       tgt: "button",
@@ -57,12 +56,7 @@ describe("Avatar", () => {
   let component;
   beforeEach(() => {
     jest.resetAllMocks();
-    component = shallow(
-      <Avatar
-        withColor={null}
-        onClick={() => { }}
-      />
-    );
+    component = shallow(<Avatar withColor={null} onClick={() => {}} />);
   });
 
   it("should render correctly without throwing error", () => {
@@ -72,8 +66,7 @@ describe("Avatar", () => {
   it("should render correctly if user image link is passed to the prop", () => {
     component.setProps({
       withIcon: {
-        icon:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/2048px-User_icon_2.svg.png",
+        icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/2048px-User_icon_2.svg.png",
       },
     });
     expect(component.exists()).toBe(true);

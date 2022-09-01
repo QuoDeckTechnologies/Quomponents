@@ -59,7 +59,6 @@ describe("Segment", () => {
     });
     expect(component.exists()).toBe(true);
   });
-
 });
 
 it("should render correctly when children is given props", () => {
@@ -74,7 +73,7 @@ it("should render correctly when children is given props", () => {
       isHidden={false}
       isDisabled={false}
     >
-      <Button content="ok" onClick={() => { }} />
+      <Button content="ok" onClick={() => {}} />
     </Segment>
   );
   expect(wrapper.exists()).toBe(true);

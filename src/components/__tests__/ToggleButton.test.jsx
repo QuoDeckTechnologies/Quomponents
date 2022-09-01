@@ -18,7 +18,7 @@ describe("ToggleButton", () => {
   const args = {
     target: ToggleButton,
     required: {
-      onClick: () => { },
+      onClick: () => {},
     },
     translations: {
       tgt: "toggleButton",
@@ -27,9 +27,9 @@ describe("ToggleButton", () => {
         hi: {
           toggleButton: {
             label: "सक्रिय",
-          }
+          },
         },
-      })
+      }),
     },
   };
 
@@ -57,11 +57,7 @@ describe("ToggleButton", () => {
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(
-      <ToggleButton
-        label="Active"
-        onClick={() => { }}
-        onChange={onChange}
-      />
+      <ToggleButton label="Active" onClick={() => {}} onChange={onChange} />
     );
   });
 
