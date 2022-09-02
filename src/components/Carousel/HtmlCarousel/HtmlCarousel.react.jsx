@@ -18,7 +18,7 @@ HtmlCarousel.propTypes = {
     /**
     HtmlCarousel data should be passed in content field and it is required field
     */
-    content: PropTypes.array.isRequired,
+    children: PropTypes.array.isRequired,
     /**
     HtmlCarousel properties can be optionally updated
     */
@@ -48,7 +48,7 @@ export default function HtmlCarousel(props) {
             speed: 500,
             initialSlide: 1,
             slidesToScroll: 1,
-            slidesToShow: 2.5,
+            slidesToShow: 2.2,
             centerMode: true,
             arrows: false,
             infinite: false,
@@ -63,7 +63,7 @@ export default function HtmlCarousel(props) {
     return (
         <motion.div className={`qui ${quommonClasses.parentClasses}`}>
             <Slider ref={sliderRef} {...settings}>
-                {_.map(props.content, (slide, index) => slide)}
+                {_.map(props.children, (slide) => slide)}
             </Slider>
             <div className="qui-html-slick-arrows">
                 <div

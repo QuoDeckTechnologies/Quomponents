@@ -201,8 +201,8 @@ export const resolveImage = (srcImg, imgLibrary) => {
                   img.indexOf(".png") !== -1 ||
                   img.indexOf(".PNG") !== -1 ||
                   img.indexOf(".svg") !== -1
-                ? defaultImage
-                : defaultImage;
+                ? "../../assets/default.jpeg"
+                : "../../assets/default.jpeg";
         }
     }
 };
