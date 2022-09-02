@@ -1,6 +1,6 @@
 import React from "react";
 import ActionButton from "../components/Buttons/ActionButton/ActionButton.react";
-import PlayBtn from "../assets/play-btn.png"
+import PlayBtn from "./play-btn.png"
 
 const dictionary = JSON.stringify({
     hi: {

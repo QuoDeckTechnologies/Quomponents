@@ -1,7 +1,5 @@
 import React from "react";
 import NavBar from "../components/NavBar/NavBar/NavBar.react";
-import ShortLogo from "../assets/amplayfier-logo-short.png";
-import FullLogo from "../assets/FullLogo.png";
 
 const dictionary = JSON.stringify({
   hi: {
@@ -148,8 +146,8 @@ const Template = (args) => <NavBar {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   title: "Earn",
-  shortLogo: ShortLogo,
-  fullLogo: FullLogo,
+  shortLogo: "../assets/amplayfier-logo-short.png",
+  fullLogo: "../assets/FullLogo.png",
   iconLink: {
     icon: "fas fa-angle-left",
     link: "https://www.google.com/",
@@ -195,8 +193,8 @@ export const UserNavbar = Template.bind({});
 UserNavbar.args = {
   ...Default.args,
   title: "Earn",
-  shortLogo: ShortLogo,
-  fullLogo: FullLogo,
+  shortLogo: "../assets/amplayfier-logo-short.png",
+  fullLogo: "../assets/FullLogo.png",
   iconLink: {
     icon: "fas fa-angle-left",
     link: "https://www.google.com/",
@@ -222,8 +220,8 @@ UserNavbar.parameters = {
 export const AmplayfierHeader = Template.bind({});
 AmplayfierHeader.args = {
   ...Default.args,
-  shortLogo: ShortLogo,
-  fullLogo: FullLogo,
+  shortLogo: "../assets/amplayfier-logo-short.png",
+  fullLogo: "../assets/FullLogo.png",
   iconLink: {
     icon: "fas fa-angle-left",
     link: "https://www.google.com/",
