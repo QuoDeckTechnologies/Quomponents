@@ -2,7 +2,7 @@
     "name": "quomponents",
     "description": "The library of react components being used in the QuoDeck product suite",
     "main": "dist/index.js",
-    "version": "0.1.49",
+    "version": "0.1.51",
     "private": false,
     "files": [
         "dist",
@@ -47,7 +47,7 @@
     },
     "scripts": {
         "start": "react-scripts start",
-        "build": "rm -rf dist && npm run clean && cross-env NODE_ENV=production babel src --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,stories.js,__snapshots__,assets",
+        "build": "rm -rf dist && npm run clean && cross-env NODE_ENV=production babel src --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,stories.js,__snapshots__",
         "test": "react-scripts test --setupFilesAfterEnv='<rootDir>/config/jest/setupEnzyme.js' --testPathIgnorePatterns=common",
         "eject": "react-scripts eject",
         "storybook": "start-storybook -p 6006 -s public",
@@ -57,7 +57,7 @@
         "chromatic-dev": "npx chromatic --project-token=c349e143ef76",
         "chromatic": "chromatic --exit-zero-on-changes",
         "build-storybook-docs": "build-storybook  --docs",
-        "npm-publish": "npm run build && rimraf dist/components/__tests__ && rimraf dist/stories && npm publish"
+        "npm-publish": "npm run build && rimraf dist/components/__tests__ && rimraf dist/stories && rimraf dist/assets && npm publish"
     },
     "eslintConfig": {
         "extends": [
