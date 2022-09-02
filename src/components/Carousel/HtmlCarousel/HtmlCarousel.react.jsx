@@ -49,7 +49,7 @@ export default function HtmlCarousel(props) {
             initialSlide: 1,
             slidesToScroll: 1,
             slidesToShow: 2.2,
-            centerMode: true,
+            centerMode: false,
             arrows: false,
             infinite: false,
             autoplay: false,
