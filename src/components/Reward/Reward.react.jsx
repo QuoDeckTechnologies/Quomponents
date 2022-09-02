@@ -9,7 +9,6 @@ import {
 import "../../common/stylesheets/common.css";
 import "./Reward.scss";
 import "../../common/stylesheets/overrule.scss";
-import rewardImage from "../../assets/coin.png";
 
 Reward.propTypes = {
     //=======================================
@@ -129,8 +128,8 @@ export default function Reward(props) {
         props.withTranslation.lang !== "" &&
         props.withTranslation.lang !== "en"
     ) {
-        tObj = getTranslation(props.withTranslation)
-        label = tObj?.label || rewardContent?.label
+        tObj = getTranslation(props.withTranslation);
+        label = tObj?.label || rewardContent?.label;
     }
     //-------------------------------------------------------------------
     // 5. Get animation of the component
@@ -156,7 +155,11 @@ export default function Reward(props) {
                         <div>
                             <img
                                 className={`qui-reward-image`}
-                                src={rewardContent?.image ? rewardContent.image : rewardImage}
+                                src={
+                                    rewardContent?.image
+                                        ? rewardContent.image
+                                        : "../../assets/coin.png"
+                                }
                                 alt="coin"
                             />
                         </div>

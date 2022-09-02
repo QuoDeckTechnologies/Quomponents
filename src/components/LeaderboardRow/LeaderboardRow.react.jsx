@@ -9,11 +9,6 @@ import "../../common/stylesheets/common.css";
 import "./LeaderboardRow.scss";
 import "../../common/stylesheets/overrule.scss";
 
-import goldMedal from "../../assets/icons8_1st_place_medal_96px.png";
-import silverMedal from "../../assets/icons8_2nd_place_medal_96px.png";
-import bronzeMedal from "../../assets/icons8_3rd_place_medal_96px.png";
-import unRank from "../../assets/icons8_un_rank_medal_96px.png";
-
 LeaderboardRow.propTypes = {
   //=======================================
   // Component Specific props
@@ -118,12 +113,12 @@ export default function LeaderboardRow(props) {
   //-------------------------------------------------------------------
   let rankImage =
     props.rank === 0
-      ? goldMedal
+      ? "../../assets/icons8_1st_place_medal_96px.png"
       : props.rank === 1
-      ? silverMedal
+      ? "../../assets/icons8_2nd_place_medal_96px.png"
       : props.rank === 2
-      ? bronzeMedal
-      : unRank;
+      ? "../../assets/icons8_3rd_place_medal_96px.png"
+      : "../../assets/icons8_un_rank_medal_96px.png";
 
   return (
     <motion.div

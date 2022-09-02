@@ -10,7 +10,6 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./RewardCard.scss";
 import "../../common/stylesheets/overrule.scss";
-import defaultImage from "../../assets/default.jpeg";
 import Reward from "../Reward/Reward.react"
 import AccentLine from "../AccentLine/AccentLine.react"
 
@@ -146,7 +145,7 @@ export default function RewardCard(props) {
         cost?.length > 7 || left?.length > 7 || total?.length > 7 ? setStockStyle("qui-reward-card-cost-stock-container-column") : setStockStyle("qui-reward-card-cost-stock-container-row");
     }, [props.cost, props.stock?.left, props.stock?.total]);
 
-    let rewardImage = props.image === "" ? defaultImage : props.image;
+    let rewardImage = props.image === "" ? "../../assets/default.jpeg" : props.image;
     //-------------------------------------------------------------------
     // 4. Get translation of the component
     //-------------------------------------------------------------------

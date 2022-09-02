@@ -1,5 +1,4 @@
 import _ from "lodash";
-import defaultImage from "../../assets/default.jpeg";
 
 export function getQuommons(props, component) {
     let parentArray = [`qui-${component}`],
@@ -178,7 +177,7 @@ export const resolveImage = (srcImg, imgLibrary) => {
         srcImg === "" ||
         srcImg === " "
     )
-        return defaultImage;
+        return "../../assets/default.jpeg";
     else {
         let img = Array.isArray(srcImg)
             ? srcImg[0]

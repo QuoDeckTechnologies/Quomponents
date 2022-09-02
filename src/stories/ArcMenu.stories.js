@@ -197,14 +197,6 @@ Default.parameters = {
 export const NuggetMenuButton = Template.bind({});
 NuggetMenuButton.args = {
   ...Default.args,
-  nuggetContent: [
-    { name: "nugget story", image: Nugget_Story, func: () => {} },
-    { name: "nugget quiz", image: Nugget_Quiz, func: () => {} },
-    { name: "nugget assessment", image: Nugget_Assessment, func: () => {} },
-    { name: "nugget game", image: Nugget_Game, func: () => {} },
-    { name: "nugget article", image: Nugget_Article, func: () => {} },
-    { name: "nugget feedback", image: Nugget_Feedback, func: () => {} },
-  ],
   menuContent: [],
   menuType: "nugget-menu",
   arcIcon: "menu",
@@ -582,11 +574,11 @@ const ExampleTemplateNugget = (args) => {
     >
       <ArcMenu
         nuggetContent={[
-          { name: "nugget story", image: Nugget_Story, func: () => {} },
-          { name: "nugget quiz", image: Nugget_Quiz, func: () => {} },
+          { name: "nugget story", image: "../assets/nuggets/nugget_story.png", func: () => {} },
+          { name: "nugget quiz", image: "../assets/nuggets/nugget_quiz.png", func: () => {} },
           {
             name: "nugget assessment",
-            image: Nugget_Assessment,
+            image: "../assets/nuggets/nugget_assessment.png",
             func: () => {},
           },
         ]}

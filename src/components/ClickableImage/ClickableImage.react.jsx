@@ -7,7 +7,6 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./ClickableImage.scss";
 import "../../common/stylesheets/overrule.scss";
-import defaultImage from "../../assets/default.jpeg";
 
 ClickableImage.propTypes = {
   //=======================================
@@ -115,7 +114,7 @@ export default function ClickableImage(props) {
       className={`qui ${quommonClasses.parentClasses}`}
     >
       <img
-        src={image ? image : defaultImage}
+        src={image ? image : "../../assets/default.jpeg"}
         className={`${quommonClasses.childClasses} ${isActive ? `qui-active-image-click` : `qui-clicked-on-image`
           } qui-image-clickable qt-shadow`}
         alt="ClickableImage"

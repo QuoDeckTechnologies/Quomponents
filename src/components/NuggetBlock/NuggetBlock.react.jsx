@@ -12,8 +12,6 @@ import "../../common/stylesheets/common.css";
 import "./NuggetBlock.scss";
 import "../../common/stylesheets/overrule.scss";
 
-import defaultImage from "../../assets/default.jpeg"
-
 NuggetBlock.propTypes = {
     //=======================================
     // Component Specific props
@@ -112,7 +110,7 @@ export default function NuggetBlock(props) {
     //-------------------------------------------------------------------
     // 3. Get Nugget Image
     //-------------------------------------------------------------------
-    let image = props.image ? props.image : defaultImage;
+    let image = props.image ? props.image : "../../assets/default.jpeg";
 
     //-------------------------------------------------------------------
     // 4. Get Nugget Status
