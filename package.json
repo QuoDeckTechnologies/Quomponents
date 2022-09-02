@@ -2,7 +2,7 @@
     "name": "quomponents",
     "description": "The library of react components being used in the QuoDeck product suite",
     "main": "dist/index.js",
-    "version": "0.1.48",
+    "version": "0.1.49",
     "private": false,
     "files": [
         "dist",
@@ -47,7 +47,7 @@
     },
     "scripts": {
         "start": "react-scripts start",
-        "build": "rm -rf dist && npm run clean && cross-env NODE_ENV=production babel src --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,stories.js,__snapshots__",
+        "build": "rm -rf dist && npm run clean && cross-env NODE_ENV=production babel src --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,stories.js,__snapshots__,assets",
         "test": "react-scripts test --setupFilesAfterEnv='<rootDir>/config/jest/setupEnzyme.js' --testPathIgnorePatterns=common",
         "eject": "react-scripts eject",
         "storybook": "start-storybook -p 6006 -s public",
