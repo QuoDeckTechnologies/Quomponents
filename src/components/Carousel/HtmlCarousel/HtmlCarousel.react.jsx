@@ -5,14 +5,11 @@ import { motion } from "framer-motion";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import {
-    getQuommons,
-} from "../../../common/javascripts/helpers";
+import { getQuommons } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./HtmlCarousel.scss";
 import "../../../common/stylesheets/overrule.scss";
-import BannerCard from "../BannerCard/BannerCard.react";
 
 HtmlCarousel.propTypes = {
     //=======================================
@@ -21,26 +18,15 @@ HtmlCarousel.propTypes = {
     /**
     HtmlCarousel data should be passed in content field and it is required field
     */
-    content: PropTypes.arrayOf(PropTypes.shape({
-        image: PropTypes.string,
-        tag: PropTypes.oneOf([
-            "new",
-            "premium",
-            "restricted",
-            "free"
-        ]),
-        content: PropTypes.string,
-        props: PropTypes.object
-    })).isRequired,
+    content: PropTypes.array.isRequired,
     /**
-    Button component must have the onClick function passed as props
+    HtmlCarousel properties can be optionally updated
     */
-    onClick: PropTypes.func.isRequired,
+    settings: PropTypes.object,
 };
 HtmlCarousel.defaultProps = {
     // Component Specific props
     //=======================================
-    content: [],
 };
 /**
 ## Notes
@@ -51,50 +37,45 @@ HtmlCarousel.defaultProps = {
 **/
 export default function HtmlCarousel(props) {
     const sliderRef = useRef();
-    let { content } = props;
     let quommonClasses = getQuommons(props, "html-carousel");
     //-------------------------------------------------------------------
     // 4. Get animation of the component
     //-------------------------------------------------------------------
 
-    var settings = {
-        dots: true,
-        speed: 500,
-        initialSlide: 1,
-        slidesToScroll: 1,
-        slidesToShow: 1,
-        centerMode: true,
-        arrows: false,
-        infinite: true,
-        autoplay: true,
-        pauseOnHover: true,
-        centerPadding: "0%",
-        swipeToSlide: true,
-    };
+    var settings = Object.assign(
+        {
+            dots: true,
+            speed: 500,
+            initialSlide: 1,
+            slidesToScroll: 1,
+            slidesToShow: 2.5,
+            centerMode: true,
+            arrows: false,
+            infinite: false,
+            autoplay: false,
+            pauseOnHover: true,
+            centerPadding: "0%",
+            swipeToSlide: true,
+        },
+        props.settings
+    );
     // ========================= Render Function =================================
     return (
-        <motion.div
-            className={`qui ${quommonClasses.parentClasses}`}
-        >
+        <motion.div className={`qui ${quommonClasses.parentClasses}`}>
             <Slider ref={sliderRef} {...settings}>
-                {_.map(content, (slide, index) => {
-                    return (
-                        <div className="qui-html-slide-container"
-                            key={"slider-" + index + Math.random()}>
-                            <div className={`qui-html-slide`}>
-                                <BannerCard  {...slide.props} content={slide} onClick={props.onClick} withTranslation={props.withTranslation} />
-                            </div>
-                        </div>
-                    );
-                })}
+                {_.map(props.content, (slide, index) => slide)}
             </Slider>
             <div className="qui-html-slick-arrows">
-                <div className="qui-html-slick-prev"
-                    onClick={() => sliderRef.current?.slickPrev()}>
+                <div
+                    className="qui-html-slick-prev"
+                    onClick={() => sliderRef.current?.slickPrev()}
+                >
                     <i className="fas fa-arrow-alt-circle-left"></i>
                 </div>
-                <div className="qui-html-slick-next"
-                    onClick={() => sliderRef.current?.slickNext()}>
+                <div
+                    className="qui-html-slick-next"
+                    onClick={() => sliderRef.current?.slickNext()}
+                >
                     <i className="fas fa-arrow-alt-circle-right"></i>
                 </div>
             </div>
