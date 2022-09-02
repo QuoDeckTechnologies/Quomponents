@@ -17,7 +17,7 @@ export default {
     component: TreeBar,
     argTypes: {
         pageHeader: "Page Header",
-        content: { treeData: {}, props: {} },
+        sections: [],
         asFloated: {
             control: "select",
             options: ["left", "right", "none", "inline"],
@@ -85,101 +85,70 @@ export default {
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
-let dataprops = {
-    placeHolder: "Select courses here...",
-    asFloated: "left",
-    withIcon: { name: "fas fa-search" },
-    withColor: {
-        backgroundColor: "",
-        textColor: "",
-    },
-    isDisabled: false,
-    isFluid: false,
-    isClosed: false,
-    isHidden: false,
-};
-
-const Template = (args) => <TreeBar {...args} style={{ width: "30%" }} />;
+const Template = (args) => (
+    <TreeBar {...args} style={{ width: "30%" }}>
+        <div>Active Canvas</div>
+    </TreeBar>
+);
 export const Default = Template.bind({});
 Default.args = {
     pageHeader: "Courses",
-    content: {
-        treeData: {
-            id: "allArticles",
-            parentId: null,
-            name: "Courses",
-            description: "",
-            children: [
-                {
-                    id: "category-0",
-                    parentId: "allArticles",
-                    name: "Public Library",
-                    description: "",
-                    children: [
-                        {
-                            published: true,
-                            tags: [],
-                            _id: "622eeb5ede595f24b7aadd6e",
-                            name: "Seeding Dummy Test Article",
-                            category: "article",
-                            summary: "",
-                            identifier: "2Dpr5SmeY",
-                            owner: "622b36ff46e1c31a2e22c42e",
-                            createdAt: "2022-03-14T07:14:38.348Z",
-                            id: "622eeb5ede595f24b7aadd6e",
-                        },
-                        {
-                            published: true,
-                            tags: [],
-                            _id: "622b4534a2d4393e6ce1c3ba",
-                            name: "New Article",
-                            category: "article",
-                            summary: "",
-                            identifier: "Yeb4B2_bn",
-                            owner: "622b36ff46e1c31a2e22c42e",
-                            createdAt: "2022-03-11T12:48:52.066Z",
-                            id: "622b4534a2d4393e6ce1c3ba",
-                        },
-                    ],
-                },
-                {
-                    id: "category-1",
-                    parentId: "allArticles",
-                    name: "Induction Program",
-                    description: "",
-                    children: [
-                        {
-                            published: true,
-                            tags: [],
-                            _id: "623da574187838221637bebe",
-                            name: "Test News",
-                            category: "news",
-                            summary: "",
-                            identifier: "RnQ5trn7T",
-                            owner: "622b36ff46e1c31a2e22c42e",
-                            createdAt: "2022-03-25T11:20:20.195Z",
-                            id: "623da574187838221637bebe",
-                        },
-                        {
-                            published: true,
-                            tags: [],
-                            _id: "623da574187838221637bebe@",
-                            name: "Testing News",
-                            category: "news",
-                            summary: "",
-                            identifier: "RnQ5trn7T",
-                            owner: "622b36ff46e1c31a2e22c42e",
-                            createdAt: "2022-03-25T11:20:20.195Z",
-                            id: "623da574187838221637bebe",
-                        },
-                    ],
-                },
-            ],
+    sections: [
+        {
+            name: "Digital Events",
+            link: "/events",
+            label: "",
+            locked: false,
         },
-        props: {
-            ...dataprops,
+        {
+            name: "Activity Leaderboards",
+            link: "/events",
+            label: "Pro",
+            locked: true,
         },
-    },
+        {
+            name: "Assessments",
+            link: "/events",
+            label: "Pro",
+            locked: true,
+        },
+        {
+            name: "Knowledge Base",
+            link: "/events",
+            label: "Premium",
+            locked: true,
+        },
+        {
+            name: "Game Worlds",
+            link: "/events",
+            label: "Premium",
+            locked: true,
+        },
+        {
+            name: "Daily Learning",
+            link: "/events",
+            label: "Premium",
+            locked: true,
+        },
+        {
+            name: "Courseware",
+            link: "/events",
+            label: "Enterprise",
+            locked: true,
+        },
+        {
+            name: "Job Aids",
+            link: "/events",
+            label: "Enterprise",
+            locked: true,
+        },
+        {
+            name: "Community",
+            link: "/events",
+            label: "Enterprise",
+            locked: true,
+        },
+    ],
     asFloated: "left",
     withAnimation: {
         animation: "",
@@ -199,158 +168,6 @@ Default.parameters = {
     docs: {
         source: {
             code: `<TreeBar {...${JSON.stringify(Default.args, null, 2)}}/>`,
-        },
-    },
-};
-
-// -------------------------------------------------------------
-// Translated TreeBar
-// -------------------------------------------------------------
-export const TranslatedTreeBar = Template.bind({});
-TranslatedTreeBar.args = {
-    ...Default.args,
-    content: {
-        treeData: {
-            id: "allArticles",
-            parentId: null,
-            name: "All Articles",
-            description: "",
-            children: [
-                {
-                    id: "category-0",
-                    parentId: "allArticles",
-                    name: "Article",
-                    description: "",
-                    children: [
-                        {
-                            published: true,
-                            tags: [],
-                            _id: "622eeb5ede595f24b7aadd6e",
-                            name: "Seeding Dummy Test Article",
-                            category: "article",
-                            summary: "",
-                            identifier: "2Dpr5SmeY",
-                            owner: "622b36ff46e1c31a2e22c42e",
-                            createdAt: "2022-03-14T07:14:38.348Z",
-                            id: "622eeb5ede595f24b7aadd6e",
-                        },
-                        {
-                            published: true,
-                            tags: [],
-                            _id: "622b4534a2d4393e6ce1c3ba",
-                            name: "New Article",
-                            category: "article",
-                            summary: "",
-                            identifier: "Yeb4B2_bn",
-                            owner: "622b36ff46e1c31a2e22c42e",
-                            createdAt: "2022-03-11T12:48:52.066Z",
-                            id: "622b4534a2d4393e6ce1c3ba",
-                        },
-                    ],
-                },
-                {
-                    id: "category-1",
-                    parentId: "allArticles",
-                    name: "News",
-                    description: "",
-                    children: [
-                        {
-                            published: true,
-                            tags: [],
-                            _id: "623da574187838221637bebe",
-                            name: "Test News",
-                            category: "news",
-                            summary: "",
-                            identifier: "RnQ5trn7T",
-                            owner: "622b36ff46e1c31a2e22c42e",
-                            createdAt: "2022-03-25T11:20:20.195Z",
-                            id: "623da574187838221637bebe",
-                        },
-                    ],
-                },
-            ],
-        },
-        props: {
-            placeHolder: "Select courses here...",
-            asFloated: "left",
-            withIcon: { name: "fas fa-search" },
-            withColor: {
-                backgroundColor: "",
-                textColor: "",
-            },
-            isDisabled: false,
-            isFluid: false,
-            isClosed: false,
-            isHidden: false,
-        },
-    },
-    withTranslation: {
-        lang: "hi",
-        tgt: "TreeBar",
-        dictionary: dictionary,
-    },
-};
-TranslatedTreeBar.parameters = {
-    docs: {
-        description: {
-            story: "Use to change the language that the text appears in. To make this work for the TreebarBar:(pageHeader), add a SearchBar:{placeHolder} value to the dictionary.",
-        },
-        source: {
-            code: `<TreeBar {...${JSON.stringify(
-                TranslatedTreeBar.args,
-                null,
-                2
-            )}}/>`,
-        },
-    },
-};
-
-// -------------------------------------------------------------
-// Without PageHeader
-// -------------------------------------------------------------
-export const WithoutPageHeader = Template.bind({});
-WithoutPageHeader.args = {
-    ...Default.args,
-    pageHeader: "",
-};
-WithoutPageHeader.parameters = {
-    docs: {
-        description: {
-            story: "Use to disable page header.",
-        },
-        source: {
-            code: `<TreeBar {...${JSON.stringify(
-                WithoutPageHeader.args,
-                null,
-                2
-            )}}/>`,
-        },
-    },
-};
-
-// -------------------------------------------------------------
-// With Animation
-// -------------------------------------------------------------
-export const WithAnimation = Template.bind({});
-WithAnimation.args = {
-    ...Default.args,
-    withAnimation: {
-        animation: "zoom",
-        duration: 0.5,
-        delay: 0,
-    },
-};
-WithAnimation.parameters = {
-    docs: {
-        description: {
-            story: "Use to animate Treebar page.",
-        },
-        source: {
-            code: `<TreeBar {...${JSON.stringify(
-                WithAnimation.args,
-                null,
-                2
-            )}}/>`,
         },
     },
 };

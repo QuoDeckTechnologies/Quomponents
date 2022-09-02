@@ -1,8 +1,8 @@
 // Import npm packages
-import React from "react";
-import _ from "lodash";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
+import { Treebeard, decorators } from "react-treebeard";
 import defaultTheme from "react-treebeard/dist/themes/default";
 
 import {
@@ -15,6 +15,8 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./TreeBar.scss";
 import "../../common/stylesheets/overrule.scss";
+
+import SearchBar from "../SearchBar/SearchBar.react";
 
 TreeBar.propTypes = {
     //=======================================
@@ -63,6 +65,7 @@ TreeBar.propTypes = {
     Use to toggle the component taking the full width of the parent container
     */
     isFluid: PropTypes.bool,
+
 };
 
 TreeBar.defaultProps = {
@@ -81,6 +84,32 @@ TreeBar.defaultProps = {
     isFluid: false,
 };
 
+decorators.Header = ({ node }) => {
+    const iconType = node?.children ? "far fa-folder" : "fas fa-bullseye";
+    return (
+        <div
+            className={
+                node?.children
+                    ? node?.active
+                        ? "qui-treebar-activeHeaderStyle"
+                        : "qui-treebar-headerStyle"
+                    : "qui-treebar-headerStyle-child"
+            }
+        >
+            <div
+                className={
+                    node?.active
+                        ? "qui-treebar-activeTitleStyle"
+                        : "qui-treebar-titleStyle"
+                }
+            >
+                <i className={`${iconType} qui-treebar-iconStyle`}></i>
+                {node?.name}
+            </div>
+        </div>
+    );
+};
+
 /**
 ## Notes
 - The design system used for this component is Material UI (@mui/material)
@@ -90,6 +119,36 @@ TreeBar.defaultProps = {
 - MUI props are not being passed to the button. Please speak to the admin to handle any new MUI prop.
 **/
 export default function TreeBar(props) {
+    const [cursor, setCursor] = useState(props.content?.treeData);
+    const [folderStructure, setfolderStructure] = useState(
+        props.content?.treeData
+    );
+    //-------------------------------------------------------------------
+    // Search the specific data
+    //-------------------------------------------------------------------
+    const startSearch = (inputData) => {
+        let filter = inputData ? inputData : "";
+        if (!filter) {
+            return setfolderStructure(props.content?.treeData);
+        }
+        let filtered = filterTree(props.content?.treeData, filter);
+        filtered = expandFilteredNodes(filtered, filter);
+        setfolderStructure(filtered);
+    };
+
+    //-------------------------------------------------------------------
+    // Treebar toggle selected node
+    //-------------------------------------------------------------------
+    const onToggle = (node, toggled) => {
+        cursor.active = false;
+        node.active = true;
+        if (node.children) {
+            node.toggled = toggled;
+        }
+        setCursor(Object.assign({}, cursor));
+        props.onClick(node);
+    };
+
     //-------------------------------------------------------------------
     // 1. Set the classes
     //-------------------------------------------------------------------
@@ -165,17 +224,72 @@ export default function TreeBar(props) {
                         {pageHeaderTitle}
                     </div>
                 )}
-                <div className="qui-treebar-canvas">
-                    <div className="qui-treebar-active-area">
-                        {props.children}
-                    </div>
-                    <div className="qui-treebar-closed-list">
-                        {_.map(props.sections, (section, idx) => {
-                            return <div>{section.name}</div>;
-                        })}
-                    </div>
+                <div className="qui-treebar-searchbar">
+                    <SearchBar
+                        {...props.content.props}
+                        withTranslation={props.withTranslation}
+                        onClick={startSearch}
+                    />
                 </div>
+                {props.content?.treeData && (
+                    <div className={`qui-treebar-container`}>
+                        <Treebeard
+                            data={folderStructure}
+                            decorators={decorators}
+                            onToggle={onToggle}
+                        />
+                    </div>
+                )}
             </div>
         </motion.div>
     );
 }
+// -------------------------------------------------
+// Helper functions for filtering tree
+// -------------------------------------------------
+
+export const defaultMatcher = (filterText, node) => {
+    return node.name.toLowerCase().indexOf(filterText.toLowerCase()) !== -1;
+};
+
+export const findNode = (node, filter, matcher) => {
+    return (
+        matcher(filter, node) || // i match
+        (node.children && // or i have decendents and one of them match
+            node.children.length &&
+            !!node.children.find((child) => findNode(child, filter, matcher)))
+    );
+};
+
+export const filterTree = (node, filter, matcher = defaultMatcher) => {
+    // If im an exact match then all my children get to stay
+    if (matcher(filter, node) || !node.children) {
+        return node;
+    }
+    // If not then only keep the ones that match or have matching descendants
+    const filtered = node.children
+        .filter((child) => findNode(child, filter, matcher))
+        .map((child) => filterTree(child, filter, matcher));
+    return Object.assign({}, node, { children: filtered });
+};
+
+export const expandFilteredNodes = (node, filter, matcher = defaultMatcher) => {
+    let children = node.children;
+    const childrenWithMatches = node.children?.filter((child) =>
+        findNode(child, filter, matcher)
+    );
+    const shouldExpand = childrenWithMatches?.length > 0;
+    // If im going to expand, go through all the matches and see if thier children need to expand
+    if (shouldExpand) {
+        children = childrenWithMatches.map((child) => {
+            return expandFilteredNodes(child, filter, matcher);
+        });
+    }
+    if (!children || children?.length === 0) {
+        return Object.assign({}, node, { toggled: false });
+    }
+    return Object.assign({}, node, {
+        children: children,
+        toggled: shouldExpand,
+    });
+};

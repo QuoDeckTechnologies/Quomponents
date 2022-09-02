@@ -46,10 +46,11 @@ export default function HtmlCarousel(props) {
         {
             dots: true,
             speed: 500,
-            initialSlide: 1,
+            initialSlide: 0,
             slidesToScroll: 1,
             slidesToShow: 2.2,
             centerMode: false,
+            lazyLoad: true,
             arrows: false,
             infinite: false,
             autoplay: false,
