@@ -1,0 +1,73 @@
+.qui.qui-accordionbar-parent {
+    position: relative;
+    height: 100vh;
+    text-align: left;
+    box-shadow: 2px 2px 3px #b3b0b0;
+    width: 100%;
+    min-width: 300px;
+}
+
+.qui .qui-accordionbar-pageheader {
+    padding: 0.3em 0.4em;
+    font-size: 2.4em;
+    background: #454545;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+}
+
+.qui-accordionbar-searchbar {
+    border-bottom: 1px solid #dddddd;
+}
+
+.qui .qui-accordionbar-active-area,
+.qui .qui-accordionbar-canvas {
+    width: 100%;
+}
+
+.qui .qui-accordionbar-tree div>span {
+    font-size: 0.9em;
+}
+
+.qui-accordionbar-button-area {
+    position: absolute;
+    width: 100%;
+    bottom: 15px;
+}
+
+.qui .qui-accordionbar-closed-list {
+    width: 100%;
+    background: #efefef;
+}
+
+.qui .qui-active-list-item {
+    width: 100%;
+    background: #e5e5e5;
+    color: #000000;
+}
+
+.qui .qui-selected-list-item {
+    width: 100%;
+    background: #666666;
+    color: #ffffff;
+    font-weight: bold !important;
+}
+
+.qui .qui-inactive-list-item {
+    width: 100%;
+    background: #d5d5d5;
+    color: #999999
+}
+
+.qui .qui-section-chip {
+    float: right;
+    padding: 3px 6px;
+    margin-left: 50px;
+    height: auto;
+}
+
+.qui .qui-section-chip span {
+    font-family: "Oswald", sans-serif !important;
+    font-size: 1em;
+    text-transform: uppercase;
+}
