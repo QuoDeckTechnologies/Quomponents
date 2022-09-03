@@ -5,6 +5,7 @@
   background-color: #fff;
   border-radius: 0.6em;
 }
+
 .qui-nugget-card-container {
   display: flex;
   height: 100%;
@@ -12,22 +13,26 @@
   justify-content: space-between;
   padding-bottom: 0.5em;
 }
+
 .qui-nugget-card-body {
   display: flex;
   flex-direction: column;
   margin: 1em 1.8125em 0 1.8125em;
 }
+
 .qui-nugget-card-footer {
   display: flex;
   justify-content: space-between;
   margin-top: 0.5em;
 }
+
 .qui-nugget-card-title-container {
   z-index: 1;
   display: flex;
   align-items: center;
   font-weight: bold;
 }
+
 .qui-nugget-card-title {
   text-align: left;
   font-size: 1.4em;
@@ -39,19 +44,23 @@
   -webkit-box-orient: vertical;
   white-space: normal;
 }
+
 .qui-nugget-card-tag-container {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
 }
+
 .qui .qui-nugget-card-tag {
   margin: 0.2em;
 }
+
 .qui-nugget-block-styling {
   margin-left: -0.5em;
   pointer-events: none;
 }
+
 .qui-nugget-card-description {
   width: 55%;
   text-align: left;
@@ -64,16 +73,19 @@
   -webkit-box-orient: vertical;
   white-space: normal;
 }
+
 .qui-nugget-card-description-container {
   display: flex;
   margin-top: 0.5em;
   width: 100%;
   justify-content: space-between;
 }
+
 .qui-nugget-card-arc-menu {
   height: 4em;
   width: 5em;
 }
+
 .qui-nugget-card-share-block {
   font-size: 0.52em;
   display: flex;
@@ -83,29 +95,35 @@
   margin-right: 1.5em;
   justify-content: flex-end;
 }
+
 .qui-nugget-card-link-container {
   text-align: right;
   display: flex;
   align-items: center;
 }
+
 .qui-nugget-card-link {
   color: #666666;
   text-decoration: none;
 }
+
 .qui-nugget-card-share-widget {
   margin-top: -0.1em;
   margin-right: -1.5em;
   margin-bottom: -0.6em;
 }
+
 .qui-nugget-card-reward {
   width: 50%;
   text-overflow: ellipsis;
   font-size: 0.8em;
 }
+
 .qui-nugget-card-name {
   font-size: 1.1em;
   color: #aaaaaa;
 }
+
 .qui-nugget-card .qui-banner-card {
   margin-top: 1.3em;
   box-shadow: none;
@@ -114,6 +132,7 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+
 .qui.qui-nugget-card .qui-slider-card-box {
   position: absolute;
   font-size: 1em;
@@ -130,12 +149,14 @@
   justify-content: center;
   align-items: center;
 }
+
 .qui-nugget-card-truncate {
   max-width: 15ch;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 .qui-nugget-card-untruncate {
   height: auto;
   font-weight: bold;
@@ -144,9 +165,11 @@
   -webkit-box-orient: vertical;
   white-space: no-wrap;
 }
+
 .qui-nugget-card-tag-show-more {
   display: flex;
 }
+
 .qui-nugget-card-show-more {
   width: fit-content;
   background: transparent;
@@ -167,6 +190,7 @@
   text-align: right;
   display: flex;
   align-items: center;
+
   .qui.qui-icon-block div {
     padding: 0;
   }
@@ -185,45 +209,57 @@
     font-size: 0.8em;
     margin-left: -0.7em;
   }
+
   .qui-nugget-card-body {
     margin: 0.3em 1em 0 1em;
   }
+
   .qui-nugget-card-tag-container {
     font-size: 0.5em;
   }
+
   .qui-nugget-card-reward {
     font-size: 0.7em;
   }
+
   .qui-nugget-card-share-widget {
     font-size: 1.3em;
     margin-right: -0.9em;
   }
+
   .qui-nugget-card-title {
     font-size: 1em;
     font-weight: bold;
   }
+
   .qui-nugget-card-description {
     font-size: 0.6em;
   }
+
   .qui-nugget-card-link-container {
     margin-right: -0.8em;
   }
+
   .qui-nugget-card .qui-arc {
     height: 2.5em;
     width: 2.5em;
   }
+
   .qui-nugget-card .qui-arc-menu .qui-arc-menu-button {
     height: 3em;
     width: 3em;
   }
+
   .qui-nugget-card-description-container {
     margin-top: 1em;
   }
+
   .qui-nugget-card .qui-arc-icon-fragment-left,
   .qui-nugget-card .qui-arc-icon-fragment-right {
     height: 0.5em;
     width: 0.5em;
   }
+
   .qui-nugget-card-show-more {
     margin-top: 0em;
   }
@@ -233,66 +269,85 @@
   .qui-nugget-card-title {
     font-size: 0.8em;
   }
+
   .qui-nugget-block-styling {
     font-size: 0.7em;
     margin-left: -0.7em;
   }
+
   .qui-nugget-card-body {
     margin: 0.3em 1em 0 1em;
   }
+
   .qui-nugget-card-share-widget {
     margin-right: -1em;
   }
+
   .qui-nugget-card-tag-container {
     font-size: 0.75em;
     margin-top: 0.5em;
   }
+
   .qui-nugget-card-link-container {
     margin-right: -0.8em;
   }
+
   .qui-nugget-card-name {
     font-size: 0.8em;
   }
+
   .qui-nugget-card-link {
     font-size: 0.8em;
   }
+
   .qui-nugget-card-container {
     font-size: 1.3em;
   }
+
   .qui-nugget-card-tag {
     font-size: 0.6em;
   }
+
   .qui-nugget-card-reward {
     font-size: 0.6em;
   }
+
   .qui-nugget-card-description-container {
     margin-top: 1em;
   }
+
   .qui-nugget-card-description {
     font-size: 0.55em;
   }
+
   .qui-nugget-card-share-widget {
     font-size: 1.1em;
   }
+
   .qui-nugget-card .qui-arc {
     height: 2.5em;
     width: 2.5em;
   }
+
   .qui-nugget-card .qui-arc-menu .qui-arc-menu-button {
     height: 4em;
     width: 4em;
   }
+
   .qui-nugget-card-description-container {
     margin-top: 1em;
   }
+
   .qui-nugget-card .qui-arc-icon-fragment-left,
   .qui-nugget-card .qui-arc-icon-fragment-right {
     height: 0.7em;
     width: 0.7em;
   }
+
   .qui-nugget-card .qui-arc-menu-header {
     font-size: 0.5em;
   }
+
   .qui-nugget-card-show-more {
     margin-top: 0.3em;
   }
@@ -302,65 +357,84 @@
   .qui-nugget-card-title {
     font-size: 0.8em;
   }
+
   .qui-nugget-block-styling {
     font-size: 0.7em;
     margin-left: -0.7em;
   }
+
   .qui-nugget-card-body {
     margin: 0.3em 1em 0 1em;
   }
+
   .qui-nugget-card-share-widget {
     margin-right: -1em;
   }
+
   .qui-nugget-card-tag-container {
     font-size: 0.5em;
   }
+
   .qui-nugget-card-link-container {
     margin-right: -0.8em;
   }
+
   .qui-nugget-card-link {
     font-size: 0.8em;
   }
+
   .qui-nugget-card-copy-icon-container {
     font-size: 0.8em;
   }
+
   .qui-nugget-card-name {
     font-size: 0.8em;
   }
+
   .qui-nugget-card-container {
     font-size: 1.3em;
   }
+
   .qui-nugget-card-tag {
     font-size: 0.8em;
   }
+
   .qui-nugget-card-reward {
     font-size: 0.55em;
   }
+
   .qui-nugget-card-description {
     font-size: 0.5em;
   }
+
   .qui-nugget-card-description-container {
     margin-top: 1em;
   }
+
   .qui-nugget-card .qui-arc {
     height: 2.5em;
     width: 2.5em;
   }
+
   .qui-nugget-card .qui-arc-menu .qui-arc-menu-button {
     height: 4em;
     width: 4em;
   }
+
   .qui-nugget-card-description-container {
     margin-top: 1em;
   }
+
   .qui-nugget-card .qui-arc-icon-fragment-left,
   .qui-nugget-card .qui-arc-icon-fragment-right {
     height: 0.7em;
     width: 0.7em;
   }
+
   .qui-nugget-card .qui-arc-menu-header {
     font-size: 0.5em;
   }
+
   .qui-nugget-card-show-more {
     margin-top: 0em;
   }
@@ -371,67 +445,86 @@
     width: 360px;
     min-height: 500px;
   }
+
   .qui-nugget-card-card-body {
     margin: 0.5em 1em 0 1em;
   }
+
   .qui-nugget-card-share-block {
     font-size: 0.6em;
   }
+
   .qui-nugget-block-styling {
     font-size: 0.65em;
   }
+
   .qui-nugget-card-tag-container {
     font-size: 0.5em;
     margin-top: 0.5em;
   }
+
   .qui-nugget-card-name {
     font-size: 0.7em;
   }
+
   .qui-nugget-card-title {
     font-size: 0.8em;
   }
+
   .qui-nugget-card-description {
     font-size: 0.5em;
   }
+
   .qui-nugget-card-share-widget {
     font-size: 0.5em;
     margin-right: -1.5em;
   }
+
   .qui-nugget-card-link-container {
     font-size: 1em;
   }
+
   .qui-nugget-card-link {
     font-size: 0.7em;
   }
+
   .qui-nugget-card-copy-icon-container {
     font-size: 0.7em;
     margin-right: 0.2em;
   }
+
   .qui-nugget-card-reward {
     font-size: 0.6em;
   }
+
   .qui-nugget-card .qui-banner-card {
     margin-top: 0.9em;
   }
+
   .qui-nugget-card-footer {
     height: 3em;
   }
+
   .qui-nugget-card .qui-arc {
     height: 2em;
     width: 2em;
   }
+
   .qui-nugget-card .qui-arc-menu .qui-arc-menu-button {
     height: 3em;
     width: 3em;
   }
+
   .qui-nugget-card .qui-arc-icon-fragment-left,
   .qui-nugget-card .qui-arc-icon-fragment-right {
     height: 0.5em;
     width: 0.5em;
   }
+
   .qui-nugget-card .qui-arc-menu-header {
     font-size: 0.5em;
   }
+
   .qui-nugget-card-show-more {
     margin-top: 0.2em;
   }
@@ -442,68 +535,87 @@
     width: 360px;
     min-height: 500px;
   }
+
   .qui-nugget-card-body {
     margin: 0.5em 1em 0 1em;
   }
+
   .qui-nugget-card-share-block {
     font-size: 0.6em;
   }
+
   .qui-nugget-block-styling {
     font-size: 0.65em;
   }
+
   .qui-nugget-card-tag-container {
     font-size: 0.5em;
     margin-top: 0.5em;
   }
+
   .qui-nugget-card-name {
     font-size: 0.7em;
   }
+
   .qui-nugget-card-title {
     font-size: 0.8em;
   }
+
   .qui-nugget-card-description {
     font-size: 0.5em;
   }
+
   .qui-nugget-card-share-widget {
     font-size: 0.5em;
     margin-right: -1.5em;
     height: 3em;
   }
+
   .qui-nugget-card-link-container {
     font-size: 1em;
   }
+
   .qui-nugget-card-link {
     font-size: 0.7em;
   }
+
   .qui-nugget-card-copy-icon-container {
     font-size: 0.7em;
     margin-right: 0.2em;
   }
+
   .qui-nugget-card-reward {
     font-size: 0.6em;
   }
+
   .qui-nugget-card .qui-banner-card {
     margin-top: 0.9em;
   }
+
   .qui-nugget-card-footer {
     height: 3em;
   }
+
   .qui-nugget-card .qui-arc {
     height: 2em;
     width: 2em;
   }
+
   .qui-nugget-card .qui-arc-menu .qui-arc-menu-button {
     height: 3em;
     width: 3em;
   }
+
   .qui-nugget-card .qui-arc-icon-fragment-left,
   .qui-nugget-card .qui-arc-icon-fragment-right {
     height: 0.5em;
     width: 0.5em;
   }
+
   .qui-nugget-card .qui-arc-menu-header {
     font-size: 0.5em;
   }
+
   .qui-nugget-card-show-more {
     margin-top: 0em;
   }
@@ -514,65 +626,83 @@
     width: 360px;
     min-height: 500px;
   }
+
   .qui-nugget-card-body {
     margin: 0.5em 1em 0 1em;
   }
+
   .qui-nugget-card-share-block {
     font-size: 0.6em;
   }
+
   .qui-nugget-block-styling {
     font-size: 0.65em;
   }
+
   .qui-nugget-card-tag-container {
     font-size: 0.5em;
     margin-top: 0.5em;
   }
+
   .qui-nugget-card-name {
     font-size: 0.7em;
   }
+
   .qui-nugget-card-title {
     font-size: 0.8em;
   }
+
   .qui-nugget-card-description {
     font-size: 0.5em;
   }
+
   .qui-nugget-card-share-widget {
     font-size: 0.5em;
     margin-right: -1.5em;
     height: 2.5em;
   }
+
   .qui-nugget-card-link-container {
     font-size: 1em;
   }
+
   .qui-nugget-card-link {
     font-size: 0.7em;
   }
+
   .qui-nugget-card-copy-icon-container {
     font-size: 0.7em;
     margin-right: 0.2em;
   }
+
   .qui-nugget-card-reward {
     font-size: 0.55em;
   }
+
   .qui-nugget-card .qui-banner-card {
     margin-top: 0.9em;
   }
+
   .qui-nugget-card-footer {
     height: 3em;
   }
+
   .qui-nugget-card .qui-arc {
     height: 2em;
     width: 2em;
   }
+
   .qui-nugget-card .qui-arc-menu .qui-arc-menu-button {
     height: 3em;
     width: 3em;
   }
+
   .qui-nugget-card .qui-arc-icon-fragment-left,
   .qui-nugget-card .qui-arc-icon-fragment-right {
     height: 0.5em;
     width: 0.5em;
   }
+
   .qui-nugget-card-show-more {
     margin-top: 0em;
   }
@@ -583,56 +713,72 @@
     width: 360px;
     min-height: 500px;
   }
+
   .qui-nugget-card-body {
     margin: 0.5em 1em 0 1em;
   }
+
   .qui-nugget-card-share-block {
     font-size: 0.6em;
   }
+
   .qui-nugget-block-styling {
     font-size: 0.65em;
   }
+
   .qui-nugget-card-tag-container {
     font-size: 0.5em;
   }
+
   .qui-nugget-card-name {
     font-size: 0.7em;
   }
+
   .qui-nugget-card-title {
     font-size: 0.8em;
   }
+
   .qui-nugget-card-description {
     font-size: 0.5em;
   }
+
   .qui-nugget-card-share-widget {
     font-size: 0.3em;
     margin-right: -3em;
     height: 4em;
   }
+
   .qui-nugget-card-link-container {
     font-size: 1em;
   }
+
   .qui-nugget-card-link {
     font-size: 0.7em;
   }
+
   .qui-nugget-card-copy-icon-container {
     font-size: 0.7em;
     margin-right: 0.2em;
   }
+
   .qui-nugget-card-reward {
     font-size: 0.6em;
   }
+
   .qui-nugget-card .qui-banner-card {
     margin-top: 0.9em;
   }
+
   .qui-nugget-card .qui-arc {
     height: 2em;
     width: 2em;
   }
+
   .qui-nugget-card .qui-arc-menu .qui-arc-menu-button {
     height: 3em;
     width: 3em;
   }
+
   .qui-nugget-card .qui-arc-icon-fragment-left,
   .qui-nugget-card .qui-arc-icon-fragment-right {
     height: 0.5em;
@@ -645,64 +791,82 @@
     width: 360px;
     min-height: 500px;
   }
+
   .qui-nugget-card-body {
     margin: 0.5em 1em 0 1em;
   }
+
   .qui-nugget-card-share-block {
     font-size: 0.6em;
   }
+
   .qui-nugget-block-styling {
     font-size: 0.65em;
   }
+
   .qui-nugget-card-tag-container {
     font-size: 0.5em;
   }
+
   .qui-nugget-card-share-block {
     margin-bottom: 0.5em;
   }
+
   .qui-nugget-card-name {
     font-size: 0.7em;
   }
+
   .qui-nugget-card-title {
     font-size: 0.8em;
   }
+
   .qui-nugget-card-description {
     font-size: 0.5em;
   }
+
   .qui-nugget-card-share-widget {
     font-size: 0.25em;
     margin-right: -3em;
     height: 5em;
   }
+
   .qui-nugget-card-link-container {
     font-size: 1em;
   }
+
   .qui-nugget-card-link {
     font-size: 0.7em;
   }
+
   .qui-nugget-card-copy-icon-container {
     font-size: 0.7em;
     margin-right: 0.2em;
   }
+
   .qui-nugget-card-reward {
     font-size: 0.6em;
   }
+
   .qui-nugget-card .qui-banner-card {
     margin-top: 0.9em;
   }
+
   .qui-nugget-card .qui-arc {
     height: 2em;
     width: 2em;
   }
+
   .qui-nugget-card .qui-arc-menu .qui-arc-menu-button {
     height: 3em;
     width: 3em;
   }
+
   .qui-nugget-card .qui-arc-icon-fragment-left,
   .qui-nugget-card .qui-arc-icon-fragment-right {
     height: 0.5em;
     width: 0.5em;
   }
+
   .qui-nugget-card-show-more {
     margin-top: 0em;
   }

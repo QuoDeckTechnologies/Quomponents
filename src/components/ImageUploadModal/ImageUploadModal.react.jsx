@@ -11,7 +11,6 @@ import "./ImageUploadModal.scss";
 import "../../common/stylesheets/overrule.scss";
 import ArcMenu from "../ArcMenu/ArcMenu.react";
 import Button from "../Buttons/Button/Button.react";
-import defaultImage from "../../assets/default.jpeg";
 
 ImageUploadModal.propTypes = {
   //=======================================
@@ -275,7 +274,7 @@ export default function ImageUploadModal(props) {
                   height:
                     width / (props.aspectRatio > 0 ? props.aspectRatio : 1),
                 }}
-                src={defaultImage}
+                src={"../../assets/default.jpeg"}
                 alt="default"
               />
             )}

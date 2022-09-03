@@ -1,6 +1,5 @@
 import React from "react";
 import SerialCard from "../components/SerialCard/SerialCard.react";
-import Image from "../assets/GameImage.png";
 
 export default {
     title: "Design System/SerialCard",
@@ -72,7 +71,8 @@ export default {
         ),
     ],
     parameters: {
-        componentSubtitle: "Displays a SerialCard with, images and icon for general-purpose use",
+        componentSubtitle:
+            "Displays a SerialCard with, images and icon for general-purpose use",
         a11y: { disable: true },
         docs: {
             iframeHeight: 600,
@@ -90,16 +90,15 @@ const Template = (args) => {
 export const Default = Template.bind({});
 Default.args = {
     title: "5th May 2022",
-    description:
-        "What are Mutual Funds?",
-    image: Image,
-    backImage: "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
+    description: "What are Mutual Funds?",
+    backImage:
+        "https://us.123rf.com/450wm/microone/microone1909/microone190900839/130722932-chaos-in-workplace-sleepy-lazy-unorganized-employees-in-office-bad-organization-control-business-cor.jpg",
     playerIcon: "fa fa-users",
     playersValue: 20539,
     iconOpt: [
-        { icon: "fa fa-book", func: () => { } },
-        { icon: "fa fa-gamepad", func: () => { } },
-        { icon: "fa fa-trophy", func: () => { } },
+        { icon: "fa fa-book", func: () => {} },
+        { icon: "fa fa-gamepad", func: () => {} },
+        { icon: "fa fa-trophy", func: () => {} },
     ],
     asVariant: "error",
     withColor: {
@@ -132,7 +131,7 @@ ColoredSerialcard.args = {
     withColor: {
         backgroundColor: "",
         textColor: "#3A8080",
-        accentColor: "#F2A52D"
+        accentColor: "#F2A52D",
     },
     asVariant: "warning",
 };

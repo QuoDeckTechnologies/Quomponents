@@ -15,7 +15,7 @@ import "../../../common/stylesheets/overrule.scss";
 import SlideHeader from "../../SlideHeader/SlideHeader.react";
 import TextBlock from "../../TextBlock/TextBlock.react";
 import Button from "../../Buttons/Button/Button.react";
-import PinchImage from "../../../assets/pinch.png"
+import PinchImage from "./pinch.png"
 
 ZoomableImage.propTypes = {
     //=======================================

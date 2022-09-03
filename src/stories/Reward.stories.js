@@ -1,18 +1,17 @@
 import React from "react";
 import Reward from "../components/Reward/Reward.react";
-import rewardImage from "../assets/coin.png";
 
 const dictionary = JSON.stringify({
     hi: {
         reward: {
             label: "जीतने के लिए पूर्ण करें",
-        }
+        },
     },
     en: {
         reward: {
             label: "Complete to win",
-        }
-    }
+        },
+    },
 });
 
 export default {
@@ -38,7 +37,7 @@ export default {
         },
         asPadded: {
             control: "select",
-            options: ["fitted", "compact", "normal", "relaxed", "zero","zero"],
+            options: ["fitted", "compact", "normal", "relaxed"],
             table: {
                 category: "as-Flags",
             },
@@ -114,7 +113,7 @@ Default.args = {
     content: {
         label: "Complete to win",
         point: "10,000",
-        image: rewardImage
+        asSize: "normal",
     },
     asSize: "normal",
     asFloated: "none",
@@ -158,8 +157,7 @@ AnimationReward.args = {
 AnimationReward.parameters = {
     docs: {
         description: {
-            story:
-                "Use to animate the entry of the Reward with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
+            story: "Use to animate the entry of the Reward with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
         },
         source: {
             code: `<AnimationReward {...${JSON.stringify(
@@ -184,8 +182,7 @@ PointColor.args = {
 PointColor.parameters = {
     docs: {
         description: {
-            story:
-                "Use to change the point color that appears in Reward Component. To make this work, add a withColor:{accentColor}.",
+            story: "Use to change the point color that appears in Reward Component. To make this work, add a withColor:{accentColor}.",
         },
         source: {
             code: `<PointColor {...${JSON.stringify(
@@ -210,8 +207,7 @@ LabelColor.args = {
 LabelColor.parameters = {
     docs: {
         description: {
-            story:
-                "Use to change the label color that appears in Reward Component. To make this work, add a withColor:{textColor}.",
+            story: "Use to change the label color that appears in Reward Component. To make this work, add a withColor:{textColor}.",
         },
         source: {
             code: `<LabelColor {...${JSON.stringify(
@@ -237,8 +233,7 @@ TranslatedReward.args = {
 TranslatedReward.parameters = {
     docs: {
         description: {
-            story:
-                "Use to change the language that the text appears in Reward.",
+            story: "Use to change the language that the text appears in Reward.",
         },
         source: {
             code: `<Reward {...${JSON.stringify(

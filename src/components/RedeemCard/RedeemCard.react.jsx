@@ -10,7 +10,6 @@ import "./RedeemCard.scss";
 import "../../common/stylesheets/overrule.scss";
 
 import Reward from "../Reward/Reward.react"
-import defaultImage from "../../assets/default.jpeg";
 import AccentLine from "../AccentLine/AccentLine.react"
 import Button from "../Buttons/Button/Button.react";
 
@@ -134,7 +133,7 @@ export default function RedeemCard(props) {
     //-------------------------------------------------------------------
     // 4. Conditional handling of backgroundImage
     //-------------------------------------------------------------------
-    let backgroundImage = props.content?.image === "" ? defaultImage : props.content?.image;
+    let backgroundImage = props.content?.image === "" ? "../../assets/default.jpeg" : props.content?.image;
 
     //-------------------------------------------------------------------
     // 5. Get Button Styling

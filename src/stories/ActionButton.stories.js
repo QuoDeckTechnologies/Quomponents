@@ -1,6 +1,5 @@
 import React from "react";
 import ActionButton from "../components/Buttons/ActionButton/ActionButton.react";
-import PlayBtn from "../assets/play-btn.png"
 
 const dictionary = JSON.stringify({
     hi: {
@@ -23,7 +22,7 @@ export default {
         content: {
             title: "",
             subTitle: "",
-            image: PlayBtn
+            image: "../assets/play-btn.png"
         },
         asVariant: {
             control: "select",
@@ -137,7 +136,7 @@ Default.args = {
     content: {
         title: "BUY",
         subTitle: "Rs. 75",
-        image: PlayBtn
+        image: "../assets/play-btn.png"
     },
     isEllipse: true,
     asVariant: "primary",
@@ -184,7 +183,7 @@ ActionButtonWithImage.args = {
     content: {
         title: "BUY",
         subTitle: "Rs. 75",
-        image: PlayBtn
+        image: "../assets/play-btn.png"
     }
 }
 // -------------------------------------------------------------
@@ -229,7 +228,7 @@ export const AllVariantsTemplate = (args) => {
     const baseObj2 = {
         ...Object.assign({}, Default.args, args, {
             content: {
-                image: PlayBtn
+                image: "../assets/play-btn.png"
             }
         }),
     };
