@@ -194,12 +194,14 @@ export default function AccordionBar(props) {
                                 {(controls) => {
                                     return (
                                         <button
-                                            style={{ width: "100%" }}
+                                            className={
+                                                "qui-accordionbar-expand-btn"
+                                            }
                                             onClick={
                                                 controls.toggleOpenCloseAllNodes
                                             }
                                         >
-                                            Expand All
+                                            Expand/Collapse All
                                         </button>
                                     );
                                 }}
