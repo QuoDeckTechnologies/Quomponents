@@ -193,15 +193,14 @@ export default function AccordionBar(props) {
                             >
                                 {(controls) => {
                                     return (
-                                        <Button
-                                            asEmphasis={"outlined"}
-                                            fluid
+                                        <button
+                                            style={{ width: "100%" }}
                                             onClick={
                                                 controls.toggleOpenCloseAllNodes
                                             }
                                         >
                                             Expand All
-                                        </Button>
+                                        </button>
                                     );
                                 }}
                             </Tree>

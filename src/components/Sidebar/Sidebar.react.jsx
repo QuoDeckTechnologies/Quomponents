@@ -126,7 +126,11 @@ export default function Sidebar(props) {
         return (
             <div
                 className="qui-sidebar-logo"
-                style={{ width: props.width, height: props.width }}
+                style={{
+                    width: props.width,
+                    height: props.width,
+                    zIndex: 99999999999,
+                }}
             >
                 <a href="/">
                     <img src={props.logo} alt="Application Logo" />
