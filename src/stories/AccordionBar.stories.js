@@ -98,7 +98,6 @@ Default.args = {
             id: "category-0",
             parentId: null,
             label: "Article",
-            isOpen: true,
             items: [
                 {
                     label: "Seeding Dummy Test Article Seeding Dummy Test Article ",

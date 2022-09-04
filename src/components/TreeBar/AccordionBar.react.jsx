@@ -21,6 +21,7 @@ import "../../common/stylesheets/common.css";
 import "./AccordionBar.scss";
 import "../../common/stylesheets/overrule.scss";
 
+import Button from "../Buttons/Button/Button.react";
 import SearchBar from "../SearchBar/SearchBar.react";
 
 AccordionBar.propTypes = {
@@ -149,7 +150,7 @@ export default function AccordionBar(props) {
     let actives = _.filter(props.sections, { selected: false, active: true });
     const btnAreaHt = (actives.length + inactives.length) * 40;
     const treeCanvasStyle = {
-        height: `calc(100vh - ${btnAreaHt + 210}px)`,
+        height: `calc(100vh - ${btnAreaHt + 180}px)`,
     };
 
     // ========================= Render Function =================================
@@ -191,13 +192,17 @@ export default function AccordionBar(props) {
                                 containerStyle={treeCanvasStyle}
                             >
                                 {(controls) => {
-                                    <button
-                                        onClick={
-                                            controls.toggleOpenCloseAllNodes
-                                        }
-                                    >
-                                        Open all nodes
-                                    </button>;
+                                    return (
+                                        <Button
+                                            asEmphasis={"outlined"}
+                                            fluid
+                                            onClick={
+                                                controls.toggleOpenCloseAllNodes
+                                            }
+                                        >
+                                            Expand All
+                                        </Button>
+                                    );
                                 }}
                             </Tree>
                         </div>
