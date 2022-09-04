@@ -131,13 +131,13 @@ export default function CourseCard(props) {
     let points = props.content?.points;
     let shareLabel = "Share";
     let rewardLabel = "Complete to win";
-    let menu = [
-        "EDIT DETAILS",
-        "EDIT CONTENT",
-        "MANAGE LEARNERS",
-        "VIEW ANALYTICS",
-        "DELETE COURSE",
-    ];
+    // let menu = [
+    //     "EDIT DETAILS",
+    //     "EDIT CONTENT",
+    //     "MANAGE LEARNERS",
+    //     "VIEW ANALYTICS",
+    //     "DELETE COURSE",
+    // ];
     if (
         props.withTranslation?.lang &&
         props.withTranslation.lang !== "" &&
@@ -150,7 +150,7 @@ export default function CourseCard(props) {
         points = points?.toLocaleString("hi-u-nu-deva");
         shareLabel = tObj?.share || "Share";
         rewardLabel = tObj?.rewardLabel || "Complete to win";
-        menu = tObj?.arcMenu || menu;
+        // menu = tObj?.arcMenu || menu;
     } else {
         points = points?.toLocaleString("en");
     }

@@ -40,7 +40,7 @@ AccordionBar.propTypes = {
     /**
     Treebar pass tree folder structure data
     */
-    content: PropTypes.shape({}).isRequired,
+    treeData: PropTypes.array.isRequired,
     //=======================================
     // Quommon props
     //=======================================
@@ -218,7 +218,10 @@ export default function AccordionBar(props) {
                         {_.map(actives, (section, idx) => {
                             return (
                                 <ListItem
+                                    component="a"
+                                    href={section.link}
                                     className="qui-active-list-item"
+                                    key={`qui-active-list-item-${idx}`}
                                     button
                                     divider
                                 >
@@ -229,7 +232,10 @@ export default function AccordionBar(props) {
                         {_.map(inactives, (section, idx) => {
                             return (
                                 <ListItem
+                                    component="a"
+                                    href={props.inactiveLink}
                                     className="qui-inactive-list-item"
+                                    key={`qui-inactive-list-item-${idx}`}
                                     button
                                     divider
                                 >
