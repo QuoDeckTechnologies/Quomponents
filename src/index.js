@@ -4,6 +4,7 @@
 //---------------------------------------------------------------------
 import AccentLine from "./components/AccentLine/AccentLine.react";
 import ActionMenu from "./components/ActionMenu/ActionMenu.react";
+import AccordionBar from "./components/TreeBar/AccordionBar.react";
 import AmplayfierDateBlock from "./components/AmplayfierDateBlock/AmplayfierDateBlock.react";
 import AmplayfierDrawerRect from "./components/AmplayfierDrawerRect/AmplayfierDrawerRect.react";
 import AppMenu from "./components/AppMenu/AppMenu/AppMenu.react";
@@ -175,6 +176,7 @@ export {
     //---------------------------------------------------------------------
     AccentLine,
     ActionMenu,
+    AccordionBar,
     AmplayfierDateBlock,
     AmplayfierDrawerRect,
     AppMenu,
