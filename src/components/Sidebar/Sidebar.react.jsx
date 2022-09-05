@@ -33,7 +33,7 @@ Sidebar.propTypes = {
             url: PropTypes.string,
             onClick: PropTypes.func,
         })
-    ).isRequired,
+    ),
     /**
     Use to define width of the sidebar
     */
