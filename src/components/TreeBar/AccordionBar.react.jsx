@@ -167,9 +167,22 @@ export default function AccordionBar(props) {
                 {props.pageHeader && (
                     <div
                         className="qui-accordionbar-pageheader secfont"
-                        style={{ height: props.headerHeight }}
+                        style={{ height: props.headerHeight, width: "100%" }}
                     >
                         {pageHeaderTitle}
+                        {props.createBtn && (
+                            <Button
+                                url={props.createBtn}
+                                asSize="large"
+                                isCircular
+                                float-right
+                                withIcon={{
+                                    icon: "fas fa-plus",
+                                    size: "1em",
+                                    position: "left",
+                                }}
+                            />
+                        )}
                     </div>
                 )}
                 <div className="qui-accordionbar-active-area">

@@ -14,6 +14,7 @@
     color: #ffffff;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .qui-accordionbar-searchbar {
@@ -23,8 +24,9 @@
 .qui-accordionbar-expand-btn {
     width: 100%;
     border: none;
+    border-bottom: 1px solid #cccccc;
     padding: 6px;
-    font-size: 0.9em;
+    font-size: 0.9em !important;
 }
 
 .qui .qui-accordionbar-active-area,
