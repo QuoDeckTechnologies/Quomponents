@@ -2,10 +2,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
-import {
-    getQuommons,
-    getAnimation,
-} from "../../common/javascripts/helpers.js";
+import { getQuommons, getAnimation } from "../../common/javascripts/helpers.js";
 import YouTube from "react-youtube";
 import { Player, BigPlayButton } from "video-react";
 import "video-react/dist/video-react.css";
@@ -22,6 +19,7 @@ Videobox.propTypes = {
     Use to define url of component
     */
     url: PropTypes.string.isRequired,
+    isRounded: PropTypes.bool,
     // Quommon props
     //=======================================
     /**
@@ -36,7 +34,7 @@ Videobox.propTypes = {
             "slideUp",
             "slideLeft",
             "slideRight",
-            ""
+            "",
         ]),
         duration: PropTypes.number,
         delay: PropTypes.number,
@@ -67,13 +65,13 @@ Videobox.propTypes = {
     Videobox component must have the onEnd function passed as props
     */
     onEnd: PropTypes.func,
-
 };
 
 Videobox.defaultProps = {
     // Component Specific props
     //=======================================
     url: "https://www.youtube.com/watch?v=NpEaa2P7qZI",
+    isRounded: true,
     // Quommon props
     //=======================================
     withAnimation: null,
@@ -91,7 +89,6 @@ Videobox.defaultProps = {
 - Or add custom css in overrule.scss to override the component css
 **/
 export default function Videobox(props) {
-
     const { url, autoplay, loop } = props;
 
     const [error, setError] = useState(false);
@@ -100,30 +97,36 @@ export default function Videobox(props) {
         if (e.target && props.autoplay) {
             e.target.playVideo();
         }
-        if (props.onReady) { props.onReady(e) };
+        if (props.onReady) {
+            props.onReady(e);
+        }
     }
 
-    function onPlay(e) { };
+    function onPlay(e) {}
 
     function onEnd(e) {
         if (props.loop) e.target.playVideo();
-        if (props.onEnd) { props.onEnd(e) };
-    };
+        if (props.onEnd) {
+            props.onEnd(e);
+        }
+    }
 
     function onPause(e) {
-        if (props.onPause) { props.onPause(e) };
-    };
+        if (props.onPause) {
+            props.onPause(e);
+        }
+    }
 
     function onError(e) {
         setError(true);
-    };
+    }
     const loadPlayer = () => {
         if (error) {
             return (
                 <div className="qui-errorbox">
                     {" "}
-                    Error While loading video..
-                    please make sure that you are connected to internet and try again later{" "}
+                    Error While loading video.. please make sure that you are
+                    connected to internet and try again later{" "}
                 </div>
             );
         } else {
@@ -139,8 +142,7 @@ export default function Videobox(props) {
                 if (url.indexOf("v=") === -1) {
                     var video_array = url.split("/");
                     videoId = video_array[video_array.length - 1];
-                }
-                else {
+                } else {
                     videoId = url.split("v=")[1];
                     var ampersandPosition = videoId.indexOf("&");
                     if (ampersandPosition !== -1) {
@@ -151,11 +153,8 @@ export default function Videobox(props) {
             };
 
             if (url.indexOf("vimeo") !== -1) {
-
                 return (
-                    <div
-                        className="video-responsive vimeo-embed-container"
-                    >
+                    <div className="video-responsive vimeo-embed-container">
                         <Vimeo
                             className="react-player"
                             video={url}
@@ -169,11 +168,13 @@ export default function Videobox(props) {
                         />
                     </div>
                 );
-            } if (url.indexOf("youtu.be") !== -1 || url.indexOf("youtube") !== -1) {
+            }
+            if (
+                url.indexOf("youtu.be") !== -1 ||
+                url.indexOf("youtube") !== -1
+            ) {
                 return (
-                    <div
-                        className="video-responsive"
-                    >
+                    <div className="video-responsive">
                         <YouTube
                             className="react-player"
                             videoId={getVideoId(url)}
@@ -186,17 +187,10 @@ export default function Videobox(props) {
                         />
                     </div>
                 );
-            }
-            else {
+            } else {
                 return (
-                    <div
-                        className="video-responsive"
-                    >
-                        <Player
-                            src={url}
-                            playsInline
-                            autoplay={props.autoplay}
-                        >
+                    <div className="video-responsive">
+                        <Player src={url} playsInline autoplay={props.autoplay}>
                             <BigPlayButton position="center" />
                         </Player>
                     </div>
@@ -221,10 +215,7 @@ export default function Videobox(props) {
             animate={animate?.to}
             className={`qui ${quommonClasses.parentClasses}`}
         >
-            <div className={`qui-react-video-player`}>
-                {loadPlayer()}
-            </div>
+            <div className={`qui-react-video-player`}>{loadPlayer()}</div>
         </motion.div>
     );
-
 }
