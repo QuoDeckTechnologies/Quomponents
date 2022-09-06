@@ -169,6 +169,8 @@ import ConfirmationOverlay from "./components/ConfirmationOverlay/ConfirmationOv
 //---------------------------------------------------------------------
 import ButtonGroup from "@mui/material/ButtonGroup";
 import TextField from "@mui/material/TextField";
+import Tabs from "@mui/material/Tabs";
+import Tab from '@mui/material/Tab';
 
 export {
     //---------------------------------------------------------------------
@@ -258,6 +260,8 @@ export {
     TreeBar,
     ToggleButton,
     TextBlock,
+    Tabs,
+    Tab,
     Tag,
     Anagram,
     BackgroundImage,
