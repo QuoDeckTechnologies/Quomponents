@@ -5,15 +5,15 @@ const dictionary = JSON.stringify({
     hi: {
         selectField: {
             label: "पाठ्यक्रम श्रेणी",
-            placeholder: "चुनें..."
-        }
+            placeholder: "चुनें...",
+        },
     },
     en: {
         selectField: {
             label: "Course Category",
             placeholder: "",
-        }
-    }
+        },
+    },
 });
 
 export default {
@@ -21,11 +21,12 @@ export default {
     component: SelectField,
     argTypes: {
         label: "",
+        value: "",
         options: [],
         placeholder: "",
         asPadded: {
             control: "select",
-            options: ["fitted", "compact", "normal", "relaxed", "zero","zero"],
+            options: ["fitted", "compact", "normal", "relaxed", "zero", "zero"],
             table: {
                 category: "as-Flags",
             },
@@ -66,23 +67,16 @@ export default {
                 defaultValue: false,
             },
         },
-        onClick: {
+        onChange: {
             table: {
                 category: "Events",
                 defaultValue: null,
             },
         },
     },
-    decorators: [
-        (story) => (
-            <div>
-                {story()}
-            </div>
-        ),
-    ],
+    decorators: [(story) => <div>{story()}</div>],
     parameters: {
-        componentSubtitle:
-            "Default SelectField for general purpose use",
+        componentSubtitle: "Default SelectField for general purpose use",
         a11y: { disable: true },
         docs: { iframeHeight: 400 },
     },
@@ -94,8 +88,14 @@ const Template = (args) => <SelectField {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     label: "Course Category",
-    options: ["Sales Training", "Tech Training", "HR Training", "Graphic Training"],
-    placeholder: "Choose...",
+    value: "",
+    options: [
+        { label: "Sales Training", value: "1" },
+        { label: "Tech Training", value: "2" },
+        { label: "HR Training", value: "3" },
+        { label: "Graphic Training", value: "4" },
+    ],
+    placeholder: "Choose a category...",
     asPadded: "normal",
     withColor: {
         backgroundColor: "#aaaaaa",
@@ -117,7 +117,11 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<SelectField {...${JSON.stringify(Default.args, null, 2)}}/>`,
+            code: `<SelectField {...${JSON.stringify(
+                Default.args,
+                null,
+                2
+            )}}/>`,
         },
     },
 };
@@ -136,8 +140,7 @@ ColoredSelectField.args = {
 ColoredSelectField.parameters = {
     docs: {
         description: {
-            story:
-                "Use to override the standard colors of the SelectField.",
+            story: "Use to override the standard colors of the SelectField.",
         },
         source: {
             code: `<ColoredSelectField {...${JSON.stringify(
@@ -163,8 +166,7 @@ AnimatedSelectField.args = {
 AnimatedSelectField.parameters = {
     docs: {
         description: {
-            story:
-                "Use to animate the entry of the SelectField with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
+            story: "Use to animate the entry of the SelectField with the standard animation options and set duration and delay. Can be used to make multiple components enter the screen in a queue.",
         },
         source: {
             code: `<AnimatedSelectField {...${JSON.stringify(
@@ -190,8 +192,7 @@ TranslatedSelectField.args = {
 TranslatedSelectField.parameters = {
     docs: {
         description: {
-            story:
-                "Use to change the language that the text appears in SelectField.",
+            story: "Use to change the language that the text appears in SelectField.",
         },
         source: {
             code: `<SelectField {...${JSON.stringify(

@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { Select, MenuItem } from "@mui/material";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+
 import { motion } from "framer-motion";
 import _ from "lodash";
 import {
@@ -20,6 +24,7 @@ SelectField.propTypes = {
     Use to define label, options & placeholder in SelectField
     */
     label: PropTypes.string,
+    value: PropTypes.string,
     options: PropTypes.array,
     placeholder: PropTypes.string,
     //=======================================
@@ -69,7 +74,7 @@ SelectField.propTypes = {
     /**
     SelecField component must have the onClick function passed as props
     */
-    onClick: PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,
 };
 
 SelectField.defaultProps = {
@@ -77,7 +82,7 @@ SelectField.defaultProps = {
     // Component Specific props
     //=======================================
     label: "",
-    options: [],
+    options: [{ value: "", label: "None" }],
     placeholder: "",
     //=======================================
     // Quommon props
@@ -106,16 +111,16 @@ export default function SelectField(props) {
     //-------------------------------------------------------------------
     // 2. Declaration of SelectField's value
     //-------------------------------------------------------------------
-    const [selectValue, setSelectValue] = useState("none");
+    const [selectValue, setSelectValue] = useState(props.value || "");
 
     const handleChange = (e) => {
         setSelectValue(e.target.value);
-        props.onClick(e.target.value);
+        props.onChange(e.target.value);
     };
     //-------------------------------------------------------------------
     // 3. Use to set Color in SelectField
     //-------------------------------------------------------------------
-    let Color = {
+    const color = {
         backgroundColor: props.withColor?.backgroundColor,
         color: props.withColor?.textColor,
         borderBottomColor: `${props.withColor?.accentColor}`,
@@ -132,8 +137,8 @@ export default function SelectField(props) {
         props.withTranslation.lang !== "" &&
         props.withTranslation.lang !== "en"
     ) {
-        tObj = getTranslation(props.withTranslation)
-        label = tObj?.label || props.label
+        tObj = getTranslation(props.withTranslation);
+        label = tObj?.label || props.label;
         placeholder = tObj?.placeholder || props.placeholder;
     }
     //-------------------------------------------------------------------
@@ -141,14 +146,37 @@ export default function SelectField(props) {
     //-------------------------------------------------------------------
     const animate = getAnimation(props);
     // ========================= Render Function =================================
+    const fieldId = "qui-" + label?.split(" ").join("-").toLowerCase();
+
     return (
         <motion.div
             initial={animate.from}
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
         >
-            <div className={`qui-select-field-container ${quommonClasses.childClasses}`} style={Color}>
-                <div className="qui-select-field">
+            <div
+                className={`qui-select-field-container ${quommonClasses.childClasses}`}
+                style={color}
+            >
+                <FormControl fullWidth variant="filled">
+                    <InputLabel id={fieldId}>{label}</InputLabel>
+                    <Select
+                        labelId={fieldId}
+                        value={selectValue}
+                        label={label}
+                        onChange={handleChange}
+                    >
+                        {_.map(props.options, (option, idx) => {
+                            return (
+                                <MenuItem value={option.value}>
+                                    {option.label}
+                                </MenuItem>
+                            );
+                        })}
+                    </Select>
+                </FormControl>
+
+                {/* <div className="qui-select-field">
                     <div className="qui-select-field-label qt-sm">
                         {label}
                     </div>
@@ -181,8 +209,8 @@ export default function SelectField(props) {
                             </MenuItem>
                         ))}
                     </Select>
-                </div>
-            </div >
-        </motion.div >
+                </div> */}
+            </div>
+        </motion.div>
     );
 }
