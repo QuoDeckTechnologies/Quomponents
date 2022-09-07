@@ -210,15 +210,16 @@ export default function OptionalImageField(props) {
                         {tObj?.title || props.content?.title}
                     </Button>
                 </div>
+                {image !== "" && (
+                    <a
+                        className={`qui-optional-image-field-action-icon`}
+                        onClick={() => handleChange("")}
+                    >
+                        <i className={"fas fa-times"}></i>
+                    </a>
+                )}
             </div>
-            {image !== "" && (
-                <a
-                    className={`qui-optional-image-field-action-icon`}
-                    onClick={() => handleChange("")}
-                >
-                    <i className={"fas fa-times"}></i>
-                </a>
-            )}
+
             <ImageUploadModal
                 key={Math.random()}
                 isOpen={uploadModalOpen}
