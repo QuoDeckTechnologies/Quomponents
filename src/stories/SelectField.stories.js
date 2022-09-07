@@ -96,7 +96,7 @@ Default.args = {
         { label: "Graphic Training", value: "4" },
     ],
     placeholder: "Choose a category...",
-    asPadded: "normal",
+    asPadded: "zero",
     withColor: {
         backgroundColor: "#aaaaaa",
         accentColor: "",

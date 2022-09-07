@@ -87,7 +87,7 @@ SelectField.defaultProps = {
     //=======================================
     // Quommon props
     //=======================================
-    asPadded: "normal",
+    asPadded: "zero",
 
     withColor: null,
     withAnimation: null,
@@ -155,7 +155,7 @@ export default function SelectField(props) {
             className={`qui ${quommonClasses.parentClasses}`}
         >
             <div
-                className={`qui-select-field-container ${quommonClasses.childClasses}`}
+                className={`qui-select-field-container ${quommonClasses.childClasses} pad-zero`}
                 style={color}
             >
                 <FormControl fullWidth variant="filled">
@@ -168,7 +168,7 @@ export default function SelectField(props) {
                     >
                         {_.map(props.options, (option, idx) => {
                             return (
-                                <MenuItem value={option.value}>
+                                <MenuItem key={`${label}-select-option-${idx}`} value={option.value}>
                                     {option.label}
                                 </MenuItem>
                             );
