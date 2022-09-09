@@ -166,9 +166,15 @@ export default function SelectField(props) {
                         label={label}
                         onChange={handleChange}
                     >
+                        <MenuItem disabled value="">
+                            <em>{placeholder}</em>
+                        </MenuItem>
                         {_.map(props.options, (option, idx) => {
                             return (
-                                <MenuItem key={`${label}-select-option-${idx}`} value={option.value}>
+                                <MenuItem
+                                    key={`${label}-select-option-${idx}`}
+                                    value={option.value}
+                                >
                                     {option.label}
                                 </MenuItem>
                             );

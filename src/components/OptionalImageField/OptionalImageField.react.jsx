@@ -191,7 +191,7 @@ export default function OptionalImageField(props) {
                         <img
                             className="qui-optional-image-field-image"
                             src={image}
-                            alt={"Uploaded image"}
+                            alt={"Uploaded"}
                         />
                     </div>
                 )}
@@ -211,12 +211,12 @@ export default function OptionalImageField(props) {
                     </Button>
                 </div>
                 {image !== "" && (
-                    <a
+                    <div
                         className={`qui-optional-image-field-action-icon`}
                         onClick={() => handleChange("")}
                     >
                         <i className={"fas fa-times"}></i>
-                    </a>
+                    </div>
                 )}
             </div>
 

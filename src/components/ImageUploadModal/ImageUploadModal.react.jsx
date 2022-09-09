@@ -181,16 +181,21 @@ export default function ImageUploadModal(props) {
             // If the image uploaded is not a gif, convert it to a jpg with 80% compression, or to a png
             // and then a Base64 string with canvas
             else if (imageType === "image/jpeg") {
-                let image = editorRef.current
+                let newImage = editorRef.current
                     ?.getImage()
                     .toDataURL("image/jpeg", 0.8);
-                props.onChange(image);
+                props.onChange(newImage);
             } else if (imageType === "image/png") {
-                let image = editorRef.current
+                let newImage = editorRef.current
                     ?.getImage()
                     .toDataURL("image/png");
-                props.onChange(image);
-            } else props.onChange(image);
+                props.onChange(newImage);
+            } else {
+                let newImage = editorRef.current
+                    ?.getImage()
+                    .toDataURL("image/jpeg", 0.8);
+                props.onChange(newImage);
+            }
         }
     };
     //-------------------------------------------------------------------
