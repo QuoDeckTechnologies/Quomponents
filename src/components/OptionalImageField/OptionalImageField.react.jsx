@@ -24,21 +24,8 @@ OptionalImageField.propTypes = {
   */
     content: PropTypes.shape({
         title: PropTypes.string,
-        icon: PropTypes.string,
-        actionButton: PropTypes.bool,
+        image: PropTypes.string,
     }),
-    /**
-  Use to define the file type which is supported to upload.
-  Suppoted file type image/*.
-  */
-    withFile: PropTypes.shape({
-        type: PropTypes.string,
-        capture: PropTypes.string,
-    }),
-    /**
-  Use to toggle a multiple to upload more than one images
-  */
-    isMultiple: PropTypes.bool,
     //=======================================
     // Quommon props
     //=======================================
@@ -88,9 +75,9 @@ OptionalImageField.propTypes = {
   */
     isFluid: PropTypes.bool,
     /**
-  OptionalImageField component must have the onClick function passed as props
+  OptionalImageField component must have the onChange function passed as props
   */
-    onClick: PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,
 };
 
 OptionalImageField.defaultProps = {
@@ -99,10 +86,8 @@ OptionalImageField.defaultProps = {
     //=======================================
     content: {
         title: "Upload Image",
-        icon: "",
+        image: "",
     },
-    withFile: null,
-    isMultiple: false,
     //=======================================
     // Quommon props
     //=======================================
@@ -140,7 +125,7 @@ export default function OptionalImageField(props) {
     //-------------------------------------------------------------------
     // 1. Defining states and hooks
     //-------------------------------------------------------------------
-    const [image, setImage] = useState(props.content.icon || "");
+    const [image, setImage] = useState(props.content.image || "");
     const [uploadModalOpen, setUploadModalOpen] = useState(false);
 
     //-------------------------------------------------------------------
@@ -165,8 +150,7 @@ export default function OptionalImageField(props) {
     const handleChange = (tgtImg) => {
         setUploadModalOpen(false);
         setImage(tgtImg);
-        if (props.handleChange)
-            props.handleChange(tgtImg === "" ? null : tgtImg);
+        if (props.onChange) props.onChange(tgtImg === "" ? null : tgtImg);
     };
 
     return (
