@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import TextField from '@mui/material/TextField';
+import TextField from "@mui/material/TextField";
 import { motion } from "framer-motion";
 import {
     getAnimation,
@@ -140,14 +140,14 @@ export default function InputField(props) {
 
     function handleChange(e) {
         setInput(e.target.value);
-        setCount(e.target.value.length)
+        setCount(e.target.value.length);
 
         if (e.key === "Enter") {
-            e.target.blur()
+            e.target.blur();
             props.onSubmit(e.target.name, e.target.value);
         }
         if (e.key === "Escape") {
-            e.target.value = ""
+            e.target.value = "";
         }
     }
 
@@ -162,52 +162,69 @@ export default function InputField(props) {
     let outlineStyle = {
         //accent line color
         "& .MuiFilledInput-root:before": {
-            borderBottom: `0.3em solid ${props.withColor?.accentColor || "#AAAAAA"}`
+            borderBottom: `0.3em solid ${
+                props.withColor?.accentColor || "#AAAAAA"
+            }`,
         },
         "& .MuiFilledInput-root:hover:not(.Mui-disable):before": {
-            borderBottom: `0.3em solid ${props.withColor?.accentColor || "#AAAAAA"}`
+            borderBottom: `0.3em solid ${
+                props.withColor?.accentColor || "#AAAAAA"
+            }`,
         },
         "& .MuiFilledInput-root:after": {
-            borderBottom: `0.3em solid ${props.withColor?.onSelectAccentColor || props.withColor?.accentColor || "#FFBF00"}`
+            borderBottom: `0.3em solid ${
+                props.withColor?.onSelectAccentColor ||
+                props.withColor?.accentColor ||
+                "#FFBF00"
+            }`,
         },
 
         //input field background and color
         "& .MuiFilledInput-root": {
             backgroundColor: props.withColor?.backgroundColor || "#AAAAAA29",
-            color: props.withColor?.textColor || "#666666"
+            color: props.withColor?.textColor || "#666666",
         },
         "& .MuiFilledInput-root:hover": {
             backgroundColor: props.withColor?.backgroundColor || "#AAAAAA29",
-            color: props.withColor?.textColor || "#666666"
+            color: props.withColor?.textColor || "#666666",
         },
         "& .MuiFilledInput-root.Mui-focused": {
-            backgroundColor: props.withColor?.onSelectBackgroundColor || props.withColor?.backgroundColor || "#AAAAAA29",
-            color: props.withColor?.onSelectTextColor || props.withColor?.textColor || "#666666"
+            backgroundColor:
+                props.withColor?.onSelectBackgroundColor ||
+                props.withColor?.backgroundColor ||
+                "#AAAAAA29",
+            color:
+                props.withColor?.onSelectTextColor ||
+                props.withColor?.textColor ||
+                "#666666",
         },
 
         //input field label color
-        '& .MuiFormLabel-root': {
-            color: props.withColor?.textColor || "#454545"
+        "& .MuiFormLabel-root": {
+            color: props.withColor?.textColor || "#454545",
         },
-        '& .MuiFormLabel-root.Mui-focused': {
-            color: props.withColor?.onSelectTextColor || props.withColor?.textColor || "#454545"
-        }
+        "& .MuiFormLabel-root.Mui-focused": {
+            color:
+                props.withColor?.onSelectTextColor ||
+                props.withColor?.textColor ||
+                "#454545",
+        },
     };
     //-------------------------------------------------------------------
     // 4. Get translation of the component
     //-------------------------------------------------------------------
     let tObj = null;
-    let label = props.content?.label;
-    let placeholder = props.content?.placeholder;
+    let label = props.label;
+    let placeholder = props.placeholder;
 
     if (
         props.withTranslation?.lang &&
         props.withTranslation.lang !== "" &&
         props.withTranslation.lang !== "en"
     ) {
-        tObj = getTranslation(props.withTranslation)
-        label = tObj?.label || props.label
-        placeholder = tObj?.placeholder || props.placeholder
+        tObj = getTranslation(props.withTranslation);
+        label = tObj?.label || props.label;
+        placeholder = tObj?.placeholder || props.placeholder;
     }
     //-------------------------------------------------------------------
     // 5. Use to set state of InputField.
@@ -224,8 +241,8 @@ export default function InputField(props) {
         name: props.name,
         onBlur: changeBlur,
         onChange: handleChange,
-        onKeyDown: handleChange
-    }
+        onKeyDown: handleChange,
+    };
 
     const getInput = (asEmphasis) => {
         if (asEmphasis === "filled") {
@@ -235,15 +252,21 @@ export default function InputField(props) {
                     className="qui-filled"
                     label={label}
                 />
-            )
+            );
         } else if (asEmphasis === "charLimited") {
             return (
                 <div className="qui-char-limited-container">
-                    {(props.maxLength || props.maxLength >= 0) &&
+                    {(props.maxLength || props.maxLength >= 0) && (
                         <div
-                            className={props.maxLength >= count ? "qui-char-limit-max-length" : "qui-char-limit-ideal-length"}>
+                            className={
+                                props.maxLength >= count
+                                    ? "qui-char-limit-max-length"
+                                    : "qui-char-limit-ideal-length"
+                            }
+                        >
                             {`${count}/${props.maxLength}`}
-                        </div>}
+                        </div>
+                    )}
                     <TextField
                         {...commonProperties}
                         className="qui-char-limited"
@@ -251,30 +274,33 @@ export default function InputField(props) {
                         label={label}
                     />
                 </div>
-            )
+            );
         } else if (asEmphasis === "listInput") {
             return (
                 <div className="qui-list-input-container">
-                    {(props.maxLength || props.maxLength >= 0) &&
+                    {(props.maxLength || props.maxLength >= 0) && (
                         <div
-                            className={props.maxLength >= count ? "qui-char-limit-max-length" : "qui-char-limit-ideal-length"}>
+                            className={
+                                props.maxLength >= count
+                                    ? "qui-char-limit-max-length"
+                                    : "qui-char-limit-ideal-length"
+                            }
+                        >
                             {`${count}/${props.maxLength}`}
-                        </div>}
+                        </div>
+                    )}
                     <TextField
                         {...commonProperties}
                         className="qui-list-input"
                     />
-                </div >
-            )
+                </div>
+            );
         } else {
             return (
-                <TextField
-                    {...commonProperties}
-                    className="qui-short-field"
-                />
-            )
+                <TextField {...commonProperties} className="qui-short-field" />
+            );
         }
-    }
+    };
     //-------------------------------------------------------------------
     // 6. Get animation of the component
     //-------------------------------------------------------------------
@@ -286,7 +312,9 @@ export default function InputField(props) {
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
         >
-            <div className={`qui-input-field-container ${quommonClasses.childClasses}`}>
+            <div
+                className={`qui-input-field-container ${quommonClasses.childClasses}`}
+            >
                 {getInput(asEmphasis)}
             </div>
         </motion.div>

@@ -33,7 +33,13 @@ SelectField.propTypes = {
     /**
     Use to define component padding in increasing order
     */
-    asPadded: PropTypes.oneOf(["fitted", "compact", "normal", "relaxed"]),
+    asPadded: PropTypes.oneOf([
+        "fitted",
+        "compact",
+        "normal",
+        "relaxed",
+        "zero",
+    ]),
     /**
     Use to override component colors and behavior
     */
