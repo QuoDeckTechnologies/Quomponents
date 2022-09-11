@@ -35,8 +35,8 @@
 }
 
 .qui .qui-optional-image-field-container {
-  width: 2.5em;
   display: flex;
+  object-fit: contain;
   justify-content: center;
   cursor: pointer;
 
@@ -48,9 +48,19 @@
   }
 
   .qui-optional-image-field-image {
-    width: 100%;
-    height: 100%;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
   }
+}
+
+.qui .qui-oif-wd {
+  width: 2.5em;
+}
+
+.qui .qui-oif-ht {
+  height: 2.5em;
 }
 
 .qui .qui-optional-image-field-button {

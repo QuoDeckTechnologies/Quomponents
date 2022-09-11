@@ -173,7 +173,7 @@ export default function OptionalImageField(props) {
                         ></i>
                     </div>
                 ) : (
-                    <div className="qui-optional-image-field-container">
+                    <div className={`qui-optional-image-field-container ${props.content?.aspectRatio<1? "qui-oif-ht":"qui-oif-wd"}`}>
                         <img
                             className="qui-optional-image-field-image"
                             src={image}
