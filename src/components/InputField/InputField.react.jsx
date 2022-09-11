@@ -144,7 +144,7 @@ export default function InputField(props) {
 
         if (e.key === "Enter") {
             e.target.blur();
-            props.onSubmit(e.target.name, e.target.value);
+            props.onSubmit(e.target.value);
         }
         if (e.key === "Escape") {
             e.target.value = "";
@@ -152,7 +152,7 @@ export default function InputField(props) {
     }
 
     let changeBlur = (e) => {
-        props.onSubmit(e.target.name, e.target.value);
+        props.onSubmit(e.target.value);
     };
 
     //-------------------------------------------------------------------
