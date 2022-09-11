@@ -25,6 +25,7 @@ OptionalImageField.propTypes = {
     content: PropTypes.shape({
         title: PropTypes.string,
         image: PropTypes.string,
+        aspectRatio: PropTypes.number,
     }),
     //=======================================
     // Quommon props
@@ -87,6 +88,7 @@ OptionalImageField.defaultProps = {
     content: {
         title: "Upload Image",
         image: "",
+        aspectRatio: 1,
     },
     //=======================================
     // Quommon props
@@ -208,6 +210,7 @@ export default function OptionalImageField(props) {
                 key={Math.random()}
                 isOpen={uploadModalOpen}
                 image={image !== "" ? image : ""}
+                aspectRatio={props.content?.aspectRatio}
                 onChange={handleChange}
             />
         </motion.div>

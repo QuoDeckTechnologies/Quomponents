@@ -16,19 +16,8 @@ export default {
         content: {
             defaultValue: {
                 title: "Upload",
-                icon: "",
-                actionButton: true,
-            },
-        },
-        withFile: {
-            defaultValue: {
-                type: "image/*",
-                capture: "",
-            },
-        },
-        isMultiple: {
-            table: {
-                defaultValue: false,
+                image: "",
+                aspectRatio: 1,
             },
         },
         withColor: {
@@ -99,14 +88,9 @@ export const Default = Template.bind({});
 Default.args = {
     content: {
         title: "Upload",
-        icon: "",
-        actionButton: true,
+        image: "",
+        aspectRatio: 1,
     },
-    withFile: {
-        type: "image/*",
-        capture: "",
-    },
-    isMultiple: false,
     withColor: {
         backgroundColor: "",
         accentColor: "",
