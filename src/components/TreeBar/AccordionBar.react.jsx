@@ -173,7 +173,6 @@ export default function AccordionBar(props) {
                         {props.createBtn && (
                             <Button
                                 url={props.createBtn}
-                                asSize="large"
                                 isCircular
                                 float-right
                                 withIcon={{
