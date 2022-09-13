@@ -9,7 +9,7 @@ import { hasValid } from "./common";
 //--------------------------------------
 // Import Component
 // -------------------------------------
-import OptionItemNine from "../OptionItem/OptionItemNine/OptionItemNine.react";
+import RangedListItem from "../OptionItem/RangedListItem/RangedListItem.react";
 
 describe("Option Item Nine", () => {
   // -------------------------------------
@@ -17,7 +17,7 @@ describe("Option Item Nine", () => {
   // -------------------------------------
 
   const args = {
-    target: OptionItemNine,
+    target: RangedListItem,
     required: {
       onClick: () => { },
       onShortFieldOneInput: () => { },
@@ -25,11 +25,11 @@ describe("Option Item Nine", () => {
       onInput: () => { },
     },
     translations: {
-      tgt: "OptionItemNine",
+      tgt: "RangedListItem",
       lang: { valid: "hi", invalid: "xx" },
       dictionary: JSON.stringify({
         hi: {
-          optionItemNine: {
+          RangedListItem: {
             placeholder: "प्रश्नोत्तरी परिणाम के लिए संदेश",
           },
         },
@@ -60,7 +60,7 @@ describe("Option Item Nine", () => {
   beforeEach(() => {
     jest.resetAllMocks();
     component = shallow(
-      <OptionItemNine
+      <RangedListItem
         content={{
           shortFieldOne: {
             targetName: "ShortFieldOne",

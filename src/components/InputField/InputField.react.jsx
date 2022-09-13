@@ -19,7 +19,7 @@ InputField.propTypes = {
     Use to below fields to decide InputField's properties
     */
     label: PropTypes.string,
-    value: PropTypes.string.isRequired,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     placeholder: PropTypes.string,
     type: PropTypes.string,
     multiline: PropTypes.bool,

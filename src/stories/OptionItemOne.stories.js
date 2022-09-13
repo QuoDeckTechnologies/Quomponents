@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import OptionItemOne from "../components/OptionItem/OptionItemOne/OptionItemOne.react";
 
 const dictionary = JSON.stringify({

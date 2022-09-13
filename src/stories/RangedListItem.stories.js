@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
-import OptionItemNine from "../components/OptionItem/OptionItemNine/OptionItemNine.react";
+import React from "react";
+import RangedListItem from "../components/OptionItem/RangedListItem/RangedListItem.react";
 
 const dictionary = JSON.stringify({
     hi: {
-        optionItemNine: {
+        RangedListItem: {
             placeholder: "प्रश्नोत्तरी परिणाम के लिए संदेश",
         },
     },
 });
 
 export default {
-    title: "Design System/OptionItem/OptionItemNine",
-    component: OptionItemNine,
+    title: "Design System/OptionItem/RangedListItem",
+    component: RangedListItem,
     argTypes: {
         minValue: {},
         maxValue: {},
@@ -96,7 +96,7 @@ export default {
 // Default
 // -------------------------------------------------------------
 const Template = (args) => {
-    return <OptionItemNine {...args} />;
+    return <RangedListItem {...args} />;
 };
 export const Default = Template.bind({});
 Default.args = {
@@ -125,7 +125,7 @@ Default.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "optionItemNine",
+        tgt: "RangedListItem",
         dictionary: dictionary,
     },
     isDisabled: false,
@@ -134,7 +134,7 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<OptionItemNine {...${JSON.stringify(
+            code: `<RangedListItem {...${JSON.stringify(
                 Default.args,
                 null,
                 2

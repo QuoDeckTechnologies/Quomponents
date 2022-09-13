@@ -173,7 +173,7 @@ export default function OptionalImageField(props) {
                 ) : (
                     <div
                         className={`qui-optional-image-field-container ${
-                            props.content?.aspectRatio < 1
+                            props.aspectRatio < 1
                                 ? "qui-oif-ht"
                                 : "qui-oif-wd"
                         }`}
@@ -197,7 +197,7 @@ export default function OptionalImageField(props) {
                         variant="outlined"
                         style={colors.button}
                     >
-                        {tObj?.title || props.content?.title}
+                        {tObj?.title || props.title}
                     </Button>
                 </div>
                 {image !== "" && (
@@ -214,7 +214,7 @@ export default function OptionalImageField(props) {
                 key={Math.random()}
                 isOpen={uploadModalOpen}
                 image={image !== "" ? image : ""}
-                aspectRatio={props.content?.aspectRatio}
+                aspectRatio={props.aspectRatio}
                 onChange={handleChange}
             />
         </motion.div>

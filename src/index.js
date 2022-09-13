@@ -66,7 +66,7 @@ import OptionalImageField from "./components/OptionalImageField/OptionalImageFie
 import OptionItemEight from "./components/OptionItem/OptionItemEight/OptionItemEight.react";
 import OptionItemFive from "./components/OptionItem/OptionItemFive/OptionItemFive.react";
 import OptionItemFour from "./components/OptionItem/OptionItemFour/OptionItemFour.react";
-import OptionItemNine from "./components/OptionItem/OptionItemNine/OptionItemNine.react";
+import RangedListItem from "./components/OptionItem/RangedListItem/RangedListItem.react";
 import OptionItemOne from "./components/OptionItem/OptionItemOne/OptionItemOne.react";
 import OptionItemSeven from "./components/OptionItem/OptionItemSeven/OptionItemSeven.react";
 import OptionItemSix from "./components/OptionItem/OptionItemSix/OptionItemSix.react";
@@ -237,7 +237,7 @@ export {
     OptionItemEight,
     OptionItemFive,
     OptionItemFour,
-    OptionItemNine,
+    RangedListItem,
     OptionItemOne,
     OptionItemSeven,
     OptionItemSix,

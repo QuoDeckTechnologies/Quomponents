@@ -9,16 +9,16 @@ import {
 } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
-import "./OptionItemNine.scss";
+import "./RangedListItem.scss";
 import "../../../common/stylesheets/overrule.scss";
 import InputField from "../../InputField/InputField.react";
 
-OptionItemNine.propTypes = {
+RangedListItem.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
     /**
-  OptionItemNine targetName, value, placeholder should be passed in content object
+  RangedListItem targetName, value, placeholder should be passed in content object
   */
     minValue: PropTypes.shape({
         value: PropTypes.number,
@@ -79,24 +79,24 @@ OptionItemNine.propTypes = {
   */
     isHidden: PropTypes.bool,
     /**
-  OptionItemNine component must have the onMinChange function passed as props
+  RangedListItem component must have the onMinChange function passed as props
   */
     onMinChange: PropTypes.func.isRequired,
     /**
-  OptionItemNine component must have the onMaxChange function passed as props
+  RangedListItem component must have the onMaxChange function passed as props
   */
     onMaxChange: PropTypes.func.isRequired,
     /**
-  OptionItemNine component must have the onContentChange function passed as props
+  RangedListItem component must have the onContentChange function passed as props
   */
     onContentChange: PropTypes.func.isRequired,
     /**
-  OptionItemNine component must have the onContentChange function passed as props
+  RangedListItem component must have the onContentChange function passed as props
   */
     onRemove: PropTypes.func,
 };
 
-OptionItemNine.defaultProps = {
+RangedListItem.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
@@ -116,7 +116,7 @@ OptionItemNine.defaultProps = {
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
 **/
-export default function OptionItemNine(props) {
+export default function RangedListItem(props) {
     //-------------------------------------------------------------------
     // 1. Destructuring content prop
     //-------------------------------------------------------------------

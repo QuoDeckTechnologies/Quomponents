@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import {
     getAnimation,
     getQuommons,
-    getTranslation,
+    // getTranslation,
 } from "../../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
@@ -108,7 +108,7 @@ export default function OptionItemOne(props) {
     //-------------------------------------------------------------------
     // 3. Translate the text objects in case their is a dictionary provided
     //-------------------------------------------------------------------
-    let tObj = getTranslation(props.withTranslation);
+    // let tObj = getTranslation(props.withTranslation);
     //-------------------------------------------------------------------
     // 4. Get animation of the component
     //-------------------------------------------------------------------
