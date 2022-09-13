@@ -297,7 +297,11 @@ export default function InputField(props) {
             );
         } else {
             return (
-                <TextField {...commonProperties} className="qui-short-field" />
+                <TextField
+                    {...commonProperties}
+                    className="qui-short-field"
+                    label={label}
+                />
             );
         }
     };

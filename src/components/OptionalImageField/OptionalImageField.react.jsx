@@ -22,11 +22,9 @@ OptionalImageField.propTypes = {
     /**
   OptionalImageField title, icon and actionButton has to be in content.
   */
-    content: PropTypes.shape({
-        title: PropTypes.string,
-        image: PropTypes.string,
-        aspectRatio: PropTypes.number,
-    }),
+    title: PropTypes.string,
+    image: PropTypes.string,
+    aspectRatio: PropTypes.number,
     //=======================================
     // Quommon props
     //=======================================
@@ -173,7 +171,13 @@ export default function OptionalImageField(props) {
                         ></i>
                     </div>
                 ) : (
-                    <div className={`qui-optional-image-field-container ${props.content?.aspectRatio<1? "qui-oif-ht":"qui-oif-wd"}`}>
+                    <div
+                        className={`qui-optional-image-field-container ${
+                            props.content?.aspectRatio < 1
+                                ? "qui-oif-ht"
+                                : "qui-oif-wd"
+                        }`}
+                    >
                         <img
                             className="qui-optional-image-field-image"
                             src={image}

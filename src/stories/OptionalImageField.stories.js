@@ -13,13 +13,9 @@ export default {
     title: "Design System/OptionalImageField",
     component: OptionalImageField,
     argTypes: {
-        content: {
-            defaultValue: {
-                title: "Upload",
-                image: "",
-                aspectRatio: 1,
-            },
-        },
+        title: "Upload",
+        image: "",
+        aspectRatio: 1,
         withColor: {
             table: {
                 category: "with-Params",
@@ -86,11 +82,9 @@ export default {
 const Template = (args) => <OptionalImageField {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    content: {
-        title: "Upload",
-        image: "",
-        aspectRatio: 1,
-    },
+    title: "Upload",
+    image: "",
+    aspectRatio: 1,
     withColor: {
         backgroundColor: "",
         accentColor: "",
