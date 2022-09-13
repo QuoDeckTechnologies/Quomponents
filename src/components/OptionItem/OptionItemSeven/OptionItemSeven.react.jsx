@@ -12,7 +12,7 @@ import "../../../common/stylesheets/common.css";
 import "./OptionItemSeven.scss";
 import "../../../common/stylesheets/overrule.scss";
 import InputField from "../../InputField/InputField.react";
-import OptionalImageField from "../../OptionalImageField/OptionalImageField.react";
+import ImageField from "../../ImageField/ImageField.react";
 import { FormControlLabel, Radio } from "@mui/material";
 
 OptionItemSeven.propTypes = {
@@ -191,7 +191,7 @@ export default function OptionItemSeven(props) {
           />
         </div>
         <div className="qui-option-item-upload-button">
-          <OptionalImageField
+          <ImageField
             content={{
               title: tObj?.uploadButton || null,
               icon: "fas fa-upload",

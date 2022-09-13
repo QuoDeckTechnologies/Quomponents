@@ -12,7 +12,7 @@ import "../../../common/stylesheets/common.css";
 import "./OptionItemFive.scss";
 import "../../../common/stylesheets/overrule.scss";
 import InputField from "../../InputField/InputField.react";
-import OptionalImageField from "../../OptionalImageField/OptionalImageField.react";
+import ImageField from "../../ImageField/ImageField.react";
 
 OptionItemFive.propTypes = {
   //=======================================
@@ -154,7 +154,7 @@ export default function OptionItemFive(props) {
     >
       <div className="qui-option-item-five-container">
         <div className="qui-option-item-five-upload-button">
-          <OptionalImageField
+          <ImageField
             content={{
               title: tObj?.uploadButton || content?.uploadButton,
               icon: "fas fa-upload",

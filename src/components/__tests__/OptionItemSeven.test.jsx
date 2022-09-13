@@ -154,7 +154,7 @@ describe("Option Item Seven", () => {
   });
 
   it("should render correctly when file is uploaded", async () => {
-    component.find("OptionalImageField").simulate("click", {});
+    component.find("ImageField").simulate("click", {});
     await pauseFor(100);
     expect(component.exists()).toBe(true);
   });

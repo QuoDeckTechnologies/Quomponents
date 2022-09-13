@@ -62,7 +62,7 @@ import MultiSelect from "./components/MultiSelect/MultiSelect.react";
 import NavBar from "./components/NavBar/NavBar/NavBar.react";
 import NuggetBlock from "./components/NuggetBlock/NuggetBlock.react";
 import NuggetCard from "./components/NuggetCard/NuggetCard.react";
-import OptionalImageField from "./components/OptionalImageField/OptionalImageField.react";
+import ImageField from "./components/ImageField/ImageField.react";
 import OptionItemEight from "./components/OptionItem/OptionItemEight/OptionItemEight.react";
 import OptionItemFive from "./components/OptionItem/OptionItemFive/OptionItemFive.react";
 import OptionItemFour from "./components/OptionItem/OptionItemFour/OptionItemFour.react";
@@ -233,7 +233,7 @@ export {
     NavBar,
     NuggetBlock,
     NuggetCard,
-    OptionalImageField,
+    ImageField,
     OptionItemEight,
     OptionItemFive,
     OptionItemFour,

@@ -135,7 +135,7 @@ describe("Option Item Three", () => {
     component
       .find(".qui-option-item-three-radio")
       .simulate("change", { target: { checked: true } });
-    component.find("OptionalImageField").simulate("click", {});
+    component.find("ImageField").simulate("click", {});
     await pauseFor(100);
   });
 
@@ -146,7 +146,7 @@ describe("Option Item Three", () => {
   });
 
   it("should render correctly when file is uploaded", async () => {
-    component.find("OptionalImageField").simulate("click", {});
+    component.find("ImageField").simulate("click", {});
     await pauseFor(100);
     expect(component.exists()).toBe(true);
   });

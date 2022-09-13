@@ -9,20 +9,20 @@ import { hasValid } from "./common";
 //--------------------------------------
 // Import Components
 // -------------------------------------
-import OptionalImageField from "../OptionalImageField/OptionalImageField.react";
+import ImageField from "../ImageField/ImageField.react";
 
-describe("OptionalImageField", () => {
+describe("ImageField", () => {
   // -------------------------------------
   // Run common tests
   // -------------------------------------
 
   const args = {
-    target: OptionalImageField,
+    target: ImageField,
     required: {
       onClick: () => { },
     },
     translations: {
-      tgt: "optionalImageField",
+      tgt: "ImageField",
       lang: { valid: "hi", invalid: "xx" },
       dictionary: JSON.stringify({
         hi: {
@@ -59,7 +59,7 @@ describe("OptionalImageField", () => {
   beforeEach(() => {
     jest.resetAllMocks();
     component = mount(
-      <OptionalImageField
+      <ImageField
         content={{
           title: "Upload",
           icon: "fas fa-user",

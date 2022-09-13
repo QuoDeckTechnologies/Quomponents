@@ -1,17 +1,17 @@
 import React from "react";
-import OptionalImageField from "../components/OptionalImageField/OptionalImageField.react";
+import ImageField from "../components/ImageField/ImageField.react";
 
 const dictionary = JSON.stringify({
     hi: {
-        optionalImageField: {
+        ImageField: {
             title: "अपलोड",
         },
     },
 });
 
 export default {
-    title: "Design System/OptionalImageField",
-    component: OptionalImageField,
+    title: "Design System/ImageField",
+    component: ImageField,
     argTypes: {
         title: "Upload",
         image: "",
@@ -72,14 +72,14 @@ export default {
         },
     },
     parameters: {
-        componentSubtitle: "Displays a OptionalImageField Component",
+        componentSubtitle: "Displays a ImageField Component",
         a11y: { disable: true },
     },
 };
 // -------------------------------------------------------------
 // Default
 // -------------------------------------------------------------
-const Template = (args) => <OptionalImageField {...args} />;
+const Template = (args) => <ImageField {...args} />;
 export const Default = Template.bind({});
 Default.args = {
     title: "Upload",
@@ -97,7 +97,7 @@ Default.args = {
     },
     withTranslation: {
         lang: "en",
-        tgt: "optionalImageField",
+        tgt: "ImageField",
         dictionary: dictionary,
     },
     isDisabled: false,
@@ -107,7 +107,7 @@ Default.args = {
 Default.parameters = {
     docs: {
         source: {
-            code: `<OptionalImageField {...${JSON.stringify(
+            code: `<ImageField {...${JSON.stringify(
                 Default.args,
                 null,
                 2

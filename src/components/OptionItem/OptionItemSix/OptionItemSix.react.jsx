@@ -11,7 +11,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../../common/stylesheets/common.css";
 import "./OptionItemSix.scss";
 import "../../../common/stylesheets/overrule.scss";
-import OptionalImageField from "../../OptionalImageField/OptionalImageField.react";
+import ImageField from "../../ImageField/ImageField.react";
 import InputField from "../../InputField/InputField.react";
 
 OptionItemSix.propTypes = {
@@ -165,7 +165,7 @@ export default function OptionItemSix(props) {
         <div className="qui-optionitem-flexone">
           <div className="qui-optionitem-flextwo">
             <div className="qui-option-item-upload-button">
-              <OptionalImageField
+              <ImageField
                 content={{
                   title: tObj?.uploadButton || content?.uploadButton,
                   icon: "fas fa-upload",

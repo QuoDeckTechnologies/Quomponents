@@ -11,16 +11,16 @@ import {
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
-import "./OptionalImageField.scss";
+import "./ImageField.scss";
 import "../../common/stylesheets/overrule.scss";
 import ImageUploadModal from "../ImageUploadModal/ImageUploadModal.react";
 
-OptionalImageField.propTypes = {
+ImageField.propTypes = {
     //=======================================
     // Component Specific props
     //=======================================
     /**
-  OptionalImageField title, icon and actionButton has to be in content.
+  ImageField title, icon and actionButton has to be in content.
   */
     title: PropTypes.string,
     image: PropTypes.string,
@@ -74,12 +74,12 @@ OptionalImageField.propTypes = {
   */
     isFluid: PropTypes.bool,
     /**
-  OptionalImageField component must have the onChange function passed as props
+  ImageField component must have the onChange function passed as props
   */
     onChange: PropTypes.func.isRequired,
 };
 
-OptionalImageField.defaultProps = {
+ImageField.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
@@ -121,7 +121,7 @@ const getColors = (withColor) => {
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
 **/
-export default function OptionalImageField(props) {
+export default function ImageField(props) {
     //-------------------------------------------------------------------
     // 1. Defining states and hooks
     //-------------------------------------------------------------------
