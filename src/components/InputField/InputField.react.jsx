@@ -143,20 +143,22 @@ export default function InputField(props) {
     }, [props.value]);
 
     function handleChange(e) {
-        setInput(e.target.value);
-        setCount(e.target.value.length);
+        if (!props.isDisabled) {
+            setInput(e.target.value);
+            setCount(e.target.value.length);
 
-        if (e.key === "Enter") {
-            e.target.blur();
-            props.onSubmit(e.target.value);
-        }
-        if (e.key === "Escape") {
-            e.target.value = "";
+            if (e.key === "Enter") {
+                e.target.blur();
+                props.onSubmit(e.target.value);
+            }
+            if (e.key === "Escape") {
+                e.target.value = "";
+            }
         }
     }
 
     let changeBlur = (e) => {
-        props.onSubmit(e.target.value);
+        if (!props.isDisabled) props.onSubmit(e.target.value);
     };
 
     //-------------------------------------------------------------------
