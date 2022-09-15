@@ -83,11 +83,9 @@ ImageField.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
-    content: {
-        title: "Upload Image",
-        image: "",
-        aspectRatio: 1,
-    },
+    title: "Upload Image",
+    image: "",
+    aspectRatio: 1,
     //=======================================
     // Quommon props
     //=======================================
@@ -125,7 +123,7 @@ export default function ImageField(props) {
     //-------------------------------------------------------------------
     // 1. Defining states and hooks
     //-------------------------------------------------------------------
-    const [image, setImage] = useState(props.content.image || "");
+    const [image, setImage] = useState(props.image || "");
     const [uploadModalOpen, setUploadModalOpen] = useState(false);
 
     //-------------------------------------------------------------------
@@ -173,9 +171,7 @@ export default function ImageField(props) {
                 ) : (
                     <div
                         className={`qui-optional-image-field-container ${
-                            props.aspectRatio < 1
-                                ? "qui-oif-ht"
-                                : "qui-oif-wd"
+                            props.aspectRatio < 1 ? "qui-oif-ht" : "qui-oif-wd"
                         }`}
                     >
                         <img

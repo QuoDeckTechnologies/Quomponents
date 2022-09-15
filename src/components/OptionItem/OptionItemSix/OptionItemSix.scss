@@ -67,10 +67,7 @@
   text-indent: 0;
 }
 
-.qui
-  .qui-option-item-six-container
-  .qui.qui-optional-image-field
-  .qui-optional-image-field-wrapper {
+.qui .qui-option-item-six-container .qui.qui-optional-image-field .qui-optional-image-field-wrapper {
   font-size: 1.01em;
 }
 
@@ -78,29 +75,32 @@
   .qui .qui-optionitem-flexone {
     display: block;
   }
+
   .qui .qui-optionitem-flextwo {
     display: flex;
     flex: 1;
   }
+
   .qui .qui-optionitem-flexthree {
     display: flex;
     margin-left: 0em;
   }
+
   .qui .qui-optionitem-six-inputfieldone {
     margin-right: 1.5em;
     display: flex;
     flex: 1;
   }
+
   .qui .qui-option-item-six-container .qui-optional-image-field-button {
     display: none;
   }
+
   .qui .qui-option-item-six-container .qui .qui-optional-image-field-icon {
     font-size: 1.6em;
   }
-  .qui
-    .qui-option-item-six-container
-    .qui.qui-optional-image-field
-    .qui-optional-image-field-middle-border {
+
+  .qui .qui-option-item-six-container .qui.qui-optional-image-field .qui-optional-image-field-middle-border {
     display: none;
   }
 }
@@ -110,36 +110,37 @@
     display: flex;
     flex: 1;
   }
+
   .qui .qui-optionitem-flexthree {
     display: flex;
     margin-right: 1.5em;
     flex: 0.8;
   }
+
   .qui .qui-optionitem-six-inputfieldone {
     margin-right: 0.5em;
   }
+
   .qui .qui-option-item-six-close-icon {
     top: -2.1em;
   }
+
   .qui .qui-option-item-six-container .qui-optional-image-field-button {
     display: block;
     padding: 0.2em 0.5em;
   }
-  .qui
-    .qui-option-item-six-container
-    .qui.qui-optional-image-field
-    .qui-optional-image-field-middle-border {
+
+  .qui .qui-option-item-six-container .qui.qui-optional-image-field .qui-optional-image-field-middle-border {
     display: block;
   }
+
   .qui .qui-option-item-six-container .qui .qui-optional-image-field-icon {
     border: none;
     font-size: 1.48em;
     padding: 0.09em 0.2em;
   }
-  .qui
-    .qui-option-item-six-container
-    .qui.qui-optional-image-field
-    .qui-optional-image-field-wrapper {
+
+  .qui .qui-option-item-six-container .qui.qui-optional-image-field .qui-optional-image-field-wrapper {
     border: 0.18em solid #ffbf00;
   }
 }
@@ -149,10 +150,12 @@
     display: flex;
     flex: 1;
   }
+
   .qui .qui-option-item-six-container .qui-optional-image-field-button {
     padding: 0.2em 1em;
     font-size: 0.8em;
   }
+
   .qui .qui-option-item-six-container .qui .qui-optional-image-field-icon {
     font-size: 1.6em;
     padding: 0.04em 0.2em;
