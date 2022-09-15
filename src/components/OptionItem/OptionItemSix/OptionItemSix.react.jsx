@@ -90,7 +90,7 @@ OptionItemSix.propTypes = {
     onHeaderChange: PropTypes.func.isRequired,
     onCaptionChange: PropTypes.func.isRequired,
     onImageChange: PropTypes.func.isRequired,
-    onRemove: PropTypes.func.isRequired,
+    onRemove: PropTypes.func,
 };
 
 OptionItemSix.defaultProps = {

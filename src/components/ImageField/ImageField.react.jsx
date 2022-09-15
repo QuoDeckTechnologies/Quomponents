@@ -187,15 +187,17 @@ export default function ImageField(props) {
                         className="qui-optional-image-field-middle-border"
                     ></div>
                 )}
-                <div className="qui-optional-image-field-button-container">
-                    <Button
-                        className="qui-optional-image-field-button"
-                        variant="outlined"
-                        style={colors.button}
-                    >
-                        {tObj?.title || props.title}
-                    </Button>
-                </div>
+                {(tObj?.title || props.title) && (
+                    <div className="qui-optional-image-field-button-container">
+                        <Button
+                            className="qui-optional-image-field-button"
+                            variant="outlined"
+                            style={colors.button}
+                        >
+                            {tObj?.title || props.title}
+                        </Button>
+                    </div>
+                )}
                 {image !== "" && (
                     <div
                         className={`qui-optional-image-field-action-icon`}
