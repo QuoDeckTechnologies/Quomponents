@@ -20,6 +20,8 @@ DateField.propTypes = {
     Use to define label in DateField component
     */
     label: PropTypes.string,
+    value: PropTypes.number,
+
     //=======================================
     // Quommon props
     //=======================================
@@ -106,19 +108,19 @@ export default function DateField(props) {
     //-------------------------------------------------------------------
     // 2. Declaration of DateFiled's value
     //-------------------------------------------------------------------
-    const [startDate, setStartDate] = useState(new Date());
+    const [startDate, setStartDate] = useState(props.value || new Date());
 
     const datepicker = useRef();
     function handleClickDatepickerIcon() {
-        const datepickerElement = datepicker.current;
+        const datepickerElement = datepicker?.current;
         datepickerElement.setFocus(true);
-    };
+    }
     //-------------------------------------------------------------------
     // 3. Use to set Color in DateField
     //-------------------------------------------------------------------
-    let Color = {
-        backgroundColor: props.withColor?.backgroundColor,
-        color: props.withColor?.textColor,
+    const colorStyle = {
+        backgroundColor: props.withColor?.backgroundColor || "#AAAAAA29",
+        color: props.withColor?.textColor || "#666666",
         borderBottomColor: `${props.withColor?.accentColor}`,
     };
     //-------------------------------------------------------------------
@@ -128,10 +130,10 @@ export default function DateField(props) {
     let label = props.label;
     if (
         props.withTranslation?.lang &&
-        props.withTranslation.lang !== "" &&
-        props.withTranslation.lang !== "en"
+        props.withTranslation?.lang !== "" &&
+        props.withTranslation?.lang !== "en"
     ) {
-        tObj = getTranslation(props.withTranslation)
+        tObj = getTranslation(props.withTranslation);
         label = tObj?.label || props.label;
     }
     //-------------------------------------------------------------------
@@ -145,21 +147,20 @@ export default function DateField(props) {
             animate={animate.to}
             className={`qui ${quommonClasses.parentClasses}`}
         >
-            <div className={`qui-date-field-container ${quommonClasses.childClasses}`} >
-                <div className="qui-date-field" style={Color}>
-                    <div className="qui-date-field-label">
-                        {label}
-                    </div>
+            <div
+                className={`qui-date-field-container ${quommonClasses.childClasses}`}
+                onClick={() => handleClickDatepickerIcon()}
+            >
+                <div className="qui-date-field" style={colorStyle}>
+                    <div className="qui-date-field-label">{label}</div>
                     <div>
-                        <i className={`far fa-calendar qui-calendar-icon`}
-                            onClick={() => handleClickDatepickerIcon()}
-                        ></i>
+                        <i className={`far fa-calendar qui-calendar-icon`}></i>
                         <DatePicker
                             className="qui-date-field-date-picker"
                             selected={startDate}
                             onChange={(date) => {
-                                props.onClick(date)
-                                setStartDate(date)
+                                props.onClick(date);
+                                setStartDate(date);
                             }}
                             onKeyDown={(e) => {
                                 e.preventDefault();
@@ -174,11 +175,11 @@ export default function DateField(props) {
                             scrollableYearDropdown
                             yearDropdownItemNumber={100}
                             ref={datepicker}
-                            popperProps={{ strategy: 'fixed' }}
+                            popperProps={{ strategy: "fixed" }}
                         />
                     </div>
                 </div>
             </div>
-        </motion.div >
+        </motion.div>
     );
 }
