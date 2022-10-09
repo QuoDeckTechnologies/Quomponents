@@ -223,12 +223,21 @@ export default function LinkIcon(props) {
                     href={props.url}
                     onClick={props.onClick}
                 >
-                    <i
-                        className={`${props.icon} qui-linkicon-icon  ${
-                            tilt ? "tilt" : ""
-                        }`}
-                        style={{ color: colors.color }}
-                    ></i>
+                    {props.icon.includes(".png") ? (
+                        <img
+                            src={props.icon}
+                            className={tilt ? "tilt" : ""}
+                            alt={props.title}
+                            style={{ width: "60%" }}
+                        />
+                    ) : (
+                        <i
+                            className={`${props.icon} qui-linkicon-icon  ${
+                                tilt ? "tilt" : ""
+                            }`}
+                            style={{ color: colors.color }}
+                        ></i>
+                    )}
                     <br />
                     <div
                         className={`qui-linkicon-caption`}
