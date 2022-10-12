@@ -226,7 +226,7 @@ export default function OverlayMenu(props) {
                   {withLabel?.format === "label" ? withLabel?.content : ""}
                 </div>
                 <Avatar {...props} />
-                <div className={`qui-profileCaption size-${props.asSize}`}>
+                <div className={`qui-profileCaption`}>
                   {withLabel?.format === "caption" ? withLabel?.content : ""}
                 </div>
               </div>

@@ -81,9 +81,12 @@
   }
 
   // For profile caption
-  .qui .qui-profileContainer .qui-profileCaption {
-    font-size: 0.7em;
-    padding: 0.5em;
+  .qui .qui-profileContainer {
+    text-align: center;
+    .qui-profileCaption {
+      font-size: 0.7em;
+      padding: 0.5em;
+    }
   }
 
   .qui .qui-profileAvatar .qui-icon i {
