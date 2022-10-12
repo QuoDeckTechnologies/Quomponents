@@ -242,7 +242,7 @@ export default function SlideChoice(props) {
                   secondaryTextColor: props.withColor?.secondaryTextColor,
                 }}
                 asEmphasis={props.asEmphasis}
-                asPadded="fitted"
+                asPadded="relaxed"
                 asSize="normal"
                 options={[
                   {

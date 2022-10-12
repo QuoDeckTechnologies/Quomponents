@@ -111,8 +111,8 @@ ColoredBackgroundImage.args = {
   ...Default.args,
   withColor: {
     backgroundColor: "#0000FF",
-    textBlockTextColor: "#FFFF",
-    textBlockBackgroundColor: "#AB47BC",
+    textBlockTextColor: "#FFF",
+    textBlockBackgroundColor: "#AD292980",
   },
 };
 ColoredBackgroundImage.parameters = {

@@ -237,13 +237,13 @@ export default function Anagram(props) {
               alt=""
             />
           )}
-          <div
+          <h5
             className={`qui-anagram-question variant-${props.asVariant}-text`}
             style={{ color: props.withColor?.questionColor }}
             key={"anagram-question-" + props.slideId}
           >
             {props.data?.question}
-          </div>
+          </h5>
           <p
             className="qui-anagram-answer"
             style={{ color: props.withColor?.answerColor }}
@@ -255,6 +255,7 @@ export default function Anagram(props) {
             label={inputFieldLable}
             withColor={inputFieldColors}
             onSubmit={(name, value) => setState(value)}
+            onBlur={(name, value) => setState(value)}
             name="anagram-input-field"
             withTranslation={props.withTranslation}
           />

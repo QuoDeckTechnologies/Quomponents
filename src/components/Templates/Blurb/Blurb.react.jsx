@@ -217,12 +217,12 @@ export default function Blurb(props) {
           <div className="qui-blurb-slide-header">
             {getView(data)}
             <div className="qui-blurb-card-subtitle">
-              <p
+              <h5
                 className="qui-blurb-subtitle"
                 style={{ color: withColor?.textColor }}
               >
                 {props.data?.blurb}
-              </p>
+              </h5>
             </div>
           </div>
         </div>

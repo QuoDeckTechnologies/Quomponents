@@ -115,4 +115,16 @@ describe("OptionalImageField", () => {
       .simulate("mouseleave");
     expect(component.exists()).toBe(true);
   });
+
+  it("should render correctly when hovered", () => {
+    component
+      .find(".qui-optional-image-field-container")
+      .at(0)
+      .simulate("mouseenter");
+    component
+      .find(".qui-optional-image-field-container")
+      .at(0)
+      .simulate("mouseleave");
+    expect(component.exists()).toBe(true);
+  });
 });

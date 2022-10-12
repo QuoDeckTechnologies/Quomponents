@@ -94,7 +94,7 @@ Default.args = {
     slideHeaderAccentColor: "#AD2929",
     slideHeaderBackgroundColor: "#ad292980",
     slideHeaderTextColor: "#ffffff",
-    textBlockBackgroundColor: "",
+    textBlockBackgroundColor: "#AD292980",
     textBlockTextColor: "#ffffff",
   },
   withAnimation: {
