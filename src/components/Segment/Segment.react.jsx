@@ -15,7 +15,7 @@ Segment.propTypes = {
   /**
     Segment can recieve children as props, wrap child component with Segment component to use.
     */
-  children: PropTypes.element,
+  children: PropTypes.node,
   /**
     Use for rounded corners
     */
@@ -87,6 +87,8 @@ export default function Segment(props) {
   //-------------------------------------------------------------------
   let quommonClasses = getQuommons(props, "segment");
   if (props.isCircular) quommonClasses.parentClasses += ` is-circular`;
+  if (props.isTopCircular) quommonClasses.parentClasses += ` is-top-circular`;
+  if (props.isBottomCircular) quommonClasses.parentClasses += ` is-bottom-circular`;
   //-------------------------------------------------------------------
   // 7. Get animation of the component
   //-------------------------------------------------------------------

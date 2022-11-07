@@ -11,6 +11,18 @@ export default {
         defaultValue: false,
       },
     },
+    isTopCircular: {
+      table: {
+        category: "is-Toggles",
+        defaultValue: false,
+      },
+    },
+    isBottomCircular: {
+      table: {
+        category: "is-Toggles",
+        defaultValue: false,
+      },
+    },
     asPadded: {
       control: "select",
       options: ["fitted", "compact", "normal", "relaxed", "zero","zero"],
@@ -81,6 +93,8 @@ const Template = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   isCircular: false,
+  isTopCircular: false,
+  isBottomCircular: false,
   asFloated: "inline",
   asPadded: "normal",
   withColor: {
