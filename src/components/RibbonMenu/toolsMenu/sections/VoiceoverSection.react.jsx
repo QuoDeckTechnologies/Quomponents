@@ -54,7 +54,7 @@ export default function VoiceoverSection(props) {
   );
 
   let voiceoverSection = {
-    voiceover: "Voicerover",
+    voiceover: "Voiceover",
     upload: "Upload",
     copySlidesToScript: "Copy Slides to Script",
     downloadScript: "Download Script",
@@ -159,8 +159,8 @@ export default function VoiceoverSection(props) {
               </div>
             </div>
           </div>
-          <div className="qui-ribbon-menu-label-file">
-            {voiceoverSection?.voiceover || "Voicerover"}
+          <div className="qui-ribbon-menu-label-file qt-sm">
+            {voiceoverSection?.voiceover || "Voiceover"}
           </div>
         </div>
       </div>

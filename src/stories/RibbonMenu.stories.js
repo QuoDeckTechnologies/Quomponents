@@ -166,6 +166,7 @@ Default.args = {
     setUserOptions: (view) => {
       return view;
     },
+    uploadQuestionBank:()=>console.log('this is the')
   },
   deck: {
     navEnabled: false,

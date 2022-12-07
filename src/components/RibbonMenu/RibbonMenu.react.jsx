@@ -110,7 +110,7 @@ export default function RibbonMenu(props) {
   return (
     <div className={`qui ${quommonClasses.parentClasses}`}>
       <div
-        className={`qt-shadow ${quommonClasses.childClasses} qui-ribbon-menu`}
+        className={`${quommonClasses.childClasses} qui-ribbon-menu`}
       >
         {ribbonMenu(props.asEmphasis)}
       </div>

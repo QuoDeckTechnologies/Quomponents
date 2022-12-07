@@ -2,7 +2,7 @@
 /* Ribbon Menu Styling Definitions */
 /* ================================================= */
 .qui-ribbon-menu {
-  height: 112px;
+  // height: 112px;
   width: 100%;
   display: flex;
   align-items: flex-end;
@@ -41,13 +41,14 @@
 }
 
 .qui-ribbon-menu-label-file {
-  position: relative;
+  // position: relative;
   // font-size: 10px;
-  top: 15px;
+  // top: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #666666;
+  margin-top: 0.8em;
 }
 
 /* ================================================= */

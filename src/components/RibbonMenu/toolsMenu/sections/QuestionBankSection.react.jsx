@@ -71,9 +71,7 @@ export default function QuestionBankSection(props) {
   //-------------------------------------------------------------------
   // 2. Question Bank function
   //-------------------------------------------------------------------
-  const handleQuestionBank = () => {
-    //Logic here
-  };
+  const handleQuestionBank = props.actions.uploadQuestionBank
 
   // ========================= Render Function =================================
   return (
@@ -81,7 +79,7 @@ export default function QuestionBankSection(props) {
       <div className={`${quommonClasses.childClasses}`}>
         <div className="qui-ribbon-menu-question-bank-section">
           <IconLink
-            onClick={handleQuestionBank}
+            onClick={(e)=>console.log(e)}
             asSize="small"
             asPadded="fitted"
             withColor={{
@@ -89,6 +87,7 @@ export default function QuestionBankSection(props) {
               hoverTextColor: "#666666",
             }}
             withIcon={{ icon: "fab fa-stack-exchange" }}
+            link='#'
           />
           <div className="qui-ribbon-menu-label" onClick={handleQuestionBank}>
             {questionBank}

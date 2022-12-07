@@ -266,9 +266,8 @@ export default function IconLink(props) {
       onMouseDown={() => setTilt(true)}
       onMouseUp={() => setTilt(false)}
     >
-      <a
+      <div
         className="qui-iconlink-anchor"
-        href={props.link}
         style={{ color: props.withColor?.textColor }}
       >
         <div
@@ -303,7 +302,7 @@ export default function IconLink(props) {
             </div>
           </div>
         </div>
-      </a>
+      </div>
     </motion.div>
   );
 }
