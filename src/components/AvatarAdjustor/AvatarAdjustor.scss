@@ -37,8 +37,12 @@
 }
 
 .qui .qui-avatar-adjustor-modal-editor-container {
+    display: block;
     width: 100%;
-    background-color: #eeeeee;
+    font-size: 1em;
+    line-height: 1.4;
+    padding: 1.5rem;
+    background: #fff;
 }
 
 .qui .qui-avatar-adjustor-modal-editor-image-uploader {
@@ -50,7 +54,7 @@
 
 .qui .qui-avatar-adjustor-modal-editor {
     width: 100%;
-    background: #eee;
+    background: #fff;
 }
 
 .qui .qui-avatar-adjustor-buttons {
