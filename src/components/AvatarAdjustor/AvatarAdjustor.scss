@@ -1,0 +1,68 @@
+/* ================================================= */
+/* AvatarAdjustor Container Definitions */
+/* ================================================= */
+.qui .qui-avatar-adjustor-modal-container {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 6px 6px 0px #00000052;
+    position: relative;
+    max-width: 50em;
+}
+
+.qui .qui-avatar-adjustor-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1px;
+    background-color: #bdbdbd;
+    border-radius: 0.8em 0.8em 0 0;
+}
+
+.qui .qui-avatar-adjustor-modal-header h2 {
+    margin: 0.5em;
+}
+
+.qui .qui-avatar-adjustor-modal-header i {
+    cursor: pointer;
+    font-size: 1.5em;
+    background: #666666;
+    color: #fff;
+    padding: 0.5em;
+    margin-bottom: 0.5em;
+    border-radius: 0px 12px 2px 2px;
+    box-shadow: 0 0 0 0 #22242626 inset;
+    position: relative;
+    top: -2px;
+    right: -1px;
+}
+
+.qui .qui-avatar-adjustor-modal-editor-container {
+    width: 100%;
+    background-color: #eeeeee;
+}
+
+.qui .qui-avatar-adjustor-modal-editor-image-uploader {
+    background: #eee;
+    width: 630px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.qui .qui-avatar-adjustor-modal-editor {
+    width: 100%;
+    background: #eee;
+}
+
+.qui .qui-avatar-adjustor-buttons {
+    width: 100%;
+    background-color: #efefef;
+    display: flex;
+    justify-content: space-between;
+    height: 64px;
+    padding: 1rem;
+    button {
+        margin-left: 0.5em;
+        padding: 1.5em 2.5em;
+        border-radius: 0.2em;
+    }
+}
