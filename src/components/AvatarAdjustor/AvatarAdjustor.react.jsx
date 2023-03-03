@@ -52,13 +52,17 @@ AvatarAdjustor.propTypes = {
     Use to show/hide the component
     */
     isHidden: PropTypes.bool,
+    /**
+    AvatarAdjustor component should have the onChange function passed as props
+    */
+    onChange: PropTypes.func,
 };
 
 AvatarAdjustor.defaultProps = {
     //=======================================
     // Component Specific props
     //=======================================
-    title: "Create a Reward",
+    title: "Upload Image",
     image: null,
     isOpen: true,
     //=======================================
@@ -166,6 +170,7 @@ export default function AvatarAdjustor(props) {
     // ========================= Render Function =================================
     return (
         <Modal
+            dimmer="blurring"
             size="small"
             open={openUploadModal}
             className={`qui ${quommonClasses.parentClasses}`}
