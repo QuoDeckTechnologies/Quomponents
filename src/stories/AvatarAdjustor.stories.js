@@ -4,8 +4,7 @@ import AvatarAdjustor from "../components/AvatarAdjustor/AvatarAdjustor.react";
 const dictionary = JSON.stringify({
     hi: {
         rewardUploadModal: {
-            title: "एक इनाम बनाएँ",
-            hititle: "पुरस्कार विवरण",
+            title: "तस्विर अपलोड करना",
             buttons: {
                 chooseFile: "फाइलें चुनें",
                 cancel: "रद्द करें",
@@ -19,19 +18,9 @@ export default {
     title: "Design System/AvatarAdjustor",
     component: AvatarAdjustor,
     argTypes: {
-        title: "Create a Reward",
+        title: "Upload Image",
         image: "",
-        rewardName: "",
-        rewardHeader: "",
-        rewardContent: "",
-        aspectRatio: 1,
         isOpen: {
-            table: {
-                category: "is-Toggles",
-                defaultValue: true,
-            },
-        },
-        isEditable: {
             table: {
                 category: "is-Toggles",
                 defaultValue: true,
@@ -82,14 +71,9 @@ export default {
 const Template = (args) => <AvatarAdjustor {...args} />;
 export const Default = Template.bind({});
 Default.args = {
-    title: "Create a Reward",
+    title: "Upload Image",
     image: "",
-    rewardName: "Name",
-    rewardHeader: "Header",
-    rewardContent: "Content",
-    aspectRatio: 1,
     isOpen: true,
-    isEditable: true,
     withColor: {
         textColor: "#121212",
         accentColor: "#bdbdbd",

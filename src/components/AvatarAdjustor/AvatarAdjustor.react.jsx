@@ -2,18 +2,16 @@
 import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
 import Modal from "@mui/material/Modal";
+import { Button, Icon } from 'semantic-ui-react'
+import AvatarEditor from "react-avatar-editor";
+import Slider from "react-rangeslider";
 import { getQuommons, getTranslation } from "../../common/javascripts/helpers";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "../../common/stylesheets/common.css";
 import "./AvatarAdjustor.scss";
 import "../../common/stylesheets/overrule.scss";
-import InlineEdit from "../InlineEdit/InlineEdit.react"
-// import Button from "../Buttons/Button/Button.react";
-import ImageField from "../ImageField/ImageField.react";
 import 'semantic-ui-css/semantic.min.css'
-import { Button, Icon, Input, Label, Card } from 'semantic-ui-react'
-import AvatarEditor from "react-avatar-editor";
-import Slider from "react-rangeslider";
+import 'react-rangeslider/lib/index.css'
 
 AvatarAdjustor.propTypes = {
     //=======================================
@@ -25,21 +23,13 @@ AvatarAdjustor.propTypes = {
     title: PropTypes.string.isRequired,
     /**
     /**
-    Use to provide initial value for reward's image, name, header and content
+    Use to provide initial value for image
     */
     image: PropTypes.string,
-    /**
-    Use to define aspect ratio of the image editor
-    */
-    aspectRatio: PropTypes.number,
     /**
     Use to define if modal is open
     */
     isOpen: PropTypes.bool.isRequired,
-    /**
-    Use to define if modal is Editable
-    */
-    isEditable: PropTypes.bool.isRequired,
     //=======================================
     // Quommon props
     //=======================================
@@ -63,11 +53,6 @@ AvatarAdjustor.propTypes = {
     Use to show/hide the component
     */
     isHidden: PropTypes.bool,
-    /**
-    rewardUploadModal component should have the onChange function passed as props
-    */
-    onSubmit: PropTypes.func,
-    onChange: PropTypes.func,
 };
 
 AvatarAdjustor.defaultProps = {
@@ -76,39 +61,37 @@ AvatarAdjustor.defaultProps = {
     //=======================================
     title: "Create a Reward",
     image: null,
-    rewardName: null,
-    rewardHeader: null,
-    rewardContent: null,
-    aspectRatio: 1,
     isOpen: true,
-    isEditable: true,
     //=======================================
     // Quommon props
     //=======================================
     withColor: null,
     withTranslation: null,
     isHidden: false,
-    isFluid: false,
 };
 /**
 ## Notes
 - The design system used for this component is Material UI (@mui/material)
+- The design system used for this component is Slider (@react-rangeslider)
+- The design system used for this component is AvatarEditor (@react-avatar-editor)
 - Pass inline styles to the component to override any of the component css
 - Or add custom css in overrule.scss to override the component css
 **/
 export default function AvatarAdjustor(props) {
-    const { withColor, isEditable } = props;
     //-------------------------------------------------------------------
-    // 1. useRef hook for file upload
+    // 1. Destructuring data from props
     //-------------------------------------------------------------------
-    const setEditorRef = useRef();
+    const { withColor, title } = props;
     //-------------------------------------------------------------------
-    // 2. Defining state and variable
+    // 2. useRef hook for file upload
+    //-------------------------------------------------------------------
+    const editorRef = useRef();
+    //-------------------------------------------------------------------
+    // 3. Defining state and variable
     //-------------------------------------------------------------------
     const [zoom, setZoom] = useState(10);
-    const [imageFile, setImageFile] = useState("");
-    const [isGif, setIsGif] = useState(false);
-    const [image, setImage] = useState(props.image ? props.image : null);
+    const [image, setImage] = useState(props.image ? props.image : "/assets/default.jpeg");
+    const [imageType, setImageType] = useState(null);
     const [openUploadModal, setOpenUploadModal] = useState(props.isOpen);
 
     useEffect(() => {
@@ -117,15 +100,46 @@ export default function AvatarAdjustor(props) {
     //-------------------------------------------------------------------
     // 4. Function to upload image
     //-------------------------------------------------------------------
-    const handleChange = (img) => {
-        setImage(img);
+    const handleChange = (e) => {
+        let reader = new FileReader();
+        let fileInfo;
+        let file = e.target.files[0];
+        setImageType(file.type);
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+            fileInfo = {
+                base64: reader.result,
+                file: file,
+            };
+            setImage(fileInfo);
+        };
     };
 
     const handleSave = () => {
-        if (props.onSubmit) props.onSubmit({
-            Image: image,
-            Name: "rewardName",
-        });
+        if (image) {
+            // If the image uploaded is a gif, convert it to a Base64 string without canvas
+            if (imageType === "image/gif") {
+                props.onChange(image.base64);
+            }
+            // If the image uploaded is not a gif, convert it to a jpg with 80% compression, or to a png
+            // and then a Base64 string with canvas
+            else if (imageType === "image/jpeg") {
+                let newImage = editorRef.current
+                    ?.getImage()
+                    .toDataURL("image/jpeg", 0.8);
+                props.onChange(newImage);
+            } else if (imageType === "image/png") {
+                let newImage = editorRef.current
+                    ?.getImage()
+                    .toDataURL("image/png");
+                props.onChange(newImage);
+            } else {
+                let newImage = editorRef.current
+                    ?.getImage()
+                    .toDataURL("image/jpeg", 0.8);
+                props.onChange(newImage);
+            }
+        }
     };
 
     const handleCancel = () => {
@@ -135,8 +149,6 @@ export default function AvatarAdjustor(props) {
     const handleZoom = (value) => {
         setZoom(value)
     };
-
-    let srcFile = imageFile === "" ? props.image : imageFile.base64;
     //-------------------------------------------------------------------
     // 5. Set the classes
     //-------------------------------------------------------------------
@@ -167,44 +179,42 @@ export default function AvatarAdjustor(props) {
             <div className="qui-avatar-adjustor-modal-container">
                 <div className={`qui-avatar-adjustor-modal-header ${quommonClasses.childClasses}`}>
                     <h2 style={{ color: withColor?.textColor }}>
-                        {tObj?.title || "Upload Image"}
+                        {tObj?.title || title}
                     </h2>
                     <i className="fa fa-times"
                         onClick={() => { setOpenUploadModal(false) }}
                     />
                 </div>
-                <br />
                 <div className="qui-avatar-adjustor-modal-editor-container">
                     <div className="qui-avatar-adjustor-modal-editor-image-uploader">
-                        <input type="file" />
+                        <input
+                            type="file"
+                            onChange={handleChange}
+                            onClick={(e) => (e.target.value = "")}
+                        />
                         <div>
                             <b>Note</b>- The preferred size for image upload is 925*650 pixels.
                         </div>
                     </div>
-                    <div>
-                        <div className="qui-avatar-adjustor-modal-editor">
-                            <AvatarEditor
-                                ref={setEditorRef}
-                                image={srcFile}
-                                width={300}
-                                height={235}
-                                border={0}
-                                color={[255, 255, 255, 0.6]} // RGBA
-                                scale={zoom / 10}
-                                rotate={0}
-                            />
-                        </div>
-                        <div className="slider" style={{ width: "auto" }}>
-                            <Slider
-                                min={0}
-                                max={100}
-                                value={zoom}
-                                onChange={handleZoom}
-                            />
-                        </div>
+                    <div className="qui-avatar-adjustor-modal-editor">
+                        <AvatarEditor
+                            ref={editorRef}
+                            image={image.file ? image.file : image}
+                            width={600}
+                            height={250}
+                            border={0}
+                            color={[255, 255, 255, 0.6]} // RGBA
+                            scale={zoom / 10}
+                            rotate={0}
+                        />
+                        <Slider
+                            min={0}
+                            max={100}
+                            value={zoom}
+                            onChange={handleZoom}
+                        />
                     </div>
                 </div>
-                <br />
                 <div className="qui-avatar-adjustor-buttons">
                     <Button
                         onClick={handleCancel}
@@ -223,7 +233,7 @@ export default function AvatarAdjustor(props) {
                         <Icon name='check' className="qui-save-button-icon" />
                     </Button>
                 </div>
-            </div >
+            </div>
         </Modal >
     );
 }
