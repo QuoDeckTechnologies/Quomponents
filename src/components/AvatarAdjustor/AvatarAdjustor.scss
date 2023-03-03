@@ -47,7 +47,7 @@
 
 .qui .qui-avatar-adjustor-modal-editor-image-uploader {
     background: #eee;
-    width: 630px;
+    width: 100%;
     padding: 20px;
     margin-bottom: 20px;
 }
@@ -55,11 +55,11 @@
 .qui .qui-avatar-adjustor-modal-editor {
     width: 100%;
     background: #fff;
-    // .canvas {
-    //     width: 100% !important;
-    //     height: 30% !important;
-    //     display: inline-block;
-    // }
+    canvas {
+        width: 100% !important;
+        height: 20em !important;
+        display: inline-block;
+    }
 }
 
 .qui .qui-avatar-adjustor-buttons {

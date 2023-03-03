@@ -1,8 +1,7 @@
 // Import npm packages
 import React, { useState, useRef, useEffect } from "react";
 import PropTypes from "prop-types";
-import Modal from "@mui/material/Modal";
-import { Button, Icon } from 'semantic-ui-react'
+import { Button, Icon, Modal } from 'semantic-ui-react'
 import AvatarEditor from "react-avatar-editor";
 import Slider from "react-rangeslider";
 import { getQuommons, getTranslation } from "../../common/javascripts/helpers";
@@ -167,13 +166,8 @@ export default function AvatarAdjustor(props) {
     // ========================= Render Function =================================
     return (
         <Modal
+            size="small"
             open={openUploadModal}
-            sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-            }}
             className={`qui ${quommonClasses.parentClasses}`}
         >
             <div className="qui-avatar-adjustor-modal-container">
@@ -200,8 +194,8 @@ export default function AvatarAdjustor(props) {
                         <AvatarEditor
                             ref={editorRef}
                             image={image.file ? image.file : image}
-                            width={600}
-                            height={250}
+                            // width={600}
+                            // height={250}
                             border={0}
                             color={[255, 255, 255, 0.6]} // RGBA
                             scale={zoom / 10}
