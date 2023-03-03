@@ -70,3 +70,23 @@
         border-radius: 0.2em;
     }
 }
+
+.qui {
+    &.qui-avatar-adjustor-modal {
+        .qui-save-button {
+            background: #ffb82f none;
+            .check.icon {
+                background: #bdbdbd;
+            }
+            .upload.icon {
+                background: #bdbdbd;
+            }
+        }
+        .qui-cancel-button {
+            background: #666666;
+            .delete.icon {
+                background: #bdbdbd;
+            }
+        }
+    }
+}

@@ -106,25 +106,10 @@ export default function AvatarAdjustor(props) {
     // 2. Defining state and variable
     //-------------------------------------------------------------------
     const [zoom, setZoom] = useState(10);
+    const [imageFile, setImageFile] = useState("");
+    const [isGif, setIsGif] = useState(false);
     const [image, setImage] = useState(props.image ? props.image : null);
     const [openUploadModal, setOpenUploadModal] = useState(props.isOpen);
-    const [width, setWidth] = useState(window.innerWidth >= 768 ? 180 : 85);
-    //-------------------------------------------------------------------
-    // 3. Get width of the editor
-    //-------------------------------------------------------------------
-    const resizeHandler = () => {
-        if (window.innerWidth >= 768) {
-            setWidth(300);
-        } else {
-            setWidth(170);
-        }
-    };
-    useEffect(() => {
-        window.addEventListener("resize", resizeHandler);
-        return () => {
-            window.removeEventListener("resize", resizeHandler);
-        };
-    }, []);
 
     useEffect(() => {
         setOpenUploadModal(props.isOpen);
@@ -146,6 +131,12 @@ export default function AvatarAdjustor(props) {
     const handleCancel = () => {
         setOpenUploadModal(false)
     }
+
+    const handleZoom = (value) => {
+        setZoom(value)
+    };
+
+    let srcFile = imageFile === "" ? props.image : imageFile.base64;
     //-------------------------------------------------------------------
     // 5. Set the classes
     //-------------------------------------------------------------------
@@ -190,36 +181,46 @@ export default function AvatarAdjustor(props) {
                             <b>Note</b>- The preferred size for image upload is 925*650 pixels.
                         </div>
                     </div>
-                    <div className="qui-avatar-adjustor-modal-editor">
-                        <AvatarEditor
-                            ref={setEditorRef}
-                            image={"srcFile"}
-                            width={300}
-                            height={235}
-                            border={0}
-                            color={[255, 255, 255, 0.6]} // RGBA
-                            scale={zoom / 10}
-                            rotate={0}
-                        />
-                    </div>
-                    <div className="slider" style={{ width: "auto" }}>
-                        <Slider
-                            min={0}
-                            max={100}
-                            value={zoom}
-                            onChange={"this.handleZoom"}
-                        />
+                    <div>
+                        <div className="qui-avatar-adjustor-modal-editor">
+                            <AvatarEditor
+                                ref={setEditorRef}
+                                image={srcFile}
+                                width={300}
+                                height={235}
+                                border={0}
+                                color={[255, 255, 255, 0.6]} // RGBA
+                                scale={zoom / 10}
+                                rotate={0}
+                            />
+                        </div>
+                        <div className="slider" style={{ width: "auto" }}>
+                            <Slider
+                                min={0}
+                                max={100}
+                                value={zoom}
+                                onChange={handleZoom}
+                            />
+                        </div>
                     </div>
                 </div>
                 <br />
                 <div className="qui-avatar-adjustor-buttons">
-                    <Button onClick={handleCancel} icon labelPosition='left'>
+                    <Button
+                        onClick={handleCancel}
+                        icon
+                        labelPosition='left'
+                        className="qui-cancel-button">
                         {tObj?.buttons?.cancel || "Cancel"}
-                        <Icon name='delete' />
+                        <Icon name='delete' className="qui-cancel-button-icon" />
                     </Button>
-                    <Button onClick={handleSave} icon labelPosition='right'>
-                        {tObj?.buttons?.save || "save"}
-                        <Icon name='check' />
+                    <Button
+                        onClick={handleSave}
+                        icon
+                        labelPosition='right'
+                        className="qui-save-button">
+                        {tObj?.buttons?.save || "Save"}
+                        <Icon name='check' className="qui-save-button-icon" />
                     </Button>
                 </div>
             </div >
