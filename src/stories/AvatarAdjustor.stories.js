@@ -3,7 +3,7 @@ import AvatarAdjustor from "../components/AvatarAdjustor/AvatarAdjustor.react";
 
 const dictionary = JSON.stringify({
     hi: {
-        rewardUploadModal: {
+        avatarAdjustor: {
             title: "तस्विर अपलोड करना",
             buttons: {
                 chooseFile: "फाइलें चुनें",
@@ -32,6 +32,16 @@ export default {
                 defaultValue: {
                     textColor: "",
                     accentColor: "",
+                },
+            },
+        },
+        withAnimation: {
+            table: {
+                category: "with-Params",
+                defaultValue: {
+                    animation: "",
+                    duration: 0,
+                    delay: 0,
                 },
             },
         },
@@ -78,9 +88,14 @@ Default.args = {
         textColor: "#121212",
         accentColor: "#bdbdbd",
     },
+    withAnimation: {
+        animation: "zoom",
+        duration: 0.5,
+        delay: 0,
+    },
     withTranslation: {
         lang: "en",
-        tgt: "rewardUploadModal",
+        tgt: "avatarAdjustor",
         dictionary: dictionary,
     },
     isHidden: false,
