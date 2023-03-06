@@ -28,7 +28,7 @@
             margin-bottom: 0.5em;
             border-radius: 0px 12px 2px 2px;
             box-shadow: 0 0 0 0 #22242626 inset;
-            position: relative;
+            position: fixed;
             top: -2px;
             right: -1px;
         }
@@ -44,8 +44,6 @@
         .qui-reward-uploader-buttons {
             width: 100%;
             background-color: #efefef;
-            display: flex;
-            justify-content: flex-end;
             height: 64px;
             padding: 1rem;
         }

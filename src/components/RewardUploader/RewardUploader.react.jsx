@@ -179,10 +179,10 @@ export default function RewardUploader(props) {
                 style={{ borderRadius: "15px" }}
                 className={`qui ${quommonClasses.parentClasses}`}
             >
-                <div className="qui-reward-uploader-modal-container">
+                <div className={`qui-reward-uploader-modal-container ${quommonClasses.childClasses}`}>
                     <div
                         style={{ backgroundColor: withColor?.accentColor }}
-                        className={`qui-reward-uploader-modal-header ${quommonClasses.childClasses}`}
+                        className="qui-reward-uploader-modal-header"
                     >
                         <h2 style={{ color: withColor?.textColor }}>
                             {tObj?.title || props?.title}
@@ -315,6 +315,7 @@ export default function RewardUploader(props) {
                                 onClick={handleSave}
                                 icon
                                 labelPosition='right'
+                                floated='right'
                                 className="qui-reward-uploader-save-button">
                                 {tObj?.buttons?.save || "Save"}
                                 <Icon name='check' className="qui-reward-uploader-save-button-icon" />
@@ -323,6 +324,7 @@ export default function RewardUploader(props) {
                                 onClick={handleCancel}
                                 icon
                                 labelPosition='left'
+                                floated='left'
                                 className="qui-reward-uploader-cancel-button">
                                 {tObj?.buttons?.cancel || "Cancel"}
                                 <Icon name='delete' className="qui-reward-uploader-cancel-button-icon" />
