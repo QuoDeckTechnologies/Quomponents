@@ -250,7 +250,7 @@ export default function RewardUploader(props) {
                                                     >
                                                         <Label
                                                             style={{
-                                                                backgroundColor: withColor?.accentColor + "!important",
+                                                                backgroundColor: withColor?.accentColor,
                                                                 color: withColor?.textColor,
                                                             }}
                                                             className="qui-input-lables">
