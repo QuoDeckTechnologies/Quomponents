@@ -18,10 +18,9 @@ AvatarAdjustor.propTypes = {
     // Component Specific props
     //=======================================
     /**
-    Use to define if modal is tile
+    Use to define modal's tile
     */
     title: PropTypes.string.isRequired,
-    /**
     /**
     Use to provide initial value for image
     */
@@ -200,6 +199,7 @@ export default function AvatarAdjustor(props) {
             <Modal
                 dimmer="blurring"
                 size="small"
+                style={{ borderRadius: "15px" }}
                 open={openUploadModal}
                 className={`qui ${quommonClasses.parentClasses}`}
             >
@@ -209,7 +209,7 @@ export default function AvatarAdjustor(props) {
                             {tObj?.title || title}
                         </h2>
                         <i className="fa fa-times"
-                            onClick={() => { setOpenUploadModal(false) }}
+                            onClick={handleCancel}
                         />
                     </div>
                     <div className="qui-avatar-adjustor-modal-editor-container">
@@ -247,17 +247,17 @@ export default function AvatarAdjustor(props) {
                             onClick={handleCancel}
                             icon
                             labelPosition='left'
-                            className="qui-cancel-button">
+                            className="qui-avatar-adjustor-cancel-button">
                             {tObj?.buttons?.cancel || "Cancel"}
-                            <Icon name='delete' className="qui-cancel-button-icon" />
+                            <Icon name='delete' className="qui-avatar-adjustor-cancel-button-icon" />
                         </Button>
                         <Button
                             onClick={handleSave}
                             icon
                             labelPosition='right'
-                            className="qui-save-button">
+                            className="qui-avatar-adjustor-save-button">
                             {tObj?.buttons?.save || "Save"}
-                            <Icon name='check' className="qui-save-button-icon" />
+                            <Icon name='check' className="qui-avatar-adjustor-save-button-icon" />
                         </Button>
                     </div>
                 </div>
