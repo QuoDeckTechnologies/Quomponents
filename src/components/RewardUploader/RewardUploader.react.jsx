@@ -117,7 +117,7 @@ export default function RewardUploader(props) {
     const [rewardName, setRewardName] = useState(props.rewardName ? props.rewardName : null);
     const [rewardHeader, setRewardHeader] = useState(props.rewardHeader ? props.rewardHeader : null);
     const [rewardContent, setRewardContent] = useState(props.rewardContent ? props.rewardContent : null);
-    const [image, setImage] = useState(props.image ? props.image : null);
+    const [image, setImage] = useState(props.image ? props.image : "/assets/reward/reward.png");
     const [openUploadModal, setOpenUploadModal] = useState(props.isOpen);
     const [imgModalOpen, setImgModalOpen] = useState(false);
 
