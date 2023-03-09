@@ -6,8 +6,6 @@
         .qui-avatar-adjustor-modal-container {
             border-radius: 15px;
             box-shadow: 0 6px 6px 0px #00000052;
-            position: relative;
-            max-width: 50em;
         }
         .qui-avatar-adjustor-modal-header {
             display: flex;
@@ -19,19 +17,23 @@
         }
         .qui-avatar-adjustor-modal-header h2 {
             margin: 0.5em;
+            font-family: "Roboto", sans-serif;
         }
         .qui-avatar-adjustor-modal-header i {
             cursor: pointer;
-            font-size: 1.5em;
+            font-size: 1.3em;
             background: #666666;
             color: #fff;
-            padding: 0.5em;
-            margin-bottom: 0.5em;
+            padding: 0.45em;
+            margin-bottom: 0.45em;
             border-radius: 0px 12px 2px 2px;
             box-shadow: 0 0 0 0 #22242626 inset;
-            position: relative;
-            top: -2px;
-            right: -1px;
+            position: fixed;
+            top: 0px;
+            right: 0px;
+        }
+        .qui-avatar-adjustor-modal-header i:hover {
+            box-shadow: #00000024 0px 4px 5px 0px, #0000001f 0px 1px 10px 0px, #00000033 0px 2px 4px -1px;
         }
         .qui-avatar-adjustor-modal-editor-container {
             display: block;
@@ -52,7 +54,7 @@
             background: #fff;
             canvas {
                 width: 100% !important;
-                height: 20em !important;
+                height: 18em !important;
                 display: inline-block;
             }
         }
@@ -83,6 +85,9 @@
                 color: #121212 !important;
             }
         }
+        .qui-avatar-adjustor-save-button:hover {
+            box-shadow: #00000024 0px 4px 5px 0px, #0000001f 0px 1px 10px 0px, #00000033 0px 2px 4px -1px;
+        }
         .qui-avatar-adjustor-cancel-button {
             position: relative;
             font-weight: normal;
@@ -101,6 +106,9 @@
                 background: #bdbdbd !important;
                 color: #121212 !important;
             }
+        }
+        .qui-avatar-adjustor-cancel-button:hover {
+            box-shadow: #00000024 0px 4px 5px 0px, #0000001f 0px 1px 10px 0px, #00000033 0px 2px 4px -1px;
         }
     }
 }

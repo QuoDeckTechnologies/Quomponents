@@ -32,6 +32,9 @@
             top: -2px;
             right: -1px;
         }
+        .qui-reward-uploader-modal-header i:hover {
+            box-shadow: #00000024 0px 4px 5px 0px, #0000001f 0px 1px 10px 0px, #00000033 0px 2px 4px -1px;
+        }
         .qui-reward-uploader-modal-body {
             padding: 3%;
             font-size: 1em;
@@ -68,6 +71,9 @@
                 background: #bdbdbd;
             }
         }
+        .qui-reward-uploader-save-button:hover {
+            box-shadow: #00000024 0px 4px 5px 0px, #0000001f 0px 1px 10px 0px, #00000033 0px 2px 4px -1px;
+        }
         .qui-reward-uploader-cancel-button {
             position: relative;
             font-weight: normal;
@@ -86,6 +92,9 @@
                 background: #bdbdbd;
                 color: #000000;
             }
+        }
+        .qui-reward-uploader-cancel-button:hover {
+            box-shadow: #00000024 0px 4px 5px 0px, #0000001f 0px 1px 10px 0px, #00000033 0px 2px 4px -1px;
         }
         .image {
             width: 100%;
