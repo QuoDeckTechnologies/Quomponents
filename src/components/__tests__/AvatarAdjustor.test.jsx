@@ -20,6 +20,7 @@ describe("AvatarAdjustor", () => {
         required: {
             isOpen: true,
             onChange: () => { },
+            handleClose: () => { },
         },
         translations: {
             tgt: "avatarAdjustor",
@@ -42,8 +43,6 @@ describe("AvatarAdjustor", () => {
     hasValid("colors", args);
     hasValid("animations", args);
     hasValid("translations", args);
-
-    hasValid("hidden", args);
     // -------------------------------------
     // Run component specific tests
     // -------------------------------------
@@ -67,15 +66,19 @@ describe("AvatarAdjustor", () => {
         component = shallow(
             <AvatarAdjustor
                 title="Upload Image"
-                image="image"
+                image="image.png"
                 isOpen={true}
                 withColor={null}
                 withAnimation={null}
                 withTranslation={null}
-                isHidden={false}
                 onChange={() => { }}
+                handleClose={() => { }}
             />
         );
+    });
+
+    it("should render correctly without throwing error", () => {
+        expect(component.exists()).toBe(true);
     });
 
     it("should render correctly when passed isOpen props is false", () => {
@@ -96,6 +99,14 @@ describe("AvatarAdjustor", () => {
         component.setProps({
             title: "",
             image: "",
+        });
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly when passed title & image props have value", () => {
+        component.setProps({
+            title: "Upload Image",
+            image: "image.png"
         });
         expect(component.exists()).toBe(true);
     });
@@ -176,13 +187,13 @@ describe("AvatarAdjustor", () => {
     //     component = mount(
     //         <AvatarAdjustor
     //             title="Upload image"
-    //             image=""
+    //             image="image.png"
     //             isOpen={true}
     //             withColor={null}
     //             withAnimation={null}
     //             withTranslation={null}
-    //             isHidden={false}
-    //             onChange={() => { }}
+    //             onChange={jest.fn()}
+    //             handleClose={jest.fn()}
     //         />
     //     );
     // });

@@ -66,13 +66,13 @@ AvatarAdjustor.propTypes = {
         dictionary: PropTypes.string,
     }),
     /**
-    Use to show/hide the component
-    */
-    isHidden: PropTypes.bool,
-    /**
     AvatarAdjustor component should have the onChange function passed as props
     */
     onChange: PropTypes.func,
+    /**
+    AvatarAdjustor component should have the handleClose function passed as props to close modal
+    */
+    handleClose: PropTypes.func,
 };
 
 AvatarAdjustor.defaultProps = {
@@ -88,7 +88,6 @@ AvatarAdjustor.defaultProps = {
     withColor: null,
     withAnimation: null,
     withTranslation: null,
-    isHidden: false,
 };
 /**
 ## Notes
@@ -138,35 +137,29 @@ export default function AvatarAdjustor(props) {
     };
 
     const handleSave = () => {
-        if (image) {
-            // If the image uploaded is a gif, convert it to a Base64 string without canvas
-            if (imageType === "image/gif") {
-                props.onChange(image.base64);
-            }
-            // If the image uploaded is not a gif, convert it to a jpg with 80% compression, or to a png
-            // and then a Base64 string with canvas
-            else if (imageType === "image/jpeg") {
-                let newImage = editorRef.current
-                    ?.getImage()
-                    .toDataURL("image/jpeg", 0.8);
-                props.onChange(newImage);
-            } else if (imageType === "image/png") {
-                let newImage = editorRef.current
-                    ?.getImage()
-                    .toDataURL("image/png");
-                props.onChange(newImage);
-            } else {
-                let newImage = editorRef.current
-                    ?.getImage()
-                    .toDataURL("image/jpeg", 0.8);
-                props.onChange(newImage);
-            }
+        // If the image uploaded is a gif, convert it to a Base64 string without canvas
+        if (imageType === "image/gif") {
+            props.onChange(image.base64);
+        }
+        // If the image uploaded is not a gif, convert it to a jpg with 80% compression, or to a png
+        // and then a Base64 string with canvas
+        else if (imageType === "image/jpeg") {
+            let newImage = editorRef.current
+                ?.getImage()
+                .toDataURL("image/jpeg", 0.8);
+            props.onChange(newImage);
+        } else if (imageType === "image/png") {
+            let newImage = editorRef.current
+                ?.getImage()
+                .toDataURL("image/png");
+            props.onChange(newImage);
+        } else {
+            let newImage = editorRef.current
+                ?.getImage()
+                .toDataURL("image/jpeg", 0.8);
+            props.onChange(newImage);
         }
     };
-
-    const handleCancel = () => {
-        setOpenUploadModal(false)
-    }
 
     const handleZoom = (value) => {
         setZoom(value)
@@ -198,18 +191,22 @@ export default function AvatarAdjustor(props) {
         >
             <Modal
                 dimmer="blurring"
-                size="small"
+                size="tiny"
                 style={{ borderRadius: "15px" }}
                 open={openUploadModal}
                 className={`qui ${quommonClasses.parentClasses}`}
             >
-                <div className="qui-avatar-adjustor-modal-container">
-                    <div className={`qui-avatar-adjustor-modal-header ${quommonClasses.childClasses}`}>
+                <div className={`qui-avatar-adjustor-modal-container ${quommonClasses.childClasses}`}>
+                    <div
+                        style={{ backgroundColor: withColor?.accentColor }}
+                        className="qui-avatar-adjustor-modal-header"
+                    >
                         <h2 style={{ color: withColor?.textColor }}>
                             {tObj?.title || title}
                         </h2>
-                        <i className="fa fa-times"
-                            onClick={handleCancel}
+                        <i
+                            className="fa fa-times"
+                            onClick={props.handleClose}
                         />
                     </div>
                     <div className="qui-avatar-adjustor-modal-editor-container">
@@ -244,7 +241,7 @@ export default function AvatarAdjustor(props) {
                     </div>
                     <div className="qui-avatar-adjustor-buttons">
                         <Button
-                            onClick={handleCancel}
+                            onClick={props.handleClose}
                             icon
                             labelPosition='left'
                             className="qui-avatar-adjustor-cancel-button">

@@ -55,10 +55,16 @@ export default {
                 },
             },
         },
-        isHidden: {
+        onChange: {
             table: {
-                category: "is-Toggles",
-                defaultValue: false,
+                category: "Events",
+                defaultValue: null,
+            },
+        },
+        handleClose: {
+            table: {
+                category: "Events",
+                defaultValue: null,
             },
         },
     },
@@ -98,7 +104,6 @@ Default.args = {
         tgt: "avatarAdjustor",
         dictionary: dictionary,
     },
-    isHidden: false,
 };
 Default.parameters = {
     docs: {
