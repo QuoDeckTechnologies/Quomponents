@@ -69,13 +69,13 @@ RewardUploader.propTypes = {
         dictionary: PropTypes.string,
     }),
     /**
-    Use to show/hide the component
-    */
-    isHidden: PropTypes.bool,
-    /**
-    rewardUploadModal component should have the onSubmit function passed as props
+    RewardUpload component should have the onSubmit function passed as props
     */
     onSubmit: PropTypes.func,
+    /**
+    RewardUpload component should have the handleClose function passed as props to close modal
+    */
+    handleClose: PropTypes.func,
 };
 
 RewardUploader.defaultProps = {
@@ -95,9 +95,6 @@ RewardUploader.defaultProps = {
     withColor: null,
     withAnimation: null,
     withTranslation: null,
-
-    isHidden: false,
-    isFluid: false,
 };
 /**
 ## Notes
@@ -136,16 +133,12 @@ export default function RewardUploader(props) {
     };
 
     const handleSave = () => {
-        if (props.onSubmit) props.onSubmit({
+        props.onSubmit({
             Image: image,
             Name: rewardName,
             Header: rewardHeader,
             Content: rewardContent
         });
-    };
-
-    const handleCancel = () => {
-        setOpenUploadModal(false)
     };
     //-------------------------------------------------------------------
     // 5. Set the classes
@@ -189,7 +182,7 @@ export default function RewardUploader(props) {
                         </h2>
                         <i
                             className="fa fa-times"
-                            onClick={() => setOpenUploadModal(false)}
+                            onClick={props.handleClose}
                         />
                     </div>
                     <div className="qui-reward-uploader-modal-body">
@@ -214,6 +207,7 @@ export default function RewardUploader(props) {
                                                     </Button>
                                                     <AvatarAdjustor
                                                         isOpen={imgModalOpen}
+                                                        handleClose={() => { setImgModalOpen(false) }}
                                                         onChange={handleChange}
                                                         image={image}
                                                     />
@@ -321,7 +315,7 @@ export default function RewardUploader(props) {
                                 <Icon name='check' className="qui-reward-uploader-save-button-icon" />
                             </Button> :
                             <Button
-                                onClick={handleCancel}
+                                onClick={props.handleClose}
                                 icon
                                 labelPosition='left'
                                 floated='left'

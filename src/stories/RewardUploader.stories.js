@@ -65,10 +65,16 @@ export default {
                 },
             },
         },
-        isHidden: {
+        onSubmit: {
             table: {
-                category: "is-Toggles",
-                defaultValue: false,
+                category: "Events",
+                defaultValue: null,
+            },
+        },
+        handleClose: {
+            table: {
+                category: "Events",
+                defaultValue: null,
             },
         },
     },
@@ -112,7 +118,6 @@ Default.args = {
         tgt: "rewardUploadModal",
         dictionary: dictionary,
     },
-    isHidden: false,
 };
 Default.parameters = {
     docs: {
