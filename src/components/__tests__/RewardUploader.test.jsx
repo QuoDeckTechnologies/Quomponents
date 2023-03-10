@@ -1,7 +1,7 @@
 //--------------------------------------
 // Import from NPM
 // -------------------------------------
-import { shallow } from "enzyme";
+import { shallow, mount } from "enzyme";
 //--------------------------------------
 // Import Common Tests
 // -------------------------------------
@@ -43,8 +43,6 @@ describe("RewardUploader", () => {
     hasValid("colors", args);
     hasValid("animations", args);
     hasValid("translations", args);
-
-    hasValid("hidden", args);
     // -------------------------------------
     // Run component specific tests
     // -------------------------------------
@@ -64,10 +62,13 @@ describe("RewardUploader", () => {
                 withColor={null}
                 withAnimation={null}
                 withTranslation={null}
-                isHidden={false}
                 onChange={() => { }}
             />
         );
+    });
+
+    it("should render correctly without throwing error", () => {
+        expect(component.exists()).toBe(true);
     });
 
     it("should render correctly when passed isOpen props is false", () => {
@@ -119,17 +120,49 @@ describe("RewardUploader", () => {
         expect(component.exists()).toBe(true);
     });
 
-    it("should render correctly without throwing error when clicked on upload button", () => {
+    it("should render correctly without throwing error when click on cancel button on AvatarAdjustor", () => {
+        component.find("AvatarAdjustor").at(0).props().handleClose()
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly without throwing error when clicked on buttons", () => {
+        let onSubmit = jest.fn();
+        component.setProps({
+            onSubmit: onSubmit,
+        });
         component.find("Button").at(0).simulate("click");
         component.find("Button").at(1).simulate("click");
         expect(component.exists()).toBe(true);
     });
 
-    it("should render correctly without throwing error when clicked on upload button", () => {
+    it("should render correctly without throwing error when isEditable is true and Save button is enable", () => {
         component.setProps({
-            isOpen: false,
+            isEditable: true,
         });
-        component.find("Button").at(1).simulate("click");
+        component.find("Button").at(0).simulate("click");
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly without throwing error when isEditable is false and cancel button is enable", () => {
+        component.setProps({
+            isEditable: false,
+        });
+        component.find("Button").at(0).simulate("click");
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly without throwing error when clicked on save button", () => {
+        let onSubmit = jest.fn();
+        component.setProps({
+            onSubmit: onSubmit,
+            isEditable: true,
+        });
+        component.find("Button").at(0).simulate("click", {
+            Image: "image",
+            Name: "rewardName",
+            Header: "rewardHeader",
+            Content: "rewardContent",
+        });
         expect(component.exists()).toBe(true);
     });
 
@@ -144,6 +177,25 @@ describe("RewardUploader", () => {
         component.find("input").at(0).simulate("click");
         component.find("input").at(1).simulate("click");
         component.find("input").at(2).simulate("click");
+        expect(component.exists()).toBe(true);
+    });
+
+    it("should render correctly without throwing error when component mounts", () => {
+        component = mount(
+            <RewardUploader
+                title="Create a Reward"
+                image="image"
+                rewardName="rewardName"
+                rewardHeader="rewardHeader"
+                rewardContent="rewardContent"
+                isOpen={true}
+                isEditable={true}
+                withColor={null}
+                withAnimation={null}
+                withTranslation={null}
+                onChange={() => { }}
+            />
+        );
         expect(component.exists()).toBe(true);
     });
 });
